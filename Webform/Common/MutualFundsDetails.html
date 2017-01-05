@@ -224,7 +224,7 @@
                                     <th>Value</th>
                                     <th>Asset(%)</th>
                                 </tr>
-                                <tr ng-repeat="Holding in FundTopHolding">
+                                <tr ng-repeat="Holding in FundTopHolding |tolimit:10">
 
                                     <td>{{Holding.CO_NAME}} - ({{Holding.PortfolioDate}})  </td>
                                     <td>- </td>

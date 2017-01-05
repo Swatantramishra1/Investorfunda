@@ -118,7 +118,7 @@
                     <tbody>
                         <tr ng-repeat="MF in FundsList | filter : filterprodcut | limitTo : SchemeLimitTo" id="{{MF.SchemeID}}" >
                             <td>{{$index+1}}</td>
-                            <td ng-click="GoForMFDetails(MF.SchemeID)" class="OnHoverSchemename">{{MF.SchemeID}} {{MF.SchemeName}}</td>
+                            <td ng-click="GoForMFDetails(MF.SchemeID)" class="OnHoverSchemename"> {{MF.SchemeName}}</td>
                             <td class="hidden-sm">{{MF.CategoryName}}</td>
                             <td>{{MF.NAV | number:2}}</td>
                             <td><span class="label label-warning">{{MF.Return_3Yr | number:2}} %</span></td>
