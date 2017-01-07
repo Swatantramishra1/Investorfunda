@@ -76,9 +76,12 @@
                 margin-top: 10px;
             }*/
 
-    #Money,#Risk,#Investment,#InvestedYear {
+    #Money,#Risk,#InvestedYear {
         display: none;
     }
+    /*#Money,#Risk,#Investment,#InvestedYear {
+        display: none;
+    }*/
 </style>
 <div class="col-md-12" style="background-color:white;margin-bottom:80px">
 
@@ -104,8 +107,8 @@
             <span class='baricon'>3</span>
             <span id="bar3" class='progress_bar'></span>
             <span class='baricon'>4</span>
-            <span id="bar4" class='progress_bar'></span>
-            <span class='baricon'>5</span>
+            <!--<span id="bar4" class='progress_bar'></span>
+            <span class='baricon'>5</span>-->
 
                 <div class="row margin-bottom-10" id="Year">
                     <div class="col-md-12">
@@ -117,28 +120,28 @@
 </h1></div>
                     <div class="col-md-12">
                         <div class="col-md-2">
-                            <button class="btn btn-block btn-dropbox  Green_Btn" onclick="show_next('Year', 'Money', 'bar1');">
+                            <button class="btn btn-block btn-dropbox  Green_Btn" ng-click="show_next('Year', 'Money', 'bar1','Below30');">
                                 Below 30
                             </button>
                         </div>
                         <div class="col-md-1">
                         </div>
                         <div class="col-md-2">
-                            <button class="btn btn-block btn-dropbox  Green_Btn" onclick="show_next('Year', 'Money', 'bar1');">
+                            <button class="btn btn-block btn-dropbox  Green_Btn" ng-click="show_next('Year', 'Money', 'bar1','Between30-35');">
                                 30-35
                             </button>
                         </div>
                         <div class="col-md-1">
                         </div>
                         <div class="col-md-2">
-                            <button class="btn btn-block btn-dropbox  Green_Btn" onclick="show_next('Year', 'Money', 'bar1');">
+                            <button class="btn btn-block btn-dropbox  Green_Btn" ng-click="show_next('Year', 'Money', 'bar1','Between36-55');">
                                 36-55
                             </button>
                         </div>
                         <div class="col-md-1">
                         </div>
                         <div class="col-md-2">
-                            <button class="btn btn-block btn-dropbox  Green_Btn" onclick="show_next('Year', 'Money', 'bar1');">
+                            <button class="btn btn-block btn-dropbox  Green_Btn" ng-click="show_next('Year', 'Money', 'bar1','Above56');">
                                 Above 56
                             </button>
                         </div>
@@ -156,28 +159,28 @@
                     </div>
                     <div class="col-md-12">
                         <div class="col-md-2">
-                            <button class="btn btn-block btn-dropbox  Green_Btn" onclick="show_next('Money', 'Risk', 'bar2');">
-                                Upto 2500
+                            <button class="btn btn-block btn-dropbox  Green_Btn" ng-click="show_next('Money', 'Risk', 'bar2','2000');">
+                                Upto 2000
                             </button>
                         </div>
                         <div class="col-md-1">
                         </div>
                         <div class="col-md-2">
-                            <button class="btn btn-block btn-dropbox  Green_Btn" onclick="show_next('Money', 'Risk', 'bar2');">
-                               2501-5000
+                            <button class="btn btn-block btn-dropbox  Green_Btn" ng-click="show_next('Money', 'Risk', 'bar2','5000');">
+                               2000-5000
                             </button>
                         </div>
                         <div class="col-md-1">
                         </div>
                         <div class="col-md-2">
-                            <button class="btn btn-block btn-dropbox  Green_Btn" onclick="show_next('Money', 'Risk', 'bar2');">
-                                5000 & Above
+                            <button class="btn btn-block btn-dropbox  Green_Btn" ng-click="show_next('Money', 'Risk', 'bar2','8000');">
+                                5000 - 10000 
                             </button>
                         </div>
                         <div class="col-md-1">
                         </div>
                         <div class="col-md-2">
-                            <button class="btn btn-block btn-dropbox  Green_Btn" onclick="show_next('Money', 'Risk', 'bar2');">
+                            <button class="btn btn-block btn-dropbox  Green_Btn" ng-click="show_next('Money', 'Risk', 'bar2','10000');">
                                 10000 & Above
                             </button>
                         </div>
@@ -195,34 +198,34 @@
                 </div>
                 <div class="col-md-12">
                     <div class="col-md-2">
-                        <button class="btn btn-block btn-dropbox  Green_Btn" onclick="show_next('Risk', 'Investment', 'bar3');">
+                        <button class="btn btn-block btn-dropbox  Green_Btn" ng-click="show_next('Risk', 'InvestedYear', 'bar3','Low');">
                             LOW RISK
                         </button>
                     </div>
                     <div class="col-md-1">
                     </div>
                     <div class="col-md-2">
-                        <button class="btn btn-block btn-dropbox  Green_Btn" onclick="show_next('Risk', 'Investment', 'bar3');">
+                        <button class="btn btn-block btn-dropbox  Green_Btn" ng-click="show_next('Risk', 'InvestedYear', 'bar3','Medium');">
                             MEDIUM RISK
                         </button>
                     </div>
                     <div class="col-md-1">
                     </div>
                     <div class="col-md-2">
-                        <button class="btn btn-block btn-dropbox  Green_Btn" onclick="show_next('Risk', 'Investment', 'bar3');">
+                        <button class="btn btn-block btn-dropbox  Green_Btn" ng-click="show_next('Risk', 'InvestedYear', 'bar3','High');">
                             HIGH RISK
                         </button>
                     </div>
                     <div class="col-md-1">
                     </div>
                     <div class="col-md-2">
-                        <button class="btn btn-block btn-dropbox  Green_Btn" onclick="show_next('Risk', 'Investment', 'bar3');">
+                        <button class="btn btn-block btn-dropbox  Green_Btn" ng-click="show_next('Risk', 'Investment', 'bar3','Not');">
                             I AM NOT SURE,HELP ME
                         </button>
                     </div>
                 </div>
             </div>
-            <div class="row margin-bottom-10" id="Investment">
+            <!--<div class="row margin-bottom-10" id="Investment">
                 <div class="col-md-12">
                     <img src="../../../Img/StartSip/SAVETAXESRSi.png" style="margin-top:10px"  />
                 </div>
@@ -235,14 +238,14 @@
                     <div class="col-md-4">
                     </div>
                     <div class="col-md-2">
-                        <button class="btn btn-block btn-dropbox  Green_Btn" onclick="show_next('Investment', 'InvestedYear', 'bar4');">
+                        <button class="btn btn-block btn-dropbox  Green_Btn" ng-click="show_next('Investment', 'InvestedYear', 'bar4');">
                            TAX SAVING
                         </button>
                     </div>
                     <div class="col-md-1">
                     </div>
                     <div class="col-md-2">
-                        <button class="btn btn-block btn-dropbox  Green_Btn" onclick="show_next('Investment', 'InvestedYear', 'bar4');">
+                        <button class="btn btn-block btn-dropbox  Green_Btn" ng-click="show_next('Investment', 'InvestedYear', 'bar4');">
                             NON TAX SAVING
                         </button>
                     </div>
@@ -250,7 +253,7 @@
                     </div>
                   
                 </div>
-            </div>
+            </div>-->
             <div class="row margin-bottom-10" id="InvestedYear" >
                 <div class="col-md-12">
                     <img src="../../../Img/StartSip/Time500x150-01.png"  style="margin-top:10px" />
@@ -262,28 +265,28 @@
                 </div>
                 <div class="col-md-12">
                     <div class="col-md-2">
-                        <button class="btn btn-block btn-dropbox  Green_Btn" >
+                        <button class="btn btn-block btn-dropbox  Green_Btn" ng-click="show_next('InvestedYear', 'InvestedYear', 'bar3','1')" >
                            Less than 1 Year
                         </button>
                     </div>
                     <div class="col-md-1">
                     </div>
                     <div class="col-md-2">
-                        <button class="btn btn-block btn-dropbox  Green_Btn" >
+                        <button class="btn btn-block btn-dropbox  Green_Btn" ng-click="show_next('InvestedYear', 'InvestedYear', 'bar3','3')" >
                             1-3 Year
                         </button>
                     </div>
                     <div class="col-md-1">
                     </div>
                     <div class="col-md-2">
-                        <button class="btn btn-block btn-dropbox  Green_Btn" >
+                        <button class="btn btn-block btn-dropbox  Green_Btn" ng-click="show_next('InvestedYear', 'InvestedYear', 'bar3','5')">
                             3-5 Year
                         </button>
                     </div>
                     <div class="col-md-1">
                     </div>
                     <div class="col-md-2">
-                        <button class="btn btn-block btn-dropbox  Green_Btn">
+                        <button class="btn btn-block btn-dropbox  Green_Btn" ng-click="show_next('InvestedYear', 'InvestedYear', 'bar3','10')">
                             More than 5 Year
                         </button>
                     </div>
@@ -296,34 +299,18 @@
                     <p>Password</p>
                     <input type="text" placeholder='Password'>
                     <br>
-                    <input type="button" value="Next" onclick="show_next('account_details','user_details','bar1');">
+                    <input type="button" value="Next" ng-click="show_next('account_details','user_details','bar1');">
                 </div>-->
 
      
 
         </div>
     </div>
-
+    <div class="row text-right" ng-show="StartSipInvestNowBtn">
+        <md-button  class="md-raised" ng-click="Portfolio_InvestNow()">Click To Procedd</md-button>
+    </div>
     </div>
 
 <script>
-    function show_next(id, nextid, bar) {
-  
-            document.getElementById("Year").style.display = "none";
-            document.getElementById("Money").style.display = "none";
-            document.getElementById("Risk").style.display = "none";
-            document.getElementById("Investment").style.display = "none";
-            document.getElementById("InvestedYear").style.display = "none";
-            $("#" + nextid).fadeIn();
-            document.getElementById(bar).style.backgroundColor = "rgba(102,0,51,1)";
-      
-    }
 
-    function show_prev(previd, bar) {
-        document.getElementById("account_details").style.display = "none";
-        document.getElementById("user_details").style.display = "none";
-        document.getElementById("qualification").style.display = "none";
-        $("#" + previd).fadeIn();
-        document.getElementById(bar).style.backgroundColor = "#D8D8D8";
-    }
 </script>

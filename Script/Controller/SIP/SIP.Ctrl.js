@@ -1605,7 +1605,29 @@
     }
 
     $scope.InvestNow();
-   
-    
     HideLoader();
+        //****************************Start SIP**************************************
+    $scope.show_next = function (id, nextid, bar,typeValue) {
+       
+        document.getElementById("Year").style.display = "none";
+        document.getElementById("Money").style.display = "none";
+        document.getElementById("Risk").style.display = "none";
+        //document.getElementById("Investment").style.display = "none";
+        document.getElementById("InvestedYear").style.display = "none";
+        $("#" + nextid).fadeIn();
+        document.getElementById(bar).style.backgroundColor = "rgba(102,0,51,1)";
+        if(id=="InvestedYear")
+        {
+            $scope.StartSipInvestNowBtn = true;
+        }
+    };
+
+    $scope.show_prev=function(previd, bar) {
+        document.getElementById("account_details").style.display = "none";
+        document.getElementById("user_details").style.display = "none";
+        document.getElementById("qualification").style.display = "none";
+        $("#" + previd).fadeIn();
+        document.getElementById(bar).style.backgroundColor = "#D8D8D8";
+    }
+  
 }]);
