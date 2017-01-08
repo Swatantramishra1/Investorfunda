@@ -1,9 +1,9 @@
 ﻿<div class="col-md-12 margin-bottom-60" style="background-color:white">
 <div class="row margin-bottom-10" style="background-color:gray">
 
-    <img src="../../../Img/EasySip.png" />
+    <img src="../../../Img/EasySip.png" style="width:100%" />
 </div>
-<div class="row margin-bottom-40">
+<div class="row margin-bottom-40" ng-show="EasySIP_Step1">
     <div class="row tab-v3">
         
         <div class="col-sm-12">
@@ -70,6 +70,11 @@
                 </form>
             </div>
         </div>
+    </div>
+</div>
+<div class="row margin-bottom-40" ng-show="EasySIP_Step2">
+    <div class="col-md-12" style="background-color:white;" >
+        <div class="row" ng-include="'../../Webform/Common/Html/portFolio.html'"></div>
     </div>
 </div>
 

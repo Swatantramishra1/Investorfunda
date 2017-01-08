@@ -538,13 +538,13 @@
         //How much i have saved for our child till now
 
         var saveMoney = parseInt(LumpSumMoney);
-        var currentCost = $scope.Portfolio_Parameter.TotalCourseFee;
+        var currentCost = $rootScope.Portfolio_Parameter.TotalCourseFee;
 
         //When Student Need Money
 
         var course_yr = parseInt(ChildNeedMoneyYear);
 
-        var exp_irate = $scope.Portfolio_Parameter.Portfolio_ROInflation;
+        var exp_irate = $rootScope.Portfolio_Parameter.Portfolio_ROInflation;
 
         var rog = 12;
 
@@ -570,19 +570,19 @@
         mInvst = parseInt(mInvst) + Temp21;
         //if (mInvst >= 5000)
         //{
-            $scope.Portfolio_Parameter.TotalMonthlyInvestment = mInvst;
+            $rootScope.Portfolio_Parameter.TotalMonthlyInvestment = mInvst;
         //}
         //else {
-        //    $scope.Portfolio_Parameter.TotalMonthlyInvestment = 5000;
+        //    $rootScope.Portfolio_Parameter.TotalMonthlyInvestment = 5000;
         //}
         
         oInvst = oInvst.toFixed(0);
 
-        $scope.Portfolio_Parameter.EstematedYear = txtIncomeSlider;
+        $rootScope.Portfolio_Parameter.EstematedYear = txtIncomeSlider;
         var Temp1 = parseInt(oInvst) % 1000;
         var Temp2 = 1000 - Temp1;
         oInvst = parseInt(oInvst) + Temp2;
-        $scope.Portfolio_Parameter.CalculatedTotalMoney = oInvst;
+        $rootScope.Portfolio_Parameter.CalculatedTotalMoney = oInvst;
         //document.getElementById("idlExpLifeCover").innerHTML = oInvst + '<sup style="font-size:12px;position:relative;top:-10px;"> #</sup>';
 
         //document.getElementById("idlExpLifeCover").value = oInvst;
@@ -614,11 +614,11 @@
     $scope.CalculateMoneyAssignToExDebt=function(CalculatedPercentage,MoneyMonthwise)
     {
         var CalculatedEquityDebtMoney = CalculateMoneyEquityDebt(CalculatedPercentage, MoneyMonthwise);
-        $scope.Portfolio_Parameter.Equity = CalculatedEquityDebtMoney[0].Equity;
-        $scope.Portfolio_Parameter.Debt = CalculatedEquityDebtMoney[0].Debt;
+        $rootScope.Portfolio_Parameter.Equity = CalculatedEquityDebtMoney[0].Equity;
+        $rootScope.Portfolio_Parameter.Debt = CalculatedEquityDebtMoney[0].Debt;
         $scope.ChartFunctionForPortFolio();
     }
-    $scope.Portfolio_Parameter =
+    $rootScope.Portfolio_Parameter =
         {
             Portfolio_ID: "1",
             Portfolio_Name: "",
@@ -691,37 +691,37 @@
         var Fund_DebtLiquid_result_Temp = "";
         var Result_Temp = [];
         if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap != undefined) {
-             Fund_LargeCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+             Fund_LargeCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap / 100) * $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
              Fund_LargeCap_result_Temp = Fund_LargeCap_result % 100;
              Result_Temp.push({ "SchemeType": "Large", "ModResult": Fund_LargeCap_result_Temp });
         }
         if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MultiCap != undefined) {
-             Fund_MultiCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MultiCap / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+             Fund_MultiCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MultiCap / 100) * $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
              Fund_MultiCap_result_Temp = Fund_MultiCap_result % 100;
              Result_Temp.push({ "SchemeType": "Multi", "ModResult": Fund_MultiCap_result_Temp });
         }
         if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_BondFunds != undefined) {
-             Fund_BondCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_BondFunds / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+             Fund_BondCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_BondFunds / 100) * $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
              Fund_BondCap_result_Temp = Fund_BondCap_result % 100;
              Result_Temp.push({ "SchemeType": "Bond", "ModResult": Fund_BondCap_result_Temp });
         }
         if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_UltraSortFund != undefined) {
-            Fund_UltraCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_UltraSortFund / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+            Fund_UltraCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_UltraSortFund / 100) * $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
             Fund_UltraCap_result_Temp = Fund_UltraCap_result % 100;
             Result_Temp.push({ "SchemeType": "Ultra", "ModResult": Fund_UltraCap_result_Temp });
         }
         if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MidCap != undefined) {
-            Fund_MidCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MidCap / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+            Fund_MidCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MidCap / 100) * $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
             Fund_MidCap_result_Temp = Fund_MidCap_result % 100;
             Result_Temp.push({ "SchemeType": "Mid", "ModResult": Fund_MidCap_result_Temp });
         }
         if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_CreditOpportunity != undefined) {
-            Fund_CreditOpportunity_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_CreditOpportunity / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+            Fund_CreditOpportunity_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_CreditOpportunity / 100) * $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
             Fund_CreditOpportunity_result_Temp = Fund_CreditOpportunity_result % 100;
             Result_Temp.push({ "SchemeType": "Credit", "ModResult": Fund_CreditOpportunity_result_Temp });
         }
         if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_LiquidCap != undefined) {
-            Fund_DebtLiquid_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_LiquidCap / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+            Fund_DebtLiquid_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_LiquidCap / 100) * $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
             Fund_DebtLiquid_result_Temp = Fund_DebtLiquid_result % 100;
             Result_Temp.push({ "SchemeType": "Liquid", "ModResult": Fund_DebtLiquid_result_Temp });
         }
@@ -1151,7 +1151,7 @@
         
         if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap != undefined)
         {
-            //Fund_LargeCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+            //Fund_LargeCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap / 100) * $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
 
             for(var a=0;a<EquityLargeCpIndex.length;a++)
             {
@@ -1182,7 +1182,7 @@
         //Equity Mid Cap
        
         if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MultiCap != undefined) {
-            //Fund_MultiCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MultiCap / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+            //Fund_MultiCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MultiCap / 100) * $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
 
             for (var a = 0; a < EquityMulticapIndex.length; a++) {
                 if (Fund_MultiCap_result > $scope.SIPGoalStructureDate[EquityMulticapIndex[a]].MinInvst) {
@@ -1210,7 +1210,7 @@
         //Bonds Fund
         
         if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_BondFunds != undefined) {
-            //Fund_BondCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_BondFunds / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+            //Fund_BondCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_BondFunds / 100) * $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
 
             for (var a = 0; a < EquityBondIndex.length; a++) {
                 if (Fund_BondCap_result > $scope.SIPGoalStructureDate[EquityBondIndex[a]].MinInvst) {
@@ -1237,7 +1237,7 @@
         //Ultry Sort Fund
         
         if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_UltraSortFund != undefined) {
-            //Fund_UltraCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_UltraSortFund / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+            //Fund_UltraCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_UltraSortFund / 100) * $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
 
             for (var a = 0; a < EquityUltraSortIndex.length; a++) {
                 if (Fund_UltraCap_result > $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].MinInvst) {
@@ -1265,7 +1265,7 @@
         //Mid Fund
         
         if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MidCap != undefined) {
-            //Fund_MidCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MidCap / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+            //Fund_MidCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MidCap / 100) * $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
 
             for (var a = 0; a < EquityMidSmallIndex.length; a++) {
                 if (Fund_MidCap_result > $scope.SIPGoalStructureDate[EquityMidSmallIndex[a]].MinInvst) {
@@ -1294,7 +1294,7 @@
         //Credit Opportunity
         
         if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_CreditOpportunity != undefined) {
-            //Fund_CreditOpportunity_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_CreditOpportunity / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+            //Fund_CreditOpportunity_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_CreditOpportunity / 100) * $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
 
             for (var a = 0; a < CreditOpportunitiesIndex.length; a++) {
                 if (Fund_CreditOpportunity_result > $scope.SIPGoalStructureDate[CreditOpportunitiesIndex[a]].MinInvst) {
@@ -1472,25 +1472,25 @@
         $scope.Global_Message = "";
         if (Type == undefined)
         {
-            $scope.Portfolio_Parameter.TotalCourseFee = (parseInt($scope.Portfolio_Parameter.Portfolio_LivingPerYear) + parseInt($scope.Portfolio_Parameter.Portfolio_FeesPerYear)) * ($scope.Portfolio_Parameter.Portfolio_Duration);
+            $rootScope.Portfolio_Parameter.TotalCourseFee = (parseInt($rootScope.Portfolio_Parameter.Portfolio_LivingPerYear) + parseInt($rootScope.Portfolio_Parameter.Portfolio_FeesPerYear)) * ($rootScope.Portfolio_Parameter.Portfolio_Duration);
 
-            calculator($scope.Portfolio_Parameter.Portfolio_LumpSumAmount, $scope.Portfolio_Parameter.Portfolio_Year, $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge);
+            calculator($rootScope.Portfolio_Parameter.Portfolio_LumpSumAmount, $rootScope.Portfolio_Parameter.Portfolio_Year, $rootScope.Portfolio_Parameter.Portfolio_ChildCurrentAge);
 
-            $scope.Portfolio_Parameter.TotalLivingExpensesFee = parseInt($scope.Portfolio_Parameter.Portfolio_LivingPerYear) * ($scope.Portfolio_Parameter.Portfolio_Duration);
+            $rootScope.Portfolio_Parameter.TotalLivingExpensesFee = parseInt($rootScope.Portfolio_Parameter.Portfolio_LivingPerYear) * ($rootScope.Portfolio_Parameter.Portfolio_Duration);
 
             $scope.SIP_GOAL_SHOW = false;
             $scope.SIP_GOAL_Setting_SHOW = true;
         }
         else {
-            calculator($scope.Portfolio_Parameter.Portfolio_LumpSumAmount, $scope.Portfolio_Parameter.Portfolio_Year, $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge);
+            calculator($rootScope.Portfolio_Parameter.Portfolio_LumpSumAmount, $rootScope.Portfolio_Parameter.Portfolio_Year, $rootScope.Portfolio_Parameter.Portfolio_ChildCurrentAge);
         }
         
     };
     $scope.Portfolio_Final = function () {
       
-        $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation($scope.Portfolio_Parameter.EstematedYear, $scope.Portfolio_Parameter.TotalMonthlyInvestment);
-        $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $scope.Portfolio_Parameter.TotalMonthlyInvestment);
-        //if ($scope.Portfolio_Parameter.TotalMonthlyInvestment >= 2500)
+        $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation($rootScope.Portfolio_Parameter.EstematedYear, $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
+        $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
+        //if ($rootScope.Portfolio_Parameter.TotalMonthlyInvestment >= 2500)
         //{
             $scope.SIP_GOAL_SHOW = false;
             $scope.SIP_GOAL_Setting_SHOW = false;
@@ -1498,7 +1498,7 @@
             $scope.ShowDiv("1");
         //}
         //else {
-        //    $scope.Global_Message = "Amount Should be greate than 2500 your SIP amount is " + $scope.Portfolio_Parameter.TotalMonthlyInvestment +". Please select heigher amount";
+        //    $scope.Global_Message = "Amount Should be greate than 2500 your SIP amount is " + $rootScope.Portfolio_Parameter.TotalMonthlyInvestment +". Please select heigher amount";
         //    $scope.SIP_GOAL_SHOW = true;
         //    $scope.SIP_GOAL_Setting_SHOW = false;
         //    $scope.SIP_GOAL_Final_SHOW = false;
@@ -1545,32 +1545,32 @@
                 $localStorage.POstJson = {
                     "User_ID": "",
                     "userPlan": {
-                        "MasterPlan_ID": $scope.Portfolio_Parameter.Portfolio_ID,
-                        "Goal": $scope.Portfolio_Parameter.Portfolio_Name,
-                        "CurrentAge": $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge,
-                        "CourseTime": $scope.Portfolio_Parameter.Portfolio_Year,
-                        "CourseDuration": $scope.Portfolio_Parameter.Portfolio_Duration,
-                        "CourseFeePerYear": $scope.Portfolio_Parameter.Portfolio_FeesPerYear,
-                        "LivingCostPerYear": $scope.Portfolio_Parameter.Portfolio_LivingPerYear,
-                        "SavedAmount_Lumpsum": $scope.Portfolio_Parameter.Portfolio_LumpSumAmount,
-                        "InflationRate": $scope.Portfolio_Parameter.Portfolio_ROInflation,
-                        "TotalCourseFees": $scope.Portfolio_Parameter.TotalCourseFee,
-                        "TotalLivingExpanses": $scope.Portfolio_Parameter.TotalLivingExpensesFee,
-                        "TotalAmount": $scope.Portfolio_Parameter.CalculatedTotalMoney,
-                        "TotalLumpsumAmount": $scope.Portfolio_Parameter.Portfolio_LumpSumAmount,
-                        "EstimatedInflationRate": $scope.Portfolio_Parameter.Portfolio_ROInflation
+                        "MasterPlan_ID": $rootScope.Portfolio_Parameter.Portfolio_ID,
+                        "Goal": $rootScope.Portfolio_Parameter.Portfolio_Name,
+                        "CurrentAge": $rootScope.Portfolio_Parameter.Portfolio_ChildCurrentAge,
+                        "CourseTime": $rootScope.Portfolio_Parameter.Portfolio_Year,
+                        "CourseDuration": $rootScope.Portfolio_Parameter.Portfolio_Duration,
+                        "CourseFeePerYear": $rootScope.Portfolio_Parameter.Portfolio_FeesPerYear,
+                        "LivingCostPerYear": $rootScope.Portfolio_Parameter.Portfolio_LivingPerYear,
+                        "SavedAmount_Lumpsum": $rootScope.Portfolio_Parameter.Portfolio_LumpSumAmount,
+                        "InflationRate": $rootScope.Portfolio_Parameter.Portfolio_ROInflation,
+                        "TotalCourseFees": $rootScope.Portfolio_Parameter.TotalCourseFee,
+                        "TotalLivingExpanses": $rootScope.Portfolio_Parameter.TotalLivingExpensesFee,
+                        "TotalAmount": $rootScope.Portfolio_Parameter.CalculatedTotalMoney,
+                        "TotalLumpsumAmount": $rootScope.Portfolio_Parameter.Portfolio_LumpSumAmount,
+                        "EstimatedInflationRate": $rootScope.Portfolio_Parameter.Portfolio_ROInflation
                     },
                     "userPortfolio": {
-                        "Equity": $scope.Portfolio_Parameter.Equity,
-                        "Debt": $scope.Portfolio_Parameter.Debt,
-                        "EstimatedTotalSIPAmt": $scope.Portfolio_Parameter.TotalMonthlyInvestment,
+                        "Equity": $rootScope.Portfolio_Parameter.Equity,
+                        "Debt": $rootScope.Portfolio_Parameter.Debt,
+                        "EstimatedTotalSIPAmt": $rootScope.Portfolio_Parameter.TotalMonthlyInvestment,
                         "Scheme_IDs": "1,2,3"
                     }
                 };
                 $state.go('Authentication', { From: 'ChildPlan' });
             }
 
-            console.log($scope.Portfolio_Parameter)
+            console.log($rootScope.Portfolio_Parameter)
         }
         else if (From != undefined) {
             if ($localStorage.LoginStatus) {
@@ -1581,25 +1581,25 @@
                 $localStorage.POstJson = {
                     "User_ID": "",
                     "userPlan": {
-                        "MasterPlan_ID": $scope.Portfolio_Parameter.Portfolio_ID,
-                        "Goal": $scope.Portfolio_Parameter.Portfolio_Name,
-                        "CurrentAge": $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge,
-                        "CourseTime": $scope.Portfolio_Parameter.Portfolio_Year,
-                        "CourseDuration": $scope.Portfolio_Parameter.Portfolio_Duration,
-                        "CourseFeePerYear": $scope.Portfolio_Parameter.Portfolio_FeesPerYear,
-                        "LivingCostPerYear": $scope.Portfolio_Parameter.Portfolio_LivingPerYear,
-                        "SavedAmount_Lumpsum": $scope.Portfolio_Parameter.Portfolio_LumpSumAmount,
-                        "InflationRate": $scope.Portfolio_Parameter.Portfolio_ROInflation,
-                        "TotalCourseFees": $scope.Portfolio_Parameter.TotalCourseFee,
-                        "TotalLivingExpanses": $scope.Portfolio_Parameter.TotalLivingExpensesFee,
-                        "TotalAmount": $scope.Portfolio_Parameter.CalculatedTotalMoney,
-                        "TotalLumpsumAmount": $scope.Portfolio_Parameter.Portfolio_LumpSumAmount,
-                        "EstimatedInflationRate": $scope.Portfolio_Parameter.Portfolio_ROInflation
+                        "MasterPlan_ID": $rootScope.Portfolio_Parameter.Portfolio_ID,
+                        "Goal": $rootScope.Portfolio_Parameter.Portfolio_Name,
+                        "CurrentAge": $rootScope.Portfolio_Parameter.Portfolio_ChildCurrentAge,
+                        "CourseTime": $rootScope.Portfolio_Parameter.Portfolio_Year,
+                        "CourseDuration": $rootScope.Portfolio_Parameter.Portfolio_Duration,
+                        "CourseFeePerYear": $rootScope.Portfolio_Parameter.Portfolio_FeesPerYear,
+                        "LivingCostPerYear": $rootScope.Portfolio_Parameter.Portfolio_LivingPerYear,
+                        "SavedAmount_Lumpsum": $rootScope.Portfolio_Parameter.Portfolio_LumpSumAmount,
+                        "InflationRate": $rootScope.Portfolio_Parameter.Portfolio_ROInflation,
+                        "TotalCourseFees": $rootScope.Portfolio_Parameter.TotalCourseFee,
+                        "TotalLivingExpanses": $rootScope.Portfolio_Parameter.TotalLivingExpensesFee,
+                        "TotalAmount": $rootScope.Portfolio_Parameter.CalculatedTotalMoney,
+                        "TotalLumpsumAmount": $rootScope.Portfolio_Parameter.Portfolio_LumpSumAmount,
+                        "EstimatedInflationRate": $rootScope.Portfolio_Parameter.Portfolio_ROInflation
                     },
                     "userPortfolio": {
-                        "Equity": $scope.Portfolio_Parameter.Equity,
-                        "Debt": $scope.Portfolio_Parameter.Debt,
-                        "EstimatedTotalSIPAmt": $scope.Portfolio_Parameter.TotalMonthlyInvestment,
+                        "Equity": $rootScope.Portfolio_Parameter.Equity,
+                        "Debt": $rootScope.Portfolio_Parameter.Debt,
+                        "EstimatedTotalSIPAmt": $rootScope.Portfolio_Parameter.TotalMonthlyInvestment,
                         "Scheme_IDs": "1,2,3"
                     }
                 };
@@ -1673,25 +1673,25 @@
         if (Page == undefined)
         {
             if (From == 'M') {
-                $scope.Portfolio_Parameter.TotalCourseFee = $scope.Portfolio_Parameter.TotalCourseFee - 1000;
+                $rootScope.Portfolio_Parameter.TotalCourseFee = $rootScope.Portfolio_Parameter.TotalCourseFee - 1000;
                 $scope.Portfolio_Calculate("ChnageAmount");
-                //$scope.Portfolio_Parameter.TotalMonthlyInvestment = $scope.Portfolio_Parameter.TotalMonthlyInvestment - 1000;
-                $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+                //$rootScope.Portfolio_Parameter.TotalMonthlyInvestment = $rootScope.Portfolio_Parameter.TotalMonthlyInvestment - 1000;
+                $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
             }
 
             else {
-                $scope.Portfolio_Parameter.TotalCourseFee = $scope.Portfolio_Parameter.TotalCourseFee + 1000;
+                $rootScope.Portfolio_Parameter.TotalCourseFee = $rootScope.Portfolio_Parameter.TotalCourseFee + 1000;
                 $scope.Portfolio_Calculate("ChnageAmount");
-                //$scope.Portfolio_Parameter.TotalMonthlyInvestment = $scope.Portfolio_Parameter.TotalMonthlyInvestment + 1000;
-                $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+                //$rootScope.Portfolio_Parameter.TotalMonthlyInvestment = $rootScope.Portfolio_Parameter.TotalMonthlyInvestment + 1000;
+                $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
             }
         }
         else {
            
             if (From == 'M') {
-                if (parseInt($scope.Portfolio_Parameter.TotalMonthlyInvestment) > 1000)
+                if (parseInt($rootScope.Portfolio_Parameter.TotalMonthlyInvestment) > 1000)
                 {
-                    $scope.Portfolio_Parameter.TotalMonthlyInvestment = parseInt($scope.Portfolio_Parameter.TotalMonthlyInvestment) - parseInt(1000);
+                    $rootScope.Portfolio_Parameter.TotalMonthlyInvestment = parseInt($rootScope.Portfolio_Parameter.TotalMonthlyInvestment) - parseInt(1000);
                     $scope.StartSIPClick();
                 }
                 else {
@@ -1699,13 +1699,13 @@
                 }
                
                 //////$scope.Portfolio_Calculate("ChnageAmount");
-                ////////$scope.Portfolio_Parameter.TotalMonthlyInvestment = $scope.Portfolio_Parameter.TotalMonthlyInvestment - 1000;
-                //////$scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+                ////////$rootScope.Portfolio_Parameter.TotalMonthlyInvestment = $rootScope.Portfolio_Parameter.TotalMonthlyInvestment - 1000;
+                //////$scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
                 
             }
 
             else {
-                $scope.Portfolio_Parameter.TotalMonthlyInvestment = parseInt( $scope.Portfolio_Parameter.TotalMonthlyInvestment) + parseInt( 1000);
+                $rootScope.Portfolio_Parameter.TotalMonthlyInvestment = parseInt( $rootScope.Portfolio_Parameter.TotalMonthlyInvestment) + parseInt( 1000);
                 $scope.StartSIPClick();
             }
         }
@@ -1736,16 +1736,81 @@
             data: [
                 {
                     label: "Equity",
-                    value: $scope.Portfolio_Parameter.Equity
+                    value: $rootScope.Portfolio_Parameter.Equity
                 },
                 {
                     label: "Debt",
-                    value: $scope.Portfolio_Parameter.Debt
+                    value: $rootScope.Portfolio_Parameter.Debt
                 }
             ]
         }
     }
 
+   
+
+    $scope.InvestNow();
+    HideLoader();
+    //****************************Start SIP**************************************
+    $scope.StartSIP_Step1 = true;
+    $scope.StartSIP_Step2 = false;
+    $scope.StartSIPArray = [];
+    
+    $rootScope.SIPClick = function () {
+
+
+
+        $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation($rootScope.Portfolio_Parameter.EstematedYear, $rootScope.Portfolio_Parameter.TotalMonthlyInvestment, $rootScope.Portfolio_Parameter.Risk);
+        $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
+        //if ($rootScope.Portfolio_Parameter.TotalMonthlyInvestment >= 2500)
+        //{
+        $scope.StartSIP_Step1 = false;
+        $scope.StartSIP_Step2 = true;
+        $scope.EasySIP_Step1 = false;
+        $scope.EasySIP_Step2 = true;
+        $scope.ShowDiv("1");
+    };
+   
+    
+    $scope.show_next = function (id, nextid, bar,typeValue) {
+        $scope.StartSIPArray.push({
+            "Key": id,
+            "Value": typeValue
+        });
+        if (id == "InvestedYear") {
+            $rootScope.Portfolio_Parameter.EstematedYear = typeValue;
+        }
+        if (id == "Risk") {
+            $rootScope.Portfolio_Parameter.Risk = typeValue;
+        }
+        if (id == "Money") {
+            $rootScope.Portfolio_Parameter.TotalMonthlyInvestment = typeValue;
+        }
+        document.getElementById("Year").style.display = "none";
+        document.getElementById("Money").style.display = "none";
+        document.getElementById("Risk").style.display = "none";
+        //document.getElementById("Investment").style.display = "none";
+        document.getElementById("InvestedYear").style.display = "none";
+        $("#" + nextid).fadeIn();
+        document.getElementById(bar).style.backgroundColor = "rgba(102,0,51,1)";
+        if(id=="InvestedYear")
+        {
+            $scope.StartSipInvestNowBtn = true;
+            $scope.StartSIPClick();
+        }
+    };
+
+    $scope.show_prev=function(previd, bar) {
+        document.getElementById("account_details").style.display = "none";
+        document.getElementById("user_details").style.display = "none";
+        document.getElementById("qualification").style.display = "none";
+        $("#" + previd).fadeIn();
+        document.getElementById(bar).style.backgroundColor = "#D8D8D8";
+    }
+  
+
+    //****************************Easy SIP**************************************
+    $scope.EasySIP_Step1 = true;
+    $scope.EasySIP_Step2 = false;
     $scope.StartSipPopup = function () {
         $rootScope.InvestmtntValue = $scope.Investment;
         $mdDialog.show({
@@ -1772,667 +1837,15 @@
         $scope.answer = function (answer) {
             $mdDialog.hide(answer);
         };
-    }
-
-    $scope.InvestNow();
-    HideLoader();
-        //****************************Start SIP**************************************
-    $scope.StartSIP_Step1 = true;
-    $scope.StartSIP_Step2 = false;
-    $scope.StartSIPArray = [];
-    
-    $scope.StartSIPClick = function () {
-
-
-
-        $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation($scope.Portfolio_Parameter.EstematedYear, $scope.Portfolio_Parameter.TotalMonthlyInvestment, $scope.Portfolio_Parameter.Risk);
-        $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $scope.Portfolio_Parameter.TotalMonthlyInvestment);
-        //if ($scope.Portfolio_Parameter.TotalMonthlyInvestment >= 2500)
-        //{
-        $scope.StartSIP_Step1 = false;
-        $scope.StartSIP_Step2 = true;
-        $scope.ShowDiv("1");
-    };
-   
-    //$scope.ShowDivSip = function (Number) {
-
-
-    //    $scope.sampleStructure = [];
-    //    var EquityLargeCpIndex = $.map($scope.SIPGoalStructureDate, function (obj, index) {
-    //        if (obj.MFtype == "EQ large cap") {
-    //            return index;
-    //        }
-    //    });
-    //    var EquityMulticapIndex = $.map($scope.SIPGoalStructureDate, function (obj, index) {
-    //        if (obj.MFtype == "EQ Multicap") {
-    //            return index;
-    //        }
-    //    });
-    //    var EquityMidSmallIndex = $.map($scope.SIPGoalStructureDate, function (obj, index) {
-    //        if (obj.MFtype == "EQ Mid/small") {
-    //            return index;
-    //        }
-    //    });
-    //    var EquityUltraSortIndex = $.map($scope.SIPGoalStructureDate, function (obj, index) {
-    //        if (obj.MFtype == "Debt/ ultra short") {
-    //            return index;
-    //        }
-    //    });
-    //    var EquityBondIndex = $.map($scope.SIPGoalStructureDate, function (obj, index) {
-    //        if (obj.MFtype == "Debt liquid") {
-    //            return index;
-    //        }
-    //    });
-    //    var CreditOpportunitiesIndex = $.map($scope.SIPGoalStructureDate, function (obj, index) {
-    //        if (obj.MFtype == "Credit Opportunities") {
-    //            return index;
-    //        }
-    //    });
-    //    var Fund_LargeCap_result = "";
-    //    var Fund_LargeCap_result_Temp = "";
-    //    var Fund_MultiCap_result = "";
-    //    var Fund_MultiCap_result_Temp = "";
-    //    var Fund_BondCap_result = "";
-    //    var Fund_BondCap_result_Temp = "";
-    //    var Fund_UltraCap_result = "";
-    //    var Fund_UltraCap_result_Temp = "";
-    //    var Fund_MidCap_result = "";
-    //    var Fund_MidCap_result_Temp = "";
-    //    var Fund_CreditOpportunity_result = "";
-    //    var Fund_CreditOpportunity_result_Temp = "";
-    //    var Result_Temp = [];
-    //    if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap != undefined) {
-    //        Fund_LargeCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap / 100) * $scope.Portfolio_ParameterSip.TotalMonthlyInvestment);
-    //        Fund_LargeCap_result_Temp = Fund_LargeCap_result % 100;
-    //        Result_Temp.push({ "SchemeType": "Large", "ModResult": Fund_LargeCap_result_Temp });
-    //    }
-    //    if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MultiCap != undefined) {
-    //        Fund_MultiCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MultiCap / 100) * $scope.Portfolio_ParameterSip.TotalMonthlyInvestment);
-    //        Fund_MultiCap_result_Temp = Fund_MultiCap_result % 100;
-    //        Result_Temp.push({ "SchemeType": "Multi", "ModResult": Fund_MultiCap_result_Temp });
-    //    }
-    //    if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_BondFunds != undefined) {
-    //        Fund_BondCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_BondFunds / 100) * $scope.Portfolio_ParameterSip.TotalMonthlyInvestment);
-    //        Fund_BondCap_result_Temp = Fund_BondCap_result % 100;
-    //        Result_Temp.push({ "SchemeType": "Bond", "ModResult": Fund_BondCap_result_Temp });
-    //    }
-    //    if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_UltraSortFund != undefined) {
-    //        Fund_UltraCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_UltraSortFund / 100) * $scope.Portfolio_ParameterSip.TotalMonthlyInvestment);
-    //        Fund_UltraCap_result_Temp = Fund_UltraCap_result % 100;
-    //        Result_Temp.push({ "SchemeType": "Ultra", "ModResult": Fund_UltraCap_result_Temp });
-    //    }
-    //    if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MidCap != undefined) {
-    //        Fund_MidCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MidCap / 100) * $scope.Portfolio_ParameterSip.TotalMonthlyInvestment);
-    //        Fund_MidCap_result_Temp = Fund_MidCap_result % 100;
-    //        Result_Temp.push({ "SchemeType": "Mid", "ModResult": Fund_MidCap_result_Temp });
-    //    }
-    //    if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_CreditOpportunity != undefined) {
-    //        Fund_CreditOpportunity_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_CreditOpportunity / 100) * $scope.Portfolio_ParameterSip.TotalMonthlyInvestment);
-    //        Fund_CreditOpportunity_result_Temp = Fund_CreditOpportunity_result % 100;
-    //        Result_Temp.push({ "SchemeType": "Credit", "ModResult": Fund_CreditOpportunity_result_Temp });
-    //    }
-
-    //    for (var a = 0; a < Result_Temp.length; a++) {
-    //        if (Result_Temp[a].SchemeType == "Large") {
-    //            if (Result_Temp[a].ModResult != "0") {
-    //                for (var a1 = 0; a1 < Result_Temp.length; a1++) {
-    //                    if (Result_Temp[a1].SchemeType != "Large") {
-    //                        if (Result_Temp[a1].ModResult != "0") {
-    //                            if (Result_Temp[a1].SchemeType == "Multi") {
-    //                                if (Result_Temp[a1].ModResult != "0") {
-    //                                    Fund_LargeCap_result = Fund_LargeCap_result - Result_Temp[a1].ModResult;
-    //                                    Fund_MultiCap_result = Fund_MultiCap_result + Result_Temp[a1].ModResult;
-    //                                    Result_Temp[a1].ModResult = "0";
-    //                                }
-
-    //                            };
-    //                            if (Result_Temp[a1].SchemeType == "Bond") {
-    //                                if (Result_Temp[a1].ModResult != "0") {
-    //                                    Fund_LargeCap_result = Fund_LargeCap_result - Result_Temp[a1].ModResult;
-    //                                    Fund_BondCap_result = Fund_BondCap_result + Result_Temp[a1].ModResult;
-    //                                    Result_Temp[a1].ModResult = "0";
-    //                                }
-
-    //                            };
-    //                            if (Result_Temp[a1].SchemeType == "Ultra") {
-    //                                if (Result_Temp[a1].ModResult != "0") {
-    //                                    Fund_LargeCap_result = Fund_LargeCap_result - Result_Temp[a1].ModResult;
-    //                                    Fund_UltraCap_result = Fund_UltraCap_result + Result_Temp[a1].ModResult;
-    //                                    Result_Temp[a1].ModResult = "0";
-    //                                }
-
-    //                            };
-    //                            if (Result_Temp[a1].SchemeType == "Mid") {
-    //                                if (Result_Temp[a1].ModResult != "0") {
-    //                                    Fund_LargeCap_result = Fund_LargeCap_result - Result_Temp[a1].ModResult;
-    //                                    Fund_MidCap_result = Fund_MidCap_result + Result_Temp[a1].ModResult;
-    //                                    Result_Temp[a1].ModResult = "0";
-    //                                }
-
-    //                            };
-    //                            if (Result_Temp[a1].SchemeType == "Credit") {
-    //                                if (Result_Temp[a1].ModResult != "0") {
-    //                                    Fund_LargeCap_result = Fund_LargeCap_result - Result_Temp[a1].ModResult;
-    //                                    Fund_CreditOpportunity_result = Fund_CreditOpportunity_result + Result_Temp[a1].ModResult;
-    //                                    Result_Temp[a1].ModResult = "0";
-    //                                }
-
-    //                            };
-    //                        }
-    //                    }
-    //                }
-    //            }
-
-    //        };
-    //        if (Result_Temp[a].SchemeType == "Multi") {
-    //            if (Result_Temp[a].ModResult != "0") {
-    //                if (Result_Temp[a].ModResult != "0") {
-    //                    for (var a1 = 0; a1 < Result_Temp.length; a1++) {
-    //                        if (Result_Temp[a1].SchemeType != "Multi") {
-    //                            if (Result_Temp[a1].ModResult != "0") {
-    //                                if (Result_Temp[a1].SchemeType == "Large") {
-    //                                    if (Result_Temp[a1].ModResult != "0") {
-    //                                        Fund_MultiCap_result = Fund_MultiCap_result - Result_Temp[a1].ModResult;
-    //                                        Fund_LargeCap_result = Fund_LargeCap_result + Result_Temp[a1].ModResult;
-    //                                        Result_Temp[a1].ModResult = "0";
-    //                                    }
-
-    //                                };
-    //                                if (Result_Temp[a1].SchemeType == "Bond") {
-    //                                    if (Result_Temp[a1].ModResult != "0") {
-    //                                        Fund_MultiCap_result = Fund_MultiCap_result - Result_Temp[a1].ModResult;
-    //                                        Fund_BondCap_result = Fund_BondCap_result + Result_Temp[a1].ModResult;
-    //                                        Result_Temp[a1].ModResult = "0";
-    //                                    }
-
-    //                                };
-    //                                if (Result_Temp[a1].SchemeType == "Ultra") {
-    //                                    if (Result_Temp[a1].ModResult != "0") {
-    //                                        Fund_MultiCap_result = Fund_MultiCap_result - Result_Temp[a1].ModResult;
-    //                                        Fund_UltraCap_result = Fund_UltraCap_result + Result_Temp[a1].ModResult;
-    //                                        Result_Temp[a1].ModResult = "0";
-    //                                    }
-
-    //                                };
-    //                                if (Result_Temp[a1].SchemeType == "Mid") {
-    //                                    if (Result_Temp[a1].ModResult != "0") {
-    //                                        Fund_MultiCap_result = Fund_MultiCap_result - Result_Temp[a1].ModResult;
-    //                                        Fund_MidCap_result = Fund_MidCap_result + Result_Temp[a1].ModResult;
-    //                                        Result_Temp[a1].ModResult = "0";
-    //                                    }
-
-    //                                };
-    //                                if (Result_Temp[a1].SchemeType == "Credit") {
-    //                                    if (Result_Temp[a1].ModResult != "0") {
-    //                                        Fund_MultiCap_result = Fund_MultiCap_result - Result_Temp[a1].ModResult;
-    //                                        Fund_CreditOpportunity_result = Fund_CreditOpportunity_result + Result_Temp[a1].ModResult;
-    //                                        Result_Temp[a1].ModResult = "0";
-    //                                    }
-
-    //                                };
-    //                            }
-    //                        }
-    //                    }
-    //                }
-    //            }
-
-    //        };
-    //        if (Result_Temp[a].SchemeType == "Bond") {
-
-    //            if (Result_Temp[a].ModResult != "0") {
-    //                for (var a1 = 0; a1 < Result_Temp.length; a1++) {
-    //                    if (Result_Temp[a1].SchemeType != "Bond") {
-    //                        if (Result_Temp[a1].ModResult != "0") {
-    //                            if (Result_Temp[a1].SchemeType == "Large") {
-    //                                if (Result_Temp[a1].ModResult != "0") {
-    //                                    Fund_BondCap_result = Fund_BondCap_result - Result_Temp[a1].ModResult;
-    //                                    Fund_LargeCap_result = Fund_LargeCap_result + Result_Temp[a1].ModResult;
-    //                                    Result_Temp[a1].ModResult = "0";
-    //                                }
-
-    //                            };
-    //                            if (Result_Temp[a1].SchemeType == "Multi") {
-    //                                if (Result_Temp[a1].ModResult != "0") {
-    //                                    Fund_BondCap_result = Fund_BondCap_result - Result_Temp[a1].ModResult;
-    //                                    Fund_MultiCap_result = Fund_MultiCap_result + Result_Temp[a1].ModResult;
-    //                                    Result_Temp[a1].ModResult = "0";
-    //                                }
-
-    //                            };
-    //                            if (Result_Temp[a1].SchemeType == "Ultra") {
-    //                                if (Result_Temp[a1].ModResult != "0") {
-    //                                    Fund_BondCap_result = Fund_BondCap_result - Result_Temp[a1].ModResult;
-    //                                    Fund_UltraCap_result = Fund_UltraCap_result + Result_Temp[a1].ModResult;
-    //                                    Result_Temp[a1].ModResult = "0";
-    //                                }
-
-    //                            };
-    //                            if (Result_Temp[a1].SchemeType == "Mid") {
-    //                                if (Result_Temp[a1].ModResult != "0") {
-    //                                    Fund_BondCap_result = Fund_BondCap_result - Result_Temp[a1].ModResult;
-    //                                    Fund_MidCap_result = Fund_MidCap_result + Result_Temp[a1].ModResult;
-    //                                    Result_Temp[a1].ModResult = "0";
-    //                                }
-
-    //                            };
-    //                            if (Result_Temp[a1].SchemeType == "Credit") {
-    //                                if (Result_Temp[a1].ModResult != "0") {
-    //                                    Fund_BondCap_result = Fund_BondCap_result - Result_Temp[a1].ModResult;
-    //                                    Fund_CreditOpportunity_result = Fund_CreditOpportunity_result + Result_Temp[a1].ModResult;
-    //                                    Result_Temp[a1].ModResult = "0";
-    //                                }
-
-    //                            };
-    //                        }
-    //                    }
-    //                }
-    //            }
-
-
-    //        };
-    //        if (Result_Temp[a].SchemeType == "Ultra") {
-    //            if (Result_Temp[a].ModResult != "0") {
-    //                for (var a1 = 0; a1 < Result_Temp.length; a1++) {
-    //                    if (Result_Temp[a1].SchemeType != "Ultra") {
-    //                        if (Result_Temp[a1].ModResult != "0") {
-    //                            if (Result_Temp[a1].SchemeType == "Large") {
-    //                                if (Result_Temp[a1].ModResult != "0") {
-    //                                    Fund_UltraCap_result = Fund_UltraCap_result - Result_Temp[a1].ModResult;
-    //                                    Fund_LargeCap_result = Fund_LargeCap_result + Result_Temp[a1].ModResult;
-    //                                    Result_Temp[a1].ModResult = "0";
-    //                                }
-
-    //                            };
-    //                            if (Result_Temp[a1].SchemeType == "Multi") {
-    //                                if (Result_Temp[a1].ModResult != "0") {
-    //                                    Fund_UltraCap_result = Fund_UltraCap_result - Result_Temp[a1].ModResult;
-    //                                    Fund_MultiCap_result = Fund_MultiCap_result + Result_Temp[a1].ModResult;
-    //                                    Result_Temp[a1].ModResult = "0";
-    //                                }
-
-    //                            };
-    //                            if (Result_Temp[a1].SchemeType == "Bond") {
-    //                                if (Result_Temp[a1].ModResult != "0") {
-    //                                    Fund_UltraCap_result = Fund_UltraCap_result - Result_Temp[a1].ModResult;
-    //                                    Fund_BondCap_result = Fund_BondCap_result + Result_Temp[a1].ModResult;
-    //                                    Result_Temp[a1].ModResult = "0";
-    //                                }
-
-    //                            };
-    //                            if (Result_Temp[a1].SchemeType == "Mid") {
-    //                                if (Result_Temp[a1].ModResult != "0") {
-    //                                    Fund_UltraCap_result = Fund_UltraCap_result - Result_Temp[a1].ModResult;
-    //                                    Fund_MidCap_result = Fund_MidCap_result + Result_Temp[a1].ModResult;
-    //                                    Result_Temp[a1].ModResult = "0";
-    //                                }
-
-    //                            };
-    //                            if (Result_Temp[a1].SchemeType == "Credit") {
-    //                                if (Result_Temp[a1].ModResult != "0") {
-    //                                    Fund_UltraCap_result = Fund_UltraCap_result - Result_Temp[a1].ModResult;
-    //                                    Fund_CreditOpportunity_result = Fund_CreditOpportunity_result + Result_Temp[a1].ModResult;
-    //                                    Result_Temp[a1].ModResult = "0";
-    //                                }
-
-    //                            };
-    //                        }
-    //                    }
-    //                }
-    //            }
-
-    //        };
-    //        if (Result_Temp[a].SchemeType == "Mid") {
-    //            if (Result_Temp[a].ModResult != "0") {
-    //                for (var a1 = 0; a1 < Result_Temp.length; a1++) {
-    //                    if (Result_Temp[a1].SchemeType != "Mid") {
-    //                        if (Result_Temp[a1].ModResult != "0") {
-    //                            if (Result_Temp[a1].SchemeType == "Large") {
-    //                                if (Result_Temp[a1].ModResult != "0") {
-    //                                    Fund_MidCap_result = Fund_MidCap_result - Result_Temp[a1].ModResult;
-    //                                    Fund_LargeCap_result = Fund_LargeCap_result + Result_Temp[a1].ModResult;
-    //                                    Result_Temp[a1].ModResult = "0";
-    //                                }
-
-    //                            };
-    //                            if (Result_Temp[a1].SchemeType == "Multi") {
-    //                                if (Result_Temp[a1].ModResult != "0") {
-    //                                    Fund_MidCap_result = Fund_MidCap_result - Result_Temp[a1].ModResult;
-    //                                    Fund_MultiCap_result = Fund_MultiCap_result + Result_Temp[a1].ModResult;
-    //                                    Result_Temp[a1].ModResult = "0";
-    //                                }
-
-    //                            };
-    //                            if (Result_Temp[a1].SchemeType == "Bond") {
-    //                                if (Result_Temp[a1].ModResult != "0") {
-    //                                    Fund_MidCap_result = Fund_MidCap_result - Result_Temp[a1].ModResult;
-    //                                    Fund_BondCap_result = Fund_BondCap_result + Result_Temp[a1].ModResult;
-    //                                    Result_Temp[a1].ModResult = "0";
-    //                                }
-
-    //                            };
-    //                            if (Result_Temp[a1].SchemeType == "Ultra") {
-    //                                if (Result_Temp[a1].ModResult != "0") {
-    //                                    Fund_MidCap_result = Fund_MidCap_result - Result_Temp[a1].ModResult;
-    //                                    Fund_UltraCap_result = Fund_UltraCap_result + Result_Temp[a1].ModResult;
-    //                                    Result_Temp[a1].ModResult = "0";
-    //                                }
-
-    //                            };
-    //                            if (Result_Temp[a1].SchemeType == "Credit") {
-    //                                if (Result_Temp[a1].ModResult != "0") {
-    //                                    Fund_MidCap_result = Fund_MidCap_result - Result_Temp[a1].ModResult;
-    //                                    Fund_CreditOpportunity_result = Fund_CreditOpportunity_result + Result_Temp[a1].ModResult;
-    //                                    Result_Temp[a1].ModResult = "0";
-    //                                }
-
-    //                            };
-    //                        }
-    //                    }
-    //                }
-    //            }
-
-    //        };
-    //        if (Result_Temp[a].SchemeType == "Credit") {
-    //            if (Result_Temp[a].ModResult != "0") {
-    //                for (var a1 = 0; a1 < Result_Temp.length; a1++) {
-    //                    if (Result_Temp[a1].SchemeType != "Credit") {
-    //                        if (Result_Temp[a1].ModResult != "0") {
-    //                            if (Result_Temp[a1].SchemeType == "Large") {
-    //                                if (Result_Temp[a1].ModResult != "0") {
-    //                                    Fund_CreditOpportunity_result = Fund_CreditOpportunity_result - Result_Temp[a1].ModResult;
-    //                                    Fund_LargeCap_result = Fund_LargeCap_result + Result_Temp[a1].ModResult;
-    //                                    Result_Temp[a1].ModResult = "0";
-    //                                }
-
-    //                            };
-    //                            if (Result_Temp[a1].SchemeType == "Multi") {
-    //                                if (Result_Temp[a1].ModResult != "0") {
-    //                                    Fund_CreditOpportunity_result = Fund_CreditOpportunity_result - Result_Temp[a1].ModResult;
-    //                                    Fund_MultiCap_result = Fund_MultiCap_result + Result_Temp[a1].ModResult;
-    //                                    Result_Temp[a1].ModResult = "0";
-    //                                }
-
-    //                            };
-    //                            if (Result_Temp[a1].SchemeType == "Bond") {
-    //                                if (Result_Temp[a1].ModResult != "0") {
-    //                                    Fund_CreditOpportunity_result = Fund_CreditOpportunity_result - Result_Temp[a1].ModResult;
-    //                                    Fund_BondCap_result = Fund_BondCap_result + Result_Temp[a1].ModResult;
-    //                                    Result_Temp[a1].ModResult = "0";
-    //                                }
-
-    //                            };
-    //                            if (Result_Temp[a1].SchemeType == "Ultra") {
-    //                                if (Result_Temp[a1].ModResult != "0") {
-    //                                    Fund_CreditOpportunity_result = Fund_CreditOpportunity_result - Result_Temp[a1].ModResult;
-    //                                    Fund_UltraCap_result = Fund_UltraCap_result + Result_Temp[a1].ModResult;
-    //                                    Result_Temp[a1].ModResult = "0";
-    //                                }
-
-    //                            };
-    //                            if (Result_Temp[a1].SchemeType == "Mid") {
-    //                                if (Result_Temp[a1].ModResult != "0") {
-    //                                    Fund_CreditOpportunity_result = Fund_CreditOpportunity_result - Result_Temp[a1].ModResult;
-    //                                    Fund_MidCap_result = Fund_MidCap_result + Result_Temp[a1].ModResult;
-    //                                    Result_Temp[a1].ModResult = "0";
-    //                                }
-
-    //                            };
-    //                        }
-    //                    }
-    //                }
-    //            }
-
-    //        };
-    //    }
-    //    //Equity Large Cap
-
-    //    if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap != undefined) {
-    //        //Fund_LargeCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap / 100) * $scope.Portfolio_ParameterSip.TotalMonthlyInvestment);
-
-    //        for (var a = 0; a < EquityLargeCpIndex.length; a++) {
-    //            if (Fund_LargeCap_result > $scope.SIPGoalStructureDate[EquityLargeCpIndex[a]].MinInvst) {
-
-    //                if ((Fund_LargeCap_result % $scope.SIPGoalStructureDate[EquityLargeCpIndex[a]].multiplier) == 0) {
-
-    //                    $scope.sampleStructure.push({
-    //                        "SchemeName": $scope.SIPGoalStructureDate[EquityLargeCpIndex[a]].SchemeName,
-    //                        "SchemeCode": $scope.SIPGoalStructureDate[EquityLargeCpIndex[a]].BSESchmecode,
-    //                        "ISIN": $scope.SIPGoalStructureDate[EquityLargeCpIndex[a]].ISIN,
-    //                        "Date": $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].date.split(',')[parseInt(Number) - 1] == '1-30 all days' ? $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].date.split(',')[parseInt(Number) - 1] : $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].date.split(',')[parseInt(Number) - 1],
-    //                        "Amount": Fund_LargeCap_result
-
-    //                    });
-    //                    break;
-    //                }
-
-
-
-    //            }
-    //        }
-
-    //    }
-
-    //    //Equity Mid Cap
-
-    //    if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MultiCap != undefined) {
-    //        //Fund_MultiCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MultiCap / 100) * $scope.Portfolio_ParameterSip.TotalMonthlyInvestment);
-
-    //        for (var a = 0; a < EquityMulticapIndex.length; a++) {
-    //            if (Fund_MultiCap_result > $scope.SIPGoalStructureDate[EquityMulticapIndex[a]].MinInvst) {
-
-    //                if ((Fund_MultiCap_result % $scope.SIPGoalStructureDate[EquityMulticapIndex[a]].multiplier) == 0) {
-
-    //                    $scope.sampleStructure.push({
-    //                        "SchemeName": $scope.SIPGoalStructureDate[EquityMulticapIndex[a]].SchemeName,
-    //                        "SchemeCode": $scope.SIPGoalStructureDate[EquityMulticapIndex[a]].BSESchmecode,
-    //                        "ISIN": $scope.SIPGoalStructureDate[EquityMulticapIndex[a]].ISIN,
-    //                        "Date": $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].date.split(',')[parseInt(Number) - 1] == '1-30 all days' ? $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].date.split(',')[parseInt(Number) - 1] : $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].date.split(',')[parseInt(Number) - 1],
-    //                        "Amount": Fund_MultiCap_result
-
-    //                    });
-    //                    break;
-    //                }
-
-
-
-    //            }
-    //        }
-
-    //    }
-
-    //    //Bonds Fund
-
-    //    if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_BondFunds != undefined) {
-    //        //Fund_BondCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_BondFunds / 100) * $scope.Portfolio_ParameterSip.TotalMonthlyInvestment);
-
-    //        for (var a = 0; a < EquityBondIndex.length; a++) {
-    //            if (Fund_BondCap_result > $scope.SIPGoalStructureDate[EquityBondIndex[a]].MinInvst) {
-
-    //                if ((Fund_BondCap_result % $scope.SIPGoalStructureDate[EquityBondIndex[a]].multiplier) == 0) {
-
-    //                    $scope.sampleStructure.push({
-    //                        "SchemeName": $scope.SIPGoalStructureDate[EquityBondIndex[a]].SchemeName,
-    //                        "SchemeCode": $scope.SIPGoalStructureDate[EquityBondIndex[a]].BSESchmecode,
-    //                        "ISIN": $scope.SIPGoalStructureDate[EquityBondIndex[a]].ISIN,
-    //                        "Date": $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].date.split(',')[parseInt(Number) - 1] == '1-30 all days' ? $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].date.split(',')[parseInt(Number) - 1] : $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].date.split(',')[parseInt(Number) - 1],
-    //                        "Amount": Fund_BondCap_result
-
-    //                    });
-    //                    break;
-    //                }
-
-
-
-    //            }
-    //        }
-
-    //    }
-    //    //Ultry Sort Fund
-
-    //    if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_UltraSortFund != undefined) {
-    //        //Fund_UltraCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_UltraSortFund / 100) * $scope.Portfolio_ParameterSip.TotalMonthlyInvestment);
-
-    //        for (var a = 0; a < EquityUltraSortIndex.length; a++) {
-    //            if (Fund_UltraCap_result > $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].MinInvst) {
-
-    //                if ((Fund_UltraCap_result % $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].multiplier) == 0) {
-
-    //                    $scope.sampleStructure.push({
-    //                        "SchemeName": $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].SchemeName,
-    //                        "SchemeCode": $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].BSESchmecode,
-    //                        "ISIN": $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].ISIN,
-    //                        "Date": $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].date.split(',')[parseInt(Number) - 1] == '1-30 all days' ? $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].date.split(',')[parseInt(Number) - 1] : $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].date.split(',')[parseInt(Number) - 1],
-    //                        "Amount": Fund_UltraCap_result
-
-    //                    });
-    //                    break;
-    //                }
-
-
-
-    //            }
-    //        }
-
-    //    }
-
-    //    //Mid Fund
-
-    //    if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MidCap != undefined) {
-    //        //Fund_MidCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MidCap / 100) * $scope.Portfolio_ParameterSip.TotalMonthlyInvestment);
-
-    //        for (var a = 0; a < EquityMidSmallIndex.length; a++) {
-    //            if (Fund_MidCap_result > $scope.SIPGoalStructureDate[EquityMidSmallIndex[a]].MinInvst) {
-
-    //                if ((Fund_MidCap_result % $scope.SIPGoalStructureDate[EquityMidSmallIndex[a]].multiplier) == 0) {
-
-    //                    $scope.sampleStructure.push({
-    //                        "SchemeName": $scope.SIPGoalStructureDate[EquityMidSmallIndex[a]].SchemeName,
-    //                        "SchemeCode": $scope.SIPGoalStructureDate[EquityMidSmallIndex[a]].BSESchmecode,
-    //                        "ISIN": $scope.SIPGoalStructureDate[EquityMidSmallIndex[a]].ISIN,
-    //                        "Date": $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].date.split(',')[parseInt(Number) - 1] == '1-30 all days' ? $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].date.split(',')[parseInt(Number) - 1] : $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].date.split(',')[parseInt(Number) - 1],
-    //                        "Amount": Fund_MidCap_result
-
-    //                    });
-    //                    break;
-    //                }
-
-
-
-    //            }
-    //        }
-
-    //    }
-
-
-    //    //Credit Opportunity
-
-    //    if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_CreditOpportunity != undefined) {
-    //        //Fund_CreditOpportunity_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_CreditOpportunity / 100) * $scope.Portfolio_ParameterSip.TotalMonthlyInvestment);
-
-    //        for (var a = 0; a < CreditOpportunitiesIndex.length; a++) {
-    //            if (Fund_CreditOpportunity_result > $scope.SIPGoalStructureDate[CreditOpportunitiesIndex[a]].MinInvst) {
-
-    //                if ((Fund_CreditOpportunity_result % $scope.SIPGoalStructureDate[CreditOpportunitiesIndex[a]].multiplier) == 0) {
-
-    //                    $scope.sampleStructure.push({
-    //                        "SchemeName": $scope.SIPGoalStructureDate[CreditOpportunitiesIndex[a]].SchemeName,
-    //                        "SchemeCode": $scope.SIPGoalStructureDate[CreditOpportunitiesIndex[a]].BSESchmecode,
-    //                        "ISIN": $scope.SIPGoalStructureDate[CreditOpportunitiesIndex[a]].ISIN,
-    //                        "Date": $scope.SIPGoalStructureDate[CreditOpportunitiesIndex[a]].date.split(',')[parseInt(Number) - 1] == '1-30 all days' ? $scope.SIPGoalStructureDate[CreditOpportunitiesIndex[a]].date.split(',')[parseInt(Number) - 1] : $scope.SIPGoalStructureDate[CreditOpportunitiesIndex[a]].date.split(',')[parseInt(Number) - 1],
-    //                        "Amount": Fund_CreditOpportunity_result
-
-    //                    });
-    //                    break;
-    //                }
-
-
-
-    //            }
-    //        }
-
-    //    }
-
-
-
-
-    //    var tesmpArray = [];
-    //    for (var a = 0; a < $scope.sampleStructure.length; a++) {
-    //        if (parseInt($scope.sampleStructure[a].Amount) % 500 != 0) {
-    //            tesmpArray.push(
-    //                           {
-    //                               "RemainingAmount": parseInt($scope.sampleStructure[a].Amount) % 500,
-    //                               "ISIN": $scope.sampleStructure[a].ISIN
-    //                           }
-
-
-    //            );
-    //        }
-    //        //var Temp2 = 500 - Temp1;
-    //        //mInvst = parseInt(mInvst) + Temp2;
-    //    }
-
-
-    //    tesmpArray.sort(function (a, b) {
-    //        return a.RemainingAmount;
-    //    })
-    //    console.log(tesmpArray);
-    //    // $scope.sampleStructure.sort();
-
-
-    //    //console.log(EquityLargeCpIndex)
-    //    $scope.weekNo = "Week " + Number;
-    //    if (Number == "1") {
-
-    //        $scope.WeekClass = "offer offer-warning";
-
-    //    }
-    //    else if (Number == "2") {
-    //        $scope.WeekClass = "offer offer-radius offer-danger";
-    //    }
-    //    else if (Number == "3") {
-    //        $scope.WeekClass = "offer offer-radius offer-primary";
-    //    }
-    //    else {
-    //        $scope.WeekClass = "offer offer-info";
-    //    }
-    //};
-    $scope.show_next = function (id, nextid, bar,typeValue) {
-        $scope.StartSIPArray.push({
-            "Key": id,
-            "Value": typeValue
-        });
-        if (id == "InvestedYear") {
-            $scope.Portfolio_Parameter.EstematedYear = typeValue;
-        }
-        if (id == "Risk") {
-            $scope.Portfolio_Parameter.Risk = typeValue;
-        }
-        if (id == "Money") {
-            $scope.Portfolio_Parameter.TotalMonthlyInvestment = typeValue;
-        }
-        document.getElementById("Year").style.display = "none";
-        document.getElementById("Money").style.display = "none";
-        document.getElementById("Risk").style.display = "none";
-        //document.getElementById("Investment").style.display = "none";
-        document.getElementById("InvestedYear").style.display = "none";
-        $("#" + nextid).fadeIn();
-        document.getElementById(bar).style.backgroundColor = "rgba(102,0,51,1)";
-        if(id=="InvestedYear")
+        $scope.EasySIPClick=function()
         {
-            $scope.StartSipInvestNowBtn = true;
-            $scope.StartSIPClick();
+            $rootScope.Portfolio_Parameter.EstematedYear = $scope.StartSipPopupLlDb.horizone;
+            $rootScope.Portfolio_Parameter.TotalMonthlyInvestment = $scope.StartSipPopupLlDb.MonthllyInvestment;
+            $rootScope.Portfolio_Parameter.Risk = $scope.StartSipPopupLlDb.risk;
+            $mdDialog.cancel();
+            $rootScope.SIPClick();
         }
-    };
-
-    $scope.show_prev=function(previd, bar) {
-        document.getElementById("account_details").style.display = "none";
-        document.getElementById("user_details").style.display = "none";
-        document.getElementById("qualification").style.display = "none";
-        $("#" + previd).fadeIn();
-        document.getElementById(bar).style.backgroundColor = "#D8D8D8";
     }
-  
-
 
     
 }]);
