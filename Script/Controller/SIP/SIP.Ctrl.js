@@ -1692,7 +1692,7 @@
                 if (parseInt($rootScope.Portfolio_Parameter.TotalMonthlyInvestment) > 1000)
                 {
                     $rootScope.Portfolio_Parameter.TotalMonthlyInvestment = parseInt($rootScope.Portfolio_Parameter.TotalMonthlyInvestment) - parseInt(1000);
-                    $scope.StartSIPClick();
+                    $scope.SIPClick();
                 }
                 else {
                     alert("You can not have less than 1000 Rupees");
@@ -1706,7 +1706,7 @@
 
             else {
                 $rootScope.Portfolio_Parameter.TotalMonthlyInvestment = parseInt( $rootScope.Portfolio_Parameter.TotalMonthlyInvestment) + parseInt( 1000);
-                $scope.StartSIPClick();
+                $scope.SIPClick();
             }
         }
       
