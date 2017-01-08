@@ -53,90 +53,177 @@ function addCommas(nStr) {
 
 };
 
-function Chield_CalculatePortfolioAllocation(Year,Amount) {
+function Chield_CalculatePortfolioAllocation(Year,Amount,Risk) {
     var ReturnPer = {};
     var Funds = [];
-    if(Year<=5)
+    if (Risk == undefined)
     {
-        if (Amount <= 3000)
+        if (Year <= 5) {
+            if (Amount <= 3000) {
+                ReturnPer.Data = [{
+                    Return_EquityPer: 100,
+                    Returm_DebtPer: 0,
+                    Fund: [{
+
+                        Fund_MultiCap: 100
+                    }]
+
+                }]
+            }
+            else if (Amount > 3000) {
+                ReturnPer.Data = [{
+                    Return_EquityPer: 70,
+                    Returm_DebtPer: 30,
+                    Fund: [{
+                        Fund_LargeCap: 40,
+                        Fund_MultiCap: 30,
+                        Fund_CreditOpportunity: 20,
+                        Fund_UltraSortFund: 10
+                    }]
+
+                }]
+            }
+
+
+        }
+        else if (Year > 5 && Year <= 10) {
+            if (Amount <= 3000) {
+                ReturnPer.Data = [{
+                    Return_EquityPer: 100,
+                    Returm_DebtPer: 0,
+                    Fund: Funds[{
+
+                        Fund_MultiCap: 100
+                    }]
+                }]
+            }
+            else {
+                ReturnPer.Data = [{
+                    Return_EquityPer: 75,
+                    Returm_DebtPer: 25,
+                    Fund: Funds[{
+                        Fund_LargeCap: 40,
+                        Fund_MultiCap: 35,
+                        Fund_BondFunds: 25
+                    }]
+                }]
+            }
+
+        }
+        else {
+            if (Amount <= 3000) {
+                ReturnPer.Data = [{
+                    Return_EquityPer: 100,
+                    Returm_DebtPer: 0,
+                    Fund: [{
+
+                        Fund_MidCap: 100
+                    }]
+                }]
+            }
+            else {
+                ReturnPer.Data = [{
+                    Return_EquityPer: 80,
+                    Returm_DebtPer: 20,
+                    Fund: [{
+                        Fund_LargeCap: 35,
+                        Fund_MidCap: 15,
+                        Fund_MultiCap: 30,
+                        Fund_BondFunds: 20
+                    }]
+                }]
+            }
+
+        }
+    }
+    else {
+        //Risk Factor
+        if (Risk == "Low")
         {
-            ReturnPer.Data = [{
-                Return_EquityPer: 100,
-                Returm_DebtPer: 0,
-                Fund: [{
-                 
-                    Fund_MultiCap: 100
-                }]
+            if (Year <= 3) {
+                if (Amount <= 3000) {
+                    ReturnPer.Data = [{
+                        Return_EquityPer: 0,
+                        Returm_DebtPer: 100,
+                        Fund: [{
 
-            }]
-        }
-        else if (Amount > 3000) {
-            ReturnPer.Data = [{
-                Return_EquityPer : 70,
-                Returm_DebtPer: 30,
-                Fund: [{
-                    Fund_LargeCap: 40,
-                    Fund_MultiCap: 30,
-                    Fund_CreditOpportunity: 20,
-                    Fund_UltraSortFund: 10
-                }]
-               
-            }]  
-        }
-          
+                            Fund_UltraSortFund: 100
+                        }]
 
+                    }]
+                }
+                else if (Amount > 3000) {
+                    ReturnPer.Data = [{
+                        Return_EquityPer: 20,
+                        Returm_DebtPer: 80,
+                        Fund: [{
+                            Fund_LargeCap: 20,
+                            Fund_LiquidCap: 30,
+                            Fund_UltraSortFund: 50
+                        }]
+
+                    }]
+                }
+              
+
+            }
+            else if (Year > 5 && Year <= 10) {
+                if (Amount <= 3000) {
+                    ReturnPer.Data = [{
+                        Return_EquityPer: 100,
+                        Returm_DebtPer: 0,
+                        Fund: Funds[{
+
+                            Fund_MultiCap: 100
+                        }]
+                    }]
+                }
+                else {
+                    ReturnPer.Data = [{
+                        Return_EquityPer: 75,
+                        Returm_DebtPer: 25,
+                        Fund: Funds[{
+                            Fund_LargeCap: 40,
+                            Fund_MultiCap: 35,
+                            Fund_BondFunds: 25
+                        }]
+                    }]
+                }
+
+            }
+            else {
+                if (Amount <= 3000) {
+                    ReturnPer.Data = [{
+                        Return_EquityPer: 100,
+                        Returm_DebtPer: 0,
+                        Fund: [{
+
+                            Fund_MidCap: 100
+                        }]
+                    }]
+                }
+                else {
+                    ReturnPer.Data = [{
+                        Return_EquityPer: 80,
+                        Returm_DebtPer: 20,
+                        Fund: [{
+                            Fund_LargeCap: 35,
+                            Fund_MidCap: 15,
+                            Fund_MultiCap: 30,
+                            Fund_BondFunds: 20
+                        }]
+                    }]
+                }
+
+            }
+        }
+
+        else if (Risk == "Moderate") {
+
+        }
+       
     }
-    else if (Year > 5 && Year <= 10)
-    {
-        if (Amount <= 3000) {
-            ReturnPer.Data = [{
-                Return_EquityPer: 100,
-                Returm_DebtPer:0,
-                Fund: Funds[{
-                   
-                    Fund_MultiCap:100
-                }]
-            }]
-        }
-        else {
-            ReturnPer.Data = [{
-                Return_EquityPer: 75,
-                Returm_DebtPer: 25,
-                Fund: Funds[{
-                    Fund_LargeCap: 40,
-                    Fund_MultiCap: 35,
-                    Fund_BondFunds: 25
-                }]
-            }]
-        }
-        
-    }
-    else
-    {
-        if (Amount <= 3000) {
-            ReturnPer.Data = [{
-                Return_EquityPer: 100,
-                Returm_DebtPer: 0,
-                Fund: [{
-                   
-                    Fund_MidCap: 100
-                }]
-            }]
-        }
-        else {
-            ReturnPer.Data = [{
-                Return_EquityPer: 80,
-                Returm_DebtPer: 20,
-                Fund: [{
-                    Fund_LargeCap: 35,
-                    Fund_MidCap: 15,
-                    Fund_MultiCap: 30,
-                    Fund_BondFunds: 20
-                }]
-            }]
-        }
-        
-    }
+    
     return ReturnPer;
 };
 

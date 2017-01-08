@@ -83,7 +83,7 @@
         display: none;
     }*/
 </style>
-<div class="col-md-12" style="background-color:white;margin-bottom:80px">
+<div class="col-md-12" style="background-color:white;margin-bottom:80px" ng-show="StartSIP_Step1">
 
     <div class="row margin-bottom-10"  style="height:300px;background-color:#f5f5f5;padding-top:6%">
         <h1 style="color:#293542  !important;margin-bottom:20px;text-align:center;font-size:30px;font-family: 'Open Sans', 'Source Sans Pro', sans-serif;">
@@ -205,7 +205,7 @@
                     <div class="col-md-1">
                     </div>
                     <div class="col-md-2">
-                        <button class="btn btn-block btn-dropbox  Green_Btn" ng-click="show_next('Risk', 'InvestedYear', 'bar3','Medium');">
+                        <button class="btn btn-block btn-dropbox  Green_Btn" ng-click="show_next('Risk', 'InvestedYear', 'bar3','Mederate');">
                             MEDIUM RISK
                         </button>
                     </div>
@@ -307,9 +307,13 @@
         </div>
     </div>
     <div class="row text-right" ng-show="StartSipInvestNowBtn">
-        <md-button  class="md-raised" ng-click="Portfolio_InvestNow()">Click To Procedd</md-button>
+        <md-button  class="md-raised" ng-click="StartSIPClick()">Click To Procedd</md-button>
     </div>
     </div>
+
+<div class="col-md-12" style="background-color:white;margin-bottom:80px" ng-show="StartSIP_Step2">
+    <div class="row" ng-include="'../../Webform/Common/Html/portFolio.html'"></div>
+</div>
 
 <script>
 
