@@ -1523,23 +1523,48 @@
         ]
     }
 
-    $scope.ChangePortfolioAmount=function(From)
+    $scope.ChangePortfolioAmount=function(From,Page)
     {
-        if (From == 'M')
+        if (Page == undefined)
         {
-            $scope.Portfolio_Parameter.TotalCourseFee = $scope.Portfolio_Parameter.TotalCourseFee - 1000;
-            $scope.Portfolio_Calculate("ChnageAmount");
-            //$scope.Portfolio_Parameter.TotalMonthlyInvestment = $scope.Portfolio_Parameter.TotalMonthlyInvestment - 1000;
-            $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+            if (From == 'M') {
+                $scope.Portfolio_Parameter.TotalCourseFee = $scope.Portfolio_Parameter.TotalCourseFee - 1000;
+                $scope.Portfolio_Calculate("ChnageAmount");
+                //$scope.Portfolio_Parameter.TotalMonthlyInvestment = $scope.Portfolio_Parameter.TotalMonthlyInvestment - 1000;
+                $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+            }
+
+            else {
+                $scope.Portfolio_Parameter.TotalCourseFee = $scope.Portfolio_Parameter.TotalCourseFee + 1000;
+                $scope.Portfolio_Calculate("ChnageAmount");
+                //$scope.Portfolio_Parameter.TotalMonthlyInvestment = $scope.Portfolio_Parameter.TotalMonthlyInvestment + 1000;
+                $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+            }
         }
-        
-        else
-        {
-            $scope.Portfolio_Parameter.TotalCourseFee = $scope.Portfolio_Parameter.TotalCourseFee + 1000;
-            $scope.Portfolio_Calculate("ChnageAmount");
-            //$scope.Portfolio_Parameter.TotalMonthlyInvestment = $scope.Portfolio_Parameter.TotalMonthlyInvestment + 1000;
-            $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+        else {
+           
+            if (From == 'M') {
+                if ($scope.Portfolio_ParameterSip.TotalMonthlyInvestment < "1000")
+                {
+                    $scope.Portfolio_ParameterSip.TotalMonthlyInvestment = parseInt($scope.Portfolio_ParameterSip.TotalMonthlyInvestment) - parseInt(1000);
+                    $scope.StartSIPClick();
+                }
+                else {
+                    alert("You can not have less than 1000 Rupees");
+                }
+               
+                //////$scope.Portfolio_Calculate("ChnageAmount");
+                ////////$scope.Portfolio_Parameter.TotalMonthlyInvestment = $scope.Portfolio_Parameter.TotalMonthlyInvestment - 1000;
+                //////$scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+                
+            }
+
+            else {
+                $scope.Portfolio_ParameterSip.TotalMonthlyInvestment = parseInt( $scope.Portfolio_ParameterSip.TotalMonthlyInvestment) + parseInt( 1000);
+                $scope.StartSIPClick();
+            }
         }
+      
      
     }
 
