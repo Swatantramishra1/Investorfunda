@@ -1544,7 +1544,7 @@
         else {
            
             if (From == 'M') {
-                if ($scope.Portfolio_ParameterSip.TotalMonthlyInvestment < "1000")
+                if (parseInt($scope.Portfolio_ParameterSip.TotalMonthlyInvestment) > 1000)
                 {
                     $scope.Portfolio_ParameterSip.TotalMonthlyInvestment = parseInt($scope.Portfolio_ParameterSip.TotalMonthlyInvestment) - parseInt(1000);
                     $scope.StartSIPClick();
