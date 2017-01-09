@@ -117,7 +117,7 @@ function Chield_CalculatePortfolioAllocation(Year,Amount,Risk) {
                     Returm_DebtPer: 0,
                     Fund: [{
 
-                        Fund_MidCap: 100
+                        Fund_MultiCap: 100
                     }]
                 }]
             }
