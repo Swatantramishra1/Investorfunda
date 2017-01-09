@@ -661,7 +661,7 @@
         });
         
         var EquityBondIndex = $.map($scope.SIPGoalStructureDate, function (obj, index) {
-            if (obj.MFtype == "Debt / GILT") {
+            if (obj.MFtype == "Debt/ GILT") {
                 return index;
             }
         });
@@ -1672,18 +1672,31 @@
     {
         if (Page == undefined)
         {
+
+            
             if (From == 'M') {
-                $rootScope.Portfolio_Parameter.TotalCourseFee = $rootScope.Portfolio_Parameter.TotalCourseFee - 1000;
-                $scope.Portfolio_Calculate("ChnageAmount");
-                //$rootScope.Portfolio_Parameter.TotalMonthlyInvestment = $rootScope.Portfolio_Parameter.TotalMonthlyInvestment - 1000;
-                $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
+                if (parseInt($rootScope.Portfolio_Parameter.TotalCourseFee) > 1000) {
+                    $rootScope.Portfolio_Parameter.TotalMonthlyInvestment = parseInt($rootScope.Portfolio_Parameter.TotalMonthlyInvestment) - 1000;
+                    //$scope.Portfolio_Calculate("ChnageAmount");
+                    $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation($rootScope.Portfolio_Parameter.EstematedYear, $rootScope.Portfolio_Parameter.TotalMonthlyInvestment, $rootScope.Portfolio_Parameter.Risk);
+                    $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
+                    //$rootScope.Portfolio_Parameter.TotalMonthlyInvestment = $rootScope.Portfolio_Parameter.TotalMonthlyInvestment - 1000;
+                    $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
+                    $scope.ShowDiv("1");
+                }
+                else {
+                    alert("You can not have less than 1000 Rupees");
+                }
             }
 
             else {
-                $rootScope.Portfolio_Parameter.TotalCourseFee = $rootScope.Portfolio_Parameter.TotalCourseFee + 1000;
-                $scope.Portfolio_Calculate("ChnageAmount");
+                $rootScope.Portfolio_Parameter.TotalMonthlyInvestment = parseInt($rootScope.Portfolio_Parameter.TotalMonthlyInvestment) + 1000;
+                //$scope.Portfolio_Calculate("ChnageAmount");
+                $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation($rootScope.Portfolio_Parameter.EstematedYear, $rootScope.Portfolio_Parameter.TotalMonthlyInvestment, $rootScope.Portfolio_Parameter.Risk);
+                $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
                 //$rootScope.Portfolio_Parameter.TotalMonthlyInvestment = $rootScope.Portfolio_Parameter.TotalMonthlyInvestment + 1000;
                 $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
+                $scope.ShowDiv("1");
             }
         }
         else {
