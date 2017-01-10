@@ -58,7 +58,7 @@ function Chield_CalculatePortfolioAllocation(Year,Amount,Risk) {
     var Funds = [];
     if (Risk == undefined)
     {
-        if (Year <= 5) {
+        if (Year <= 3) {
             if (Amount <= 3000) {
                 ReturnPer.Data = [{
                     Return_EquityPer: 100,
@@ -83,34 +83,49 @@ function Chield_CalculatePortfolioAllocation(Year,Amount,Risk) {
 
                 }]
             }
-
+    
 
         }
-        else if (Year > 5 && Year <= 10) {
+        else if (Year > 3 && Year <= 5) {
             if (Amount <= 3000) {
                 ReturnPer.Data = [{
                     Return_EquityPer: 100,
                     Returm_DebtPer: 0,
                     Fund: Funds[{
-
-                        Fund_MultiCap: 100
+                        Fund_LargeCap: 60,
+                        Fund_MultiCap: 40
                     }]
                 }]
             }
-            else {
+            else if (Amount > 3000 && Amount <= 5000) {
                 ReturnPer.Data = [{
-                    Return_EquityPer: 75,
-                    Returm_DebtPer: 25,
+                    Return_EquityPer: 70,
+                    Returm_DebtPer: 30,
                     Fund: Funds[{
                         Fund_LargeCap: 40,
-                        Fund_MultiCap: 35,
-                        Fund_BondFunds: 25
+                        Fund_MultiCap: 30,
+                        Fund_CreditOpportunity: 20,
+                        Fund_UltraSortFund: 10
+                    }]
+                }]
+            }
+            else  {
+                ReturnPer.Data = [{
+                    Return_EquityPer: 60,
+                    Returm_DebtPer: 30,
+                    Returm_GoldPer: 10,
+                    Fund: Funds[{
+                        Fund_LargeCap: 40,
+                        Fund_MidCap: 20,
+                        Fund_CreditOpportunity: 20,
+                        Fund_LiquidCap: 10,
+                        Fund_Gold: 10
                     }]
                 }]
             }
 
         }
-        else {
+        else if (Year > 5 && Year <= 10) {
             if (Amount <= 3000) {
                 ReturnPer.Data = [{
                     Return_EquityPer: 100,
