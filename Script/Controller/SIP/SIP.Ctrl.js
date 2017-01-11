@@ -616,6 +616,7 @@
         var CalculatedEquityDebtMoney = CalculateMoneyEquityDebt(CalculatedPercentage, MoneyMonthwise);
         $rootScope.Portfolio_Parameter.Equity = CalculatedEquityDebtMoney[0].Equity;
         $rootScope.Portfolio_Parameter.Debt = CalculatedEquityDebtMoney[0].Debt;
+        $rootScope.Portfolio_Parameter.Gold = CalculatedEquityDebtMoney[0].Gold;
         $scope.ChartFunctionForPortFolio();
     }
     $rootScope.Portfolio_Parameter =
@@ -675,6 +676,12 @@
                 return index;
             }
         });
+
+        var GoldIndex = $.map($scope.SIPGoalStructureDate, function (obj, index) {
+            if (obj.MFtype == "ELSS") {
+                return index;
+            }
+        });
         var Fund_LargeCap_result = "";
         var Fund_LargeCap_result_Temp = "";
         var Fund_MultiCap_result = "";
@@ -689,6 +696,8 @@
         var Fund_CreditOpportunity_result_Temp = "";
         var Fund_DebtLiquid_result = "";
         var Fund_DebtLiquid_result_Temp = "";
+        var Fund_Gold_result = "";
+        var Fund_Gold_result_Temp = "";
         var Result_Temp = [];
         if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap != undefined) {
              Fund_LargeCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap / 100) * $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
@@ -724,6 +733,11 @@
             Fund_DebtLiquid_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_LiquidCap / 100) * $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
             Fund_DebtLiquid_result_Temp = Fund_DebtLiquid_result % 100;
             Result_Temp.push({ "SchemeType": "Liquid", "ModResult": Fund_DebtLiquid_result_Temp });
+        }
+        if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_Gold != undefined) {
+            Fund_Gold_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_Gold / 100) * $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
+            Fund_Gold_result_Temp = Fund_Gold_result % 100;
+            Result_Temp.push({ "SchemeType": "Gold", "ModResult": Fund_Gold_result_Temp });
         }
         for (var a = 0; a < Result_Temp.length; a++)
         {
@@ -841,6 +855,14 @@
                                         }
 
                                     };
+                                    if (Result_Temp[a1].SchemeType == "Gold") {
+                                        if (Result_Temp[a1].ModResult != "0") {
+                                            Fund_MultiCap_result = Fund_MultiCap_result - Result_Temp[a1].ModResult;
+                                            Fund_Gold_result = Fund_Gold_result + Result_Temp[a1].ModResult;
+                                            Result_Temp[a1].ModResult = "0";
+                                        }
+
+                                    };
                                 }
                             }
                         }
@@ -898,6 +920,14 @@
                                         if (Result_Temp[a1].ModResult != "0") {
                                             Fund_BondCap_result = Fund_BondCap_result - Result_Temp[a1].ModResult;
                                             Fund_DebtLiquid_result = Fund_DebtLiquid_result + Result_Temp[a1].ModResult;
+                                            Result_Temp[a1].ModResult = "0";
+                                        }
+
+                                    };
+                                    if (Result_Temp[a1].SchemeType == "Gold") {
+                                        if (Result_Temp[a1].ModResult != "0") {
+                                            Fund_BondCap_result = Fund_BondCap_result - Result_Temp[a1].ModResult;
+                                            Fund_Gold_result = Fund_Gold_result + Result_Temp[a1].ModResult;
                                             Result_Temp[a1].ModResult = "0";
                                         }
 
@@ -962,6 +992,14 @@
                                     }
 
                                 };
+                                if (Result_Temp[a1].SchemeType == "Gold") {
+                                    if (Result_Temp[a1].ModResult != "0") {
+                                        Fund_UltraCap_result = Fund_UltraCap_result - Result_Temp[a1].ModResult;
+                                        Fund_Gold_result = Fund_Gold_result + Result_Temp[a1].ModResult;
+                                        Result_Temp[a1].ModResult = "0";
+                                    }
+
+                                };
                             }
                         }
                     }
@@ -1021,6 +1059,14 @@
                                     }
 
                                 };
+                                if (Result_Temp[a1].SchemeType == "Gold") {
+                                    if (Result_Temp[a1].ModResult != "0") {
+                                        Fund_MidCap_result = Fund_MidCap_result - Result_Temp[a1].ModResult;
+                                        Fund_Gold_result = Fund_Gold_result + Result_Temp[a1].ModResult;
+                                        Result_Temp[a1].ModResult = "0";
+                                    }
+
+                                };
                             }
                         }
                     }
@@ -1076,6 +1122,14 @@
                                     if (Result_Temp[a1].ModResult != "0") {
                                         Fund_CreditOpportunity_result = Fund_CreditOpportunity_result - Result_Temp[a1].ModResult;
                                         Fund_DebtLiquid_result = Fund_DebtLiquid_result + Result_Temp[a1].ModResult;
+                                        Result_Temp[a1].ModResult = "0";
+                                    }
+
+                                };
+                                if (Result_Temp[a1].SchemeType == "Gold") {
+                                    if (Result_Temp[a1].ModResult != "0") {
+                                        Fund_CreditOpportunity_result = Fund_CreditOpportunity_result - Result_Temp[a1].ModResult;
+                                        Fund_Gold_result = Fund_Gold_result + Result_Temp[a1].ModResult;
                                         Result_Temp[a1].ModResult = "0";
                                     }
 
@@ -1140,6 +1194,82 @@
                                     }
 
                                 };
+                                if (Result_Temp[a1].SchemeType == "Gold") {
+                                    if (Result_Temp[a1].ModResult != "0") {
+                                        Fund_DebtLiquid_result = Fund_DebtLiquid_result - Result_Temp[a1].ModResult;
+                                        Fund_Gold_result = Fund_Gold_result + Result_Temp[a1].ModResult;
+                                        Result_Temp[a1].ModResult = "0";
+                                    }
+
+                                };
+                            }
+                        }
+                    }
+                }
+
+            };
+
+            if (Result_Temp[a].SchemeType == "Gold") {
+                if (Result_Temp[a].ModResult != "0") {
+                    for (var a1 = 0; a1 < Result_Temp.length; a1++) {
+                        if (Result_Temp[a1].SchemeType != "Gold") {
+                            if (Result_Temp[a1].ModResult != "0") {
+                                if (Result_Temp[a1].SchemeType == "Large") {
+                                    if (Result_Temp[a1].ModResult != "0") {
+                                        Fund_DebtLiquid_result = Fund_DebtLiquid_result - Result_Temp[a1].ModResult;
+                                        Fund_Gold_result = Fund_Gold_result + Result_Temp[a1].ModResult;
+                                        Result_Temp[a1].ModResult = "0";
+                                    }
+
+                                };
+                                if (Result_Temp[a1].SchemeType == "Multi") {
+                                    if (Result_Temp[a1].ModResult != "0") {
+                                        Fund_DebtLiquid_result = Fund_DebtLiquid_result - Result_Temp[a1].ModResult;
+                                        Fund_Gold_result = Fund_Gold_result + Result_Temp[a1].ModResult;
+                                        Result_Temp[a1].ModResult = "0";
+                                    }
+
+                                };
+                                if (Result_Temp[a1].SchemeType == "Bond") {
+                                    if (Result_Temp[a1].ModResult != "0") {
+                                        Fund_DebtLiquid_result = Fund_DebtLiquid_result - Result_Temp[a1].ModResult;
+                                        Fund_Gold_result = Fund_Gold_result + Result_Temp[a1].ModResult;
+                                        Result_Temp[a1].ModResult = "0";
+                                    }
+
+                                };
+                                if (Result_Temp[a1].SchemeType == "Ultra") {
+                                    if (Result_Temp[a1].ModResult != "0") {
+                                        Fund_DebtLiquid_result = Fund_DebtLiquid_result - Result_Temp[a1].ModResult;
+                                        Fund_Gold_result = Fund_Gold_result + Result_Temp[a1].ModResult;
+                                        Result_Temp[a1].ModResult = "0";
+                                    }
+
+                                };
+                                if (Result_Temp[a1].SchemeType == "Mid") {
+                                    if (Result_Temp[a1].ModResult != "0") {
+                                        Fund_DebtLiquid_result = Fund_DebtLiquid_result - Result_Temp[a1].ModResult;
+                                        Fund_Gold_result = Fund_Gold_result + Result_Temp[a1].ModResult;
+                                        Result_Temp[a1].ModResult = "0";
+                                    }
+
+                                };
+                                if (Result_Temp[a1].SchemeType == "Credit") {
+                                    if (Result_Temp[a1].ModResult != "0") {
+                                        Fund_DebtLiquid_result = Fund_DebtLiquid_result - Result_Temp[a1].ModResult;
+                                        Fund_Gold_result = Fund_Gold_result + Result_Temp[a1].ModResult;
+                                        Result_Temp[a1].ModResult = "0";
+                                    }
+
+                                };
+                                if (Result_Temp[a1].SchemeType == "Liquid") {
+                                    if (Result_Temp[a1].ModResult != "0") {
+                                        Fund_LargeCap_result = Fund_LargeCap_result - Result_Temp[a1].ModResult;
+                                        Fund_Gold_result = Fund_Gold_result + Result_Temp[a1].ModResult;
+                                        Result_Temp[a1].ModResult = "0";
+                                    }
+
+                                };
                             }
                         }
                     }
@@ -1147,8 +1277,10 @@
 
             };
         }
+
+        var ValueMinAmountTemp = [];
         //Equity Large Cap
-        
+        var TempAmount = "";
         if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap != undefined)
         {
             //Fund_LargeCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap / 100) * $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
@@ -1172,7 +1304,7 @@
                         break;
                     }
 
-
+                   
                    
                 }
             }
@@ -1346,7 +1478,68 @@
 
         }
 
+        //Gold Fund
+        if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_Gold != undefined) {
 
+
+            for (var a = 0; a < GoldIndex.length; a++) {
+                if (Fund_Gold_result > $scope.SIPGoalStructureDate[GoldIndex[a]].MinInvst) {
+
+                    if ((Fund_Gold_result % $scope.SIPGoalStructureDate[GoldIndex[a]].multiplier) == 0) {
+
+                        $scope.sampleStructure.push({
+                            "SchemeName": $scope.SIPGoalStructureDate[GoldIndex[a]].SchemeName,
+                            "SchemeCode": $scope.SIPGoalStructureDate[GoldIndex[a]].BSESchmecode,
+                            "ISIN": $scope.SIPGoalStructureDate[GoldIndex[a]].ISIN,
+                            "Date": $scope.SIPGoalStructureDate[GoldIndex[a]].date.split(',')[parseInt(Number) - 1] == '1-30 all days' ? $scope.SIPGoalStructureDate[GoldIndex[a]].date.split(',')[parseInt(Number) - 1] : $scope.SIPGoalStructureDate[GoldIndex[a]].date.split(',')[parseInt(Number) - 1],
+                            "Amount": Fund_Gold_result
+
+                        });
+                        break;
+                    }
+
+
+
+                }
+            }
+
+        }
+
+
+        if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap != undefined)
+        {
+
+        }
+
+
+        if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MultiCap != undefined)
+        {
+
+        }
+        if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_BondFunds != undefined)
+        {
+
+        }
+        if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_UltraSortFund != undefined)
+        {
+
+        }
+        if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MidCap != undefined)
+        {
+
+        }
+        if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_CreditOpportunity != undefined)
+        {
+
+        }
+        if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_LiquidCap != undefined)
+        {
+
+        }
+        if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_Gold != undefined)
+        {
+
+        }
         var tesmpArray = [];
         for (var a = 0; a < $scope.sampleStructure.length; a++)
         {
@@ -1357,8 +1550,6 @@
                                    "RemainingAmount": parseInt($scope.sampleStructure[a].Amount) % 500,
                                    "ISIN": $scope.sampleStructure[a].ISIN
                                }
-            
-           
                 );
             }
             //var Temp2 = 500 - Temp1;
