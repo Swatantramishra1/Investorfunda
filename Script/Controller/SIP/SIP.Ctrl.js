@@ -521,8 +521,52 @@
                        "MinInvst": "500",
                        "MFtype": "ELSS",
                        "Minsip": "6",
-                       "date": "1,7,10,14,20,21, 25, 28",
+                       "date": "1,7,10,14,20,21,25,28",
                        "multiplier": "500"
+                   },
+                   {
+                       "Rank": "1",
+                       "SchemeName": "Canara Robeco Gold Savings FundDirect GrowthGrowth",
+                       "ISIN": "INF174K01369",
+                       "BSESchmecode": "CAGSDG-GR",
+                       "MinInvst": "500",
+                       "MFtype": "Gold",
+                       "Minsip": "6",
+                       "date": "1,5,15,20,25",
+                       "multiplier": "500"
+                   },
+                   {
+                       "Rank": "2",
+                       "SchemeName": "DSP BLACKROCK WORLD GOLD FUND - REGULAR PLAN - GROWTH",
+                       "ISIN": "INF740K01250",
+                       "BSESchmecode": "DSP179-GR",
+                       "MinInvst": "500",
+                       "MFtype": "Gold",
+                       "Minsip": "6",
+                       "date": "1,7,10,14,20,21,25,28",
+                       "multiplier": "1"
+                   },
+                   {
+                       "Rank": "3",
+                       "SchemeName": "Birla Sun Life Gold Fund Growth",
+                       "ISIN": "INF209K01PF4",
+                       "BSESchmecode": "BSL916G-GR",
+                       "MinInvst": "1000",
+                       "MFtype": "Gold",
+                       "Minsip": "6",
+                       "date": "1,7,10,14,20,21,25,28",
+                       "multiplier": "1"
+                   },
+                   {
+                       "Rank": "4",
+                       "SchemeName": "ICICI Prudential Regular Gold Savings Fund Growth",
+                       "ISIN": "INF109K01TK8",
+                       "BSESchmecode": "ICICI1815-GR",
+                       "MinInvst": "1000",
+                       "MFtype": "Gold",
+                       "Minsip": "6",
+                       "date": "1,5,10,15,20,25",
+                       "multiplier": "1"
                    }
          ]
 
@@ -678,7 +722,7 @@
         });
 
         var GoldIndex = $.map($scope.SIPGoalStructureDate, function (obj, index) {
-            if (obj.MFtype == "ELSS") {
+            if (obj.MFtype == "Gold") {
                 return index;
             }
         });
@@ -1504,6 +1548,7 @@
             }
 
         }
+
 
 
         if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap != undefined)
