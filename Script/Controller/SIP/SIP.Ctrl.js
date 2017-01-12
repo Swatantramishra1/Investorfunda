@@ -1743,107 +1743,106 @@
     };
 
     $scope.InvestNow = function (From) {
-        //if ($localStorage.ChildState )
-        //{
-        //    if ($localStorage.LoginStatus)
-        //    {
-        //        $scope.SIP_GOAL_SHOW = false;
-        //        $scope.SIP_GOAL_Setting_SHOW = false;
-        //        $scope.SIP_GOAL_Final_SHOW = true;
+        if ($localStorage.ChildState )
+        {
+            if ($localStorage.LoginStatus)
+            {
+                $scope.SIP_GOAL_SHOW = false;
+                $scope.SIP_GOAL_Setting_SHOW = false;
+                $scope.SIP_GOAL_Final_SHOW = true;
 
-        //        $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
+                $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
 
-        //        var CreateUserList = FundsService.CreatePlan.PostPromise($localStorage.POstJson);
-        //        CreateUserList.then(
-        //        // OnSuccess function
-        //        function (answer) {
-        //            HideLoader();
-        //            window.location = "../../../Webform/User/dist/index.html"
-        //            if (answer.UserRegistrationResult.ResponseCode == "0") {
+                var CreateUserList = FundsService.CreatePlan.PostPromise($localStorage.POstJson);
+                CreateUserList.then(
+                // OnSuccess function
+                function (answer) {
+                    HideLoader();
+                    window.location = "../../../Webform/User/dist/index.html"
+                    if (answer.UserRegistrationResult.ResponseCode == "0") {
 
-        //            }
+                    }
 
-        //            $scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
+                    $scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
 
 
-        //        },
-        //        // OnFailure function
-        //        function (reason) {
-        //            HideLoader();
-        //            $scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
-        //            //$scope.somethingWrong = reason;
-        //            //$scope.error = true;
-        //        }
-        //      )
+                },
+                // OnFailure function
+                function (reason) {
+                    HideLoader();
+                    $scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
+                    //$scope.somethingWrong = reason;
+                    //$scope.error = true;
+                }
+              )
 
-        //    }
-        //    else {
-        //        $localStorage.POstJson = {
-        //            "User_ID": "",
-        //            "userPlan": {
-        //                "MasterPlan_ID": $rootScope.Portfolio_Parameter.Portfolio_ID,
-        //                "Goal": $rootScope.Portfolio_Parameter.Portfolio_Name,
-        //                "CurrentAge": $rootScope.Portfolio_Parameter.Portfolio_ChildCurrentAge,
-        //                "CourseTime": $rootScope.Portfolio_Parameter.Portfolio_Year,
-        //                "CourseDuration": $rootScope.Portfolio_Parameter.Portfolio_Duration,
-        //                "CourseFeePerYear": $rootScope.Portfolio_Parameter.Portfolio_FeesPerYear,
-        //                "LivingCostPerYear": $rootScope.Portfolio_Parameter.Portfolio_LivingPerYear,
-        //                "SavedAmount_Lumpsum": $rootScope.Portfolio_Parameter.Portfolio_LumpSumAmount,
-        //                "InflationRate": $rootScope.Portfolio_Parameter.Portfolio_ROInflation,
-        //                "TotalCourseFees": $rootScope.Portfolio_Parameter.TotalCourseFee,
-        //                "TotalLivingExpanses": $rootScope.Portfolio_Parameter.TotalLivingExpensesFee,
-        //                "TotalAmount": $rootScope.Portfolio_Parameter.CalculatedTotalMoney,
-        //                "TotalLumpsumAmount": $rootScope.Portfolio_Parameter.Portfolio_LumpSumAmount,
-        //                "EstimatedInflationRate": $rootScope.Portfolio_Parameter.Portfolio_ROInflation
-        //            },
-        //            "userPortfolio": {
-        //                "Equity": $rootScope.Portfolio_Parameter.Equity,
-        //                "Debt": $rootScope.Portfolio_Parameter.Debt,
-        //                "EstimatedTotalSIPAmt": $rootScope.Portfolio_Parameter.TotalMonthlyInvestment,
-        //                "Scheme_IDs": "1,2,3"
-        //            }
-        //        };
-        //        $state.go('Authentication', { From: 'ChildPlan' });
-        //    }
+            }
+            else {
+                $localStorage.POstJson = {
+                    "User_ID": "",
+                    "userPlan": {
+                        "MasterPlan_ID": $rootScope.Portfolio_Parameter.Portfolio_ID,
+                        "Goal": $rootScope.Portfolio_Parameter.Portfolio_Name,
+                        "CurrentAge": $rootScope.Portfolio_Parameter.Portfolio_ChildCurrentAge,
+                        "CourseTime": $rootScope.Portfolio_Parameter.Portfolio_Year,
+                        "CourseDuration": $rootScope.Portfolio_Parameter.Portfolio_Duration,
+                        "CourseFeePerYear": $rootScope.Portfolio_Parameter.Portfolio_FeesPerYear,
+                        "LivingCostPerYear": $rootScope.Portfolio_Parameter.Portfolio_LivingPerYear,
+                        "SavedAmount_Lumpsum": $rootScope.Portfolio_Parameter.Portfolio_LumpSumAmount,
+                        "InflationRate": $rootScope.Portfolio_Parameter.Portfolio_ROInflation,
+                        "TotalCourseFees": $rootScope.Portfolio_Parameter.TotalCourseFee,
+                        "TotalLivingExpanses": $rootScope.Portfolio_Parameter.TotalLivingExpensesFee,
+                        "TotalAmount": $rootScope.Portfolio_Parameter.CalculatedTotalMoney,
+                        "TotalLumpsumAmount": $rootScope.Portfolio_Parameter.Portfolio_LumpSumAmount,
+                        "EstimatedInflationRate": $rootScope.Portfolio_Parameter.Portfolio_ROInflation
+                    },
+                    "userPortfolio": {
+                        "Equity": $rootScope.Portfolio_Parameter.Equity,
+                        "Debt": $rootScope.Portfolio_Parameter.Debt,
+                        "EstimatedTotalSIPAmt": $rootScope.Portfolio_Parameter.TotalMonthlyInvestment,
+                        "Scheme_IDs": "1,2,3"
+                    }
+                };
+                $state.go('Authentication', { From: 'ChildPlan' });
+            }
 
-        //    console.log($rootScope.Portfolio_Parameter)
-        //}
-        //else if (From != undefined) {
-        //    if ($localStorage.LoginStatus) {
-        //        $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
+            console.log($rootScope.Portfolio_Parameter)
+        }
+        else if (From != undefined) {
+            if ($localStorage.LoginStatus) {
+                $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
 
-        //    }
-        //    else {
-        //        $localStorage.POstJson = {
-        //            "User_ID": "",
-        //            "userPlan": {
-        //                "MasterPlan_ID": $rootScope.Portfolio_Parameter.Portfolio_ID,
-        //                "Goal": $rootScope.Portfolio_Parameter.Portfolio_Name,
-        //                "CurrentAge": $rootScope.Portfolio_Parameter.Portfolio_ChildCurrentAge,
-        //                "CourseTime": $rootScope.Portfolio_Parameter.Portfolio_Year,
-        //                "CourseDuration": $rootScope.Portfolio_Parameter.Portfolio_Duration,
-        //                "CourseFeePerYear": $rootScope.Portfolio_Parameter.Portfolio_FeesPerYear,
-        //                "LivingCostPerYear": $rootScope.Portfolio_Parameter.Portfolio_LivingPerYear,
-        //                "SavedAmount_Lumpsum": $rootScope.Portfolio_Parameter.Portfolio_LumpSumAmount,
-        //                "InflationRate": $rootScope.Portfolio_Parameter.Portfolio_ROInflation,
-        //                "TotalCourseFees": $rootScope.Portfolio_Parameter.TotalCourseFee,
-        //                "TotalLivingExpanses": $rootScope.Portfolio_Parameter.TotalLivingExpensesFee,
-        //                "TotalAmount": $rootScope.Portfolio_Parameter.CalculatedTotalMoney,
-        //                "TotalLumpsumAmount": $rootScope.Portfolio_Parameter.Portfolio_LumpSumAmount,
-        //                "EstimatedInflationRate": $rootScope.Portfolio_Parameter.Portfolio_ROInflation
-        //            },
-        //            "userPortfolio": {
-        //                "Equity": $rootScope.Portfolio_Parameter.Equity,
-        //                "Debt": $rootScope.Portfolio_Parameter.Debt,
-        //                "EstimatedTotalSIPAmt": $rootScope.Portfolio_Parameter.TotalMonthlyInvestment,
-        //                "Scheme_IDs": "1,2,3"
-        //            }
-        //        };
-        //        $state.go('Authentication', { From: 'ChildPlan' });
-        //    }
-        //}
-
-        window.location = "http://bsestarmfdemo.bseindia.com/ClientOrderPayment.aspx?SCCBFDIblmR3EuN8nhW8Kr0eXYCg66dCyZckAeN3dwtQ5eh8NOUpW7PZC42nhzE8WWmgxtmUsJ4=";
+            }
+            else {
+                $localStorage.POstJson = {
+                    "User_ID": "",
+                    "userPlan": {
+                        "MasterPlan_ID": $rootScope.Portfolio_Parameter.Portfolio_ID,
+                        "Goal": $rootScope.Portfolio_Parameter.Portfolio_Name,
+                        "CurrentAge": $rootScope.Portfolio_Parameter.Portfolio_ChildCurrentAge,
+                        "CourseTime": $rootScope.Portfolio_Parameter.Portfolio_Year,
+                        "CourseDuration": $rootScope.Portfolio_Parameter.Portfolio_Duration,
+                        "CourseFeePerYear": $rootScope.Portfolio_Parameter.Portfolio_FeesPerYear,
+                        "LivingCostPerYear": $rootScope.Portfolio_Parameter.Portfolio_LivingPerYear,
+                        "SavedAmount_Lumpsum": $rootScope.Portfolio_Parameter.Portfolio_LumpSumAmount,
+                        "InflationRate": $rootScope.Portfolio_Parameter.Portfolio_ROInflation,
+                        "TotalCourseFees": $rootScope.Portfolio_Parameter.TotalCourseFee,
+                        "TotalLivingExpanses": $rootScope.Portfolio_Parameter.TotalLivingExpensesFee,
+                        "TotalAmount": $rootScope.Portfolio_Parameter.CalculatedTotalMoney,
+                        "TotalLumpsumAmount": $rootScope.Portfolio_Parameter.Portfolio_LumpSumAmount,
+                        "EstimatedInflationRate": $rootScope.Portfolio_Parameter.Portfolio_ROInflation
+                    },
+                    "userPortfolio": {
+                        "Equity": $rootScope.Portfolio_Parameter.Equity,
+                        "Debt": $rootScope.Portfolio_Parameter.Debt,
+                        "EstimatedTotalSIPAmt": $rootScope.Portfolio_Parameter.TotalMonthlyInvestment,
+                        "Scheme_IDs": "1,2,3"
+                    }
+                };
+                $state.go('Authentication', { From: 'ChildPlan' });
+            }
+        }
+      
     };
 
     $scope.selectRow = function (index) {
