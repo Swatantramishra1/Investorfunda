@@ -4,7 +4,7 @@
 //var ServerName = "http://localhost:51176/Service/";
 
 //For Hosting
-var ServerName = "http://investorfunda.com/Service/Service/";
+var ServerName = "http://ifserviceapi.azurewebsites.net/Service/";
 
 
 
