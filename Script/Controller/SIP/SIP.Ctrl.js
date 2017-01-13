@@ -1803,6 +1803,7 @@
                         "Scheme_IDs": "1,2,3"
                     }
                 };
+                $localStorage.CurrentStatusOfPage = "ChildPlan";
                 $state.go('Authentication', { From: 'ChildPlan' });
             }
 

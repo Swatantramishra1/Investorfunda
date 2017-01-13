@@ -28,12 +28,17 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
                 $rootScope.LoginStatus = true;
                 $localStorage.UserDetails = answer.data.GetLoginResult.Result;
                 $rootScope.UserDetails = answer.data.GetLoginResult.Result;
-                if ($state.params.From == 'ChildPlan')
+                if ($localStorage.CurrentStatusOfPage == "ChildPlan")
                 {
                     $localStorage.ChildState = true;
                     $state.go('ChildGoal');
                 }
-                else {
+                else if ($localStorage.CurrentStatusOfPage == "MutualfundsLumpSum")
+                {
+                    $localStorage.MutualFundsState = true;
+                    $state.go('MutualFundsList');
+                }
+                else  {
                     
                     window.location = "../../../Webform/User/dist/index.html"
                 }

@@ -1,25 +1,23 @@
 ﻿/// <reference path="../../../Webform/Common/Popup/MutualFundsDetailPopup.html" />
 app.controller("MtualFunds.Ctrl", ['$scope', '$rootScope', '$http', 'fileUpload', '$mdDialog', 'FundsService', '$stateParams', '$state', '$localStorage', '$interval', '$timeout',
 function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $stateParams, $state, $localStorage,$interval, $timeout) {
-
-
-    $scope.Return_3Mon = 0;
-    $scope.Return_6Mon = 0;
-    $scope.Return_1Yr = 0;
-    $scope.Return_3Yr = 0;
-    $scope.Return_5Yr = 0;
-
-        //Onload Loader
-    ShowLoader();
+    
+    $rootScope.Logout = function () {
+        $localStorage.LoginStatus = false;
+        $rootScope.LoginStatus = false;
+        $localStorage.CurrentStatusOfPage = "";
+        $localStorage.UserDetails = {};
+        $rootScope.UserDetails = {};
+        $localStorage.LoginStatus = false;
+        $localStorage.MutualFundsState = false;
+        $localStorage.ChildState = false;
+        $state.go('Index');
+    };
     var ListEx = {};
-    //$scope.Timer = $interval(function () {
-    //    SchemeLimitTo = SchemeLimitTo + 5;
-    //}, 1000);
+    $localStorage.tempData = {};
     $scope.SchemeLimitTo = 15;
-    $scope.GetFundList = function (AmcCode, CategoryCode, SchemeOption)
-    {
-        if ($scope.FundsList == '' || $scope.FundsList == undefined)
-        {
+    $scope.GetFundList = function (AmcCode, CategoryCode, SchemeOption) {
+        if ($scope.FundsList == '' || $scope.FundsList == undefined) {
             var getListOfMutualFunds = FundsService.FundsList.getPromise(AmcCode, CategoryCode, SchemeOption);
             getListOfMutualFunds.then(
             // OnSuccess function
@@ -30,6 +28,8 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                 //{
 
                 //}
+                $localStorage.LSStatus = true;
+                $localStorage.LSFundsList = response.data.response.data.Schemelist.Scheme;
                 ListEx = response.data.response.data.Schemelist.Scheme;
                 $scope.FundsList = response.data.response.data.Schemelist.Scheme;
             },
@@ -42,34 +42,25 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             });
         }
 
-    
+
     }
-    $scope.CheckFundsListExists=function()
-    {
-        if ($('tr').find('td').length == 1)
-        {
-            $scope.FundsListShowMore = true;
-        }
-        else {
-            $scope.FundsListShowMore = false;
-        }
-    }
-        if ($state.current.name == 'MutualFundsList')
-        {
+    $scope.OnloadFunction = function () {
+        ShowLoader();
+        if ($state.current.name == 'MutualFundsList') {
             //OnLoad Calss
             $scope.GetFundList('-', '-', 'Growth');
-           
+
             var getDetailsFundsHouse = FundsService.FundsHouse.getPromise();
             getDetailsFundsHouse.then(
             // OnSuccess function
             function (response) {
-                
+                $localStorage.LSFundsHouse = response.data.response.data.Schemelist.Scheme;
                 $scope.FundsHouse = response.data.response.data.Schemelist.Scheme;
 
             },
             // OnFailure function
             function (reason) {
-               
+
                 console.log(reason.GetLoginResult.ResponseMessage)
                 $scope.somethingWrong = reason;
                 $scope.error = true;
@@ -78,7 +69,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             FundCategoryEQUITY.then(
             // OnSuccess function
             function (response) {
-               
+                $localStorage.LSFundCategoryEQUITY = response.data.response.data.Schemelist.Scheme;
                 $scope.FundCategoryEQUITY = response.data.response.data.Schemelist.Scheme;
 
             },
@@ -93,7 +84,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             FundCategoryHybrid.then(
             // OnSuccess function
             function (response) {
-                
+                $localStorage.LSFundCategoryHybrid = response.data.response.data.Schemelist.Scheme;
                 $scope.FundCategoryHybrid = response.data.response.data.Schemelist.Scheme;
 
             },
@@ -108,7 +99,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             FundCategoryDebt.then(
             // OnSuccess function
             function (response) {
-                
+                $localStorage.LSFundCategoryDebt = response.data.response.data.Schemelist.Scheme;
                 $scope.FundCategoryDebt = response.data.response.data.Schemelist.Scheme;
 
             },
@@ -126,6 +117,8 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             // OnSuccess function
             function (response) {
                 HideLoader();
+              
+               // $localStorage.LSFundsDetailsData = response.data.response.data;
                 $rootScope.FundsDetailsData = response.data.response.data;
                 $scope.Return_3Mon = $scope.FundsDetailsData.Schemelist.Scheme.Return_3Mon;
                 $scope.Return_6Mon = $scope.FundsDetailsData.Schemelist.Scheme.Return_6Mon;
@@ -178,6 +171,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             // OnSuccess function
             function (response) {
                 HideLoader();
+                $localStorage.LSFundAssetAllocation = response.data.response.data.Schemelist.Scheme;
                 $rootScope.FundAssetAllocation = response.data.response.data.Schemelist.Scheme;
             },
             // OnFailure function
@@ -192,6 +186,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             // OnSuccess function
             function (response) {
                 HideLoader();
+                $localStorage.LSFundTopHolding = response.data.response.data.Schemelist.Scheme;
                 $rootScope.FundTopHolding = response.data.response.data.Schemelist.Scheme;
             },
             // OnFailure function
@@ -202,6 +197,98 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                 $scope.error = true;
             });
         }
+    }
+
+    if ($localStorage.LoginStatus)
+    {
+        if ($localStorage.CurrentStatusOfPage == "MutualfundsLumpSum")
+        {
+            if( $localStorage.LSStatus)
+            {
+                
+                $rootScope.FundTopHolding = $localStorage.LSFundTopHolding;
+                $rootScope.FundAssetAllocation = $localStorage.LSFundAssetAllocation;
+                $scope.FundsList = $localStorage.LSFundsList;
+          
+
+                $scope.FundCategoryDebt = $localStorage.LSFundCategoryDebt;
+                $scope.FundCategoryHybrid = $localStorage.LSFundCategoryHybrid;
+                $scope.FundCategoryEQUITY = $localStorage.LSFundCategoryEQUITY;
+                $scope.FundsHouse = $localStorage.LSFundsHouse;
+
+                
+            }
+        }
+        else {
+            $scope.OnloadFunction();
+        }
+        $rootScope.LoginStatus = $localStorage.LoginStatus;
+        $rootScope.UserDetails = $localStorage.UserDetails;
+    }
+    else {
+        $scope.OnloadFunction();
+    }
+  
+    $scope.InvestorFundaConfMessage = function (Header, Content) {
+        $rootScope.MessageHeader = Header;
+        $rootScope.MessageContent = Content;
+        $mdDialog.show({
+            controller: InvestorfundaMessageDetails,
+            templateUrl: '../../../Webform/Common/Popup/ConfirmationPopup.html',
+            parent: angular.element(document.body),
+            clickOutsideToClose: true,
+            fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+        });
+    };
+
+    function InvestorfundaMessageDetails($scope, $mdDialog) {
+        $scope.InvestorFundaMsg = {
+            MessageContent: "",
+            Header: ""
+        };
+        $scope.InvestorFundaMsg.MessageContent = $rootScope.MessageContent;
+        $scope.InvestorFundaMsg.Header = $rootScope.MessageHeader;
+
+        $scope.hide = function () {
+            $mdDialog.hide();
+        };
+
+        $scope.cancel = function () {
+            $localStorage.CurrentStatusOfPage = "";
+            $mdDialog.cancel();
+        };
+
+        $scope.answer = function (answer) {
+            $mdDialog.hide(answer);
+        };
+    };
+    $scope.Return_3Mon = 0;
+    $scope.Return_6Mon = 0;
+    $scope.Return_1Yr = 0;
+    $scope.Return_3Yr = 0;
+    $scope.Return_5Yr = 0;
+
+        //Onload Loader
+   
+    //$scope.Timer = $interval(function () {
+    //    SchemeLimitTo = SchemeLimitTo + 5;
+    //}, 1000);
+   
+    $scope.CheckFundsListExists=function()
+    {
+        if ($('tr').find('td').length == 1)
+        {
+            $scope.FundsListShowMore = true;
+        }
+        else {
+            $scope.FundsListShowMore = false;
+        }
+    }
+
+    
+        
+   
+
         $scope.ShowMore=function()
         {
             $scope.SchemeLimitTo =$scope.SchemeLimitTo+ 15;
@@ -502,5 +589,26 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         $scope.ApplyFilterOnFundsList();
     }
     
+    $scope.InvestLumpsum = function (SchemeCode) {
+
+        if ($localStorage.MutualFundsState)
+        {
+            $scope.InvestorFundaConfMessage("Confirmation of Proceed", "Do you realy want to proceed for Scheme");
+        }
+        else {
+            $localStorage.CurrentSchemeCode = SchemeCode;
+            $localStorage.CurrentStatusOfPage = "MutualfundsLumpSum";
+            $state.go('Authentication', { From: 'Mutualfunds' });
+        }
+        
+    };
+
+
+
+    //Confirmation Popup
+    if ($localStorage.CurrentStatusOfPage == "MutualfundsLumpSum") {
+        
+        $scope.InvestLumpsum($localStorage.CurrentSchemeCode);
+    }
 }]);
 
