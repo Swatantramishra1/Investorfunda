@@ -249,12 +249,12 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             $localStorage.CurrentSchemeCode = "";
             $localStorage.SchemeAmount = "";
             $scope.InvestmentList = {};
-            window.location = "../../../Webform/User/dist/index.html"
-            if (answer.UserRegistrationResult.ResponseCode == "0") {
-
+            //window.location = "../../../Webform/User/dist/index.html"
+            if (answer.CreateUsersPlanResult.ResponseCode == "0") {
+                window.location = answer.CreateUsersPlanResult.ResponseMessage;
             }
 
-            $scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
+            //$scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
 
 
         },
