@@ -1,3 +1,4 @@
+/// <reference path="../views/popup/TableListPopup.html" />
 /// <reference path="../../../../Script/Service/Common.srvc.js" />
 /// <reference path="../../../../Index.html" />
 /// <reference path="../../../../DesignContent/Plugins/Script/Angular/ngStorage.js" />
@@ -77,7 +78,8 @@
             templateUrl: "views/pages/404.html"
         }).otherwise({
             redirectTo: "/404"
-        }), $routeProvider.when("/dashboard", {
+        }),
+        $routeProvider.when("/dashboard", {
             templateUrl: "views/dashboard.html",
             resolve: {
                 deps: ["$ocLazyLoad", function (a) {
@@ -93,7 +95,8 @@
                     })
                 }]
             }
-        }), $routeProvider.when("/email/inbox", {
+        })
+        , $routeProvider.when("/email/inbox", {
             templateUrl: "views/email/inbox.html",
             resolve: {
                 deps: ["$ocLazyLoad", function (a) {
@@ -508,6 +511,27 @@
                     return deferObject.promise;
                 }
             }
+            var GetCartListDetails = {
+
+                getPromise: function (UserId) {
+                    var promise = $http.get(API_GetAllCartListDetails + UserId),
+                          deferObject = deferObject || $q.defer();
+
+                    promise.then(
+                      // OnSuccess function
+                      function (answer) {
+                          // This code will only run if we have a successful promise.
+                          deferObject.resolve(answer);
+                      },
+                      // OnFailure function
+                      function (reason) {
+                          // This code will only run if we have a failed promise.
+                          deferObject.reject(reason);
+                      });
+
+                    return deferObject.promise;
+                }
+            }
             return {
                 GetCountryDetails: GetCountryDetails,
                 GetStateDetails: GetStateDetails,
@@ -516,7 +540,8 @@
                 GetSourceOfWealth: GetSourceOfWealth,
                 HoldingNature: HoldingNature,
                 GetUserDetailsInfo: GetUserDetailsInfo,
-                GetAllListDetails: GetAllListDetails
+                GetAllListDetails: GetAllListDetails,
+                GetCartListDetails: GetCartListDetails
 
             };
 
@@ -596,12 +621,99 @@
             }
 
         }])
-        .controller("HeadCtrl", ["$scope", "Fullscreen", "CommonSrvc", function ($scope, Fullscreen, CommonSrvc) {
+        .controller("HeadCtrl", ["$scope", "Fullscreen", "CommonSrvc", "$localStorage", "$mdDialog", function ($scope, Fullscreen, CommonSrvc, $localStorage, $mdDialog) {
             $scope.toggleFloatingSidebar = function () {
                 $scope.floatingSidebar = $scope.floatingSidebar ? !1 : !0, console.log("floating-sidebar: " + $scope.floatingSidebar)
             }, $scope.goFullScreen = function () {
                 Fullscreen.isEnabled() ? Fullscreen.cancel() : Fullscreen.all()
+            };
+            var UserDetailsPromis = CommonSrvc.GetUserDetailsInfo.getPromise($localStorage.UserDetails.LoginID);
+            UserDetailsPromis.then(
+            // OnSuccess function
+            function (answer) {
+
+                if (answer.data.GetUserProfileDetailsInfoResult.ResponseCode == 0) {
+                    $scope.UserDetailInfo = answer.data.GetUserProfileDetailsInfoResult.Result;
+                    $scope.CartNotificationTotal = parseInt($scope.UserDetailInfo.UserProfileData.AddedCartCount) + parseInt($scope.UserDetailInfo.UserProfileData.AddedFavCount);
+                    $scope.CartNotificationScheme = $scope.UserDetailInfo.UserProfileData.AddedCartCount;
+                    $scope.CartNotificationFavorite = $scope.UserDetailInfo.UserProfileData.AddedFavCount;
+
+                }
+                else {
+                    $scope.ErrorMessage = answer.data.GetUserProfileDetailsInfoResult.ResponseMessage;
+                }
+
+            },
+            // OnFailure function
+            function (reason) {
+                HideLoader();
+                $scope.ErrorMessage = answer.data.GetLoginResult.ResponseMessage;
+                //$scope.somethingWrong = reason;
+                //$scope.error = true;
             }
+          )
+            $scope.ShowListOfCart = function () {
+             
+                $mdDialog.show({
+                    controller: TableListDetails,
+                    templateUrl: '../dist/views/popup/TableListPopup.html',
+                    parent: angular.element(document.body),
+                    clickOutsideToClose: true
+                    // Only for -xs, -sm breakpoints.
+                });
+            };
+
+            function TableListDetails($scope, $mdDialog) {
+                $scope.InvestorFundaMsg = {
+                    MessageContent: "",
+                    Header: ""
+                };
+                $scope.InvestorFundaMsg.Header = "List of Cart";
+               
+                var UserCartDetails = CommonSrvc.GetCartListDetails.getPromise($localStorage.UserDetails.LoginID);
+                UserCartDetails.then(
+                // OnSuccess function
+                function (answer) {
+
+                    if (answer.data.GetInvestmentPlanCartResult.ResponseCode == 0) {
+                        $scope.UserCartDetailInfo = answer.data.GetInvestmentPlanCartResult.Result;
+
+
+                    }
+                    else {
+                        $scope.ErrorMessage = answer.data.GetInvestmentPlanCartResult.ResponseMessage;
+                    }
+
+                },
+                // OnFailure function
+                function (reason) {
+                    HideLoader();
+                    $scope.ErrorMessage = answer.data.GetLoginResult.ResponseMessage;
+                    //$scope.somethingWrong = reason;
+                    //$scope.error = true;
+                }
+              )
+                $scope.hide = function () {
+                    $mdDialog.hide();
+                };
+
+                $scope.cancel = function () {
+                    $localStorage.CurrentStatusOfPage = "";
+                    $mdDialog.cancel();
+                };
+
+                $scope.ClickToProcedNextStep = function () {
+                    $rootScope.InsertPlanForMutuals();
+                }
+                $scope.answer = function (answer) {
+                    $mdDialog.hide(answer);
+                };
+            };
+           
+            //$scope.CartNotificationTotal = parseInt($localStorage.UserDetailInfoDetails.UserProfileData.AddedCartCount) + parseInt($localStorage.UserDetailInfoDetails.UserProfileData.AddedFavCount);
+
+
+
         }])
         .controller("DashboardCtrl", ["$scope", "CommonSrvc", function ($scope, CommonSrvc) {
             $scope.analyticsconfig = {
@@ -902,22 +1014,14 @@
                 UserDetailsPromis.then(
                 // OnSuccess function
                 function (answer) {
-                    //$scope.Holding_NaturedATA = {};
-                    //$scope.SourceOfWealth = {};
-                    //$scope.TaxStatus = {};
-                    ////$scope.ContryList = {};
-                    ////$scope.StateList = {};
-                    ////$scope.CityListVal = {};
-                    //$scope.Bank_Name = {};
-                    //$scope.AccountType = {};
-                    //$scope.RelationshipStatus = {};
-                    //$scope.NomineeStatus = {};
-
+               
                     if (answer.data.GetUserProfileDetailsInfoResult.ResponseCode == 0) {
+                        
                         
                         $scope.UserDetailInfo = answer.data.GetUserProfileDetailsInfoResult.Result;
                         $scope.UserDetailInfo.UserProfileData.DateOfBirth = new Date($scope.UserDetailInfo.UserProfileData.DateOfBirth);
-
+                        document.getElementById("CartNotificationTotal").innerText=parseInt($scope.UserDetailInfo.UserProfileData.AddedCartCount) + parseInt($scope.UserDetailInfo.UserProfileData.AddedFavCount);
+                        
 
                     }
                     else {

@@ -1801,7 +1801,8 @@
                         "Debt": $rootScope.Portfolio_Parameter.Debt,
                         "EstimatedTotalSIPAmt": $rootScope.Portfolio_Parameter.TotalMonthlyInvestment,
                         "Scheme_IDs": "1,2,3"
-                    }
+                    },
+                    "InvestmentList": []
                 };
                 $localStorage.CurrentStatusOfPage = "ChildPlan";
                 $state.go('Authentication', { From: 'ChildPlan' });

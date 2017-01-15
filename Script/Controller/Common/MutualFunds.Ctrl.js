@@ -14,6 +14,33 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         $state.go('Index');
     };
     var ListEx = {};
+    $scope.InvestmentList = [];
+    $localStorage.POstJson = {
+        "User_ID": "",
+        "userPlan": {
+            "MasterPlan_ID": '6',
+            "Goal": "",
+            "CurrentAge": "",
+            "CourseTime": "",
+            "CourseDuration": "",
+            "CourseFeePerYear": "",
+            "LivingCostPerYear": "",
+            "SavedAmount_Lumpsum": "",
+            "InflationRate": "",
+            "TotalCourseFees": "",
+            "TotalLivingExpanses": "",
+            "TotalAmount": "",
+            "TotalLumpsumAmount": "",
+            "EstimatedInflationRate": ""
+        },
+        "userPortfolio": {
+            "Equity": "",
+            "Debt": "",
+            "EstimatedTotalSIPAmt": "",
+            "Scheme_IDs": ""
+        },
+   "InvestmentList":$scope.InvestmentList
+    }
     $localStorage.tempData = {};
     $scope.SchemeLimitTo = 15;
     $scope.GetFundList = function (AmcCode, CategoryCode, SchemeOption) {
@@ -198,7 +225,49 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             });
         }
     }
+    $rootScope.InsertPlanForMutuals=function()
+    {
+        //alert($localStorage.CurrentSchemeCode)
+        ShowLoader();
+        $scope.InvestmentList.push({
+            "ISIN": "INF204K01562",
+            "BSESchemeCode": $localStorage.CurrentSchemeCode,
+            "SchemeName": "RELIANCE TOP 200 FUND - GROWTH PLAN - GROWTH",
+            "Amount": $localStorage.SchemeAmount,
+            "DateString": "",
+            "Scheme_ID": "5167",
+            "InvestmentType": "LUMPSUM",
+            "DueDate": "02/10/2000"
+        })
+        $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
 
+        var CreateUserList = FundsService.CreatePlan.PostPromise($localStorage.POstJson);
+        CreateUserList.then(
+        // OnSuccess function
+        function (answer) {
+            HideLoader();
+            $localStorage.CurrentSchemeCode = "";
+            $localStorage.SchemeAmount = "";
+            $scope.InvestmentList = {};
+            window.location = "../../../Webform/User/dist/index.html"
+            if (answer.UserRegistrationResult.ResponseCode == "0") {
+
+            }
+
+            $scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
+
+
+        },
+        // OnFailure function
+        function (reason) {
+            HideLoader();
+            $scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
+            //$scope.somethingWrong = reason;
+            //$scope.error = true;
+        }
+      )
+        $mdDialog.hide();
+    }
     if ($localStorage.LoginStatus)
     {
         if ($localStorage.CurrentStatusOfPage == "MutualfundsLumpSum")
@@ -258,6 +327,10 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             $mdDialog.cancel();
         };
 
+        $scope.ClickToProcedNextStep=function()
+        {
+            $rootScope.InsertPlanForMutuals();
+        }
         $scope.answer = function (answer) {
             $mdDialog.hide(answer);
         };
@@ -589,21 +662,37 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         $scope.ApplyFilterOnFundsList();
     }
     
-    $scope.InvestLumpsum = function (SchemeCode) {
-
-        if ($localStorage.MutualFundsState)
+    $scope.InvestLumpsum = function (SchemeCode,Page) {
+        if (document.getElementById(SchemeCode + "Amount").value != "" || ($localStorage.SchemeAmount != undefined && $localStorage.SchemeAmount !=""))
         {
-            $scope.InvestorFundaConfMessage("Confirmation of Proceed", "Do you realy want to proceed for Scheme");
+            if (Page != undefined)
+            {
+                $localStorage.SchemeAmount = document.getElementById(SchemeCode + "Amount").value;
+            }
+            else {
+                document.getElementById(SchemeCode + "Amount").value=$localStorage.SchemeAmount;
+            }
+          
+            if ($localStorage.MutualFundsState) {
+                $scope.InvestorFundaConfMessage("Confirmation of Proceed", "Do you realy want to proceed for Scheme");
+            }
+            else {
+                $localStorage.CurrentSchemeCode = SchemeCode;
+                $localStorage.CurrentStatusOfPage = "MutualfundsLumpSum";
+                $state.go('Authentication', { From: 'Mutualfunds' });
+            }
         }
         else {
-            $localStorage.CurrentSchemeCode = SchemeCode;
-            $localStorage.CurrentStatusOfPage = "MutualfundsLumpSum";
-            $state.go('Authentication', { From: 'Mutualfunds' });
+            alert("Please insert value")
         }
+      
         
     };
 
-
+    $scope.ChangeAmount=function(ID)
+    {
+        alert(ID)
+    }
 
     //Confirmation Popup
     if ($localStorage.CurrentStatusOfPage == "MutualfundsLumpSum") {

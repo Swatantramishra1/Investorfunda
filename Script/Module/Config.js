@@ -28,6 +28,7 @@ var API_HoldingNature = ServerName + Service_Common + 'HoldingNature';
 var API_GetUserDetailsInfo = ServerName + Service_Common + 'GetUserProfileDetailsInfo/';
 var API_GetAllListDetails = ServerName + Service_Common + 'GetAllListDetails';
 var API_Post_CreateUsersPlan = ServerName + Service_Common + 'CreateUsersPlan';
+var API_GetAllCartListDetails = ServerName + Service_Common + 'GetInvestmentPlanCart/';
 
 
 //Other API Service
