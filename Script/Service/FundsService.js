@@ -172,7 +172,7 @@ app.service('FundsService', ['$http', '$q', function ($http, $q) {
                 url: API_Post_CreateUsersPlan,
                 dataType: 'json',
                 type: 'post',
-                contentType: 'application/json',
+                contentType: 'application/json; charset=utf-8',
                 data: JSON.stringify(PostData),
                 processData: false,
                 async: false,
