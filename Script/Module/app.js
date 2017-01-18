@@ -51,7 +51,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     }).state('Retirement', {
         url: "/Retirement",
         templateUrl: "../../Webform/Common/SIP/SIP_RetirementGoal.html",
-        controller: "Retirement_SIP.Ctrl"
+        controller: "SIP.Ctrl"
     }).state('HousePlan', {
         url: "/HousePlan",
         templateUrl: "../../Webform/Common/SIP/SIP_BuyHouse.html",
