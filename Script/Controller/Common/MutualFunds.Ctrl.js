@@ -137,6 +137,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                 $scope.somethingWrong = reason;
                 $scope.error = true;
             });
+            HideLoader();
         }
         else {
             var getDetailsOfMutualFunds = FundsService.FundsDetails.getPromise($localStorage.Scheme_ID);
@@ -224,6 +225,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                 $scope.error = true;
             });
         }
+        HideLoader();
     }
     $rootScope.InsertPlanForMutuals=function()
     {
@@ -662,8 +664,16 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         $scope.ApplyFilterOnFundsList();
     }
     
-    $scope.InvestLumpsum = function (SchemeCode,Page) {
-        if (document.getElementById(SchemeCode + "Amount").value != "" || ($localStorage.SchemeAmount != undefined && $localStorage.SchemeAmount !=""))
+    $scope.InvestLumpsum = function (SchemeCode, Page) {
+        var tesmp = "";
+        if (document.getElementById(SchemeCode + "Amount").value != null)
+        {
+            tesmp = document.getElementById(SchemeCode + "Amount").value
+        }
+        else {
+            tesmp = "";
+        }
+        if (tesmp  !="" || ($localStorage.SchemeAmount != undefined && $localStorage.SchemeAmount !=""))
         {
             if (Page != undefined)
             {
@@ -696,8 +706,14 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
 
     //Confirmation Popup
     if ($localStorage.CurrentStatusOfPage == "MutualfundsLumpSum") {
+        if ($localStorage.CurrentSchemeCode != "")
+        {
+            $scope.InvestLumpsum($localStorage.CurrentSchemeCode);
+        }
+        else {
+            $scope.OnloadFunction();
+        }
         
-        $scope.InvestLumpsum($localStorage.CurrentSchemeCode);
     }
 }]);
 
