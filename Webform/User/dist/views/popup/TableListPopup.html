@@ -28,7 +28,9 @@
                                         <th>Sr</th>
                                         <th class="col-sm-5">Scheme Name</th>
                                         <th class="col-sm-1">Amount</th>
-                                        <th>Select</th>
+                                        
+                                        <th>Payment Status</th>
+                                        <th>Proceed For Payment</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -38,9 +40,11 @@
                                         <td>
                                             {{List.Amount}}
                                         </td>
-                                        <td><input type="checkbox" /></td>
+                                      
+                                        <td><a href="" ng-click="getPaymentStatus(List.BSEOrderCode)">Get Payment Status</a> </td>
+                                        <td><a href="" ng-click="getPaymentstring()">Proceed For Payment</a></td>
                                     </tr>
-
+                                    <tr style="background-color:#EDF8FE"><td colspan="6">{{PaymentStatus}}</td></tr>
                                 </tbody>
                             </table>
                         </div>

@@ -45,8 +45,17 @@
 			</div>
 			<div class="panel-body">
 				<ul class="list-unstyled">
+                    <li class="clearfix">
+                        <a href ng-click="ShowListOfCart('InvestmentList')">
+                            <span class="ion ion-android-favorite left bg-danger"></span>
+                            <div class="desc">
+                                <strong>Investment List</strong>
+                                <p class="small text-muted">{{InvestNotificationScheme}} </p>
+                            </div>
+                        </a>
+                    </li>
 					<li class="clearfix">
-						<a href ng-click="ShowListOfCart()">
+						<a href ng-click="ShowListOfCart('Lumpsumcart')">
 							<span class="ion ion-social-hackernews-outline left bg-success"></span>
 							<div class="desc">
 								<strong>Cart Scheme</strong>
@@ -55,7 +64,7 @@
 						</a>
 					</li>
 					<li class="clearfix">
-						<a href>
+						<a href ng-click="ShowListOfCart('favoritecart')">
 							<span class="ion ion-android-favorite left bg-danger"></span>
 							<div class="desc">
 								<strong>Favorite Schem</strong>

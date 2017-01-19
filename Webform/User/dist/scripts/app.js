@@ -532,6 +532,48 @@
                     return deferObject.promise;
                 }
             }
+            var GetUserPaymentStatus = {
+
+                getPromise: function (BSECode,UserId) {
+                    var promise = $http.get(API_GetUserPaymentStatus + BSECode +"/" + UserId),
+                          deferObject = deferObject || $q.defer();
+
+                    promise.then(
+                      // OnSuccess function
+                      function (answer) {
+                          // This code will only run if we have a successful promise.
+                          deferObject.resolve(answer);
+                      },
+                      // OnFailure function
+                      function (reason) {
+                          // This code will only run if we have a failed promise.
+                          deferObject.reject(reason);
+                      });
+
+                    return deferObject.promise;
+                }
+            }
+            var GetUserPaymentString = {
+
+                getPromise: function (UserId) {
+                    var promise = $http.get(API_GetUserPaymentString + UserId),
+                          deferObject = deferObject || $q.defer();
+
+                    promise.then(
+                      // OnSuccess function
+                      function (answer) {
+                          // This code will only run if we have a successful promise.
+                          deferObject.resolve(answer);
+                      },
+                      // OnFailure function
+                      function (reason) {
+                          // This code will only run if we have a failed promise.
+                          deferObject.reject(reason);
+                      });
+
+                    return deferObject.promise;
+                }
+            }
             return {
                 GetCountryDetails: GetCountryDetails,
                 GetStateDetails: GetStateDetails,
@@ -541,7 +583,9 @@
                 HoldingNature: HoldingNature,
                 GetUserDetailsInfo: GetUserDetailsInfo,
                 GetAllListDetails: GetAllListDetails,
-                GetCartListDetails: GetCartListDetails
+                GetCartListDetails: GetCartListDetails,
+                GetUserPaymentStatus: GetUserPaymentStatus,
+                GetUserPaymentString: GetUserPaymentString
 
             };
 
@@ -634,9 +678,10 @@
 
                 if (answer.data.GetUserProfileDetailsInfoResult.ResponseCode == 0) {
                     $scope.UserDetailInfo = answer.data.GetUserProfileDetailsInfoResult.Result;
-                    $scope.CartNotificationTotal = parseInt($scope.UserDetailInfo.UserProfileData.AddedCartCount) + parseInt($scope.UserDetailInfo.UserProfileData.AddedFavCount);
+                    $scope.CartNotificationTotal = parseInt($scope.UserDetailInfo.UserProfileData.AddedCartCount) + parseInt($scope.UserDetailInfo.UserProfileData.AddedFavCount) + parseInt($scope.UserDetailInfo.UserProfileData.AddedInvestment);
                     $scope.CartNotificationScheme = $scope.UserDetailInfo.UserProfileData.AddedCartCount;
                     $scope.CartNotificationFavorite = $scope.UserDetailInfo.UserProfileData.AddedFavCount;
+                    $scope.InvestNotificationScheme = $scope.UserDetailInfo.UserProfileData.AddedInvestment;
 
                 }
                 else {
@@ -652,8 +697,9 @@
                 //$scope.error = true;
             }
           )
-            $scope.ShowListOfCart = function () {
+            $scope.ShowListOfCart = function (From) {
              
+                $localStorage.FromList = From;
                 $mdDialog.show({
                     controller: TableListDetails,
                     templateUrl: '../dist/views/popup/TableListPopup.html',
@@ -669,14 +715,78 @@
                     Header: ""
                 };
                 $scope.InvestorFundaMsg.Header = "List of Cart";
-               
+                $scope.getPaymentStatus=function(BSECode)
+                {
+                    var GetUserPaymentStatus = CommonSrvc.GetUserPaymentStatus.getPromise(BSECode, $localStorage.UserDetails.LoginID);
+                    GetUserPaymentStatus.then(
+              // OnSuccess function
+              function (answer) {
+
+                  if (answer.data.GetUserPaymentStatusResult.ResponseCode == 0) {
+                   
+
+                      $scope.PaymentStatus = answer.data.GetUserPaymentStatusResult.ResponseMessage;
+
+                  }
+                  else {
+                      $scope.ErrorMessage = answer.data.GetUserPaymentStatusResult.ResponseMessage;
+                  }
+
+              },
+              // OnFailure function
+              function (reason) {
+                  HideLoader();
+                  $scope.ErrorMessage = answer.data.GetLoginResult.ResponseMessage;
+                  //$scope.somethingWrong = reason;
+                  //$scope.error = true;
+              }
+            )
+                }
+
+                $scope.getPaymentstring = function () {
+                    var GetUserPaymentString = CommonSrvc.GetUserPaymentString.getPromise($localStorage.UserDetails.LoginID);
+                    GetUserPaymentString.then(
+              // OnSuccess function
+              function (answer) {
+
+                  if (answer.data.GetUserPaymentStringResult.ResponseCode == 0) {
+
+                      window.location = answer.data.GetUserPaymentStringResult.ResponseMessage
+                      
+
+                  }
+                  else {
+                      $scope.ErrorMessage = answer.data.GetUserPaymentStringResult.ResponseMessage;
+                  }
+
+              },
+              // OnFailure function
+              function (reason) {
+                  HideLoader();
+                  $scope.ErrorMessage = answer.data.GetLoginResult.ResponseMessage;
+                  //$scope.somethingWrong = reason;
+                  //$scope.error = true;
+              }
+            )
+                }
+
+                
                 var UserCartDetails = CommonSrvc.GetCartListDetails.getPromise($localStorage.UserDetails.LoginID);
                 UserCartDetails.then(
                 // OnSuccess function
                 function (answer) {
 
                     if (answer.data.GetInvestmentPlanCartResult.ResponseCode == 0) {
-                        $scope.UserCartDetailInfo = answer.data.GetInvestmentPlanCartResult.Result;
+                        if ($localStorage.FromList == "InvestmentList") {
+                            $scope.UserCartDetailInfo = answer.data.GetInvestmentPlanCartResult.Result.InvestmentLumpsumList;
+                        }
+                        else if ($localStorage.FromList == "Lumpsumcart") {
+                            $scope.UserCartDetailInfo = answer.data.GetInvestmentPlanCartResult.Result.InvestmentLumpsumCartList;
+                        }
+                        else if ($localStorage.FromList == "favoritecart") {
+                            $scope.UserCartDetailInfo = answer.data.GetInvestmentPlanCartResult.Result.InvestmentFavouriteList;
+                        }
+                      
 
 
                     }
@@ -693,6 +803,9 @@
                     //$scope.error = true;
                 }
               )
+
+               
+
                 $scope.hide = function () {
                     $mdDialog.hide();
                 };
@@ -708,6 +821,9 @@
                 $scope.answer = function (answer) {
                     $mdDialog.hide(answer);
                 };
+
+
+
             };
            
             //$scope.CartNotificationTotal = parseInt($localStorage.UserDetailInfoDetails.UserProfileData.AddedCartCount) + parseInt($localStorage.UserDetailInfoDetails.UserProfileData.AddedFavCount);
