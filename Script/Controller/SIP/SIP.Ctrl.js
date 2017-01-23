@@ -1732,7 +1732,7 @@
     };
     $scope.Portfolio_Final = function () {
       
-        $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation($rootScope.Portfolio_Parameter.EstematedYear, $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
+        $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation($rootScope.Portfolio_Parameter.EstematedYear, $rootScope.Portfolio_Parameter.TotalMonthlyInvestment, undefined, "ChildGoal");
         $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
         //if ($rootScope.Portfolio_Parameter.TotalMonthlyInvestment >= 2500)
         //{
