@@ -680,6 +680,8 @@
             EstematedYear: "",
             CalculatedTotalMoney:""
         };
+
+
     $scope.ShowDiv = function (Number) {
 
 
@@ -2265,7 +2267,7 @@
 
     }
 
-    $scope.Portfolio_Calculate = function () {
+    $scope.Portfolio_CalculateRetirement = function () {
         $scope.Retirement_Step1 = false;
         $scope.Retirement_Step2 = true;
 
