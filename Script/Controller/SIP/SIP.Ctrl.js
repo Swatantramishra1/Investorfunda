@@ -667,12 +667,12 @@
         {
             Portfolio_ID: "1",
             Portfolio_Name: "",
-            Portfolio_Year: "0",
+            Portfolio_Year: "",
             Portfolio_Duration: "",
             Portfolio_FeesPerYear: "",
-            Portfolio_LivingPerYear: "",
+            Portfolio_LivingPerYear: "0",
             Portfolio_LumpSumAmount: "",
-            Portfolio_ROInflation: "0",
+            Portfolio_ROInflation: "6",
             Portfolio_ChildCurrentAge: "",
             TotalCourseFee: "",
             TotalLivingExpensesFee: "",
@@ -1921,10 +1921,10 @@
 
             
             if (From == 'M') {
-                if (parseInt($rootScope.Portfolio_Parameter.TotalCourseFee) > 1000) {
+                if (parseInt($rootScope.Portfolio_Parameter.TotalMonthlyInvestment) > 1000) {
                     $rootScope.Portfolio_Parameter.TotalMonthlyInvestment = parseInt($rootScope.Portfolio_Parameter.TotalMonthlyInvestment) - 1000;
                     //$scope.Portfolio_Calculate("ChnageAmount");
-                    $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation($rootScope.Portfolio_Parameter.EstematedYear, $rootScope.Portfolio_Parameter.TotalMonthlyInvestment, $rootScope.Portfolio_Parameter.Risk);
+                    $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation($rootScope.Portfolio_Parameter.EstematedYear, $rootScope.Portfolio_Parameter.TotalMonthlyInvestment, $rootScope.Portfolio_Parameter.Risk, "ChildGoal");
                     $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
                     //$rootScope.Portfolio_Parameter.TotalMonthlyInvestment = $rootScope.Portfolio_Parameter.TotalMonthlyInvestment - 1000;
                     $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
@@ -1938,7 +1938,7 @@
             else {
                 $rootScope.Portfolio_Parameter.TotalMonthlyInvestment = parseInt($rootScope.Portfolio_Parameter.TotalMonthlyInvestment) + 1000;
                 //$scope.Portfolio_Calculate("ChnageAmount");
-                $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation($rootScope.Portfolio_Parameter.EstematedYear, $rootScope.Portfolio_Parameter.TotalMonthlyInvestment, $rootScope.Portfolio_Parameter.Risk);
+                $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation($rootScope.Portfolio_Parameter.EstematedYear, $rootScope.Portfolio_Parameter.TotalMonthlyInvestment, $rootScope.Portfolio_Parameter.Risk, "ChildGoal");
                 $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);
                 //$rootScope.Portfolio_Parameter.TotalMonthlyInvestment = $rootScope.Portfolio_Parameter.TotalMonthlyInvestment + 1000;
                 $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $rootScope.Portfolio_Parameter.TotalMonthlyInvestment);

@@ -21,11 +21,12 @@
                 <div class="col-md-12">
                     <div class="panel panel-default mb20 panel-hovered project-stats table-responsive">
                         <div class="panel-heading" style="color:#1852A2;font-size:16px">Added List of cart</div>
-                        <div class="investment_body">
-                            <table class="table-bordered" style="width:100%">
+                        <div class="investment_body" style="margin-bottom:100px;height:250px">
+                            <table class="table-bordered" style="width:100%;">
                                 <thead>
                                     <tr style="background-color:#F5F5F5">
                                         <th>Sr</th>
+                                        <th>Folio No</th>
                                         <th class="col-sm-5">Scheme Name</th>
                                         <th class="col-sm-1">Amount</th>
                                         
@@ -36,6 +37,7 @@
                                 <tbody>
                                     <tr style="background-color:#EDF8FE" ng-repeat="List in UserCartDetailInfo">
                                         <td>{{$index+1}}</td>
+                                        <td>{{List.FolioNo}}</td>
                                         <td>{{List.SchemeName}}</td>
                                         <td>
                                             {{List.Amount}}

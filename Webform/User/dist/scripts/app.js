@@ -787,7 +787,10 @@
                             $scope.UserCartDetailInfo = answer.data.GetInvestmentPlanCartResult.Result.InvestmentFavouriteList;
                         }
                       
-
+                        for(var a=0;a<$scope.UserCartDetailInfo.length;a++)
+                        {
+                            $scope.UserCartDetailInfo[a].FolioNo = "7084" + a;
+                        }
 
                     }
                     else {
