@@ -1,10 +1,10 @@
 ﻿// Host Name & Urls
 
 //For Locals
-//var ServerName = "http://localhost:51176/Service/";
+var ServerName = "http://localhost:51176/Service/";
 
 //For Hosting
-var ServerName = "http://ifserviceapi.azurewebsites.net/Service/";
+//var ServerName = "http://ifserviceapi.azurewebsites.net/Service/";
 
 
 

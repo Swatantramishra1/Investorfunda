@@ -240,6 +240,11 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             "Scheme_ID": "5167",
             "InvestmentType": "LUMPSUM",
             "DueDate": "02/10/2000"
+
+                            
+
+
+                           
         })
         $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
 

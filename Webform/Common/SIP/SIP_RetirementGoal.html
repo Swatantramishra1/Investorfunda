@@ -76,6 +76,10 @@
                         </div>
                     </div>
                     <md-input-container class="md-block" style="margin-top:30px">
+                        <label> Your current monthly expenditure?  </label>
+                        <input ng-model="Portfolio_Parameter.Portfolio_MonthlyExpenditure">
+                    </md-input-container>
+                    <md-input-container class="md-block" style="margin-top:30px">
                         <label> Estimated annual inflation rate from now </label>
                         <input ng-model="Portfolio_Parameter.Portfolio_InflationRate">
                     </md-input-container>
@@ -86,7 +90,7 @@
                             Your investment of <span><img src="../../../images/red-rupee-icon.png" style="width:22px;margin-bottom: 0px;"></span>
                             <span class="red-text" id="amount-poc"> {{Portfolio_Parameter.TotalInvestedMoneyByUser}}/-</span>
                             at rate of interest of <span class="red-text" id="rate-poc">
-                           {{Portfolio_Parameter.Portfolio_ROInflation }}% </span>after 
+                           {{Portfolio_Parameter.Portfolio_InflationRate }}% </span>after 
                            <span class="red-text" id="term-poc">{{Portfolio_Parameter.EstematedYear}} Years </span> will grow to -
                         </div>
                         <div class="col-md-12 size-large text-success">
@@ -179,7 +183,7 @@
                                         <table class="table table-striped " style="text-align:center;font-size:16px">
                                             <tr ng-repeat="List in sampleStructure">
                                                 <td>
-                                                    {{List.Date}}-Jan-2017
+                                                    {{List.DueDate}}-Jan-2017
                                                 </td>
 
                                                 <td>{{List.SchemeName}}</td>
