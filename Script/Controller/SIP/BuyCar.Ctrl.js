@@ -2,7 +2,7 @@
     function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsService) {
         $scope.BuyCar_Step1 = true;
 
-        function CalculateAmount(AchieveGoal, exp_irate, TimePeriod) {
+        function CalculateCarAmount(AchieveGoal, exp_irate, TimePeriod) {
             var graphTwo = Number(AchieveGoal) * Math.pow((1 + Number(exp_irate) / 100), Number(TimePeriod));
             var multiplier = 1;
             var rog = 9;
@@ -176,7 +176,7 @@
             $scope.BuyCar_Step1 = false;
             $scope.BuyCar_Step2 = true;
             var Year = ((Number($scope.Portfolio_Parameter.Portfolio_Year) * 12) + (Number($scope.Portfolio_Parameter.Portfolio_Month))) / 12;
-            CalculateAmount($scope.Portfolio_Parameter.Portfolio_GoalAmount, $scope.Portfolio_Parameter.Portfolio_ROInflation, parseInt(Year));
+            CalculateCarAmount($scope.Portfolio_Parameter.Portfolio_GoalAmount, $scope.Portfolio_Parameter.Portfolio_ROInflation, parseInt(Year));
 
         };
     }]);

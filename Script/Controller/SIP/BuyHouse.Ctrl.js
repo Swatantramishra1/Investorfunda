@@ -2,14 +2,14 @@
     function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsService) {
         $scope.BuyHouse_Step1 = true;
 
-        function CalculateAmount(AchieveGoal, exp_irate, TimePeriod) {
+        function CalculateBuyHouseAmount(AchieveGoal, exp_irate, TimePeriod) {
             var graphTwo = Number(AchieveGoal) * Math.pow((1 + Number(exp_irate) / 100), Number(TimePeriod));
             var multiplier = 1;
             var rog = 9;
             var future_cost = graphTwo.toFixed(0);
             var mInvst = future_cost * Number(rog / 100) / ((Math.pow((1 + Number(rog) / 100), (Number(TimePeriod))) - 1) * (1 + Number(rog) / 100));
-            $scope.Portfolio_Parameter.SIPAmount = parseInt(mInvst/12);
-            $scope.Portfolio_Parameter.TotalMoney = parseInt(mInvst);
+            $scope.Portfolio_Parameter.TotalMonthlyInvestment = parseInt(mInvst / 12);
+            $scope.Portfolio_Parameter.CalculatedTotalMoney = parseInt(mInvst);
         }
         $scope.PortFolio_InflationRate = {
             "Inflation": [{
@@ -176,7 +176,7 @@
             $scope.BuyHouse_Step1 = false;
             $scope.BuyHouse_Step2= true;
             var Year=((Number( $scope.Portfolio_Parameter.Portfolio_Year)*12)+(Number($scope.Portfolio_Parameter.Portfolio_Month)))/12;
-            CalculateAmount($scope.Portfolio_Parameter.Portfolio_GoalAmount, $scope.Portfolio_Parameter.Portfolio_ROInflation,parseInt( Year));
+            CalculateBuyHouseAmount($scope.Portfolio_Parameter.Portfolio_GoalAmount, $scope.Portfolio_Parameter.Portfolio_InflationRate, parseInt(Year));
            
         };
     }]);

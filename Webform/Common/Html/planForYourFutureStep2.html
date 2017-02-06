@@ -1,0 +1,106 @@
+﻿<div class="row" style="padding-bottom:10px;height:50px;">
+    <div class="col-lg-12">
+        <h1 style="color:#000000 !important;font-family:Arial;text-align:center">
+            Estimated cost of your goal after {{Portfolio_Parameter.EstematedYear}} years <span ng-show="Portfolio_Parameter.EstematedMonth !=''"> And {{Portfolio_Parameter.EstematedMonth}} Month</span>
+        </h1>
+    </div>
+
+</div>
+
+
+<div class="row">
+    <div class="col-xs-12 text-center">
+        <div class="col-xs-4">
+
+        </div>
+        <div class="col-xs-4">
+            <div class="Circular_div rounded-x">
+                <i class="fa fa-rupee"></i>  {{Portfolio_Parameter.CalculatedTotalMoney}}
+            </div>
+
+        </div>
+        <div class="col-xs-4"></div>
+
+    </div>
+    <div class="col-xs-12 " style="margin-top:20px">
+        <div class="col-xs-7" style="border:1px solid rgba(104, 104, 104, 0.60);height:250px;text-align:left;padding-top:20px;margin-bottom:20px" md-theme="default" >
+
+            <!-- Child Education -->
+            <md-input-container class="md-block" ng-show="showDataStep2.isShowDataChild" >
+                <label>{{showDataStep2.Name1}} :</label>
+                <input  value="{{Portfolio_Parameter.TotalCourseFee - Portfolio_Parameter.TotalLivingExpensesFee}}" disabled>
+            </md-input-container>
+
+            <md-input-container class="md-block" ng-show="showDataStep2.isShowDataChild">
+                <label>{{showDataStep2.Name2}} :</label>
+                <input  ng-model="Portfolio_Parameter.TotalLivingExpensesFee" disabled>
+            </md-input-container>
+
+            <md-input-container class="md-block" ng-show="showDataStep2.isShowDataChild">
+                <label>{{showDataStep2.Name3}} :</label>
+                <input  ng-model="Portfolio_Parameter.Portfolio_LumpSumAmount" disabled>
+            </md-input-container>
+
+            <!-- Retirement -->
+            <md-input-container class="md-block" ng-show="showDataStep2.isShowDataRetirement">
+                <label>{{showDataStep2.Name1}} :</label>                
+                <input  value="{{Portfolio_Parameter.Portfolio_CurrentAge}}" disabled>
+            </md-input-container>
+
+            <md-input-container class="md-block" ng-show="showDataStep2.isShowDataRetirement">
+                <label>{{showDataStep2.Name2}} :</label>
+                <input type="text"  value="{{SIP_RetireAge.value}}" disabled>
+            </md-input-container>
+
+            <md-input-container class="md-block" ng-show="showDataStep2.isShowDataRetirement">
+                <label>{{showDataStep2.Name3}} :</label>
+                <input  value="{{Portfolio_Parameter.Portfolio_MonthlyExpenditure}}" disabled>
+            </md-input-container>
+
+            <!-- Buy a House -->
+            <md-input-container class="md-block" ng-show="showDataStep2.isShowDataBuyHouse">
+                <label>{{showDataStep2.Name1}} :</label>
+                <input value="{{Portfolio_Parameter.Portfolio_Year}}" disabled>
+            </md-input-container>
+
+            <md-input-container class="md-block" ng-show="showDataStep2.isShowDataBuyHouse">
+                <label>{{showDataStep2.Name2}} :</label>
+                <input type="text" value="{{Portfolio_Parameter.Portfolio_Month}}" disabled>
+            </md-input-container>
+
+            <md-input-container class="md-block" ng-show="showDataStep2.isShowDataBuyHouse">
+                <label>{{showDataStep2.Name3}} :</label>
+                <input value="{{Portfolio_Parameter.Portfolio_GoalAmount}}" disabled>
+            </md-input-container>
+
+            <!-- Buy a Car -->
+            <md-input-container class="md-block" ng-show="showDataStep2.isShowDataBuyCar">
+                <label>{{showDataStep2.Name1}} :</label>
+                <input value="{{Portfolio_Parameter.Portfolio_Year}}" disabled>
+            </md-input-container>
+
+            <md-input-container class="md-block" ng-show="showDataStep2.isShowDataBuyCar">
+                <label>{{showDataStep2.Name2}} :</label>
+                <input type="text" value="{{Portfolio_Parameter.Portfolio_Month}}" disabled>
+            </md-input-container>
+
+            <md-input-container class="md-block" ng-show="showDataStep2.isShowDataBuyCar">
+                <label>{{showDataStep2.Name3}} :</label>
+                <input value="{{Portfolio_Parameter.Portfolio_GoalAmount}}" disabled>
+            </md-input-container>
+
+           
+        </div>
+        <div class="col-xs-5" style="text-align:left;padding-top:6%">
+            <md-input-container class="md-block">
+                <label>Estimated annual inflation rate from now(%)  </label>
+                <input ng-model="Portfolio_Parameter.Portfolio_InflationRate">
+            </md-input-container>
+        </div>
+    </div>
+
+    <div class="col-lg-12 text-right" >
+       
+        <md-button class="md-raised" ng-click="Portfolio_Final()">HELP ME ACHIEVE THIS</md-button>
+    </div>
+</div>

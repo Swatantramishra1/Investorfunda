@@ -184,7 +184,7 @@ function Chield_CalculatePortfolioAllocation(Year,Amount,Risk,From) {
             }
         }
 
-        else if (From == "Car") {
+        else if (From == "CarPlan") {
 
             if (Year <= 5) {
                 ReturnPer.Data = [{
@@ -231,6 +231,58 @@ function Chield_CalculatePortfolioAllocation(Year,Amount,Risk,From) {
                         Fund_BondFunds: 10,
                         Fund_LiquidCap: 10,
                         Fund_Gold: 20
+                    }]
+                }]
+            }
+        }
+
+        else if (From == "HousePlan") {
+
+            if (Year <= 5) {
+                ReturnPer.Data = [{
+                    Return_EquityPer: 60,
+                    Returm_DebtPer: 40,
+                    Fund: [{
+                        Fund_LargeCap: 40,
+                        Fund_MultiCap: 20,
+                        Fund_CreditOpportunity: 40
+                    }]
+
+                }]
+
+
+            }
+            else if (Year > 5 && Year <= 10) {
+                ReturnPer.Data = [{
+                    Return_EquityPer: 70,
+                    Returm_DebtPer: 30,
+                    Fund: [{
+                        Fund_LargeCap: 40,
+                        Fund_MultiCap: 30,
+                        Fund_CreditOpportunity: 30
+                    }]
+                }]
+
+            }
+            else if (Year > 10 && Year <= 15) {
+                ReturnPer.Data = [{
+                    Return_EquityPer: 75,
+                    Returm_DebtPer: 25,
+                    Fund: [{
+                        Fund_LargeCap: 45,
+                        Fund_MultiCap: 30,
+                        Fund_CreditOpportunity: 25
+                    }]
+                }]
+            }
+            else if (Year > 15 && Year <= 20) {
+                ReturnPer.Data = [{
+                    Return_EquityPer: 80,
+                    Returm_DebtPer: 20,
+                    Fund: [{
+                        Fund_LargeCap: 40,
+                        Fund_MultiCap: 40,
+                        Fund_CreditOpportunity: 20
                     }]
                 }]
             }

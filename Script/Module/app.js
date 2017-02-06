@@ -55,11 +55,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     }).state('HousePlan', {
         url: "/HousePlan",
         templateUrl: "../../Webform/Common/SIP/SIP_BuyHouse.html",
-        controller: "BuyHouse.Ctrl"
+        controller: "SIP.Ctrl"
     }).state('CarPlan', {
         url: "/CarPlan",
         templateUrl: "../../Webform/Common/SIP/SIP_BuyCar.html",
-        controller: "BuyCar.Ctrl"
+        controller: "SIP.Ctrl"
     }).state('ChildMerrage', {
         url: "/ChildMerrage",
         templateUrl: "../../Webform/Common/SIP/SIP_ChildMerrage.html",

@@ -9,12 +9,12 @@
 
 
 
-        <div class="col-md-12 margin-bottom-60">
-            <div class="col-md-5">
+        <div class="col-md-12 margin-bottom-60" ng-show="!SIP_GOAL_Final_SHOW">
+            <div class="col-md-5" ng-show="!BuyHouse_Step2">
                
                 <img src="http://www.99acres.com/microsite/articles/files/2016/07/family.jpeg" style="height:500px;width:100%" />
             </div>
-            <div class="col-md-7" style="text-align:left;padding-top:20px" md-theme="default">
+            <div ng-class="BuyHouse_Step2 ? 'col-md-12' : 'col-md-7'" style="text-align:left;padding-top:20px" md-theme="default">
                 <div class="col-md-12" style="padding:0px" ng-show="BuyHouse_Step1">
                     <md-input-container class="md-block">
                         <label>GIVE YOUR GOAL A NAME</label>
@@ -46,7 +46,7 @@
                     </md-input-container>
                     <md-input-container class="md-block">
                         <label>RATE OF INFLATION (%)</label>
-                        <md-select ng-model="Portfolio_Parameter.Portfolio_ROInflation">
+                        <md-select ng-model="Portfolio_Parameter.Portfolio_InflationRate">
                             <md-option value="0"><em>None</em></md-option>
                             <md-option ng-value="{{Inflation.Inflation_Percentage}}" ng-repeat="Inflation in PortFolio_InflationRate.Inflation">
                                 {{Inflation.Inflation_Percentage}} %
@@ -56,20 +56,9 @@
                     </md-input-container>
 
                 </div>
-                <div class="col-md-12" style="padding:0px" ng-show="BuyHouse_Step2">
-                    <div class="row margin-bottom-20" style="font-size:34px">
-                        <div class="col-md-12" style="color:black">
-                            Your investment of 
-                            <span class="red-text" id="amount-poc"><i class="fa fa-rupee"></i> {{Portfolio_Parameter.SIPAmount}}/-</span>
-                            at rate of interest of <span class="red-text" id="rate-poc">
-                                {{Portfolio_Parameter.Portfolio_ROInflation}}%
-                            </span>after
-                            <span class="red-text" id="term-poc">{{Portfolio_Parameter.Portfolio_Year}} Years {{Portfolio_Parameter.Portfolio_Month}} Month</span> will grow to -
-                        </div>
-                        <div class="col-md-12 size-large text-success">
-                            <i class="fa fa-rupee"></i> {{Portfolio_Parameter.TotalMoney}}
-                        </div>
-                    </div>
+                <div  style="padding:0px" ng-show="BuyHouse_Step2">
+                    <div ng-include="'Webform/Common/Html/planForYourFutureStep2.html'"></div>
+                  
 
                 </div>
                 <div class="row text-right">
@@ -80,8 +69,13 @@
 
 
             </div>
-        </div>
 
+           
+        </div>
+        <div class="col-md-12 margin-bottom-60" ng-show="SIP_GOAL_Final_SHOW">
+            <div ng-include="'Webform/Common/Html/planForYourFutureStep3.html'"></div>
+
+        </div>
         
     </div>
 
