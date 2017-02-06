@@ -1813,7 +1813,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         }
         ]
     }
-    $scope.Portfolio_Calculate = function (Type) {
+    $scope.PortfolioChild_Calculate = function (Type) {
         $scope.Global_Message = "";
         if (Type == undefined)
         {
