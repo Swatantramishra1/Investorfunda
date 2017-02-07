@@ -634,13 +634,13 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         var Temp11 = parseInt(mInvst) % 1000;
         var Temp21 = 1000 - Temp11;
         mInvst = parseInt(mInvst) + Temp21;
-        //if (mInvst >= 5000)
-        //{
+        if (mInvst >= 4000)
+        {
             $scope.Portfolio_Parameter.TotalMonthlyInvestment = mInvst;
-        //}
-        //else {
-        //    $scope.Portfolio_Parameter.TotalMonthlyInvestment = 5000;
-        //}
+        }
+        else {
+            $scope.Portfolio_Parameter.TotalMonthlyInvestment = 4000;
+        }
         
         oInvst = oInvst.toFixed(0);
 
@@ -1369,6 +1369,9 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         var d = new Date();
         let tempmonth = month[d.getMonth()];
         let tempYear = d.getFullYear();
+
+        let tempCount = 0;
+        let tempMinTotalInvst = [];
         if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap != undefined)
         {
             //Fund_LargeCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment);
@@ -1380,6 +1383,8 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
                     if ((Fund_LargeCap_result % $scope.SIPGoalStructureDate[EquityLargeCpIndex[a]].multiplier) == 0)
                     {
+                        tempCount++;
+
                         let tempDate= ('0' + $scope.SIPGoalStructureDate[EquityLargeCpIndex[a]].date.split(',')[parseInt(Number) - 1] == '1-30 all days' ? $scope.SIPGoalStructureDate[EquityLargeCpIndex[a]].date.split(',')[parseInt(Number) - 1] : $scope.SIPGoalStructureDate[EquityLargeCpIndex[a]].date.split(',')[parseInt(Number) - 1]).slice(-2) ;
                        let tempCompletedate=tempDate+"/"+tempmonth+"/"+tempYear;
                       
@@ -1403,13 +1408,18 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                 }
             }
 
-
+            if(tempCount>0)
+            {
+                tempMinTotalInvst.push({
+                    Fund_LargeCap: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap
+                })
+            }
             
 
         }
        
         //Equity Mid Cap
-       
+        tempCount = 0;
         if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MultiCap != undefined) {
             //Fund_MultiCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MultiCap / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment);
 
@@ -1417,6 +1427,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                 if (Fund_MultiCap_result > $scope.SIPGoalStructureDate[EquityMulticapIndex[a]].MinInvst) {
 
                     if ((Fund_MultiCap_result % $scope.SIPGoalStructureDate[EquityMulticapIndex[a]].multiplier) == 0) {
+                        tempCount++;
                         let tempDate = ('0' + $scope.SIPGoalStructureDate[EquityMulticapIndex[a]].date.split(',')[parseInt(Number) - 1] == '1-30 all days' ? $scope.SIPGoalStructureDate[EquityMulticapIndex[a]].date.split(',')[parseInt(Number) - 1] : $scope.SIPGoalStructureDate[EquityMulticapIndex[a]].date.split(',')[parseInt(Number) - 1]).slice(-2);
                         let tempCompletedate = tempDate + "/" + tempmonth + "/" + tempYear;
                         $scope.sampleStructure.push({
@@ -1438,11 +1449,15 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
                 }
             }
-
+            if (tempCount > 0) {
+                tempMinTotalInvst.push({
+                    Fund_MultiCap: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_MultiCap
+                })
+            }
         }
 
         //Bonds Fund
-        
+        tempCount = 0;
         if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_BondFunds != undefined) {
             //Fund_BondCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_BondFunds / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment);
 
@@ -1450,6 +1465,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                 if (Fund_BondCap_result > $scope.SIPGoalStructureDate[EquityBondIndex[a]].MinInvst) {
 
                     if ((Fund_BondCap_result % $scope.SIPGoalStructureDate[EquityBondIndex[a]].multiplier) == 0) {
+                        tempCount++;
                         let tempDate = ('0' + $scope.SIPGoalStructureDate[EquityBondIndex[a]].date.split(',')[parseInt(Number) - 1] == '1-30 all days' ? $scope.SIPGoalStructureDate[EquityBondIndex[a]].date.split(',')[parseInt(Number) - 1] : $scope.SIPGoalStructureDate[EquityBondIndex[a]].date.split(',')[parseInt(Number) - 1]).slice(-2);
                         let tempCompletedate = tempDate + "/" + tempmonth + "/" + tempYear;
                         $scope.sampleStructure.push({
@@ -1471,10 +1487,14 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
                 }
             }
-
+            if (tempCount > 0) {
+                tempMinTotalInvst.push({
+                    Fund_BondFunds: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_BondFunds
+                })
+            }
         }
         //Ultry Sort Fund
-        
+        tempCount = 0;
         if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_UltraSortFund != undefined) {
             //Fund_UltraCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_UltraSortFund / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment);
 
@@ -1482,6 +1502,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                 if (Fund_UltraCap_result > $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].MinInvst) {
 
                     if ((Fund_UltraCap_result % $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].multiplier) == 0) {
+                        tempCount++;
                         let tempDate = ('0' + $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].date.split(',')[parseInt(Number) - 1] == '1-30 all days' ? $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].date.split(',')[parseInt(Number) - 1] : $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].date.split(',')[parseInt(Number) - 1]).slice(-2);
                         let tempCompletedate = tempDate + "/" + tempmonth + "/" + tempYear;
                         $scope.sampleStructure.push({
@@ -1503,11 +1524,15 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
                 }
             }
-
+            if (tempCount > 0) {
+                tempMinTotalInvst.push({
+                    Fund_UltraSortFund: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_UltraSortFund
+                })
+            }
         }
 
         //Mid Fund
-        
+        tempCount = 0;
         if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MidCap != undefined) {
             //Fund_MidCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MidCap / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment);
 
@@ -1515,6 +1540,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                 if (Fund_MidCap_result > $scope.SIPGoalStructureDate[EquityMidSmallIndex[a]].MinInvst) {
 
                     if ((Fund_MidCap_result % $scope.SIPGoalStructureDate[EquityMidSmallIndex[a]].multiplier) == 0) {
+                        tempCount++;
                         let tempDate = ('0' + $scope.SIPGoalStructureDate[EquityMidSmallIndex[a]].date.split(',')[parseInt(Number) - 1] == '1-30 all days' ? $scope.SIPGoalStructureDate[EquityMidSmallIndex[a]].date.split(',')[parseInt(Number) - 1] : $scope.SIPGoalStructureDate[EquityMidSmallIndex[a]].date.split(',')[parseInt(Number) - 1]).slice(-2);
                         let tempCompletedate = tempDate + "/" + tempmonth + "/" + tempYear;
                         $scope.sampleStructure.push({
@@ -1536,12 +1562,16 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
                 }
             }
-
+            if (tempCount > 0) {
+                tempMinTotalInvst.push({
+                    Fund_MidCap: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_MidCap
+                })
+            }
         }
 
 
         //Credit Opportunity
-        
+        tempCount = 0;
         if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_CreditOpportunity != undefined) {
             //Fund_CreditOpportunity_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_CreditOpportunity / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment);
 
@@ -1549,6 +1579,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                 if (Fund_CreditOpportunity_result > $scope.SIPGoalStructureDate[CreditOpportunitiesIndex[a]].MinInvst) {
 
                     if ((Fund_CreditOpportunity_result % $scope.SIPGoalStructureDate[CreditOpportunitiesIndex[a]].multiplier) == 0) {
+                        tempCount++;
                         let tempDate = ('0' + $scope.SIPGoalStructureDate[CreditOpportunitiesIndex[a]].date.split(',')[parseInt(Number) - 1] == '1-30 all days' ? $scope.SIPGoalStructureDate[CreditOpportunitiesIndex[a]].date.split(',')[parseInt(Number) - 1] : $scope.SIPGoalStructureDate[CreditOpportunitiesIndex[a]].date.split(',')[parseInt(Number) - 1]).slice(-2);
                         let tempCompletedate = tempDate + "/" + tempmonth + "/" + tempYear;
                         $scope.sampleStructure.push({
@@ -1570,10 +1601,15 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
                 }
             }
-
+            if (tempCount > 0) {
+                tempMinTotalInvst.push({
+                    Fund_CreditOpportunity: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_CreditOpportunity
+                })
+            }
         }
 
         //Liquid Fund
+        tempCount = 0;
         if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_LiquidCap != undefined) {
            
 
@@ -1581,6 +1617,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                 if (Fund_DebtLiquid_result > $scope.SIPGoalStructureDate[EquityLiquidIndex[a]].MinInvst) {
 
                     if ((Fund_DebtLiquid_result % $scope.SIPGoalStructureDate[EquityLiquidIndex[a]].multiplier) == 0) {
+                        tempCount++;
                         let tempDate = ('0' + $scope.SIPGoalStructureDate[EquityLiquidIndex[a]].date.split(',')[parseInt(Number) - 1] == '1-30 all days' ? $scope.SIPGoalStructureDate[EquityLiquidIndex[a]].date.split(',')[parseInt(Number) - 1] : $scope.SIPGoalStructureDate[EquityLiquidIndex[a]].date.split(',')[parseInt(Number) - 1]).slice(-2);
                         let tempCompletedate = tempDate + "/" + tempmonth + "/" + tempYear;
                         $scope.sampleStructure.push({
@@ -1607,10 +1644,15 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
                 }
             }
-
+            if (tempCount > 0) {
+                tempMinTotalInvst.push({
+                    Fund_LiquidCap: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_LiquidCap
+                })
+            }
         }
 
         //Gold Fund
+        tempCount = 0;
         if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_Gold != undefined) {
 
 
@@ -1618,6 +1660,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                 if (Fund_Gold_result > $scope.SIPGoalStructureDate[GoldIndex[a]].MinInvst) {
 
                     if ((Fund_Gold_result % $scope.SIPGoalStructureDate[GoldIndex[a]].multiplier) == 0) {
+                        tempCount++;
                         let tempDate = ('0' + $scope.SIPGoalStructureDate[GoldIndex[a]].date.split(',')[parseInt(Number) - 1] == '1-30 all days' ? $scope.SIPGoalStructureDate[GoldIndex[a]].date.split(',')[parseInt(Number) - 1] : $scope.SIPGoalStructureDate[GoldIndex[a]].date.split(',')[parseInt(Number) - 1]).slice(-2);
                         let tempCompletedate = tempDate + "/" + tempmonth + "/" + tempYear;
                         $scope.sampleStructure.push({
@@ -1645,7 +1688,11 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
                 }
             }
-
+            if (tempCount > 0) {
+                tempMinTotalInvst.push({
+                    Fund_Gold: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_Gold
+                })
+            }
         }
 
         //let TempTotal = 0;
@@ -1708,7 +1755,22 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         tesmpArray.sort(function (a, b) {
             return a.RemainingAmount;
         })
-       
+        //let TempTotal = 0;
+        //$scope.CalculatedPercentage.Data[0].Fund[0].sort(function (a, b) {
+        //    return a - b;
+        //});
+        //for (let a = 0; a < $scope.sampleStructure.length; a++)
+        //{
+        //    TempAmount =TempAmount+ $scope.sampleStructure[a].Amount;
+        //}
+        //if (TempAmount != $scope.Portfolio_Parameter.TotalMonthlyInvestment)
+        //{
+        //    if(tempMinTotalInvst.length>0)
+        //    {
+        //        var errKey = _.invert(tempMinTotalInvst)[3];
+        //    }
+       // }
+
        // $scope.sampleStructure.sort();
 
 
@@ -2155,14 +2217,15 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
     $scope.ChangePortfolioAmount=function(From,Page)
     {
-        if (currentState == "")
+        let TempMonthlyInvestment = 0;
+        if (currentState == "ChildGoal")
         {
 
             
             if (From == 'M') {
-                $scope.Portfolio_Parameter.TotalMonthlyInvestment = parseInt($scope.Portfolio_Parameter.TotalMonthlyInvestment) - 1000;
-                if (parseInt($scope.Portfolio_Parameter.TotalMonthlyInvestment) > 3000) {
-                    
+                TempMonthlyInvestment = parseInt($scope.Portfolio_Parameter.TotalMonthlyInvestment) - 1000;
+                if (parseInt(TempMonthlyInvestment) >= 4000) {
+                    $scope.Portfolio_Parameter.TotalMonthlyInvestment = TempMonthlyInvestment;
                     //$scope.Portfolio_Calculate("ChnageAmount");
                     $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation($scope.Portfolio_Parameter.EstematedYear, $scope.Portfolio_Parameter.TotalMonthlyInvestment, $scope.Portfolio_Parameter.Risk, "ChildGoal");
                     $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $scope.Portfolio_Parameter.TotalMonthlyInvestment);
@@ -2171,7 +2234,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                     $scope.ShowDiv("1");
                 }
                 else {
-                    alert("You can not have less than 3000 Rupees");
+                    alert("You can not have less than 4000 Rupees");
                 }
             }
 
@@ -2189,14 +2252,14 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         {
            
             if (From == 'M') {
-                $scope.Portfolio_Parameter.TotalMonthlyInvestment = parseInt($scope.Portfolio_Parameter.TotalMonthlyInvestment) - parseInt(1000);
-                if (parseInt($scope.Portfolio_Parameter.TotalMonthlyInvestment) > 3000)
+                TempMonthlyInvestment = parseInt($scope.Portfolio_Parameter.TotalMonthlyInvestment) - parseInt(1000);
+                if (parseInt(TempMonthlyInvestment) >= 4000)
                 {
-                   
+                    $scope.Portfolio_Parameter.TotalMonthlyInvestment = TempMonthlyInvestment;
                     $scope.SIPClick();
                 }
                 else {
-                    alert("You can not have less than 3000 Rupees");
+                    alert("You can not have less than 4000 Rupees");
                 }
                
             }
@@ -2211,14 +2274,14 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
         {
             if (From == 'M') {
-                $scope.Portfolio_Parameter.TotalMonthlyInvestment = parseInt($scope.Portfolio_Parameter.TotalMonthlyInvestment) - parseInt(1000);
-                if (parseInt($scope.Portfolio_Parameter.TotalMonthlyInvestment) > 3000) {
-                  
+                TempMonthlyInvestment = parseInt($scope.Portfolio_Parameter.TotalMonthlyInvestment) - parseInt(1000);
+                if (parseInt(TempMonthlyInvestment) >= 4000) {
+                    $scope.Portfolio_Parameter.TotalMonthlyInvestment = TempMonthlyInvestment;
                     // $scope.Portfolio_InvestNow('Increment');
                     $scope.ShowDiv("1");
                 }
                 else {
-                    alert("You can not have less than 3000 Rupees");
+                    alert("You can not have less than 4000 Rupees");
                 }
 
             }
