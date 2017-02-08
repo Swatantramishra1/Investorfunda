@@ -54,8 +54,41 @@
     background-color:rgba(102,0,51,1) !important;
     color:white !important;
 }
+
+@media (max-width: 767px) {
+	.header .navbar-default .navbar-nav > li > a:hover {
+		color: rgb(102, 0, 51)
+	}
+
+	.header .navbar-default .navbar-nav > .active > a,
+	.header .navbar-default .navbar-nav > .active > a:hover,
+	.header .navbar-default .navbar-nav > .active > a:focus {
+		background: rgb(102, 0, 51);
+	}
+}
 .header .navbar-default .navbar-nav > li > a {
     color: white !important;
+}
+@media (max-width: 999px) {
+	.header .navbar-default .navbar-nav > li > a:hover {
+		color: rgb(102, 0, 51)
+	}
+
+	.header .navbar-default .navbar-nav > .active > a,
+	.header .navbar-default .navbar-nav > .active > a:hover,
+	.header .navbar-default .navbar-nav > .active > a:focus {
+		background: rgb(102, 0, 51);
+
+	}
+    .header .navbar-default .navbar-nav > li > a {
+    color: black !important;
+}
+}
+@media (min-width: 1000px) {
+
+    .header .navbar-default .navbar-nav > li > a {
+    color: white !important;
+}
 }
 md-content.md-default-theme, md-content {
     color: rgba(0,0,0,0.87);
