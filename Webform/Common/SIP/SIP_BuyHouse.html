@@ -17,44 +17,33 @@
             <div ng-class="BuyHouse_Step2 ? 'col-md-12' : 'col-md-7'" style="text-align:left;padding-top:20px" md-theme="default">
                 <div class="col-md-12" style="padding:0px" ng-show="BuyHouse_Step1">
                     <md-input-container class="md-block">
-                        <label>GIVE YOUR GOAL A NAME</label>
-                        <input ng-model="Portfolio_Parameter.Portfolio_Name">
+                        <label>Year in which you plan a buy?</label>
+                        <input ng-model="Portfolio_Parameter.planBoughtYear">
                     </md-input-container>
                     <md-input-container class="md-block" style="margin-top:30px">
-                        <label> ENTER YOUR GOAL AMOUNT</label>
-                        <input ng-model="Portfolio_Parameter.Portfolio_GoalAmount">
+                        <label> Current Cost of dream house?</label>
+                        <input ng-model="Portfolio_Parameter.currentCostOfHouse">
                     </md-input-container>
                     <md-input-container class="md-block">
-                        <label>PERIOD TO ACHEIVE GOAL YEAR:</label>
-                        <md-select ng-model="Portfolio_Parameter.Portfolio_Year">
-                            <md-option value="0"><em>None</em></md-option>
-                            <md-option ng-value="{{GoalYear.Year}}" ng-repeat="GoalYear in BuyHouse_NoGoalYear.BuyHouse">
-                                {{GoalYear.Year}} Years
-                            </md-option>
-
-                        </md-select>
+                        <label>Down payment you want to plan for? </label>
+                        <input ng-model="Portfolio_Parameter.downPaymentPercentage">
                     </md-input-container>
                     <md-input-container class="md-block">
-                        <label>PERIOD TO ACHEIVE GOAL MONTH:</label>
-                        <md-select ng-model="Portfolio_Parameter.Portfolio_Month">
-                            <md-option value="0"><em>None</em></md-option>
-                            <md-option ng-value="{{GoalMonth.Month}}" ng-repeat="GoalMonth in BuyHouse_NoGoalMonth.BuyHouse">
-                                {{GoalMonth.Month}} Years
-                            </md-option>
-
-                        </md-select>
+                        <label>Loan repayment period </label>
+                        <input ng-model="Portfolio_Parameter.loanPeriodYear">
                     </md-input-container>
                     <md-input-container class="md-block">
-                        <label>RATE OF INFLATION (%)</label>
-                        <md-select ng-model="Portfolio_Parameter.Portfolio_InflationRate">
-                            <md-option value="0"><em>None</em></md-option>
-                            <md-option ng-value="{{Inflation.Inflation_Percentage}}" ng-repeat="Inflation in PortFolio_InflationRate.Inflation">
-                                {{Inflation.Inflation_Percentage}} %
-                            </md-option>
-
-                        </md-select>
+                        <label>What is your age? </label>
+                        <input ng-model="Portfolio_Parameter.currentYourAge">
                     </md-input-container>
-
+                    <md-input-container class="md-block">
+                        <label>Amount you want to invest right now?  </label>
+                        <input ng-model="Portfolio_Parameter.amountWantToInvestNow">
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Estimated annual inflation rate from now   </label>
+                        <input ng-model="Portfolio_Parameter.Portfolio_InflationRate">
+                    </md-input-container>
                 </div>
                 <div  style="padding:0px" ng-show="BuyHouse_Step2">
                     <div ng-include="'Webform/Common/Html/planForYourFutureStep2.html'"></div>
@@ -64,7 +53,7 @@
                 <div class="row text-right">
                     <md-button ng-show="!BuyHouse_Step1" ng-click="BuyHouse_Back()"><i class="fa fa-backward"></i> Back</md-button>
                     <md-button ng-show="!BuyHouse_Step1" class="md-raised" ng-click="Portfolio_InvestNow()">Invest Now</md-button>
-                    <md-button ng-show="BuyHouse_Step1" class="md-raised" ng-click="Portfolio_Calculate()">Calculate</md-button>
+                    <md-button ng-show="BuyHouse_Step1" class="md-raised" ng-click="Portfolio_HouseCalculate()">Calculate</md-button>
                 </div>
 
 

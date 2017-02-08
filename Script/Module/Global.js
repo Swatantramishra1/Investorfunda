@@ -1,6 +1,31 @@
 ﻿//Retirement Calculator
+var d = new Date();
+
 var GoalRounding = -4;
 var austDay = new Date('2016-12-15');
+var minHouseCost = 25;
+var maxHouseCost = 500;
+var presentyear = d.getFullYear();
+var global_houseloanrepaymentperiod = 3;
+var global_homeloanrate = 11;
+var GoalRounding = -4;
+function GetPrincipalValue(FutureValue, Years, Rate) {
+    // return Math.round(FutureValue / Math.pow((1 + Rate / 100), Years));
+    return rounding(Math.round(FutureValue / Math.pow((1 + Rate / 100), (Years + 1 / 365))), -3); /// changed - prasad. (rounding everything)
+}
+
+function GetFutureValue(PrinAmt, Years, Rate) {
+    return rounding(Math.round(PrinAmt * Math.pow((1 + Rate / 100), (Years + 1 / 365))), -3);   /// changed - prasad. (rounding everything)
+}
+function GetEMIAmount(LoanAmount, Years, Rate) {
+    return (LoanAmount * Rate / (12 * 100) * Math.pow((1 + Rate / (12 * 100)), Years * 12)) / (Math.pow((1 + Rate / (12 * 100)), 12 * Years) - 1);
+}
+function rounding(a, b) {
+    if (b > 0)
+        return Math.round(a * Math.pow(10, b)) / Math.pow(10, b);
+    else
+        return Math.round(Math.round(a * Math.pow(10, b)) / Math.pow(10, b));
+}
 function addCommas(nStr) {
 
     nStr += '';
@@ -52,6 +77,71 @@ function addCommas(nStr) {
     return x1 + x2;
 
 };
+
+function putcomma(a, b) {
+    try {
+        if (a == "") return a;
+        a = new Number(a);
+        var c = new Number(b);
+        var a = a.toFixed(c);
+        var a = a.toString();
+        var d = a.split('.');
+        var a = d[0];
+        var f = a < 0 ? true : false;
+        if (f) a = a.substr(1);
+        var g = new String();
+        g = '';
+        if (a.length > 3) {
+            a = a.reverse();
+            var i = 4;
+            g = a.substring(0, 3);
+            a = a.substring(3);
+            for (i = 0; i < a.length; i++) {
+                if (i % 2 == 0) g = g + ",";
+                g = g + a.charAt(i);
+            }
+            //g = g.trim(',');
+            g = g.reverse();
+        } else {
+            g = a;
+        }
+        if (f) g = "-" + g;
+        if (d.length > 1) {
+            g = g + '.' + d[1];
+        }
+        return g;
+    } catch (e) { }
+}
+
+
+function GetRoundingFigure(val) {
+    var vals = [];
+    if (val < 100 || isNaN(val)) {
+        vals[0] = val;
+        vals[1] = '';
+        vals[2] = '';
+    }
+    else if (val < 100000) {
+        vals[0] = rounding(val / 1000, 2);
+        vals[1] = 'K';
+        //vals[2] = 'Thou';
+        vals[2] = 'K';
+    }
+    else if (val < 10000000) {
+        vals[0] = rounding(val / 100000, 2);
+        vals[1] = 'L';
+        //vals[2] = 'Lac';
+        vals[2] = 'Lacs';
+    }
+    else {
+        vals[0] = rounding(val / 10000000, 2);
+        //vals[1] = 'C';
+        //vals[2] = 'Cr';
+        vals[1] = 'Cr.';
+        vals[2] = 'Cr';
+    }
+    return vals;
+}
 
 function Chield_CalculatePortfolioAllocation(Year,Amount,Risk,From) {
     var ReturnPer = {};

@@ -2277,6 +2277,9 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                 TempMonthlyInvestment = parseInt($scope.Portfolio_Parameter.TotalMonthlyInvestment) - parseInt(1000);
                 if (parseInt(TempMonthlyInvestment) >= 4000) {
                     $scope.Portfolio_Parameter.TotalMonthlyInvestment = TempMonthlyInvestment;
+
+                    $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation($scope.Portfolio_Parameter.EstematedYear, $scope.Portfolio_Parameter.TotalMonthlyInvestment, undefined, "HousePlan");
+                    $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $scope.Portfolio_Parameter.TotalMonthlyInvestment);
                     // $scope.Portfolio_InvestNow('Increment');
                     $scope.ShowDiv("1");
                 }
@@ -2337,15 +2340,57 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
     //****************************Buy a House Plan********************************
     $scope.BuyHouse_Step1 = true;
 
-    function CalculateBuyHouseAmount(AchieveGoal, exp_irate, TimePeriod) {
-        var graphTwo = Number(AchieveGoal) * Math.pow((1 + Number(exp_irate) / 100), Number(TimePeriod));
-        var multiplier = 1;
-        var rog = 9;
-        var future_cost = graphTwo.toFixed(0);
-        var mInvst = future_cost * Number(rog / 100) / ((Math.pow((1 + Number(rog) / 100), (Number(TimePeriod))) - 1) * (1 + Number(rog) / 100));
-        $scope.Portfolio_Parameter.TotalMonthlyInvestment = parseInt(mInvst / 12);
-        $scope.Portfolio_Parameter.CalculatedTotalMoney = parseInt(mInvst);
+    //function CalculateBuyHouseAmount(AchieveGoal, exp_irate, TimePeriod) {
+    //    var graphTwo = Number(AchieveGoal) * Math.pow((1 + Number(exp_irate) / 100), Number(TimePeriod));
+    //    var multiplier = 1;
+    //    var rog = 9;
+    //    var future_cost = graphTwo.toFixed(0);
+    //    var mInvst = future_cost * Number(rog / 100) / ((Math.pow((1 + Number(rog) / 100), (Number(TimePeriod))) - 1) * (1 + Number(rog) / 100));
+    //    $scope.Portfolio_Parameter.TotalMonthlyInvestment = parseInt(mInvst / 12);
+    //    $scope.Portfolio_Parameter.CalculatedTotalMoney = parseInt(mInvst);
+    //}
+
+    function CalculateHouseAmount(planBoughtYear, InflationRate, downPaymentPercentage, loanPeriodYear) {
+        let houseCost = $scope.Portfolio_Parameter.currentCostOfHouse;
+        global_houseloanrepaymentdurationVal = loanPeriodYear;
+        if (planBoughtYear == "")
+        {
+            planBoughtYear = parseInt(presentyear) + 3;
+        }
+       
+
+        var YearToBuy = planBoughtYear - presentyear;
+        $scope.Portfolio_Parameter.EstematedYear = YearToBuy;
+        //var HouseFutureValue = GetFutureValue(houseCost * 100000, YearToBuy, inflationRate);
+        if (InflationRate == "") { alert("Please enter Inflation Rate"); return false; }
+        if (!isFinite(InflationRate)) { alert("Please enter valid rate"); return false; }
+        var HouseFutureValue = GetFutureValue(houseCost * 100000, YearToBuy, InflationRate);
+        //document.getElementById("housecurrentcostVal").innerHTML = GetRoundingFigure(houseCost * 100000)
+        //document.getElementById("housefuturecostVal").innerHTML = GetRoundingFigure(HouseFutureValue)[0] + " <span class='fwNormal'>" + GetRoundingFigure(HouseFutureValue)[2];
+        var HouseDownPayment = HouseFutureValue * parseInt(downPaymentPercentage) / 100;
+        var HouseAmount = parseInt(rounding(GetPrincipalValue(HouseDownPayment, YearToBuy, InflationRate), GoalRounding));
+
+        //$("#houseTargetAmount").val(HouseAmount);
+
+
+        $scope.Portfolio_Parameter.currentHouseCost = houseCost * 100000;
+        $scope.Portfolio_Parameter.HouseDownPayment = GetFutureValue(HouseAmount, YearToBuy, InflationRate);
+        $scope.Portfolio_Parameter.CalculatedTotalMoney = $scope.Portfolio_Parameter.HouseDownPayment;
+        //HomeInflatedAmt = CommaRound(HouseDownPayment);
+        //var HouseInflatedAmount = new Number(HouseDownPayment);
+        $scope.Portfolio_Parameter.HouseLoanAmount = HouseFutureValue - $scope.Portfolio_Parameter.HouseDownPayment;
+        $scope.Portfolio_Parameter.HouseLoanEMIAmount = parseInt(GetEMIAmount($scope.Portfolio_Parameter.HouseLoanAmount, global_houseloanrepaymentdurationVal, global_homeloanrate));
+        let tempFirstAmount = $scope.Portfolio_Parameter.HouseLoanEMIAmount % 1000;
+        let tempSecondAmount = 1000 - tempFirstAmount;
+        $scope.Portfolio_Parameter.HouseLoanEMIAmount = $scope.Portfolio_Parameter.HouseLoanEMIAmount + parseInt(tempSecondAmount);
+        $scope.Portfolio_Parameter.TotalMonthlyInvestment = $scope.Portfolio_Parameter.HouseLoanEMIAmount
+        //G('spnLoanAmt').innerHTML = '<span class="Rs mR2">`</span>' + CommaRound(HouseLoanAmount);
+        //G('spnMonthlyEMI').innerHTML = '<span class="Rs mR2">`</span>' + CommaRound(HouseLoanEMIAmount);
+        //G('dvHouseRequiredInflatedAmount').innerHTML = '<span class="Rs45">`</span>' + CommaRound(HouseDownPayment);
+
     }
+
+
     $scope.PortFolio_InflationRate = {
         "Inflation": [{
             "Inflation_Percentage": "3"
@@ -2507,13 +2552,13 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         ]
     }
 
-    $scope.Portfolio_Calculate = function () {
+    $scope.Portfolio_HouseCalculate = function () {
         $scope.BuyHouse_Step1 = false;
         $scope.BuyHouse_Step2 = true;
-        $scope.Portfolio_Parameter.EstematedYear = $scope.Portfolio_Parameter.Portfolio_Year;
-        $scope.Portfolio_Parameter.EstematedMonth = $scope.Portfolio_Parameter.Portfolio_Month;
-        var Year = ((Number($scope.Portfolio_Parameter.Portfolio_Year) * 12) + (Number($scope.Portfolio_Parameter.Portfolio_Month))) / 12;
-        CalculateBuyHouseAmount($scope.Portfolio_Parameter.Portfolio_GoalAmount, $scope.Portfolio_Parameter.Portfolio_InflationRate, parseInt(Year));
+        //$scope.Portfolio_Parameter.EstematedYear = $scope.Portfolio_Parameter.Portfolio_Year;
+        //$scope.Portfolio_Parameter.EstematedMonth = $scope.Portfolio_Parameter.Portfolio_Month;
+        //var Year = ((Number($scope.Portfolio_Parameter.Portfolio_Year) * 12) + (Number($scope.Portfolio_Parameter.Portfolio_Month))) / 12;
+        CalculateHouseAmount($scope.Portfolio_Parameter.planBoughtYear, $scope.Portfolio_Parameter.Portfolio_InflationRate, $scope.Portfolio_Parameter.downPaymentPercentage, $scope.Portfolio_Parameter.loanPeriodYear);
 
     };
     //****************************Buy a Car********************************
@@ -2804,21 +2849,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
 
         //Calculator
-    var GoalRounding = -4;
-    function GetPrincipalValue(FutureValue, Years, Rate) {
-        // return Math.round(FutureValue / Math.pow((1 + Rate / 100), Years));
-        return rounding(Math.round(FutureValue / Math.pow((1 + Rate / 100), (Years + 1 / 365))), -3); /// changed - prasad. (rounding everything)
-    }
-
-    function GetFutureValue(PrinAmt, Years, Rate) {
-        return rounding(Math.round(PrinAmt * Math.pow((1 + Rate / 100), (Years + 1 / 365))), -3);   /// changed - prasad. (rounding everything)
-    }
-    function rounding(a, b) {
-        if (b > 0)
-            return Math.round(a * Math.pow(10, b)) / Math.pow(10, b);
-        else
-            return Math.round(Math.round(a * Math.pow(10, b)) / Math.pow(10, b));
-    }
+    
     function CalculateRetirementAmount(retirementmonthexp, Retirement_EstmMonthlyExpensePerChgVal, retirementAgeVal, age) {
 
         //document.getElementById("Retirement_MonthlyExpenseVal").innerHTML = GetRoundingFigure(retirementmonthexp * 1000)[0] + " <span class='fwNormal'>" + GetRoundingFigure(retirementmonthexp * 1000)[2] + "</span>";
@@ -2837,6 +2868,10 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         return addCommas(RetirementInflatedAmount);
 
     }
+
+
+   
+
 
     function RequiredRetirementAmount(curamt, chngper, retyear, curage, inflRateRetirement) {
         var riskfreerate = parseFloat('10');

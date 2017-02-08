@@ -155,9 +155,9 @@ app.factory('GetCommonData', ['$rootScope', function ($rootScope) {
          "isShowDataRetirement": true
      },
      getBuyHouseCommonData = {
-         "Name1": "Year To Achieve Goal",
-         "Name2": "Month To Achieve Goal",
-         "Name3": "Goal Amount",
+         "Name1": "Current Cost Of Home",
+         "Name2": "Your Loan Amount",
+         "Name3": "Your Monthly EMI",
          "isShowDataBuyHouse": true
      }
     getBuyCarCommonData = {

@@ -60,17 +60,17 @@
             <!-- Buy a House -->
             <md-input-container class="md-block" ng-show="showDataStep2.isShowDataBuyHouse">
                 <label>{{showDataStep2.Name1}} :</label>
-                <input value="{{Portfolio_Parameter.Portfolio_Year}}" disabled>
+                <input value="{{Portfolio_Parameter.currentHouseCost}}" disabled>
             </md-input-container>
 
             <md-input-container class="md-block" ng-show="showDataStep2.isShowDataBuyHouse">
                 <label>{{showDataStep2.Name2}} :</label>
-                <input type="text" value="{{Portfolio_Parameter.Portfolio_Month}}" disabled>
+                <input type="text" value="{{Portfolio_Parameter.HouseLoanAmount}}" disabled>
             </md-input-container>
 
             <md-input-container class="md-block" ng-show="showDataStep2.isShowDataBuyHouse">
                 <label>{{showDataStep2.Name3}} :</label>
-                <input value="{{Portfolio_Parameter.Portfolio_GoalAmount}}" disabled>
+                <input value="{{Portfolio_Parameter.HouseLoanEMIAmount}}" disabled>
             </md-input-container>
 
             <!-- Buy a Car -->
