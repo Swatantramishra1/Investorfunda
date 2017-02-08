@@ -9,55 +9,41 @@
 
 
 
-        <div class="col-md-12 margin-bottom-60">
-            <div class="col-md-5">
+        <div class="col-md-12 margin-bottom-60" ng-show="!SIP_GOAL_Final_SHOW">
+            <div class="col-md-5" ng-show="!BuyChild_Step2">
 
                 <img src="http://www.99acres.com/microsite/articles/files/2016/07/family.jpeg" style="height:500px;width:100%" />
             </div>
-            <div class="col-md-7" style="text-align:left;padding-top:20px" md-theme="default">
+            <div ng-class="BuyChild_Step2 ? 'col-md-12' : 'col-md-7'" style="text-align:left;padding-top:20px" md-theme="default">
                 <div class="col-md-12" style="padding:0px" ng-show="BuyChild_Step1">
                     <md-input-container class="md-block">
-                        <label>GIVE YOUR GOAL A NAME</label>
-                        <input ng-model="Portfolio_Parameter.Portfolio_Name">
+                        <label>Your child's current age? </label>
+                        <input ng-model="Portfolio_Parameter.childCurrentAge">
                     </md-input-container>
                     <md-input-container class="md-block" style="margin-top:30px">
-                        <label> ENTER YOUR GOAL AMOUNT</label>
-                        <input ng-model="Portfolio_Parameter.Portfolio_GoalAmount">
+                        <label> At what age are you planning the wedding?</label>
+                        <input ng-model="Portfolio_Parameter.PlanWeddingAge">
                     </md-input-container>
                     <md-input-container class="md-block">
-                        <label>PERIOD TO ACHEIVE GOAL YEAR:</label>
-                        <md-select ng-model="Portfolio_Parameter.Portfolio_Year">
-                            <md-option value="0"><em>None</em></md-option>
-                            <md-option ng-value="{{GoalYear.Year}}" ng-repeat="GoalYear in BuyChild_NoGoalYear.BuyChild">
-                                {{GoalYear.Year}}
-                            </md-option>
-
-                        </md-select>
+                        <label>What is your budget for the wedding? </label>
+                        <input ng-model="Portfolio_Parameter.weddingBudget">
                     </md-input-container>
                     <md-input-container class="md-block">
-                        <label>PERIOD TO ACHEIVE GOAL MONTH:</label>
-                        <md-select ng-model="Portfolio_Parameter.Portfolio_Month">
-                            <md-option value="0"><em>None</em></md-option>
-                            <md-option ng-value="{{GoalMonth.Month}}" ng-repeat="GoalMonth in BuyChild_NoGoalMonth.BuyChild">
-                                {{GoalMonth.Month}}
-                            </md-option>
-
-                        </md-select>
+                        <label>What is your age?</label>
+                        <input ng-model="Portfolio_Parameter.yourCurrentAge">
                     </md-input-container>
                     <md-input-container class="md-block">
-                        <label>RATE OF INFLATION (%)</label>
-                        <md-select ng-model="Portfolio_Parameter.Portfolio_ROInflation">
-                            <md-option value="0"><em>None</em></md-option>
-                            <md-option ng-value="{{Inflation.Inflation_Percentage}}" ng-repeat="Inflation in PortFolio_InflationRate.Inflation">
-                                {{Inflation.Inflation_Percentage}} %
-                            </md-option>
-
-                        </md-select>
+                        <label>Amount you want to invest right now? </label>
+                        <input ng-model="Portfolio_Parameter.amountWantToInvestNow">
                     </md-input-container>
-
+                    <md-input-container class="md-block">
+                        <label>Estimated annual inflation rate from now   </label>
+                        <input ng-model="Portfolio_Parameter.Portfolio_InflationRate">
+                    </md-input-container>
                 </div>
-                <div class="col-md-12" style="padding:0px" ng-show="BuyCar_Step2">
-                    <div class="row margin-bottom-20" style="font-size:34px">
+                <div class="col-md-12" style="padding:0px" ng-show="BuyChild_Step2">
+                    <div ng-include="'Webform/Common/Html/planForYourFutureStep2.html'"></div>
+                    <!--<div class="row margin-bottom-20" style="font-size:34px">
                         <div class="col-md-12" style="color:black">
                             Your investment of
                             <span class="red-text" id="amount-poc"><i class="fa fa-rupee"></i> {{Portfolio_Parameter.SIPAmount}}/-</span>
@@ -69,20 +55,23 @@
                         <div class="col-md-12 size-large text-success">
                             <i class="fa fa-rupee"></i> {{Portfolio_Parameter.TotalMoney}}
                         </div>
-                    </div>
+                    </div>-->
 
                 </div>
                 <div class="row text-right">
                     <md-button ng-show="!BuyChild_Step1" ng-click="BuyChild_Back()"><i class="fa fa-backward"></i> Back</md-button>
                     <md-button ng-show="!BuyChild_Step1" class="md-raised" ng-click="Portfolio_InvestNow()">Invest Now</md-button>
-                    <md-button ng-show="BuyChild_Step1" class="md-raised" ng-click="Portfolio_Calculate()">Calculate</md-button>
+                    <md-button ng-show="BuyChild_Step1" class="md-raised" ng-click="Portfolio_childMerrageCalculate()">Calculate</md-button>
                 </div>
 
 
             </div>
+           
         </div>
 
-
+        <div class="col-md-12 margin-bottom-60" ng-show="SIP_GOAL_Final_SHOW">
+            <div ng-include="'Webform/Common/Html/planForYourFutureStep3.html'"></div>
+        </div>
     </div>
 
 

@@ -63,7 +63,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     }).state('ChildMerrage', {
         url: "/ChildMerrage",
         templateUrl: "../../Webform/Common/SIP/SIP_ChildMerrage.html",
-        controller: "BuyChild.Ctrl"
+        controller: "SIP.Ctrl"
     }).state('BankList', {
         url: "/BankList",
         templateUrl: "../../WebForm/HtmlPages/Bank/bankList.html",

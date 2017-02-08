@@ -166,11 +166,18 @@ app.factory('GetCommonData', ['$rootScope', function ($rootScope) {
         "Name3": "Goal Amount",
         "isShowDataBuyCar": true
     }
+    getChildMarrigeCommonData = {
+        "Name1": "Budget For Wedding",
+        "Name2": "Year For Wedding",
+        "Name3": "Goal Year",
+        "isShowDataChildMarrige": true
+    }
     return _factoryData = {
         getChildCommonData: getChildCommonData,
         getRetirementCommonData: getRetirementCommonData,
         getBuyHouseCommonData: getBuyHouseCommonData,
-        getBuyCarCommonData: getBuyCarCommonData
+        getBuyCarCommonData: getBuyCarCommonData,
+        getChildMarrigeCommonData: getChildMarrigeCommonData
     }
 
 }]);

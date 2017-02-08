@@ -26,6 +26,11 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         currentState = $state.current.name;
         $scope.showDataStep2 = GetCommonData.getBuyCarCommonData;
     }
+    else if ($state.current.name == "ChildMerrage")
+    {
+        currentState = $state.current.name;
+        $scope.showDataStep2 = GetCommonData.getChildMarrigeCommonData;
+    }
      $scope.SIPGoalStructureDate = 
 
         [
@@ -612,7 +617,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
         var exp_irate = $scope.Portfolio_Parameter.Portfolio_InflationRate;
 
-        var rog = 12;
+       
 
         //Current Child Age
 
@@ -1924,7 +1929,16 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                 $scope.SIP_GOAL_Final_SHOW = true;
 
                 break;
+            case "ChildMerrage":
+                $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation($scope.Portfolio_Parameter.EstematedYear, $scope.Portfolio_Parameter.TotalMonthlyInvestment, undefined, "ChildMerrage");
+                $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+                //if ($scope.Portfolio_Parameter.TotalMonthlyInvestment >= 2500)
+                //{
+                $scope.BuyChild_Step1 = false;
+                $scope.BuyChild_Step2 = false;
+                $scope.SIP_GOAL_Final_SHOW = true;
 
+                break;
             case "CarPlan":
                 $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation($scope.Portfolio_Parameter.EstematedYear, $scope.Portfolio_Parameter.TotalMonthlyInvestment, undefined, "CarPlan");
                 $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $scope.Portfolio_Parameter.TotalMonthlyInvestment);
@@ -2278,8 +2292,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                 if (parseInt(TempMonthlyInvestment) >= 4000) {
                     $scope.Portfolio_Parameter.TotalMonthlyInvestment = TempMonthlyInvestment;
 
-                    $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation($scope.Portfolio_Parameter.EstematedYear, $scope.Portfolio_Parameter.TotalMonthlyInvestment, undefined, "HousePlan");
-                    $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+                    $scope.Portfolio_Final();
                     // $scope.Portfolio_InvestNow('Increment');
                     $scope.ShowDiv("1");
                 }
@@ -2291,6 +2304,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
             else {
                 $scope.Portfolio_Parameter.TotalMonthlyInvestment = parseInt($scope.Portfolio_Parameter.TotalMonthlyInvestment) + parseInt(1000);
+                $scope.Portfolio_Final();
                 //$scope.Portfolio_InvestNow('Increment');
                 $scope.ShowDiv("1");
             }
@@ -2743,6 +2757,62 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         var Year = ((Number($scope.Portfolio_Parameter.Portfolio_Year) * 12) + (Number($scope.Portfolio_Parameter.Portfolio_Month))) / 12;
         CalculateCarAmount($scope.Portfolio_Parameter.Portfolio_GoalAmount, $scope.Portfolio_Parameter.Portfolio_ROInflation, parseInt(Year));
     };
+
+
+    //****************************Buy Child Merrige Plan*************************
+
+    $scope.BuyChild_Step1 = true;
+    function CalculateMarriageAmount() {
+        
+            //document.getElementById("WeddingAmtVal").innerHTML =
+            //GetRoundingFigure(weddingCost * 100000)[0] +
+            //" <span class='fwNormal'>" + GetRoundingFigure(weddingCost * 100000)[2] + "</span>";
+            var marriageyeargap = $scope.Portfolio_Parameter.PlanWeddingAge - $scope.Portfolio_Parameter.childCurrentAge;
+            $scope.Portfolio_Parameter.EstematedYear = marriageyeargap;
+            let marrigeYearWillbe = parseInt(presentyear) + parseInt(marriageyeargap);
+            $scope.weddingYear = marrigeYearWillbe;
+            //var MarriageInflatedAmount = GetFutureValue(weddingCost * 100000, marriageyeargap, inflationRate);
+            if ($scope.Portfolio_Parameter.Portfolio_InflationRate == "") { alert("Please enter Inflation Rate"); return false; }
+            if (!isFinite($scope.Portfolio_Parameter.Portfolio_InflationRate)) { alert("Please enter valid rate"); return false; }
+            var MarriageInflatedAmount = GetFutureValue(parseInt($scope.Portfolio_Parameter.weddingBudget) * 100000, marriageyeargap, $scope.Portfolio_Parameter.Portfolio_InflationRate);
+            $scope.Portfolio_Parameter.CalculatedTotalMoney = MarriageInflatedAmount;
+            var mInvst = MarriageInflatedAmount * parseInt(rog / 100) / ((Math.pow((1 + parseInt(rog) / 100), (parseInt(marriageyeargap))) - 1) * (1 + parseInt(rog) / 100));
+
+            $scope.weddingBudget = GetRoundingFigure(parseInt($scope.Portfolio_Parameter.weddingBudget) * 100000)[0]+ " "+GetRoundingFigure(parseInt($scope.Portfolio_Parameter.weddingBudget) * 100000)[2];
+            mInvst = Math.round(mInvst / 12);
+            var Temp11 = parseInt(mInvst) % 1000;
+            var Temp21 = 1000 - Temp11;
+            mInvst = parseInt(mInvst) + Temp21;
+            if (mInvst >= 4000) {
+                $scope.Portfolio_Parameter.TotalMonthlyInvestment = mInvst;
+            }
+            else {
+                $scope.Portfolio_Parameter.TotalMonthlyInvestment = 4000;
+            }
+            
+            //G('spnWeddingEstimatedAmt').innerHTML = '<span class="Rs45">`</span>' + CommaRound(MarriageInflatedAmount);
+
+            //document.getElementById("dvPlanChildWedding").style.display = "none";
+            ////document.getElementById("aSRChildMarriage").style.display = "none";
+            //$(".invPlanChildWedding").eq(0).hide();
+            //document.getElementById("fbChildMarriage").style.display = "none";
+            //$("#dvReplan" + selectedSectionName).hide();
+            //$(".showRP" + selectedSectionName).show();
+            //$("#replanGoal" + selectedSectionName).parent("ul.dropdown-menu").hide();
+            //$('.btn-danger').removeClass("active");
+       
+    }
+
+    $scope.Portfolio_childMerrageCalculate=function()
+    {
+      
+        CalculateMarriageAmount();
+        $scope.BuyChild_Step1 = false;
+        $scope.BuyChild_Step2 = true;
+    }
+
+
+
     //****************************Start SIP**************************************
     $scope.StartSIP_Step1 = true;
     $scope.StartSIP_Step2 = false;

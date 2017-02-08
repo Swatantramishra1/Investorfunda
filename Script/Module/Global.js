@@ -9,6 +9,7 @@ var presentyear = d.getFullYear();
 var global_houseloanrepaymentperiod = 3;
 var global_homeloanrate = 11;
 var GoalRounding = -4;
+var rog = 12;
 function GetPrincipalValue(FutureValue, Years, Rate) {
     // return Math.round(FutureValue / Math.pow((1 + Rate / 100), Years));
     return rounding(Math.round(FutureValue / Math.pow((1 + Rate / 100), (Years + 1 / 365))), -3); /// changed - prasad. (rounding everything)
@@ -222,7 +223,7 @@ function Chield_CalculatePortfolioAllocation(Year,Amount,Risk,From) {
             }
         }
      
-        else if (From == "ChildrenMarriage") {
+        else if (From == "ChildMerrage") {
 
             if (Year <= 5) {
                 ReturnPer.Data = [{

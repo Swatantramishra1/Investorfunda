@@ -89,6 +89,22 @@
                 <input value="{{Portfolio_Parameter.Portfolio_GoalAmount}}" disabled>
             </md-input-container>
 
+
+            <!-- Child Marrige -->
+            <md-input-container class="md-block" ng-show="showDataStep2.isShowDataChildMarrige">
+                <label>{{showDataStep2.Name1}} :</label>
+                <input value="{{weddingBudget}}" disabled>
+            </md-input-container>
+
+            <md-input-container class="md-block" ng-show="showDataStep2.isShowDataChildMarrige">
+                <label>{{showDataStep2.Name2}} :</label>
+                <input type="text" value="{{Portfolio_Parameter.PlanWeddingAge}}" disabled>
+            </md-input-container>
+
+            <md-input-container class="md-block" ng-show="showDataStep2.isShowDataChildMarrige">
+                <label>{{showDataStep2.Name3}} :</label>
+                <input value="{{weddingYear}}" disabled>
+            </md-input-container>
            
         </div>
         <div class="col-xs-5" style="text-align:left;padding-top:6%">
