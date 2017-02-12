@@ -426,7 +426,27 @@
                     return deferObject.promise;
                 }
             };
+            var validateIfscCode = {
 
+                getPromise: function (IFSC) {
+                    var promise = $http.get(API_validateIfsc + IFSC),
+                          deferObject = deferObject || $q.defer();
+
+                    promise.then(
+                      // OnSuccess function
+                      function (answer) {
+                          // This code will only run if we have a successful promise.
+                          deferObject.resolve(answer);
+                      },
+                      // OnFailure function
+                      function (reason) {
+                          // This code will only run if we have a failed promise.
+                          deferObject.reject(reason);
+                      });
+
+                    return deferObject.promise;
+                }
+            };
             
             var GetSourceOfWealth = {
 
@@ -585,12 +605,184 @@
                 GetAllListDetails: GetAllListDetails,
                 GetCartListDetails: GetCartListDetails,
                 GetUserPaymentStatus: GetUserPaymentStatus,
-                GetUserPaymentString: GetUserPaymentString
+                GetUserPaymentString: GetUserPaymentString,
+                validateIfscCode: validateIfscCode
 
             };
 
         }])
+        .service('validateSrvc', ['$http', '$q', 'CommonSrvc', function ($http, $q,CommonSrvc) {
+            let _returnData = {
+                isValid:false,
+                validationMessage:""
+            };
+          let  authenticationBankDetail = function (_updateDetails) {
+              _returnData = {
+                  isValid: false,
+                  validationMessage: ""
+              };
+              //$.ajax({
+              //    type: 'GET',
+              //    async: false,
+              //    crossDomain: true,
+              //    ContentType: 'application/json',
+              //    url: 'https://ifsc.razorpay.com/' + _updateDetails.bankdetails.Bank_IFSC,
+              //    dataType: 'text/html',
+              //    success: function () { alert("Success"); },
+              //    error: function () { alert("Error"); }
+              //});
+
+                        for (let a = 0; a < 1; a++) {
+                              if (_updateDetails.bankdetails.Bank_IFSC == "" || _updateDetails.bankdetails.Bank_IFSC == undefined) {
+                                  _returnData = {
+                                      isValid: true,
+                                      validationMessage: "Please Enter Bank_IFSC  Details"
+                                  };
+                                  break;
+                              }
+                              else if (_updateDetails.bankdetails.Bank_ID == "0" || _updateDetails.bankdetails.Bank_ID == undefined) {
+                                  _returnData = {
+                                      isValid: true,
+                                      validationMessage: "Please Select Bank"
+                                  };
+                                  break;
+                              }
+                              else if (_updateDetails.bankdetails.Bank_AccountTypeID == "0" || _updateDetails.bankdetails.Bank_AccountTypeID == undefined) {
+                                  _returnData = {
+                                      isValid: true,
+                                      validationMessage: "Please Select Account Type"
+                                  };
+                                  break;
+                              }
+                              else if (_updateDetails.bankdetails.Bank_AccountNo == "" || _updateDetails.bankdetails.Bank_AccountNo == undefined) {
+                                  _returnData = {
+                                      isValid: true,
+                                      validationMessage: "Please Select Account No"
+                                  };
+                                  break;
+                              }
+                              else {
+                                  _returnData.isValid = false;
+                              }
+
+                          }
         
+
+
+             
+              return _returnData;
+              }
+          let authenticationProfileSaveDetail = function (_updateDetails) {
+              _returnData = {
+                  isValid: false,
+                  validationMessage: ""
+              };
+              for (let a = 0; a < 1; a++) {
+                  if (_updateDetails.userprofile.HoldingNature_ID != "1") {
+                      if (_updateDetails.userprofile.UR_2ndApplicant == '' || _updateDetails.userprofile.UR_2ndApplicant == null) {
+                          _returnData.isValid = true;
+                          _returnData.validationMessage = 'Please insert 2nd Applicant';
+                          break;
+                      }
+                      
+                  }
+                  else if (_updateDetails.userprofile.DateOfBirth == '' || _updateDetails.userprofile.DateOfBirth == null) {
+                      _returnData.isValid = true;
+                      _returnData.validationMessage = 'Please insert DateOfBirth';
+                      break;
+                  }
+                  else if (_updateDetails.userprofile.Gender == '' || _updateDetails.userprofile.DateOfBirth == null || _updateDetails.userprofile.Gender == 'Select Gender') {
+                      _returnData.isValid = true;
+                      _returnData.validationMessage = 'Please select  Gender';
+                      break;
+                  }
+                  else if (_updateDetails.userprofile.FirstName == '' || _updateDetails.userprofile.FirstName == null) {
+                      _returnData.isValid = true;
+                      _returnData.validationMessage = 'Please insert FirstName';
+                      break;
+                  }
+                  else if (_updateDetails.userprofile.LastName == '' || _updateDetails.userprofile.LastName == null) {
+                      _returnData.isValid = true;
+                      _returnData.validationMessage = 'Please insert  LastName';
+                      break;
+                  }
+                  else if (_updateDetails.userprofile.HoldingNature_ID == '0' || _updateDetails.userprofile.HoldingNature_ID == null) {
+                      _returnData.isValid = true;
+                      _returnData.validationMessage = 'Please select  Holding Nature';
+                      break;
+                  }
+                  else if (_updateDetails.userprofile.TaxStatus_ID == '0' || _updateDetails.userprofile.TaxStatus_ID == null) {
+                      _returnData.isValid = true;
+                      _returnData.validationMessage = 'Please select  Tax Status';
+                      break;
+                  }
+                  else if (_updateDetails.userprofile.SOW_ID == '0' || _updateDetails.userprofile.SOW_ID == null) {
+                      _returnData.isValid = true;
+                      _returnData.validationMessage = 'Please select  Source Of Wealth';
+                      break;
+                  }
+                  else if (_updateDetails.userprofile.ClientTypeID == '0' || _updateDetails.userprofile.ClientTypeID == null) {
+                      _returnData.isValid = true;
+                      _returnData.validationMessage = 'Please select Client Type';
+                      break;
+                  }
+                  else if (_updateDetails.userprofile.DividentPayMode_ID == '0' || _updateDetails.userprofile.DividentPayMode_ID == null) {
+                      _returnData.isValid = true;
+                      _returnData.validationMessage = 'Please select Divident Pay Mode';
+                      break;
+                  }
+                  else if (_updateDetails.userprofile.CommunicationModeID == '0' || _updateDetails.userprofile.CommunicationModeID == '' || _updateDetails.userprofile.CommunicationModeID == null) {
+                      _returnData.isValid = true;
+                      _returnData.validationMessage = 'Please select Communication Mode';
+                      break;
+                  }
+                  else if (_updateDetails.userprofile.TaxStatus_ID != 2) {
+                      if (_updateDetails.userprofile.PANNumber == '' || _updateDetails.userprofile.PANNumber == null) {
+                          _returnData.isValid = true;
+                          _returnData.validationMessage = 'Please insert PAN Details';
+                          break;
+                      }
+                  }
+                  else {
+                      _returnData.isValid = false;
+                  }
+
+                  for (var j = 0; j < _updateDetails.listAddress.length; j++) {
+                      if (_updateDetails.listAddress[j].CityID == '' || _updateDetails.listAddress[j].CityID == '0' || _updateDetails.listAddress[j].CityID == null) {
+                          _returnData.isValid = true;
+                          _returnData.validationMessage = 'Please select City';
+                          break;
+                      }
+                      if (_updateDetails.listAddress[j].StateID == '' || _updateDetails.listAddress[j].StateID == '0' || _updateDetails.listAddress[j].StateID == null) {
+                          _returnData.isValid = true;
+                          _returnData.validationMessage = 'Please select State';
+                          break;
+                      }
+                      if (_updateDetails.listAddress[j].CountryID == '' || _updateDetails.listAddress[j].CountryID == '0' || _updateDetails.listAddress[j].CountryID == null) {
+                          _returnData.isValid = true;
+                          _returnData.validationMessage = 'Please select Country';
+                          break;
+                      }
+                      if (_updateDetails.listAddress[j].PinCode == '' || _updateDetails.listAddress[j].PinCode == '0' || _updateDetails.listAddress[j].PinCode == null) {
+                          _returnData.isValid = true;
+                          _returnData.validationMessage = 'Please insert PinCode';
+                          break;
+                      }
+                      if (_updateDetails.listAddress[j].Address == '' || _updateDetails.listAddress[j].Address == null) {
+                          _returnData.isValid = true;
+                          _returnData.validationMessage = 'Please insert Address';
+                          break;
+                      }
+                  }
+              }
+              return _returnData;
+          }
+
+            return {
+                authenticationBankDetail: authenticationBankDetail,
+                authenticationProfileSaveDetail: authenticationProfileSaveDetail
+            }
+        }])
         .controller("UserCtrl", ["$rootScope", "$scope", "$timeout", '$localStorage', 'CommonSrvc', '$location', function ($rs, $scope, $timeout, $localStorage, CommonSrvc, $location) {
             var mm = window.matchMedia("(max-width: 767px)");
             $rs.isMobile = mm.matches ? !0 : !1, $rs.safeApply = function (fn) {
@@ -682,7 +874,7 @@
                     $scope.CartNotificationScheme = $scope.UserDetailInfo.UserProfileData.AddedCartCount;
                     $scope.CartNotificationFavorite = $scope.UserDetailInfo.UserProfileData.AddedFavCount;
                     $scope.InvestNotificationScheme = $scope.UserDetailInfo.UserProfileData.AddedInvestment;
-
+                    
                 }
                 else {
                     $scope.ErrorMessage = answer.data.GetUserProfileDetailsInfoResult.ResponseMessage;
@@ -902,13 +1094,13 @@
                 }
             }
         })
-    .filter('DateFilter', function () {
+        .filter('DateFilter', function () {
         return function (Date) {
             var date = new Date(Date);
             return date;
         };
     })
-        .controller("ProfileCtrl", ["$scope", "CommonSrvc", "$localStorage", "$filter", "$http", "$mdToast", '$rootScope', function ($scope, CommonSrvc, $localStorage, $filter, $http, $mdToast, $rootScope) {
+        .controller("ProfileCtrl", ["$scope", "CommonSrvc", "$localStorage", "$filter", "$http", "$mdToast", '$rootScope', 'validateSrvc', function ($scope, CommonSrvc, $localStorage, $filter, $http, $mdToast, $rootScope, validateSrvc) {
 
 
             $scope.showCustomToast = function () {
@@ -1029,7 +1221,7 @@
                 //$scope.error = true;
             }
           )
-            // Bank and other details
+            // Bank and other SaveUploadDetails
             var BankandOtherPromis = CommonSrvc.GetAllListDetails.getPromise();
             BankandOtherPromis.then(
             // OnSuccess function
@@ -1041,7 +1233,10 @@
                     $scope.NomineeDpwn = answer.data.GetAllListDetailsResult.Result.NomineeTypeList;
                     $scope.RelationDpwn = answer.data.GetAllListDetailsResult.Result.RelationList;
                     $scope.ClientTypeDpwn = answer.data.GetAllListDetailsResult.Result.ClientTypeList;
+                    $scope.DividentPayModeDpwn = answer.data.GetAllListDetailsResult.Result.DividentPayModeList;
                     $scope.CommunicationDpwn = answer.data.GetAllListDetailsResult.Result.CommunicationModeList;
+                    $scope.DepositoryNameList = ['CDSL', 'NSDL'];
+                    $scope.ClientTypeList = ['PHYSICAL', 'DEMAT'];
                     $scope.BankAccountList = [];
                     $scope.BankDetailsList = [];
                     $scope.BankNomineeList = [];
@@ -1138,7 +1333,7 @@
                         
                         
                         $scope.UserDetailInfo = answer.data.GetUserProfileDetailsInfoResult.Result;
-                        $scope.UserDetailInfo.UserProfileData.DateOfBirth = new Date($scope.UserDetailInfo.UserProfileData.DateOfBirth);
+                       // $scope.UserDetailInfo.UserProfileData.DateOfBirth = new Date($scope.UserDetailInfo.UserProfileData.DateOfBirth);
                         document.getElementById("CartNotificationTotal").innerText=parseInt($scope.UserDetailInfo.UserProfileData.AddedCartCount) + parseInt($scope.UserDetailInfo.UserProfileData.AddedFavCount);
                         
 
@@ -1169,6 +1364,9 @@
                 $scope.CityListDetails = $filter('filter')($scope.CityList, { State_ID: State_ID });
             }
             $scope.TaxStatus = {};
+            $scope.DisableField = function (item) {
+                if(item !='' ){}
+            };
             // demo one
             $scope.TaxStatusList = [
                 { TaxtName: 'Individual' },
@@ -1201,9 +1399,35 @@
             }, $scope.dt = Date.now()
 
             $scope.Update = function () {
-               
+                let UserDetailsUpdate = {
+                    "User_ID": $localStorage.UserDetails.LoginID,
+                    "userprofile": $scope.UserDetailInfo.UserProfileData,
 
-                for (var a = 0; a < $scope.UserDetailInfo.AddressDetailsData.length; a++) {
+                    "listAddress": $scope.UserDetailInfo.AddressDetailsData,
+                    "depositorydetails": {
+                        "DepositoryDetails_ID": $scope.UserDetailInfo.DepositoryDetailsData.DepositoryDetails_ID,
+                        "ClientType": $scope.UserDetailInfo.DepositoryDetailsData.ClientType,
+                        "DepositoryName": $scope.UserDetailInfo.DepositoryDetailsData.DepositoryName,
+                        "NSDLDP_ID": $scope.UserDetailInfo.DepositoryDetailsData.NSDLDP_ID,
+                        "CDSLBenAcNo": $scope.UserDetailInfo.DepositoryDetailsData.CDSLBenAcNo,
+                        "NSDLBenAcNo": $scope.UserDetailInfo.DepositoryDetailsData.NSDLBenAcNo
+                    },
+                    "bankdetails": {
+
+                    },
+                    "listNomineeDetails": [
+
+                    ],
+                    "listDocumentDetails": [
+
+                    ]
+                }
+                let tempVal = validateSrvc.authenticationProfileSaveDetail(UserDetailsUpdate);
+
+                if (!tempVal.isValid) {
+                    $scope.errorMessage = "";
+                    for (var a = 0; a < $scope.UserDetailInfo.AddressDetailsData.length; a++)
+                    {
                     var CountryIndex = $.map($localStorage.ContryDpwn, function (obj, index) {
                         if(obj.Country_Name == $scope.UserDetailInfo.AddressDetailsData[a].CountryName) {
                             return index;
@@ -1225,21 +1449,7 @@
                 }
 
                
-                var UserDetailsUpdate = {
-                    "User_ID": $localStorage.UserDetails.LoginID,
-                    "userprofile": $scope.UserDetailInfo.UserProfileData,
-  
-                    "listAddress": $scope.UserDetailInfo.AddressDetailsData,
-                    "bankdetails": {
-                        
-                    },
-                    "listNomineeDetails": [
-                       
-                    ],
-                    "listDocumentDetails":[ 
-                    
-                    ]
-                }
+               
                 
                 $http.post(API_UserDataUpdate, JSON.stringify(UserDetailsUpdate))
                 .success(function (data, status) {
@@ -1258,6 +1468,15 @@
                 $rootScope.UploadMessage = data.UpdateUserDetailsResult.ResponseMessage;
                 $scope.showCustomToast();
             });
+                }
+                    //Message Part if some validation issue
+                else
+
+                {
+                    $scope.errorMessage = tempVal.validationMessage;
+                }
+
+              
                     
             }
 
@@ -1266,6 +1485,14 @@
                     "User_ID": $localStorage.UserDetails.LoginID,
                     "userprofile": {
 
+                    },
+                    "depositorydetails": {
+                        "DepositoryDetails_ID": $scope.UserDetailInfo.DepositoryDetailsData.DepositoryDetails_ID,
+                        "ClientType": $scope.UserDetailInfo.DepositoryDetailsData.ClientType,
+                        "DepositoryName": $scope.UserDetailInfo.DepositoryDetailsData.DepositoryName,
+                        "NSDLDP_ID": $scope.UserDetailInfo.DepositoryDetailsData.NSDLDP_ID,
+                        "CDSLBenAcNo": $scope.UserDetailInfo.DepositoryDetailsData.CDSLBenAcNo,
+                        "NSDLBenAcNo": $scope.UserDetailInfo.DepositoryDetailsData.NSDLBenAcNo
                     },
                     "bankdetails": {
                         "BankDetails_ID": $scope.UserDetailInfo.BankDetailsData.BankDetails_ID,
@@ -1283,23 +1510,35 @@
 
                     ]
                 }
-                $http.post(API_UserDataUpdate, JSON.stringify(BankDetailsUpdate))
-               .success(function (data, status) {
+                let tempVal=validateSrvc.authenticationBankDetail(BankDetailsUpdate);
+
+                if (!tempVal.isValid) {
+                    $scope.errorMessage = "";
+                    $http.post(API_UserDataUpdate, JSON.stringify(BankDetailsUpdate))
+                                   .success(function (data, status) {
 
                   
-                   if (data.UpdateUserDetailsResult.ResponseCode == 0) {
-                       $rootScope.UploadMessage = data.UpdateUserDetailsResult.ResponseMessage;
-                       $scope.showCustomToast();
-                       //$scope.OnLoadProfileData();
-                       //alert(data.UpdateUserDetailsResult.ResponseMessage);
-                   }
+                                       if (data.UpdateUserDetailsResult.ResponseCode == 0) {
+                                           $rootScope.UploadMessage = data.UpdateUserDetailsResult.ResponseMessage;
+                                           $scope.showCustomToast();
+                                           //$scope.OnLoadProfileData();
+                                           //alert(data.UpdateUserDetailsResult.ResponseMessage);
+                                       }
 
-               })
-           .catch(function (response) {
-               var d = response.data;
-               $rootScope.UploadMessage = data.UpdateUserDetailsResult.ResponseMessage;
-               $scope.showCustomToast();
-           });
+                                   })
+                               .catch(function (response) {
+                                   var d = response.data;
+                                   $rootScope.UploadMessage = data.UpdateUserDetailsResult.ResponseMessage;
+                                   $scope.showCustomToast();
+                               });
+                }
+                else {
+
+                    $scope.errorMessage = tempVal.validationMessage;
+                    
+                    //Error Message
+                }
+                
 
             }
 
@@ -1327,6 +1566,14 @@
                      "User_ID": $localStorage.UserDetails.LoginID,
                     "userprofile": {
 
+                    },
+                     "depositorydetails":{
+                         "DepositoryDetails_ID": $scope.UserDetailInfo.DepositoryDetailsData.DepositoryDetails_ID,
+                         "ClientType": $scope.UserDetailInfo.DepositoryDetailsData.ClientType,
+                         "DepositoryName": $scope.UserDetailInfo.DepositoryDetailsData.DepositoryName,
+                         "NSDLDP_ID": $scope.UserDetailInfo.DepositoryDetailsData.NSDLDP_ID,
+                         "CDSLBenAcNo": $scope.UserDetailInfo.DepositoryDetailsData.CDSLBenAcNo,
+                         "NSDLBenAcNo": $scope.UserDetailInfo.DepositoryDetailsData.NSDLBenAcNo
                     },
                     "bankdetails": {
 
@@ -1367,6 +1614,14 @@
                      "User_ID": $localStorage.UserDetails.LoginID,
                     "userprofile": {
 
+                    },
+                    "depositorydetails": {
+                        "DepositoryDetails_ID": $scope.UserDetailInfo.DepositoryDetailsData.DepositoryDetails_ID,
+                        "ClientType": $scope.UserDetailInfo.DepositoryDetailsData.ClientType,
+                        "DepositoryName": $scope.UserDetailInfo.DepositoryDetailsData.DepositoryName,
+                        "NSDLDP_ID": $scope.UserDetailInfo.DepositoryDetailsData.NSDLDP_ID,
+                        "CDSLBenAcNo": $scope.UserDetailInfo.DepositoryDetailsData.CDSLBenAcNo,
+                        "NSDLBenAcNo": $scope.UserDetailInfo.DepositoryDetailsData.NSDLBenAcNo
                     },
                     "bankdetails": {
 
@@ -1410,7 +1665,63 @@
        });
             }
 
+            $scope.SaveDepositoryDetails = function () {
+                var UploadDetailsUpdate = {};
+                var listDocumentDetails = [];
+                UploadDetailsUpdate = {
+                    "User_ID": $localStorage.UserDetails.LoginID,
+                    "userprofile": {
 
+                    },
+                    "depositorydetails": {
+                        "DepositoryDetails_ID": $scope.UserDetailInfo.DepositoryDetailsData.DepositoryDetails_ID,
+                        "ClientType": $scope.UserDetailInfo.DepositoryDetailsData.ClientType,
+                        "DepositoryName": $scope.UserDetailInfo.DepositoryDetailsData.DepositoryName,
+                        "NSDLDP_ID": $scope.UserDetailInfo.DepositoryDetailsData.NSDLDP_ID,
+                        "CDSLBenAcNo": $scope.UserDetailInfo.DepositoryDetailsData.CDSLBenAcNo,
+                        "NSDLBenAcNo": $scope.UserDetailInfo.DepositoryDetailsData.NSDLBenAcNo
+                    },
+                    "bankdetails": {
+
+                    },
+                    "listNomineeDetails": [
+
+                    ],
+
+
+
+                }
+                for (var a = 0; a < $scope.UserDetailInfo.UploadDocumentDetailsData.length; a++) {
+                    listDocumentDetails.push({
+
+
+                        "DocumentUpload_ID": $scope.UserDetailInfo.UploadDocumentDetailsData[a].DocumentUpload_ID,
+                        "User_ID": $localStorage.UserDetails.LoginID,
+                        "DocumentType": $scope.UserDetailInfo.UploadDocumentDetailsData[a].DocumentType,
+                        "DocumentName": $scope.UserDetailInfo.UploadDocumentDetailsData[a].DocumentName,
+                        "DocumentPath": $scope.UserDetailInfo.UploadDocumentDetailsData[a].DocumentPath,
+                        "IsMandatory": $scope.UserDetailInfo.UploadDocumentDetailsData[a].IsMandatory,
+                    })
+                    UploadDetailsUpdate.listDocumentDetails = listDocumentDetails;
+                }
+                $http.post(API_UserDataUpdate, JSON.stringify(UploadDetailsUpdate))
+           .success(function (data, status) {
+
+               // $rootScope.UploadMessage = data.UpdateUserDetailsResult.ResponseMessage;
+               if (data.UpdateUserDetailsResult.ResponseCode == 0) {
+                   $rootScope.UploadMessage = data.UpdateUserDetailsResult.ResponseMessage;
+                   $scope.showCustomToast();
+                   //$scope.OnLoadProfileData();
+                   //alert(data.UpdateUserDetailsResult.ResponseMessage);
+               }
+
+           })
+       .catch(function (response) {
+           var d = response.data;
+           $rootScope.UploadMessage = data.UpdateUserDetailsResult.ResponseMessage;
+           $scope.showCustomToast();
+       });
+            }
             
             
         }])

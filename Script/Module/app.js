@@ -64,6 +64,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url: "/ChildMerrage",
         templateUrl: "../../Webform/Common/SIP/SIP_ChildMerrage.html",
         controller: "SIP.Ctrl"
+    }).state('Tour', {
+        url: "/Tour",
+        templateUrl: "../../Webform/Common/SIP/SIP_Tour.html",
+        controller: "SIP.Ctrl"
     }).state('BankList', {
         url: "/BankList",
         templateUrl: "../../WebForm/HtmlPages/Bank/bankList.html",

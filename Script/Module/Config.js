@@ -44,5 +44,5 @@ var API_FundCategoryEQUITY = 'http://cmapis.cmots.com/CrazyAchievers/MutualFund.
 var API_FundCategoryHybrid = 'http://cmapis.cmots.com/CrazyAchievers/MutualFund.svc/FundCategory/5946/Hybrid?responsetype=json';
 var API_FundCategoryDebt = 'http://cmapis.cmots.com/CrazyAchievers/MutualFund.svc/FundCategory/5946/Debt?responsetype=json';
 
-
+var API_validateIfsc = "https://ifsc.razorpay.com/";
 var API_UserDataUpdate = ServerName + Service_Common + 'UpdateUserDetails';

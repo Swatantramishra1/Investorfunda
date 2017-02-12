@@ -1,0 +1,59 @@
+﻿<section class="insurance-headline" style="background-color:white">
+    <div class="row">
+        <div class="shadow-wrapper margin-bottom-10">
+            <div class="tag-box tag-box-v1 box-shadow shadow-effect-2">
+                <h2><strong>BUY A CAR PLAN</strong>   </h2>
+                <p>Make assure your goal is at right direction which help us to provide best way to invest.</p>
+            </div>
+        </div>
+
+
+
+        <div class="col-md-12 margin-bottom-60" ng-show="!SIP_GOAL_Final_SHOW">
+            <div class="col-md-5" ng-show="!BuyTour_Step2">
+
+                <img src="http://www.99acres.com/microsite/articles/files/2016/07/family.jpeg" style="height:500px;width:100%" />
+            </div>
+            <div ng-class="BuyCar_Step2 ? 'col-md-12' : 'col-md-7'" style="text-align:left;padding-top:20px" md-theme="default">
+                <div class="col-md-12" style="padding:0px" ng-show="BuyTour_Step1">
+                    <md-input-container class="md-block">
+                        <label>Your Budget for the Holiday?</label>
+                        <input ng-model="Portfolio_Parameter.Portfolio_GoalAmount">
+                    </md-input-container>
+                    <md-input-container class="md-block" style="margin-top:30px">
+                        <label> Which year do you plan to travel ? </label>
+                        <input ng-model="Portfolio_Parameter.Portfolio_Year">
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>What is your age? </label>
+                        <input ng-model="Portfolio_Parameter.presentAge">
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Amount you want to invest right now? </label>
+                        <input ng-model="Portfolio_Parameter.amountWantToInvestNow">
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Estimated annual inflation rate from now   </label>
+                        <input ng-model="Portfolio_Parameter.Portfolio_InflationRate">
+                    </md-input-container>
+
+                </div>
+                <div class="col-md-12" style="padding:0px" ng-show="BuyTour_Step2">
+                    <div ng-include="'Webform/Common/Html/planForYourFutureStep2.html'"></div>
+                </div>
+                <div class="row text-right">
+                    <md-button ng-show="!BuyTour_Step1" ng-click="BuyTour_Back()"><i class="fa fa-backward"></i> Back</md-button>
+                    <md-button ng-show="!BuyTour_Step1" class="md-raised" ng-click="Portfolio_InvestNow()">Invest Now</md-button>
+                    <md-button ng-show="BuyTour_Step1" class="md-raised" ng-click="PortfolioBuyTour_Calculate()">Calculate</md-button>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="col-md-12 margin-bottom-60" ng-show="SIP_GOAL_Final_SHOW">
+            <div ng-include="'Webform/Common/Html/planForYourFutureStep3.html'"></div>
+
+        </div>
+    </div>
+</section>
