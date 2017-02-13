@@ -5,7 +5,7 @@
 /// <reference path="../../../../DesignContent/assets/plugins/bootstrap/js/bootstrap.min.js" />
 ! function () {
     "use strict";
-    angular.module("app", ["ngRoute", "ngAnimate", "ngSanitize", "ngAria", "ngMaterial", "oc.lazyLoad", "ui.bootstrap", "angular-loading-bar", "FBAngular", "app.ctrls", "app.directives", "app.ui.ctrls", "app.ui.directives", "app.form.ctrls", "app.table.ctrls", "app.email.ctrls", "app.todo", "ngStorage"]).config(["cfpLoadingBarProvider", function (cfpLoadingBarProvider) {
+    angular.module("app", ["ngRoute", "ngAnimate", "ngSanitize", "ngAria", "ngMaterial", "oc.lazyLoad", "ui.bootstrap", "angular-loading-bar", "FBAngular", "app.ctrls", "app.directives", "app.ui.ctrls", "app.ui.directives", "app.form.ctrls", "app.table.ctrls", "app.email.ctrls", "app.todo", "ngStorage", 'moment-picker']).config(["cfpLoadingBarProvider", function (cfpLoadingBarProvider) {
         cfpLoadingBarProvider.includeSpinner = !1, cfpLoadingBarProvider.latencyThreshold = 500
     }]).config(["$ocLazyLoadProvider", function ($oc) {
         $oc.config({

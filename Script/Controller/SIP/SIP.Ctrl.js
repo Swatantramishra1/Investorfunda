@@ -2068,12 +2068,12 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                 // OnSuccess function
                 function (answer) {
                     HideLoader();
-                    window.location = "../../../Webform/User/dist/index.html"
-                    if (answer.UserRegistrationResult.ResponseCode == "0") {
+                    //window.location = "../../../Webform/User/dist/index.html"
+                    //if (answer.UserRegistrationResult.ResponseCode == "0") {
 
-                    }
+                    //}
 
-                    $scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
+                    //$scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
 
 
                 },
@@ -2219,8 +2219,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
     $scope.ChangePortfolioAmount = function (From, Page) {
         let TempMonthlyInvestment = 0;
-        if (currentState == "ChildGoal") {
-
+        if (currentState == "ChildGoal") {76543
 
             if (From == 'M') {
                 TempMonthlyInvestment = parseInt($scope.Portfolio_Parameter.TotalMonthlyInvestment) - 1000;
