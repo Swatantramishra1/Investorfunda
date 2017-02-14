@@ -754,20 +754,23 @@
                           break;
                       
                   }
-                  else if ((_updateDetails.userprofile.UR_2ndApplicant != '' || _updateDetails.userprofile.UR_2ndApplicant != null) && (_updateDetails.userprofile.SecondApplicantPanCard == '' || _updateDetails.userprofile.SecondApplicantPanCard == null)) {
-                      
-                          _returnData.isValid = true;
-                          _returnData.validationMessage = 'Please insert 2nd Applicant Pancard Details';
-                          break;
-                      
-                  }
-                  else if ((_updateDetails.userprofile.UR_3rdApplicant != '' || _updateDetails.userprofile.UR_3rdApplicant != null) && (_updateDetails.userprofile.ThirdApplicantPanCard == '' || _updateDetails.userprofile.ThirdApplicantPanCard == null)) {
-
+                  else if (_updateDetails.userprofile.HoldingNature_ID != "1") {
+                      if((_updateDetails.userprofile.UR_2ndApplicant != '' || _updateDetails.userprofile.UR_2ndApplicant != null) && (_updateDetails.userprofile.SecondApplicantPanCard == '' || _updateDetails.userprofile.SecondApplicantPanCard == null))
+                  {
                       _returnData.isValid = true;
-                      _returnData.validationMessage = 'Please insert 3rd Applicant Pancard Details';
+                      _returnData.validationMessage = 'Please insert 2nd Applicant Pancard Details';
                       break;
-
                   }
+                        
+                      
+                  }
+                  //else if ((_updateDetails.userprofile.UR_3rdApplicant != '' || _updateDetails.userprofile.UR_3rdApplicant != null) && (_updateDetails.userprofile.ThirdApplicantPanCard == '' || _updateDetails.userprofile.ThirdApplicantPanCard == null)) {
+
+                  //    _returnData.isValid = true;
+                  //    _returnData.validationMessage = 'Please insert 3rd Applicant Pancard Details';
+                  //    break;
+
+                  //}
                   else if (_updateDetails.listAddress.length !=0) {
                       let j = 0; 
                            if (_updateDetails.listAddress[j].CityID == '' || _updateDetails.listAddress[j].CityID == '0' || _updateDetails.listAddress[j].CityID == null) {
