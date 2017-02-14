@@ -678,13 +678,18 @@
                   validationMessage: ""
               };
               for (let a = 0; a < 1; a++) {
-                  if (_updateDetails.userprofile.HoldingNature_ID != "1") {
-                      if (_updateDetails.userprofile.UR_2ndApplicant == '' || _updateDetails.userprofile.UR_2ndApplicant == null) {
+                  if (_updateDetails.userprofile.HoldingNature_ID == "0" || _updateDetails.userprofile.HoldingNature_ID == null) {
+                     
+                          _returnData.isValid = true;
+                          _returnData.validationMessage = 'Please select Holding Nature';
+                          break;
+                      
+                  }
+                  else if (_updateDetails.userprofile.HoldingNature_ID != "1" && (_updateDetails.userprofile.UR_2ndApplicant == '' || _updateDetails.userprofile.UR_2ndApplicant == null)) {
+                     
                           _returnData.isValid = true;
                           _returnData.validationMessage = 'Please insert 2nd Applicant';
-                          break;
-                      }
-                      
+                          break; 
                   }
                   else if (_updateDetails.userprofile.DateOfBirth == '' || _updateDetails.userprofile.DateOfBirth == null) {
                       _returnData.isValid = true;
@@ -736,44 +741,67 @@
                       _returnData.validationMessage = 'Please select Communication Mode';
                       break;
                   }
-                  else if (_updateDetails.userprofile.TaxStatus_ID != 2) {
-                      if (_updateDetails.userprofile.PANNumber == '' || _updateDetails.userprofile.PANNumber == null) {
+                  else if (_updateDetails.userprofile.TaxStatus_ID != 2 && (_updateDetails.userprofile.PANNumber == '' || _updateDetails.userprofile.PANNumber == null)) {
+                     
                           _returnData.isValid = true;
                           _returnData.validationMessage = 'Please insert PAN Details';
                           break;
-                      }
+                  }
+                  else if (_updateDetails.userprofile.TaxStatus_ID == 2 && ((_updateDetails.userprofile.GuardianName == '' || _updateDetails.userprofile.GuardianName == null) || (_updateDetails.userprofile.GuardianPanCard == '' || _updateDetails.userprofile.GuardianPanCard == null))) {
+                    
+                          _returnData.isValid = true;
+                          _returnData.validationMessage = 'Please insert Guardian Details i.e Name and PanCard';
+                          break;
+                      
+                  }
+                  else if ((_updateDetails.userprofile.UR_2ndApplicant != '' || _updateDetails.userprofile.UR_2ndApplicant != null) && (_updateDetails.userprofile.SecondApplicantPanCard == '' || _updateDetails.userprofile.SecondApplicantPanCard == null)) {
+                      
+                          _returnData.isValid = true;
+                          _returnData.validationMessage = 'Please insert 2nd Applicant Pancard Details';
+                          break;
+                      
+                  }
+                  else if ((_updateDetails.userprofile.UR_3rdApplicant != '' || _updateDetails.userprofile.UR_3rdApplicant != null) && (_updateDetails.userprofile.ThirdApplicantPanCard == '' || _updateDetails.userprofile.ThirdApplicantPanCard == null)) {
+
+                      _returnData.isValid = true;
+                      _returnData.validationMessage = 'Please insert 3rd Applicant Pancard Details';
+                      break;
+
+                  }
+                  else if (_updateDetails.listAddress.length !=0) {
+                      let j = 0; 
+                           if (_updateDetails.listAddress[j].CityID == '' || _updateDetails.listAddress[j].CityID == '0' || _updateDetails.listAddress[j].CityID == null) {
+                               _returnData.isValid = true;
+                               _returnData.validationMessage = 'Please select City';
+                               break;
+                           }
+                           if (_updateDetails.listAddress[j].StateID == '' || _updateDetails.listAddress[j].StateID == '0' || _updateDetails.listAddress[j].StateID == null) {
+                               _returnData.isValid = true;
+                               _returnData.validationMessage = 'Please select State';
+                               break;
+                           }
+                           if (_updateDetails.listAddress[j].CountryID == '' || _updateDetails.listAddress[j].CountryID == '0' || _updateDetails.listAddress[j].CountryID == null) {
+                               _returnData.isValid = true;
+                               _returnData.validationMessage = 'Please select Country';
+                               break;
+                           }
+                           if (_updateDetails.listAddress[j].PinCode == '' || _updateDetails.listAddress[j].PinCode == '0' || _updateDetails.listAddress[j].PinCode == null) {
+                               _returnData.isValid = true;
+                               _returnData.validationMessage = 'Please insert PinCode';
+                               break;
+                           }
+                           if (_updateDetails.listAddress[j].Address == '' || _updateDetails.listAddress[j].Address == null) {
+                               _returnData.isValid = true;
+                               _returnData.validationMessage = 'Please insert Address';
+                               break;
+                           }
+                       //}
                   }
                   else {
                       _returnData.isValid = false;
                   }
 
-                  for (var j = 0; j < _updateDetails.listAddress.length; j++) {
-                      if (_updateDetails.listAddress[j].CityID == '' || _updateDetails.listAddress[j].CityID == '0' || _updateDetails.listAddress[j].CityID == null) {
-                          _returnData.isValid = true;
-                          _returnData.validationMessage = 'Please select City';
-                          break;
-                      }
-                      if (_updateDetails.listAddress[j].StateID == '' || _updateDetails.listAddress[j].StateID == '0' || _updateDetails.listAddress[j].StateID == null) {
-                          _returnData.isValid = true;
-                          _returnData.validationMessage = 'Please select State';
-                          break;
-                      }
-                      if (_updateDetails.listAddress[j].CountryID == '' || _updateDetails.listAddress[j].CountryID == '0' || _updateDetails.listAddress[j].CountryID == null) {
-                          _returnData.isValid = true;
-                          _returnData.validationMessage = 'Please select Country';
-                          break;
-                      }
-                      if (_updateDetails.listAddress[j].PinCode == '' || _updateDetails.listAddress[j].PinCode == '0' || _updateDetails.listAddress[j].PinCode == null) {
-                          _returnData.isValid = true;
-                          _returnData.validationMessage = 'Please insert PinCode';
-                          break;
-                      }
-                      if (_updateDetails.listAddress[j].Address == '' || _updateDetails.listAddress[j].Address == null) {
-                          _returnData.isValid = true;
-                          _returnData.validationMessage = 'Please insert Address';
-                          break;
-                      }
-                  }
+                 
               }
               return _returnData;
           }
@@ -1426,27 +1454,27 @@
 
                 if (!tempVal.isValid) {
                     $scope.errorMessage = "";
-                    for (var a = 0; a < $scope.UserDetailInfo.AddressDetailsData.length; a++)
-                    {
-                    var CountryIndex = $.map($localStorage.ContryDpwn, function (obj, index) {
-                        if(obj.Country_Name == $scope.UserDetailInfo.AddressDetailsData[a].CountryName) {
-                            return index;
-                        }
-                    })
-                    var StateIndex = $.map($localStorage.StateDpwn, function (obj, index) {
-                        if(obj.State_Name == $scope.UserDetailInfo.AddressDetailsData[a].StateName) {
-                            return index;
-                        }
-                    })
-                    var CityIndex = $.map($localStorage.CityDpwn, function (obj, index) {
-                        if (obj.City_Name == $scope.UserDetailInfo.AddressDetailsData[a].CityName) {
-                            return index;
-                        }
-                    })
-                    $scope.UserDetailInfo.AddressDetailsData[a].CountryID = CountryIndex.length > 0 ? $localStorage.ContryDpwn[CountryIndex[0]].Country_ID : "";
-                    $scope.UserDetailInfo.AddressDetailsData[a].StateID = StateIndex.length > 0 ? $localStorage.StateDpwn[StateIndex[0]].State_ID : "";
-                    $scope.UserDetailInfo.AddressDetailsData[a].CityID = CityIndex.length > 0 ? $localStorage.CityDpwn[CityIndex[0]].City_ID : "";
-                }
+                //    for (var a = 0; a < $scope.UserDetailInfo.AddressDetailsData.length; a++)
+                //    {
+                //    var CountryIndex = $.map($localStorage.ContryDpwn, function (obj, index) {
+                //        if(obj.Country_Name == $scope.UserDetailInfo.AddressDetailsData[a].CountryName) {
+                //            return index;
+                //        }
+                //    })
+                //    var StateIndex = $.map($localStorage.StateDpwn, function (obj, index) {
+                //        if(obj.State_Name == $scope.UserDetailInfo.AddressDetailsData[a].StateName) {
+                //            return index;
+                //        }
+                //    })
+                //    var CityIndex = $.map($localStorage.CityDpwn, function (obj, index) {
+                //        if (obj.City_Name == $scope.UserDetailInfo.AddressDetailsData[a].CityName) {
+                //            return index;
+                //        }
+                //    })
+                //    $scope.UserDetailInfo.AddressDetailsData[a].CountryID = CountryIndex.length > 0 ? $localStorage.ContryDpwn[CountryIndex[0]].Country_ID : "";
+                //    $scope.UserDetailInfo.AddressDetailsData[a].StateID = StateIndex.length > 0 ? $localStorage.StateDpwn[StateIndex[0]].State_ID : "";
+                //    $scope.UserDetailInfo.AddressDetailsData[a].CityID = CityIndex.length > 0 ? $localStorage.CityDpwn[CityIndex[0]].City_ID : "";
+                //}
 
                
                
