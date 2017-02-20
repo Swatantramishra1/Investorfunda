@@ -273,6 +273,32 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             //$scope.error = true;
         }
       )
+        $localStorage.POstJson = {
+            "User_ID": "",
+            "userPlan": {
+                "MasterPlan_ID": '6',
+                "Goal": "",
+                "CurrentAge": "",
+                "CourseTime": "",
+                "CourseDuration": "",
+                "CourseFeePerYear": "",
+                "LivingCostPerYear": "",
+                "SavedAmount_Lumpsum": "",
+                "InflationRate": "",
+                "TotalCourseFees": "",
+                "TotalLivingExpanses": "",
+                "TotalAmount": "",
+                "TotalLumpsumAmount": "",
+                "EstimatedInflationRate": ""
+            },
+            "userPortfolio": {
+                "Equity": "",
+                "Debt": "",
+                "EstimatedTotalSIPAmt": "",
+                "Scheme_IDs": ""
+            },
+            "InvestmentList": []
+        }
         $mdDialog.hide();
     }
     if ($localStorage.LoginStatus)

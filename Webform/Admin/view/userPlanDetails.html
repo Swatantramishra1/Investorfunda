@@ -1,0 +1,28 @@
+﻿<div class="box_1">
+    <h1 class="m_2">{{user.Name}} - Plan Details Listed Below</h1>
+    <div class="search">
+        <form>
+            <input type="text" placeholder="Search by Name" ng-model="expression">
+            <input type="submit" value="">
+        </form>
+    </div>
+    <div class="clearfix"> </div>
+</div>
+<div class="box_2">
+
+    <div class="col-md-2 grid_6 margin-left-20" ng-repeat="ListItem in userPlanList|filter : expression" >
+        <div class="m_7"><a style="cursor:pointer"><img  src="images/mutualfunds.jpg" class="img-responsive" alt="" /></a></div>
+        <div class="caption1">
+            <ul class="list_5">
+                <li><p style="color:orangered;font-size:13px">SIP - {{ListItem.MonthlySIP}}</p></li>
+
+            </ul>
+
+
+            <p class="m_3" style="color: darkslategray;font-weight: 600;font-size: 20px;" title="{{ListItem.PlanName}}">{{ListItem.PlanName.length>20?ListItem.PlanName.substring(0,20)+'...':ListItem.PlanName }}</p>
+        </div>
+
+    </div>
+    <!--<div class="col-md-12 text-center"><a ng-click="addMore()"> Load More</a></div>-->
+    <div class="clearfix"> </div>
+</div>

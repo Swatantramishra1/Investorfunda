@@ -1,10 +1,10 @@
 ﻿// Host Name & Urls
 
 //For Locals
-//var ServerName = "http://localhost:51176/Service/";
+var ServerName = "http://localhost:51176/Service/";
 
 //For Hosting
-var ServerName = "http://ifserviceapi.azurewebsites.net/Service/";
+//var ServerName = "http://ifserviceapi.azurewebsites.net/Service/";
 
 
 
@@ -31,6 +31,11 @@ var API_Post_CreateUsersPlan = ServerName + Service_Common + 'CreateUsersPlan';
 var API_GetAllCartListDetails = ServerName + Service_Common + 'GetInvestmentPlanCart/';
 var API_GetUserPaymentStatus = ServerName + Service_Common + 'GetUserPaymentStatus/';
 var API_GetUserPaymentString = ServerName + Service_Common + 'GetUserPaymentString/';
+
+
+//Admin Part
+var API_GetUserListAdmin = ServerName + Service_Common + 'GetUserListAdmin'; 
+var API_GetUserPlanList = ServerName + Service_Common + 'GetUserPlanlist/'
 
 //Other API Service
 
