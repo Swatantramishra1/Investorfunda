@@ -37,6 +37,7 @@
                 {
                     $state.go('UserPlanDetails');
                     $scope.user.Name = $scope.userList[index].Name;
+                    $scope.user.ClientCode = $scope.userList[index].ClientCode;
                     $scope.userPlanList = answer.data.GetUserPlanlistsResult.Result;
                 }
                 else {
@@ -76,7 +77,35 @@
     }
 
     $scope.goToViewPage = function (index) {
-        $state.go('UserSingleView');
+
+        var GetUserInvestmentDetailsList = adminSrv.GetUserInvestmentDetailsList.getPromise($scope.user.ClientCode, $scope.userPlanList[index].PlanID);
+        GetUserInvestmentDetailsList.then(
+        // OnSuccess function
+        function (answer) {
+            if (answer.data.GetUserInvestmentDetailsResult.ResponseCode == "0") {
+                if (answer.data.GetUserInvestmentDetailsResult.Result.UserInvestmentSchemeDetailsData.length > 0) {
+                    $state.go('UserSingleView');
+                    
+                    $scope.usernvestmentdetails = answer.data.GetUserInvestmentDetailsResult.Result.UserInvestmentDetailsData;
+                    $scope.UserInvestmentSchemeDetailsData = answer.data.GetUserInvestmentDetailsResult.Result.UserInvestmentSchemeDetailsData;
+
+                }
+                else {
+                    alert("Do not have any plan associated with it.")
+                }
+
+            }
+
+        },
+        // OnFailure function
+        function (reason) {
+
+            $scope.ErrorMessage = answer.GetUserInvestmentDetailsResult.ResponseMessage;
+            //$scope.somethingWrong = reason;
+            //$scope.error = true;
+        }
+      )
+        
     }
 
 }]);

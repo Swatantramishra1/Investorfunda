@@ -42,8 +42,30 @@
             return deferObject.promise;
         }
     };
+    GetUserInvestmentDetailsList = {
+
+        getPromise: function (ClientCode,PlanID) {
+            var promise = $http.get(API_GetUserInvestmentDetails + ClientCode + "/"+PlanID),
+                  deferObject = deferObject || $q.defer();
+
+            promise.then(
+              // OnSuccess function
+              function (answer) {
+                  // This code will only run if we have a successful promise.
+                  deferObject.resolve(answer);
+              },
+              // OnFailure function
+              function (reason) {
+                  // This code will only run if we have a failed promise.
+                  deferObject.reject(reason);
+              });
+
+            return deferObject.promise;
+        }
+    };
     return {
         GetUserList: GetUserList,
-        GetUserPlanList: GetUserPlanList
+        GetUserPlanList: GetUserPlanList,
+        GetUserInvestmentDetailsList: GetUserInvestmentDetailsList
     }
 }])

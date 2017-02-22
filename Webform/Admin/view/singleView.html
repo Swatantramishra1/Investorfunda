@@ -1,42 +1,70 @@
-﻿<div class="movie_top">
+﻿<style>
+    button.accordion {
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition: 0.4s;
+    }
+
+        button.accordion.active, button.accordion:hover {
+            background-color: #ddd;
+        }
+
+   
+</style>
+
+<div class="movie_top">
     <div class="col-md-12 movie_box">
-        <div class="grid images_3_of_2" style="width: 22%;">
-            <div class="movie_image">
-                <span class="movie_rating">5.0</span>
-                <img src="images/mutualfunds.jpg" class="img-responsive" alt="" />
-            </div>
-            <div class="movie_rate">
-                <div class="rating_desc"><p>Like :</p></div>
-                <form action="#" class="sky-form">
-                    <fieldset>
-                        <section>
-                            <div class="rating">
-                                <input type="radio" name="stars-rating" id="stars-rating-5">
-                                <label for="stars-rating-5"><i class="icon-star"></i></label>
-                                <input type="radio" name="stars-rating" id="stars-rating-4">
-                                <label for="stars-rating-4"><i class="icon-star"></i></label>
-                                <input type="radio" name="stars-rating" id="stars-rating-3">
-                                <label for="stars-rating-3"><i class="icon-star"></i></label>
-                                <input type="radio" name="stars-rating" id="stars-rating-2">
-                                <label for="stars-rating-2"><i class="icon-star"></i></label>
-                                <input type="radio" name="stars-rating" id="stars-rating-1">
-                                <label for="stars-rating-1"><i class="icon-star"></i></label>
+      <div class="col-md-6">
+          <p>Name : {{usernvestmentdetails[0].Name}}</p>
+          <p>Client Code : {{usernvestmentdetails[0].ClientCode}}</p>
+          <p>Transaction Type : {{usernvestmentdetails[0].ClientType}}</p>
+          <p>Transaction ID : {{usernvestmentdetails[0].NSDLDP_ID}}</p>
+          <p>NSDL Bank Account NO : {{usernvestmentdetails[0].NSDLBenAcNo}}</p>
+          <p>CSDL Bank Account NO : {{usernvestmentdetails[0].CDSLBenAcNo}}</p>
+          <p>Pan Card No : {{usernvestmentdetails[0].UR_PANCardNo}}</p>
+          <p>Email ID : {{usernvestmentdetails[0].UR_Email}}</p>
+          <p>Mobile No : {{usernvestmentdetails[0].UR_Mobile}}</p>
+      </div>
+        <div class="col-md-6">
+            <div class="col-md-12" ng-repeat="InvstDetail in UserInvestmentSchemeDetailsData">
+
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#{{$index}}acollapseOne">
+                                    <span class="glyphicon glyphicon-file">
+                                    </span>{{InvstDetail.SchemeName}}
+                                </a>
+                            </h4>
+                        </div>
+                        <div data-target="{{$index}}acollapseOne" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <p>BSESchemeCode : {{InvstDetail.BSESchemeCode}}</p>
+                                <p>Amount : {{InvstDetail.Amount}}</p>
+                                <p>InvestmentType : {{InvstDetail.InvestmentType}}</p>
                             </div>
-                        </section>
-                    </fieldset>
-                </form>
-                <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+
+                <!--<button class="accordion" data-toggle="collapse" data-target="#{{$index}}a">SchemeName : {{InvstDetail.SchemeName}}</button>
+                <div class="panel collapse" id="{{$index}}a" >
+                    <p>BSESchemeCode : {{InvstDetail.BSESchemeCode}}</p>
+                    <p>Amount : {{InvstDetail.Amount}}</p>
+                    <p>InvestmentType : {{InvstDetail.InvestmentType}}</p>
+                </div>-->
             </div>
-        </div>
-        <div class="desc1 span_3_of_2">
-            <p class="movie_option"><strong>Monthly Investment: </strong><a href="#">established</a>, <a href="#">USA</a></p>
-            <p class="movie_option"><strong>For Duration: </strong>2014</p>
-            <p class="movie_option"><strong>Category: </strong><a href="#">Adventure</a>, <a href="#">Fantazy</a></p>
-            <p class="movie_option"><strong>Release date: </strong>December 12, 2014</p>
-            <p class="movie_option"><strong>Director: </strong><a href="#">suffered </a></p>
-            <p class="movie_option"><strong>Actors: </strong><a href="#">anything</a>, <a href="#">Lorem Ipsum</a>, <a href="#" discovered </a>, <a href="#"> Virginia</a>, <a href="#"> Virginia</a>, <a href="#">variations</a>, <a href="#">variations</a>, <a href="#">variations</a>, <a href="#"> Virginia</a> <a href="#">...</a></p>
-            <p class="movie_option"><strong>Age restriction: </strong>13</p>
-            <div class="down_btn"><a class="btn1" href="#"><span> </span>Download</a></div>
+
         </div>
         <div class="clearfix"> </div>
         <!---728x90--->
@@ -47,3 +75,19 @@
  
     <div class="clearfix"> </div>
 </div>
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].onclick = function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  }
+}
+</script>

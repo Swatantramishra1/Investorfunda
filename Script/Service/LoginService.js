@@ -6,48 +6,49 @@ app.service('ULoginService', ['$http', '$q', '$httpParamSerializer', function ($
 
         getPromise: function (Email, Password) {
             let returnValue;
-            var promise = $.ajax({
-                type: 'GET',
-                async:false,
-                url: API_Login_All + Email + "/" + Password,
-                defaultHeaders: {
-                    'Content-Type': 'application/json',
-                    "Access-Control-Allow-Origin": "*",
-                    'Accept': 'application/json'
-                },
+            //var promise = $.ajax({
+            //    type: 'GET',
+            //    async: false,
+            //    contentType: 'application/x-www-form-urlencoded; charset=iso-8859-1',
+            //    url: API_Login_All + Email + "/" + Password,
+            //    defaultHeaders: {
+            //        'Content-Type': 'application/json',
+            //        "Access-Control-Allow-Origin": "*",
+            //        'Accept': 'application/json'
+            //    },
 
-                data: '',
-                dataType: 'json',
-                success: function (response) {
-                    //    BindTableData();
-                    console.log("success ");
-                    alert(response);
-                    returnValue= response;
-                },
-                error: function (xhr) {
-                    console.log("error ");
-                    console.log(xhr);
-                    returnValue= xhr;
-                }
-            });
+            //    data: '',
+            //    dataType: 'JSONP',
+            //    success: function (response) {
+            //        //    BindTableData();
+            //        console.log("success ");
+            //        alert(response);
+            //        returnValue= response;
+            //    },
+            //    error: function (xhr) {
+            //        console.log("error ");
+            //        console.log(xhr);
+            //        returnValue= xhr;
+            //    }
+            //});
 
-            return returnValue;
-            //var promise = $http.get(API_Login_All + Email + "/" + Password),
-            //      deferObject = deferObject || $q.defer();
+            //return returnValue;
+            var promise = $http.get(API_Login_All + Email + "/" + Password),
+                  deferObject = deferObject || $q.defer();
 
-            //promise.then(
-            //  // OnSuccess function
-            //  function (answer) {
-            //      // This code will only run if we have a successful promise.
-            //      deferObject.resolve(answer);
-            //  },
-            //  // OnFailure function
-            //  function (reason) {
-            //      // This code will only run if we have a failed promise.
-            //      deferObject.reject(reason);
-            //  });
+            promise.then(
+              // OnSuccess function
+              function (answer) {
+                  // This code will only run if we have a successful promise.
+                  deferObject.resolve(answer);
+              },
+              // OnFailure function
+              function (reason) {
+                  // This code will only run if we have a failed promise.
+                  deferObject.reject(reason);
+              });
 
-            //return deferObject.promise;
+            return deferObject.promise;
         }
     };
     Register = {

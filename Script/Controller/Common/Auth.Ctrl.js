@@ -18,13 +18,16 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
     $scope.Login_All = function () {
         ShowLoader();
         var askForPromise = ULoginService.LoginUser.getPromise($scope.user.username, $scope.user.password);
+        askForPromise.then(
+        // OnSuccess function
+        function (answer) {
             HideLoader();
-            if (askForPromise.GetLoginResult.ResponseCode == 0)
+            if (answer.data.GetLoginResult.ResponseCode == 0)
             {
                 $localStorage.LoginStatus = true;
                 $rootScope.LoginStatus = true;
-                $localStorage.UserDetails = askForPromise.GetLoginResult.Result;
-                $rootScope.UserDetails = askForPromise.GetLoginResult.Result;
+                $localStorage.UserDetails = answer.data.GetLoginResult.Result;
+                $rootScope.UserDetails = answer.data.GetLoginResult.Result;
                 if ($localStorage.CurrentStatusOfPage == "ChildPlan")
                 {
                     $localStorage.ChildState = true;
@@ -42,13 +45,20 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
           
             }
             else {
-                $scope.ErrorMessage = askForPromise.GetLoginResult.ResponseMessage;
+                $scope.ErrorMessage = answer.data.GetLoginResult.ResponseMessage;
                 $localStorage.LoginStatus = false;
                 $rootScope.LoginStatus = false;
             }
             
-       
-     
+        },
+        // OnFailure function
+        function (reason) {
+            HideLoader();
+            $scope.ErrorMessage = answer.data.GetLoginResult.ResponseMessage;
+            //$scope.somethingWrong = reason;
+            //$scope.error = true;
+        }
+      )
        
     }
 
