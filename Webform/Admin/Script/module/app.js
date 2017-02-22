@@ -22,4 +22,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
          url: '/UserPlanDetails',
          templateUrl: '../Admin/view/userPlanDetails.html'
      })
+        .state('UserSingleView', {
+            url: '/UserSingleView',
+         templateUrl: '../Admin/view/singleView.html'
+     })
 })

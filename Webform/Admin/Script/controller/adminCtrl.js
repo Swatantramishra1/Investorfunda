@@ -75,5 +75,8 @@
         $state.go('AdminLogin');
     }
 
+    $scope.goToViewPage = function (index) {
+        $state.go('UserSingleView');
+    }
 
 }]);

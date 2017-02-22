@@ -5,22 +5,49 @@ app.service('ULoginService', ['$http', '$q', '$httpParamSerializer', function ($
     LoginUser = {
 
         getPromise: function (Email, Password) {
-            var promise = $http.get(API_Login_All + Email + "/" + Password),
-                  deferObject = deferObject || $q.defer();
+            let returnValue;
+            var promise = $.ajax({
+                type: 'GET',
+                async:false,
+                url: API_Login_All + Email + "/" + Password,
+                defaultHeaders: {
+                    'Content-Type': 'application/json',
+                    "Access-Control-Allow-Origin": "*",
+                    'Accept': 'application/json'
+                },
 
-            promise.then(
-              // OnSuccess function
-              function (answer) {
-                  // This code will only run if we have a successful promise.
-                  deferObject.resolve(answer);
-              },
-              // OnFailure function
-              function (reason) {
-                  // This code will only run if we have a failed promise.
-                  deferObject.reject(reason);
-              });
+                data: '',
+                dataType: 'json',
+                success: function (response) {
+                    //    BindTableData();
+                    console.log("success ");
+                    alert(response);
+                    returnValue= response;
+                },
+                error: function (xhr) {
+                    console.log("error ");
+                    console.log(xhr);
+                    returnValue= xhr;
+                }
+            });
 
-            return deferObject.promise;
+            return returnValue;
+            //var promise = $http.get(API_Login_All + Email + "/" + Password),
+            //      deferObject = deferObject || $q.defer();
+
+            //promise.then(
+            //  // OnSuccess function
+            //  function (answer) {
+            //      // This code will only run if we have a successful promise.
+            //      deferObject.resolve(answer);
+            //  },
+            //  // OnFailure function
+            //  function (reason) {
+            //      // This code will only run if we have a failed promise.
+            //      deferObject.reject(reason);
+            //  });
+
+            //return deferObject.promise;
         }
     };
     Register = {
