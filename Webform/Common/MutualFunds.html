@@ -155,15 +155,15 @@
                             <td>{{MF.NAV | number:2}}</td>
                             <td><span class="label label-warning">{{MF.Return_3Yr | number:2}} %</span></td>
                             <td>2</td>
-                            <td><img src="../../Img/bar_graph1.png" style="height:16px;cursor:pointer" ng-click="showAdvanced(MF.SchemeID)" /></td>
-                            <td><input type="text" style="width:60px" id="{{MF.SchemeID}}Amount"  /></td>
+                            <td><img src="../../Img/bar_graph1.png" style="height:16px;cursor:pointer" ng-click="showAdvanced($index)" /></td>
+                            <td><input type="text" style="width:60px" id="{{$index}}Amount"   /></td>
                             <td><div class="btn-group">
     <button type="button" class="btn-u dropdown-toggle" data-toggle="dropdown">
         Select
         <i class="fa fa-angle-down"></i>
     </button>
     <ul class="dropdown-menu" role="menu">
-        <li><a ><i class="fa fa-inr"></i> Buy Lumpsum</a></li>
+        <li><a ng-click="InvestLumpsum($index,'Page')"><i class="fa fa-inr"></i> Buy Lumpsum</a></li>
         <li><a ><i class="fa fa-inr"></i> Buy SIP</a></li>
         <li><a ><i class="fa fa-shopping-cart"></i> Add to cart as Lumpsum</a></li>
         <li><a ><i class="fa fa-shopping-cart"></i> Add to cart as SIP</a></li>

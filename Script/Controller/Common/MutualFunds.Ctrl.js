@@ -232,14 +232,14 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         //alert($localStorage.CurrentSchemeCode)
         ShowLoader();
         $scope.InvestmentList.push({
-            "ISIN": "INF204K01562",
-            "BSESchemeCode": $localStorage.CurrentSchemeCode,
-            "SchemeName": "RELIANCE TOP 200 FUND - GROWTH PLAN - GROWTH",
+            "ISIN": $localStorage.CurrentScheme.ISIN,
+            "BSESchemeCode": "",
+            "SchemeName": $localStorage.CurrentScheme.SchemeName,
             "Amount": $localStorage.SchemeAmount,
             "DateString": "",
-            "Scheme_ID": "5167",
+            "Scheme_ID": $localStorage.CurrentScheme.mf_cocode,
             "InvestmentType": "LUMPSUM",
-            "DueDate": "02/10/2000"
+            "DueDate": ""
 
                             
 
@@ -254,11 +254,13 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         function (answer) {
             HideLoader();
             $localStorage.CurrentSchemeCode = "";
+            $localStorage.CurrentScheme = [];
             $localStorage.SchemeAmount = "";
             $scope.InvestmentList = {};
             //window.location = "../../../Webform/User/dist/index.html"
             if (answer.CreateUsersPlanResult.ResponseCode == "0") {
-                window.location = answer.CreateUsersPlanResult.ResponseMessage;
+                alert("Plan Created Succesfully")
+               // window.location = answer.CreateUsersPlanResult.ResponseMessage;
             }
 
             //$scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
@@ -695,11 +697,11 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         $scope.ApplyFilterOnFundsList();
     }
     
-    $scope.InvestLumpsum = function (SchemeCode, Page) {
+    $scope.InvestLumpsum = function (index, Page) {
         var tesmp = "";
-        if (document.getElementById(SchemeCode + "Amount").value != null)
+        if (Page != undefined)
         {
-            tesmp = document.getElementById(SchemeCode + "Amount").value
+            tesmp = document.getElementById(index+"Amount").value;
         }
         else {
             tesmp = "";
@@ -708,17 +710,21 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         {
             if (Page != undefined)
             {
-                $localStorage.SchemeAmount = document.getElementById(SchemeCode + "Amount").value;
+                $localStorage.CurrentScheme = $scope.FundsList[index];
+                $localStorage.IndexCurrentCode = index;
+                $localStorage.SchemeAmount = document.getElementById(index+"Amount").value;
             }
             else {
-                document.getElementById(SchemeCode + "Amount").value=$localStorage.SchemeAmount;
+                //document.getElementById($localStorage.IndexCurrentCode + "Amount").value = $localStorage.SchemeAmount;
+              
             }
           
             if ($localStorage.MutualFundsState) {
                 $scope.InvestorFundaConfMessage("Confirmation of Proceed", "Do you realy want to proceed for Scheme");
             }
             else {
-                $localStorage.CurrentSchemeCode = SchemeCode;
+                $localStorage.CurrentScheme = $scope.FundsList[index];
+                $localStorage.IndexCurrentCode = index;
                 $localStorage.CurrentStatusOfPage = "MutualfundsLumpSum";
                 $state.go('Authentication', { From: 'Mutualfunds' });
             }

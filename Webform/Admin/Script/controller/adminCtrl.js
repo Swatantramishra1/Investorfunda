@@ -28,7 +28,7 @@
 
     $scope.getuserPlanList=function(index)
     {
-        var GetUserPlanList = adminSrv.GetUserPlanList.getPromise($scope.userList[index].ClientCode);
+        var GetUserPlanList = adminSrv.GetUserPlanList.getPromise($scope.userList[index].LoginID);
         GetUserPlanList.then(
         // OnSuccess function
         function (answer) {
@@ -37,7 +37,7 @@
                 {
                     $state.go('UserPlanDetails');
                     $scope.user.Name = $scope.userList[index].Name;
-                    $scope.user.ClientCode = $scope.userList[index].ClientCode;
+                    $scope.user.LoginID = $scope.userList[index].LoginID;
                     $scope.userPlanList = answer.data.GetUserPlanlistsResult.Result;
                 }
                 else {
@@ -78,7 +78,7 @@
 
     $scope.goToViewPage = function (index) {
 
-        var GetUserInvestmentDetailsList = adminSrv.GetUserInvestmentDetailsList.getPromise($scope.user.ClientCode, $scope.userPlanList[index].PlanID);
+        var GetUserInvestmentDetailsList = adminSrv.GetUserInvestmentDetailsList.getPromise($scope.user.LoginID, $scope.userPlanList[index].PlanID);
         GetUserInvestmentDetailsList.then(
         // OnSuccess function
         function (answer) {

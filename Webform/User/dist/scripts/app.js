@@ -633,28 +633,28 @@
               //});
 
                         for (let a = 0; a < 1; a++) {
-                              if (_updateDetails.bankdetails.Bank_IFSC == "" || _updateDetails.bankdetails.Bank_IFSC == undefined) {
+                            if (_updateDetails.bankdetails[a].Bank_IFSC == "" || _updateDetails.bankdetails[a].Bank_IFSC == undefined) {
                                   _returnData = {
                                       isValid: true,
                                       validationMessage: "Please Enter Bank_IFSC  Details"
                                   };
                                   break;
                               }
-                              else if (_updateDetails.bankdetails.Bank_ID == "0" || _updateDetails.bankdetails.Bank_ID == undefined) {
+                            else if (_updateDetails.bankdetails[a].Bank_ID == "0" || _updateDetails.bankdetails[a].Bank_ID == undefined) {
                                   _returnData = {
                                       isValid: true,
                                       validationMessage: "Please Select Bank"
                                   };
                                   break;
                               }
-                              else if (_updateDetails.bankdetails.Bank_AccountTypeID == "0" || _updateDetails.bankdetails.Bank_AccountTypeID == undefined) {
+                            else if (_updateDetails.bankdetails[a].Bank_AccountTypeID == "0" || _updateDetails.bankdetails[a].Bank_AccountTypeID == undefined) {
                                   _returnData = {
                                       isValid: true,
                                       validationMessage: "Please Select Account Type"
                                   };
                                   break;
                               }
-                              else if (_updateDetails.bankdetails.Bank_AccountNo == "" || _updateDetails.bankdetails.Bank_AccountNo == undefined) {
+                            else if (_updateDetails.bankdetails[a].Bank_AccountNo == "" || _updateDetails.bankdetails[a].Bank_AccountNo == undefined) {
                                   _returnData = {
                                       isValid: true,
                                       validationMessage: "Please Select Account No"
@@ -1525,7 +1525,7 @@
                         "CDSLBenAcNo": $scope.UserDetailInfo.DepositoryDetailsData.CDSLBenAcNo,
                         "NSDLBenAcNo": $scope.UserDetailInfo.DepositoryDetailsData.NSDLBenAcNo
                     },
-                    "bankdetails": {
+                    "bankdetails":[ {
                         "BankDetails_ID": $scope.UserDetailInfo.BankDetailsData.BankDetails_ID,
                         "User_ID": $localStorage.UserDetails.LoginID,
                         "Bank_ID": $scope.UserDetailInfo.BankDetailsData.Bank_ID,
@@ -1533,7 +1533,7 @@
                         "Bank_AccountTypeID": $scope.UserDetailInfo.BankDetailsData.Bank_AccountTypeID,
                         "Bank_AccountNo": $scope.UserDetailInfo.BankDetailsData.Bank_AccountNo,
                         "NameAsPerBank": $scope.UserDetailInfo.BankDetailsData.NameAsPerBank
-                    },
+                    }],
                     "listNomineeDetails": [
 
                     ],

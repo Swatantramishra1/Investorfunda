@@ -17,7 +17,7 @@ var Service_Common = "InvestorFundaServices.svc/";
 
 // Service Method Name
 
-var API_Login_All = ServerName + Service_Common + "Login/";
+var API_Login_All = ServerName +   Service_Common + "Login/";
 var API_UserRegistration = ServerName + Service_Common + "UserRegistration";
 var API_GetTaxStatus = ServerName + Service_Common + 'GetTaxStatus';
 var API_GetCityDetails = ServerName + Service_Common + 'GetCityDetails';
