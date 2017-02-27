@@ -1953,6 +1953,52 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
     };
     $scope.InvestAndGo = function (From) {
         if ($localStorage.ChildState) {
+
+            $localStorage.POstJson = {
+
+                "User_ID": "",
+                "userPlan":
+                {
+                    "Plan_ID": "",
+                    "MasterPlan_ID": $scope.Portfolio_Parameter.Portfolio_ID,
+                    "User_ID": "",
+                    "GoalName": $scope.Portfolio_Parameter.Portfolio_Name,
+                    "PresentAge": $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge,
+                    "GoalTimeToStart": $scope.Portfolio_Parameter.Portfolio_Year,
+                    "GoalDuration": $scope.Portfolio_Parameter.Portfolio_Duration,
+                    "GoalPerYearCost": $scope.Portfolio_Parameter.Portfolio_FeesPerYear,
+                    "GoalPerYearLivingCost": $scope.Portfolio_Parameter.Portfolio_LivingPerYear,
+                    "GoalLumpsum": $scope.Portfolio_Parameter.Portfolio_LumpSumAmount,
+                    "GoalInflationRate": $scope.Portfolio_Parameter.Portfolio_InflationRate,
+                    "GoalTotalCost": $scope.Portfolio_Parameter.TotalCourseFee,
+                    "GoalLivingTotalCost": $scope.Portfolio_Parameter.TotalLivingExpensesFee,
+                    "GoalTotalAmount": $scope.Portfolio_Parameter.CalculatedTotalMoney,
+                    "GoalTotalLumpsumAmount": $scope.Portfolio_Parameter.Portfolio_LumpSumAmount,
+                    "EstimatedInflationRate": "",
+                    "GoalDateOfSip": "",
+                    "GoalRetirementYear": "",
+                    "GoalRetirementExpense": "",
+                    "GoalRetirementMonthlyExpenditure": "",
+                    "GoalHousePlanYear": "",
+                    "GoalHouseCurrentCost": "",
+                    "GoalHouseDownPayment": "",
+                    "GoalHouseLoanYear": "",
+                    "GoalChildMerrageBudgetAmount": ""
+                },
+                "userPortfolio":
+                {
+                    "Portfolio_ID": "",
+                    "Plan_ID": "",
+                    "User_ID": "",
+                    "Equity": $scope.Portfolio_Parameter.Equity,
+                    "Debt": $scope.Portfolio_Parameter.Debt,
+                    "Gold": $scope.Portfolio_Parameter.Gold,
+                    "EstimatedTotalSIPAmt": $scope.Portfolio_Parameter.TotalMonthlyInvestment,
+                    "Scheme_IDs": ""
+                },
+                "InvestmentList": $scope.sampleStructure
+            }
+
             if ($localStorage.LoginStatus) {
                 $scope.SIP_GOAL_SHOW = false;
                 $scope.SIP_GOAL_Setting_SHOW = false;
@@ -1985,177 +2031,417 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
             }
             else {
-                $localStorage.POstJson = {
-                    "User_ID": "",
-                    "userPlan": {
-                        "MasterPlan_ID": $scope.Portfolio_Parameter.Portfolio_ID,
-                        "Goal": $scope.Portfolio_Parameter.Portfolio_Name,
-                        "CurrentAge": $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge,
-                        "CourseTime": $scope.Portfolio_Parameter.Portfolio_Year,
-                        "CourseDuration": $scope.Portfolio_Parameter.Portfolio_Duration,
-                        "CourseFeePerYear": $scope.Portfolio_Parameter.Portfolio_FeesPerYear,
-                        "LivingCostPerYear": $scope.Portfolio_Parameter.Portfolio_LivingPerYear,
-                        "SavedAmount_Lumpsum": $scope.Portfolio_Parameter.Portfolio_LumpSumAmount,
-                        "InflationRate": $scope.Portfolio_Parameter.Portfolio_InflationRate,
-                        "TotalCourseFees": $scope.Portfolio_Parameter.TotalCourseFee,
-                        "TotalLivingExpanses": $scope.Portfolio_Parameter.TotalLivingExpensesFee,
-                        "TotalAmount": $scope.Portfolio_Parameter.CalculatedTotalMoney,
-                        "TotalLumpsumAmount": $scope.Portfolio_Parameter.Portfolio_LumpSumAmount,
-                        "EstimatedInflationRate": $scope.Portfolio_Parameter.Portfolio_InflationRate
-                    },
-                    "userPortfolio": {
-                        "Equity": $scope.Portfolio_Parameter.Equity,
-                        "Debt": $scope.Portfolio_Parameter.Debt,
-                        "EstimatedTotalSIPAmt": $scope.Portfolio_Parameter.TotalMonthlyInvestment,
-                        "Scheme_IDs": BseSchemeIDs
-                    },
-                    "InvestmentList": $scope.sampleStructure
-                };
+               
                 $localStorage.CurrentStatusOfPage = "ChildPlan";
                 $state.go('Authentication', { From: 'ChildPlan' });
             }
 
-            console.log($scope.Portfolio_Parameter)
+           
         }
         else if (From != undefined) {
+            $localStorage.POstJson = {
+
+                "User_ID": "",
+                "userPlan":
+                {
+                    "Plan_ID": "",
+                    "MasterPlan_ID": $scope.Portfolio_Parameter.Portfolio_ID,
+                    "User_ID": "",
+                    "GoalName": $scope.Portfolio_Parameter.Portfolio_Name,
+                    "PresentAge": $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge,
+                    "GoalTimeToStart": $scope.Portfolio_Parameter.Portfolio_Year,
+                    "GoalDuration": $scope.Portfolio_Parameter.Portfolio_Duration,
+                    "GoalPerYearCost": $scope.Portfolio_Parameter.Portfolio_FeesPerYear,
+                    "GoalPerYearLivingCost": $scope.Portfolio_Parameter.Portfolio_LivingPerYear,
+                    "GoalLumpsum": $scope.Portfolio_Parameter.Portfolio_LumpSumAmount,
+                    "GoalInflationRate": $scope.Portfolio_Parameter.Portfolio_InflationRate,
+                    "GoalTotalCost": $scope.Portfolio_Parameter.TotalCourseFee,
+                    "GoalLivingTotalCost": $scope.Portfolio_Parameter.TotalLivingExpensesFee,
+                    "GoalTotalAmount": $scope.Portfolio_Parameter.CalculatedTotalMoney,
+                    "GoalTotalLumpsumAmount": $scope.Portfolio_Parameter.Portfolio_LumpSumAmount,
+                    "EstimatedInflationRate": "",
+                    "GoalDateOfSip": "",
+                    "GoalRetirementYear": "",
+                    "GoalRetirementExpense": "",
+                    "GoalRetirementMonthlyExpenditure": "",
+                    "GoalHousePlanYear": "",
+                    "GoalHouseCurrentCost": "",
+                    "GoalHouseDownPayment": "",
+                    "GoalHouseLoanYear": "",
+                    "GoalChildMerrageBudgetAmount": ""
+                },
+                "userPortfolio":
+                {
+                    "Portfolio_ID": "",
+                    "Plan_ID": "",
+                    "User_ID": "",
+                    "Equity": $scope.Portfolio_Parameter.Equity,
+                    "Debt": $scope.Portfolio_Parameter.Debt,
+                    "Gold": $scope.Portfolio_Parameter.Gold,
+                    "EstimatedTotalSIPAmt": $scope.Portfolio_Parameter.TotalMonthlyInvestment,
+                    "Scheme_IDs": ""
+                },
+                "InvestmentList": $scope.sampleStructure
+            }
+
             if ($localStorage.LoginStatus) {
                 $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
+                $localStorage.CurrentStatusOfPage = "ChildPlan";
+                $state.go('Authentication', { From: 'ChildPlan' });
 
             }
             else {
-                $localStorage.POstJson = {
-                    "User_ID": "",
-                    "userPlan":
-                        {
-                        "MasterPlan_ID": $scope.Portfolio_Parameter.Portfolio_ID,
-                        "Goal": $scope.Portfolio_Parameter.Portfolio_Name,
-                        "CurrentAge": $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge,
-                        "CourseTime": $scope.Portfolio_Parameter.Portfolio_Year,
-                        "CourseDuration": $scope.Portfolio_Parameter.Portfolio_Duration,
-                        "CourseFeePerYear": $scope.Portfolio_Parameter.Portfolio_FeesPerYear,
-                        "LivingCostPerYear": $scope.Portfolio_Parameter.Portfolio_LivingPerYear,
-                        "SavedAmount_Lumpsum": $scope.Portfolio_Parameter.Portfolio_LumpSumAmount,
-                        "InflationRate": $scope.Portfolio_Parameter.Portfolio_InflationRate,
-                        "TotalCourseFees": $scope.Portfolio_Parameter.TotalCourseFee,
-                        "TotalLivingExpanses": $scope.Portfolio_Parameter.TotalLivingExpensesFee,
-                        "TotalAmount": $scope.Portfolio_Parameter.CalculatedTotalMoney,
-                        "TotalLumpsumAmount": $scope.Portfolio_Parameter.Portfolio_LumpSumAmount,
-                        "EstimatedInflationRate": $scope.Portfolio_Parameter.Portfolio_InflationRate
-                    },
-                    "userPortfolio": {
-                        "Equity": $scope.Portfolio_Parameter.Equity,
-                        "Debt": $scope.Portfolio_Parameter.Debt,
-                        "EstimatedTotalSIPAmt": $scope.Portfolio_Parameter.TotalMonthlyInvestment,
-                        "Scheme_IDs": BseSchemeIDs
-                    },
-                    "InvestmentList": $scope.sampleStructure
-                };
+            
                 $localStorage.CurrentStatusOfPage = "ChildPlan";
                 $state.go('Authentication', { From: 'ChildPlan' });
             }
         }
     }
-    $rootScope.InvestNow = function (From) {
-        if ($localStorage.ChildState) {
-            if ($localStorage.LoginStatus) {
-                $scope.SIP_GOAL_SHOW = false;
-                $scope.SIP_GOAL_Setting_SHOW = false;
-                $scope.SIP_GOAL_Final_SHOW = true;
+    $scope.CreatePlanFunction = function () {
+        var CreateUserList = FundsService.CreatePlan.PostPromise($localStorage.POstJson);
+        CreateUserList.then(
+        // OnSuccess function
+        function (answer) {
+            HideLoader();
+            alert("Plan Created Succesfully");
+            $localStorage.ChildState = false;
+            $state.go('SIP');
+            //window.location = "../../../Webform/User/dist/index.html"
+            //if (answer.UserRegistrationResult.ResponseCode == "0") {
 
-                $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
+            //}
 
-                var CreateUserList = FundsService.CreatePlan.PostPromise($localStorage.POstJson);
-                CreateUserList.then(
-                // OnSuccess function
-                function (answer) {
-                    HideLoader();
-                    //window.location = "../../../Webform/User/dist/index.html"
-                    //if (answer.UserRegistrationResult.ResponseCode == "0") {
-
-                    //}
-
-                    //$scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
+            //$scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
 
 
-                },
-                // OnFailure function
-                function (reason) {
-                    HideLoader();
-                    $scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
-                    //$scope.somethingWrong = reason;
-                    //$scope.error = true;
-                }
-              )
-
-            }
-            else {
-                $localStorage.POstJson = {
-                    "User_ID": "",
-                    "userPlan": {
-                        "MasterPlan_ID": $scope.Portfolio_Parameter.Portfolio_ID,
-                        "Goal": $scope.Portfolio_Parameter.Portfolio_Name,
-                        "CurrentAge": $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge,
-                        "CourseTime": $scope.Portfolio_Parameter.Portfolio_Year,
-                        "CourseDuration": $scope.Portfolio_Parameter.Portfolio_Duration,
-                        "CourseFeePerYear": $scope.Portfolio_Parameter.Portfolio_FeesPerYear,
-                        "LivingCostPerYear": $scope.Portfolio_Parameter.Portfolio_LivingPerYear,
-                        "SavedAmount_Lumpsum": $scope.Portfolio_Parameter.Portfolio_LumpSumAmount,
-                        "InflationRate": $scope.Portfolio_Parameter.Portfolio_InflationRate,
-                        "TotalCourseFees": $scope.Portfolio_Parameter.TotalCourseFee,
-                        "TotalLivingExpanses": $scope.Portfolio_Parameter.TotalLivingExpensesFee,
-                        "TotalAmount": $scope.Portfolio_Parameter.CalculatedTotalMoney,
-                        "TotalLumpsumAmount": $scope.Portfolio_Parameter.Portfolio_LumpSumAmount,
-                        "EstimatedInflationRate": $scope.Portfolio_Parameter.Portfolio_InflationRate
-                    },
-                    "userPortfolio": {
-                        "Equity": $scope.Portfolio_Parameter.Equity,
-                        "Debt": $scope.Portfolio_Parameter.Debt,
-                        "EstimatedTotalSIPAmt": $scope.Portfolio_Parameter.TotalMonthlyInvestment,
-                        "Scheme_IDs": "1,2,3"
-                    },
-                    "InvestmentList": $scope.sampleStructure
-                };
-                $localStorage.CurrentStatusOfPage = "ChildPlan";
-                $state.go('Authentication', { From: 'ChildPlan' });
-            }
-
-            console.log($scope.Portfolio_Parameter)
+        },
+        // OnFailure function
+        function (reason) {
+            HideLoader();
+            $scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
+            //$scope.somethingWrong = reason;
+            //$scope.error = true;
         }
-        else if (From != undefined) {
-            if ($localStorage.LoginStatus) {
-                $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
+      )
+    }
+    $rootScope.InvestNow = function (Page) {
+        if ($localStorage.setCounterStatus || Page !=undefined)
+        {
+            $localStorage.setCounterStatus = false;
+            switch (currentState) {
+                case "ChildGoal":
+                    $localStorage.POstJson = {
 
-            }
-            else {
-                $localStorage.POstJson = {
-                    "User_ID": "",
-                    "userPlan": {
-                        "MasterPlan_ID": $scope.Portfolio_Parameter.Portfolio_ID,
-                        "Goal": $scope.Portfolio_Parameter.Portfolio_Name,
-                        "CurrentAge": $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge,
-                        "CourseTime": $scope.Portfolio_Parameter.Portfolio_Year,
-                        "CourseDuration": $scope.Portfolio_Parameter.Portfolio_Duration,
-                        "CourseFeePerYear": $scope.Portfolio_Parameter.Portfolio_FeesPerYear,
-                        "LivingCostPerYear": $scope.Portfolio_Parameter.Portfolio_LivingPerYear,
-                        "SavedAmount_Lumpsum": $scope.Portfolio_Parameter.Portfolio_LumpSumAmount,
-                        "InflationRate": $scope.Portfolio_Parameter.Portfolio_InflationRate,
-                        "TotalCourseFees": $scope.Portfolio_Parameter.TotalCourseFee,
-                        "TotalLivingExpanses": $scope.Portfolio_Parameter.TotalLivingExpensesFee,
-                        "TotalAmount": $scope.Portfolio_Parameter.CalculatedTotalMoney,
-                        "TotalLumpsumAmount": $scope.Portfolio_Parameter.Portfolio_LumpSumAmount,
-                        "EstimatedInflationRate": $scope.Portfolio_Parameter.Portfolio_InflationRate
-                    },
-                    "userPortfolio": {
-                        "Equity": $scope.Portfolio_Parameter.Equity,
-                        "Debt": $scope.Portfolio_Parameter.Debt,
-                        "EstimatedTotalSIPAmt": $scope.Portfolio_Parameter.TotalMonthlyInvestment,
-                        "Scheme_IDs": "1,2,3"
-                    },
-                    "InvestmentList": $scope.sampleStructure
-                };
-                $state.go('Authentication', { From: 'ChildPlan' });
+                        "User_ID": "",
+                        "userPlan":
+                        {
+                            "Plan_ID": "",
+                            "MasterPlan_ID": "1",
+                            "User_ID": "",
+                            "GoalName": $scope.Portfolio_Parameter.Portfolio_Name,
+                            "PresentAge": $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge,
+                            "GoalTimeToStart": $scope.Portfolio_Parameter.Portfolio_Year,
+                            "GoalDuration": $scope.Portfolio_Parameter.Portfolio_Duration,
+                            "GoalPerYearCost": $scope.Portfolio_Parameter.Portfolio_FeesPerYear,
+                            "GoalPerYearLivingCost": $scope.Portfolio_Parameter.Portfolio_LivingPerYear,
+                            "GoalLumpsum": $scope.Portfolio_Parameter.Portfolio_LumpSumAmount,
+                            "GoalInflationRate": $scope.Portfolio_Parameter.Portfolio_InflationRate,
+                            "GoalTotalCost": $scope.Portfolio_Parameter.TotalCourseFee,
+                            "GoalLivingTotalCost": $scope.Portfolio_Parameter.TotalLivingExpensesFee,
+                            "GoalTotalAmount": $scope.Portfolio_Parameter.CalculatedTotalMoney,
+                            "GoalTotalLumpsumAmount": $scope.Portfolio_Parameter.Portfolio_LumpSumAmount,
+                            "EstimatedInflationRate": "",
+                            "GoalDateOfSip": "",
+                            "GoalRetirementYear": "",
+                            "GoalRetirementExpense": "",
+                            "GoalRetirementMonthlyExpenditure": "",
+                            "GoalHousePlanYear": "",
+                            "GoalHouseCurrentCost": "",
+                            "GoalHouseDownPayment": "",
+                            "GoalHouseLoanYear": "",
+                            "GoalChildMerrageBudgetAmount": ""
+                        },
+                        "userPortfolio":
+                        {
+                            "Portfolio_ID": "",
+                            "Plan_ID": "",
+                            "User_ID": "",
+                            "Equity": $scope.Portfolio_Parameter.Equity,
+                            "Debt": $scope.Portfolio_Parameter.Debt,
+                            "Gold": $scope.Portfolio_Parameter.Gold,
+                            "EstimatedTotalSIPAmt": $scope.Portfolio_Parameter.TotalMonthlyInvestment,
+                            "Scheme_IDs": ""
+                        },
+                        "InvestmentList": $scope.sampleStructure
+                    }
+                    if ($localStorage.LoginStatus) {
+                        $scope.SIP_GOAL_SHOW = false;
+                        $scope.SIP_GOAL_Setting_SHOW = false;
+                        $scope.SIP_GOAL_Final_SHOW = true;
+
+                        $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
+
+                        $scope.CreatePlanFunction();
+
+                    }
+                    else {
+                        
+
+                        $localStorage.CurrentStatusOfPage = "ChildPlan";
+                        $state.go('Authentication', { From: 'ChildPlan' });
+                    }
+                    break;
+
+                case "Retirement":
+                    $localStorage.POstJson = {
+
+                        "User_ID": "",
+                        "userPlan":
+                        {
+                            "Plan_ID": "",
+                            "MasterPlan_ID": "2",
+                            "User_ID": "",
+                            "GoalName": $scope.Portfolio_Parameter.Portfolio_Name,
+                            "PresentAge": $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge,
+                            "GoalTimeToStart": "",
+                            "GoalDuration": $scope.Portfolio_Parameter.Portfolio_Duration,
+                            "GoalPerYearCost": parseInt($scope.SIP_AmountInvestment.value) * 1000,
+                            "GoalPerYearLivingCost": "",
+                            "GoalLumpsum": $scope.Portfolio_Parameter.Portfolio_LumpSumAmount,
+                            "GoalInflationRate": $scope.Portfolio_Parameter.Portfolio_InflationRate,
+                            "GoalTotalCost": "",
+                            "GoalLivingTotalCost": "",
+                            "GoalTotalAmount": $scope.Portfolio_Parameter.CalculatedTotalMoney,
+                            "GoalTotalLumpsumAmount": "",
+                            "EstimatedInflationRate": "",
+                            "GoalDateOfSip": "",
+                            "GoalRetirementYear": $scope.SIP_RetireAge.value,
+                            "GoalRetirementExpense": $scope.SIP_Percet_bar.value,
+                            "GoalRetirementMonthlyExpenditure": $scope.Portfolio_Parameter.Portfolio_MonthlyExpenditure,
+                            "GoalHousePlanYear": "",
+                            "GoalHouseCurrentCost": "",
+                            "GoalHouseDownPayment": "",
+                            "GoalHouseLoanYear": "",
+                            "GoalChildMerrageBudgetAmount": ""
+                        },
+                        "userPortfolio":
+                        {
+                            "Portfolio_ID": "",
+                            "Plan_ID": "",
+                            "User_ID": "",
+                            "Equity": $scope.Portfolio_Parameter.Equity,
+                            "Debt": $scope.Portfolio_Parameter.Debt,
+                            "Gold": $scope.Portfolio_Parameter.Gold,
+                            "EstimatedTotalSIPAmt": $scope.Portfolio_Parameter.TotalMonthlyInvestment,
+                            "Scheme_IDs": ""
+                        },
+                        "InvestmentList": $scope.sampleStructure
+                    }
+                    if ($localStorage.LoginStatus) {
+                        $scope.SIP_GOAL_SHOW = false;
+                        $scope.SIP_GOAL_Setting_SHOW = false;
+                        $scope.SIP_GOAL_Final_SHOW = true;
+
+                        $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
+
+                        $scope.CreatePlanFunction();
+
+                    }
+                    else {
+                       
+                        $localStorage.CurrentStatusOfPage = "Retirement";
+                        $state.go('Authentication', { From: 'Retirement' });
+                    }
+                    break;
+
+                case "HousePlan":
+                    $localStorage.POstJson = {
+
+                        "User_ID": "",
+                        "userPlan":
+                        {
+                            "Plan_ID": "",
+                            "MasterPlan_ID": "3",
+                            "User_ID": "",
+                            "GoalName": $scope.Portfolio_Parameter.Portfolio_Name,
+                            "PresentAge": $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge,
+                            "GoalTimeToStart": "",
+                            "GoalDuration": "",
+                            "GoalPerYearCost":"",
+                            "GoalPerYearLivingCost": "",
+                            "GoalLumpsum": $scope.Portfolio_Parameter.amountWantToInvestNow,
+                            "GoalInflationRate": $scope.Portfolio_Parameter.Portfolio_InflationRate,
+                            "GoalTotalCost": "",
+                            "GoalLivingTotalCost": "",
+                            "GoalTotalAmount": $scope.Portfolio_Parameter.CalculatedTotalMoney,
+                            "GoalTotalLumpsumAmount": "",
+                            "EstimatedInflationRate": "",
+                            "GoalDateOfSip": "",
+                            "GoalRetirementYear": "",
+                            "GoalRetirementExpense": "",
+                            "GoalRetirementMonthlyExpenditure": "",
+                            "GoalHousePlanYear": $scope.Portfolio_Parameter.planBoughtYear,
+                            "GoalHouseCurrentCost": parseInt( $scope.Portfolio_Parameter.currentCostOfHouse) * 100000,
+                            "GoalHouseDownPayment": $scope.Portfolio_Parameter.downPaymentPercentage,
+                            "GoalHouseLoanYear": $scope.Portfolio_Parameter.loanPeriodYear,
+                            "GoalChildMerrageBudgetAmount": ""
+                        },
+                        "userPortfolio":
+                        {
+                            "Portfolio_ID": "",
+                            "Plan_ID": "",
+                            "User_ID": "",
+                            "Equity": $scope.Portfolio_Parameter.Equity,
+                            "Debt": $scope.Portfolio_Parameter.Debt,
+                            "Gold": $scope.Portfolio_Parameter.Gold,
+                            "EstimatedTotalSIPAmt": $scope.Portfolio_Parameter.TotalMonthlyInvestment,
+                            "Scheme_IDs": ""
+                        },
+                        "InvestmentList": $scope.sampleStructure
+                    }
+                    if ($localStorage.LoginStatus) {
+                        $scope.SIP_GOAL_SHOW = false;
+                        $scope.SIP_GOAL_Setting_SHOW = false;
+                        $scope.SIP_GOAL_Final_SHOW = true;
+
+                        $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
+
+                        $scope.CreatePlanFunction();
+
+                    }
+                    else {
+
+                        $localStorage.CurrentStatusOfPage = "Retirement";
+                        $state.go('Authentication', { From: 'Retirement' });
+                    }
+                    break;
+
+                case "ChildMerrage":
+                    $localStorage.POstJson = {
+
+                        "User_ID": "",
+                        "userPlan":
+                        {
+                            "Plan_ID": "",
+                            "MasterPlan_ID": "5",
+                            "User_ID": "",
+                            "GoalName": $scope.Portfolio_Parameter.Portfolio_Name,
+                            "PresentAge": $scope.Portfolio_Parameter.yourCurrentAge,
+                            "GoalTimeToStart": $scope.Portfolio_Parameter.PlanWeddingAge,
+                            "GoalDuration": "",
+                            "GoalPerYearCost": "",
+                            "GoalPerYearLivingCost": "",
+                            "GoalLumpsum": $scope.Portfolio_Parameter.amountWantToInvestNow,
+                            "GoalInflationRate": $scope.Portfolio_Parameter.Portfolio_InflationRate,
+                            "GoalTotalCost": "",
+                            "GoalLivingTotalCost": "",
+                            "GoalTotalAmount": $scope.Portfolio_Parameter.CalculatedTotalMoney,
+                            "GoalTotalLumpsumAmount": "",
+                            "EstimatedInflationRate": "",
+                            "GoalDateOfSip": "",
+                            "GoalRetirementYear": "",
+                            "GoalRetirementExpense": "",
+                            "GoalRetirementMonthlyExpenditure": "",
+                            "GoalHousePlanYear": "",
+                            "GoalHouseCurrentCost": "",
+                            "GoalHouseDownPayment": "",
+                            "GoalHouseLoanYear": "",
+                            "GoalChildMerrageBudgetAmount": $scope.Portfolio_Parameter.weddingBudget
+                        },
+                        "userPortfolio":
+                        {
+                            "Portfolio_ID": "",
+                            "Plan_ID": "",
+                            "User_ID": "",
+                            "Equity": $scope.Portfolio_Parameter.Equity,
+                            "Debt": $scope.Portfolio_Parameter.Debt,
+                            "Gold": $scope.Portfolio_Parameter.Gold,
+                            "EstimatedTotalSIPAmt": $scope.Portfolio_Parameter.TotalMonthlyInvestment,
+                            "Scheme_IDs": ""
+                        },
+                        "InvestmentList": $scope.sampleStructure
+                    }
+                    if ($localStorage.LoginStatus) {
+                        $scope.SIP_GOAL_SHOW = false;
+                        $scope.SIP_GOAL_Setting_SHOW = false;
+                        $scope.SIP_GOAL_Final_SHOW = true;
+
+                        $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
+
+                        $scope.CreatePlanFunction();
+
+                    }
+                    else {
+
+                        $localStorage.CurrentStatusOfPage = "ChildMerrage";
+                        $state.go('Authentication', { From: 'ChildMerrage' });
+                    }
+                    break;
+
+                case "Tour":
+                    $localStorage.POstJson = {
+
+                        "User_ID": "",
+                        "userPlan":
+                        {
+                            "Plan_ID": "",
+                            "MasterPlan_ID": "7",
+                            "User_ID": "",
+                            "GoalName": $scope.Portfolio_Parameter.Portfolio_Name,
+                            "PresentAge": $scope.Portfolio_Parameter.yourCurrentAge,
+                            "GoalTimeToStart": $scope.Portfolio_Parameter.Portfolio_Year,
+                            "GoalDuration": "",
+                            "GoalPerYearCost": "",
+                            "GoalPerYearLivingCost": "",
+                            "GoalLumpsum": $scope.Portfolio_Parameter.amountWantToInvestNow,
+                            "GoalInflationRate": $scope.Portfolio_Parameter.Portfolio_InflationRate,
+                            "GoalTotalCost": "",
+                            "GoalLivingTotalCost": "",
+                            "GoalTotalAmount": $scope.Portfolio_Parameter.Portfolio_GoalAmount,
+                            "GoalTotalLumpsumAmount": "",
+                            "EstimatedInflationRate": "",
+                            "GoalDateOfSip": "",
+                            "GoalRetirementYear": "",
+                            "GoalRetirementExpense": "",
+                            "GoalRetirementMonthlyExpenditure": "",
+                            "GoalHousePlanYear": "",
+                            "GoalHouseCurrentCost": "",
+                            "GoalHouseDownPayment": "",
+                            "GoalHouseLoanYear": "",
+                            "GoalChildMerrageBudgetAmount": ""
+                        },
+                        "userPortfolio":
+                        {
+                            "Portfolio_ID": "",
+                            "Plan_ID": "",
+                            "User_ID": "",
+                            "Equity": $scope.Portfolio_Parameter.Equity,
+                            "Debt": $scope.Portfolio_Parameter.Debt,
+                            "Gold": $scope.Portfolio_Parameter.Gold,
+                            "EstimatedTotalSIPAmt": $scope.Portfolio_Parameter.TotalMonthlyInvestment,
+                            "Scheme_IDs": ""
+                        },
+                        "InvestmentList": $scope.sampleStructure
+                    }
+                    if ($localStorage.LoginStatus) {
+                        $scope.SIP_GOAL_SHOW = false;
+                        $scope.SIP_GOAL_Setting_SHOW = false;
+                        $scope.SIP_GOAL_Final_SHOW = true;
+
+                        $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
+
+                        $scope.CreatePlanFunction();
+
+                    }
+                    else {
+
+                        $localStorage.CurrentStatusOfPage = "Tour";
+                        $state.go('Authentication', { From: 'Tour' });
+                    }
+                    break;
             }
         }
+     
 
     };
 
@@ -2967,9 +3253,9 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         return amt;
     }
 
-    $scope.InvestNow = function () {
+    //$scope.InvestNow = function () {
 
-    };
+    //};
 
 
     //$scope.Portfolio_Parameter = {

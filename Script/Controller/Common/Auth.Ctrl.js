@@ -24,6 +24,7 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
             HideLoader();
             if (answer.data.GetLoginResult.ResponseCode == 0)
             {
+                $localStorage.setCounterStatus = true;
                 $localStorage.LoginStatus = true;
                 $rootScope.LoginStatus = true;
                 $localStorage.UserDetails = answer.data.GetLoginResult.Result;

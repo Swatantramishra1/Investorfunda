@@ -10,11 +10,11 @@
         <form>
             <div>
                 <span>Email Address<label>*</label></span>
-                <input type="text" ng-model="admin.UserID">
+                <input type="text" class="form-control" ng-model="admin.UserID">
             </div>
             <div>
                 <span>Password<label>*</label></span>
-                <input type="text" ng-model="admin.Password">
+                <input type="password" class="form-control" style="width:96%" ng-model="admin.Password">
             </div>
             <a class="forgot" href="#">Forgot Your Password?</a>
             <input type="button" ng-click="Login()" value="Login">
