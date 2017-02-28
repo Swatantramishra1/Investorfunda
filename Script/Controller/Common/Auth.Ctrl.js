@@ -39,6 +39,18 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
                     $localStorage.MutualFundsState = true;
                     $state.go('MutualFundsList');
                 }
+                else if ($localStorage.CurrentStatusOfPage == "Retirement") {
+                    //$localStorage.MutualFundsState = true;
+                    $state.go('Retirement');
+                }
+                else if ($localStorage.CurrentStatusOfPage == "HousePlan") {
+                    //$localStorage.MutualFundsState = true;
+                    $state.go('HousePlan');
+                }
+                else if ($localStorage.CurrentStatusOfPage == "ChildMerrage") {
+                    //$localStorage.MutualFundsState = true;
+                    $state.go('ChildMerrage');
+                }
                 else  {
                     
                     window.location = "../../../Webform/User/dist/index.html"
