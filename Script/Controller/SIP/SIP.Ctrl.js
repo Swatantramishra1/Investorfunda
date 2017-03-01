@@ -2506,7 +2506,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
     $scope.ChangePortfolioAmount = function (From, Page) {
         let TempMonthlyInvestment = 0;
-        if (currentState == "ChildGoal") {76543
+        if (currentState == "ChildGoal") {
 
             if (From == 'M') {
                 TempMonthlyInvestment = parseInt($scope.Portfolio_Parameter.TotalMonthlyInvestment) - 1000;
@@ -3489,5 +3489,43 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         //        $scope.ShowDiv("1");
 
     };
+
+
+
+    //*************************************************Easy SIP******************************************************************
+    $scope.setNumber = 50;
+    $scope.Investment = {
+        firstStepSip:true
+    }
+    
+    $scope.getRepeatNumber = function (num) {
+        return new Array(num);
+    };
+    if ($state.current.name == "EasySIP") {
+        currentState = $state.current.name;
+        $scope.easytSipPage = true;
+        $scope.startSipPage = false;
+    }
+    else if ($state.current.name == "StartSIP") {
+        currentState = $state.current.name;
+        $scope.easytSipPage = false;
+        $scope.startSipPage = true;
+    };
+    
+    $scope.StartPopup = function () {
+        switch (currentState) {
+            case "EasySIP":
+                $scope.Portfolio_Parameter.TotalMonthlyInvestment = $scope.Investment.amount;
+                $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation($scope.Investment.horizone, $scope.Portfolio_Parameter.TotalMonthlyInvestment, $scope.Investment.risk, "EasySIP", "EasySIP");
+                $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+                //if ($scope.Portfolio_Parameter.TotalMonthlyInvestment >= 2500)
+                //{
+                $scope.Investment.firstStepSip = false;
+                $scope.SIP_GOAL_Final_SHOW = true;
+                break;
+        }
+
+        $scope.ShowDiv("1");
+    }
 
 }]);
