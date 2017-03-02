@@ -3523,6 +3523,15 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                 $scope.Investment.firstStepSip = false;
                 $scope.SIP_GOAL_Final_SHOW = true;
                 break;
+            case "StartSIP":
+                $scope.Portfolio_Parameter.TotalMonthlyInvestment = $scope.Investment.amount;
+                $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation($scope.Investment.horizone, $scope.Portfolio_Parameter.TotalMonthlyInvestment, $scope.Investment.risk, "EasySIP", "EasySIP");
+                $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+                //if ($scope.Portfolio_Parameter.TotalMonthlyInvestment >= 2500)
+                //{
+                $scope.Investment.firstStepSip = false;
+                $scope.SIP_GOAL_Final_SHOW = true;
+                break;
         }
 
         $scope.ShowDiv("1");

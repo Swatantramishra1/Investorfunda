@@ -2,7 +2,7 @@
 <div class="col-md-12" style="background-color:white">
     <!--=== Slider ===-->
     <div class="row">
-        <div class="col-md-6 col-lg-8 ">
+        <div class="col-xs-12col-sm-12 col-md-6 col-lg-8">
 
             <div class="carousel slide carousel-v1 margin-bottom-40" id="myCarousel-1">
                 <div class="carousel-inner">
@@ -54,7 +54,7 @@
 
             </div>
         </div>
-        <div class="col-md-6 col-lg-4 " style="padding-top:48px">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4" style="padding-top:48px">
             <div class="col-md-12" style="padding-right: 37px;">
                 <h5 style="text-align:center">Help us with some information of you to create a portfolio that best fits in your needs</h5>
                 <h2 style="text-align:center;font-size: 28px;margin-top:10px">PLAN YOUR FUTURE</h2>
@@ -92,52 +92,45 @@
     <!--=== End Slider ===-->
     <!-- End Purchase Block -->
     <!--=== Content Part ===-->
-    <div class="one-page ">
-        <div class="row divider_color" style="background-color:#293542;color:white;margin-top:20px;height:500px">
-            <div class="container" >
-                <div class="row">
-                    <div class="col-md-12" style="padding-top: 26px;">
-                        <div class="row">
-                            <h2 style="text-align:center">See how much your saving can grow through</h2>
-                            <h2 style="text-align:center;font-size:25px">SYSTEMATIC INVESTMENT PLAN(SIP)</h2>
-                            <div class="col-md-12 sentence" style="margin-top:70px">
-                                <div class="sentence">
-                                    <span class="edit-age margin-bottom-30">
-                                        You can invest  <i class="fa fa-rupee" style="position: absolute;padding-left: 17px;padding-top: 15px;color:#c2c3c9"></i>
-                                        <input type="text" placeholder="" maxlength="7" name="age" class="enter-age enter-income border" ng-model="SIP_Money_bar">
-                                        <span class="madlib-error"></span> per month
-                                        from your savings for <input type="text" placeholder="" maxlength="7" name="age" class="enter-age age border" ng-model="SIP_Year_bar"> years  and you are expecting
-                                        <input type="text" placeholder="" maxlength="3" value="15" name="age" ng-model="SIP_Percet_bar" class="enter-age age border"> % return.
-                                    </span>
+    <div class="one-page">
+        <div class="row container divider_color" style="background-color:#293542;color:white;margin-top:20px;min-height:500px;padding-top: 26px;height:auto;width:100%">
+            <div class="col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
+            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                <h2 style="text-align:center">See how much your saving can grow through</h2>
+                <h2 style="text-align:center;font-size:25px">SYSTEMATIC INVESTMENT PLAN(SIP)</h2>
+                <div class="col-md-12 sentence" style="margin-top:70px">
+                    <div class="sentence">
+                        <span class="edit-age margin-bottom-30">
+                            You can invest  <i class="fa fa-rupee" style="position: absolute;padding-left: 17px;padding-top: 15px;color:#c2c3c9"></i>
+                            <input type="text" placeholder="" maxlength="7" name="age" class="enter-age enter-income border" ng-model="SIP_Money_bar">
+                            <span class="madlib-error"></span> per month
+                            from your savings for <input type="text" placeholder="" maxlength="7" name="age" class="enter-age age border" ng-model="SIP_Year_bar"> years  and you are expecting
+                            <input type="text" placeholder="" maxlength="3" value="15" name="age" ng-model="SIP_Percet_bar" class="enter-age age border"> % return.
+                        </span>
 
-                                    <md-button class="Green_Btn" ng-click="calculate_SIP()">Calculate It</md-button>
-                                    <div ng-show="calulated_Money_SIP.length>0" style="background: gray;border: 1px solid;color:whitesmoke" >Your investment will grow up to <i class="fa fa-rupee"></i> {{calulated_Money_SIP}}</div>
-                                </div>
-                            </div>
-
-                        </div>
-
+                        <md-button class="Green_Btn" ng-click="calculate_SIP()">Calculate It</md-button>
+                        <div ng-show="calulated_Money_SIP.length>0" style="background: gray;border: 1px solid;color:whitesmoke">Your investment will grow up to <i class="fa fa-rupee"></i> {{calulated_Money_SIP}}</div>
                     </div>
-
-
                 </div>
+
             </div>
+            <div class="col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
         </div>
 
 
         <div class="one-page-inner divider_color">
             <div class="container" style="margin-top:20px">
-                <div class="container" >
+                <div class="container">
                     <div class="row">
                         <h1 style="color:#293542  !important;margin-bottom:20px;text-align:center;font-size:39px;font-family: 'Open Sans', 'Source Sans Pro', sans-serif;">
-                          Where your investment is going
+                            Where your investment is going
                         </h1>
                         <h5 style="text-align:center">
                             <span style="color:#293542">SMART and SIMPLE mode for investing money in mutual funds.</span>
                         </h5>
                         <div class="col-md-8">
                             <div class="col-md-12 text-center">
-                                <div style="text-align:center;padding-left:47%" >  <div style="width:35px;height:30px;background-color:rgba(102,0,51,1);text-align:center;color:white;padding:5px">1</div></div>
+                                <div style="text-align:center;padding-left:47%">  <div style="width:35px;height:30px;background-color:rgba(102,0,51,1);text-align:center;color:white;padding:5px">1</div></div>
                                 <div class="col-md-12 text-center">
                                     <h1 style="color:black"><strong>Flexibility</strong></h1>
                                     <p style="color:black;margin-top:-15px;text-align:justify">While it is advisable to continue SIP investments with a long-term perspective, there is no compulsion. Investors can discontinue the plan at any time. One can also increase/ decrease the amount being invested.SIP is a hassle-free mode of investment. You can issue a standing instruction to your bank to facilitate auto-debits from your bank account.<strong>(see our video tutorial )</strong></p>
@@ -148,7 +141,8 @@
                                 <div class="col-md-12 text-center">
                                     <h1 style="color:black"><strong>Power of compunding</strong></h1>
                                     <p style="color:black;margin-top:-15px;text-align:justify">
-                                        Time and  compounding interest are a powerful combination that will multiply your wealth beyond your imagination over a longer period of time.<strong> (see the illustration)</strong></p>
+                                        Time and  compounding interest are a powerful combination that will multiply your wealth beyond your imagination over a longer period of time.<strong> (see the illustration)</strong>
+                                    </p>
                                 </div>
                             </div>
                             <div class="col-md-12 text-center">
@@ -163,7 +157,7 @@
                             <div class="col-md-12 text-center">
                                 <div style="text-align:center;padding-left:47%">  <div style="width:35px;height:30px;background-color:rgba(102,0,51,1);text-align:center;color:white;padding:5px">4</div></div>
                                 <div class="col-md-12 text-center">
-                                    <h1 style="color:black"><strong>Market volatility doesn’t harm much</strong></h1>
+                                    <h1 style="color:black"><strong>Market volatility doesnâ€™t harm much</strong></h1>
                                     <p style="color:black;margin-top:-15px;text-align:justify">
                                         If the price goes down  in the next month you have a consolation that you are also buying at reduced price and if the market recovers to previous level ,You actually makes money overall<strong> (see the illustration)</strong>.
                                     </p>
@@ -205,7 +199,7 @@
             </div>
         </div>
 
-        <div class="one-page-inner" >
+        <div class="one-page-inner">
             <div class="row" style="background-color:#010c19;height:520px">
                 <div class="container text-center" style="padding-top:16px">
                     <h1 style="color:white  !important;margin-bottom:20px;text-align:center;font-size:28px;font-family: 'Open Sans', 'Source Sans Pro', sans-serif;">
@@ -222,49 +216,57 @@
         <div class="one-page-inner one-default margin-bottom-60">
             <div class="container">
                 <div class="row">
-                    <h1 style="color:#293542  !important;margin-bottom:20px;text-align:center;font-size:39px;font-family: 'Open Sans', 'Source Sans Pro', sans-serif;">Where your investment is going</h1>
-                    <h4 class="header_color" style="text-align:center">WE WORK TOWARDS YOUR FUTURE</h4>
-                    <div class="col-md-12 below_slider">
+                    <div calss="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h1 style="color:#293542  !important;margin-bottom:20px;text-align:center;font-size:39px;font-family: 'Open Sans', 'Source Sans Pro', sans-serif;">Where your investment is going</h1>
+                    </div>
+                    <div calss="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h4 class="header_color" style="text-align:center">WE WORK TOWARDS YOUR FUTURE</h4>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 below_slider">
                         <div class="carousel slide carousel-v1" id="myCarousel-1">
                             <div class="carousel-inner">
-                                <div class="item active">
+                                <div class="item active row">
                                     <img alt="" src="../../Img/piechart.png">
                                     <div class="carousel-caption">
                                         <h4 class="header_color"><strong>Review your recommended investment portfolio</strong> </h4>
                                         <p class="paragraph_color">Based on your goal and risk profile ,We recommend an investment portfolio that suits your needs .You can also choose your own funds .or our experts are always available to support you if you find troubling in taking your decision</p>
 
                                     </div>
+
                                 </div>
-                                <div class="item">
+                                <div class="item row">
                                     <img alt="" src="../../Img/target.png">
                                     <div class="carousel-caption" style="padding-top:3%">
                                         <h4 class="header_color"><strong>Share your investment goals</strong> </h4>
                                         <p class="paragraph_color">We need to know about you,about who you are ,what you want to achieve.Once we know about you ,It helps us to do the analysis according to your needs.</p>
 
                                     </div>
+
                                 </div>
-                                <div class="item">
-                                    <img alt="" src="../../Img/SignIn.png" >
+                                <div class="item row">
+                                    <img alt="" src="../../Img/SignIn.png">
                                     <div class="carousel-caption" style="padding-top:4%">
                                         <h4 class="header_color"><strong>SIGN UP</strong> </h4>
                                         <p class="paragraph_color">Now sign up with us .open a free account .verify your account using PAN card .Your eKYC will be complete. You will be eligible to invest in a selected number of schemes, and you will enjoy access to the full range of services on Investorfunda.</p>
-
                                     </div>
+
                                 </div>
-                                <div class="item">
-                                    <img alt="" src="../../Img/42.png" >
+                                <div class="item row">
+                                    <img alt="" src="../../Img/42.png">
                                     <div class="carousel-caption" style="padding-top:4%">
                                         <h4 class="header_color"><strong>SIGN UP</strong> </h4>
                                         <p class="paragraph_color">Money you invested goes directly to the respective fund houses account  that you have selected or advised by us.We don't keep your money with us.</p>
 
                                     </div>
+
                                 </div>
                             </div>
 
 
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -281,7 +283,7 @@
                             <h4 class="header_color" style="text-align:center;font-weight:800">Best investment solutions</h4>
                         </div>
                         <div class="col-md-6 text-center">
-                            <img src="http://demobyrightfoot.in/wp-content/uploads/2016/10/headphones.png" style="width:60px"/>
+                            <img src="http://demobyrightfoot.in/wp-content/uploads/2016/10/headphones.png" style="width:60px" />
                             <h4 class="header_color" style="text-align:center;font-weight:800">Dedicated customer</h4>
                         </div>
                     </div>
@@ -300,7 +302,7 @@
         </div>
 
 
-        
+
         <div class="one-page-inner one-default ">
             <div class="row" style="background-color:#293542;color:white">
                 <div class="container">
@@ -325,8 +327,8 @@
                                 </li>
                             </ul>
                             <!--<div class="button1">
-                    <a href="#menu6">Request a quote</a>
-                </div>   <br>-->
+                                <a href="#menu6">Request a quote</a>
+                            </div>   <br>-->
                         </div>
                         <div class="col-md-6" style="padding-top: 37px;">
                             <img src="http://demobyrightfoot.in/wp-content/uploads/2016/09/phone@2x.png" height="300px" />
@@ -335,7 +337,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
         <div class="one-page-inner one-default margin-bottom-60">
             <div class="container">
@@ -365,8 +367,8 @@
             <div class="container">
                 <div class="row text-center">
                     <h1 style="color:#293542  !important;margin-bottom:40px;text-align:center;font-size:39px;font-family: 'Open Sans', 'Source Sans Pro', sans-serif;"> OUR PARTNERS</h1>
-                     <div id="clients-flexslider" class="flexslider home clients">
-                      
+                    <div id="clients-flexslider" class="flexslider home clients">
+
                         <ul class="slides">
                             <li>
                                 <a href="#">
@@ -555,7 +557,7 @@
                                     <img src="../../Img/Clients/UTIc.png" class="color-img" alt="">
                                 </a>
                             </li>
-                          
+
 
 
                             <li>
@@ -618,9 +620,9 @@
                                     <img src="../../Img/Clients/Sundaramc.png" class="color-img" alt="">
                                 </a>
                             </li>
-                         
+
                         </ul>
-                    </div>         
+                    </div>
 
                 </div>
             </div>
@@ -635,7 +637,7 @@
                             <div class="col-md-2 md-margin-bottom-30 AnchorCursorPointer" ui-sref="Goal">
                                 <h2 class="heading-md">
                                     <i class="icon-custom rounded-x icon-lg icon-bg-dark fa fa-graduation-cap"></i>
-                                    <span>CHILD’S EDUCATION</span>
+                                    <span>CHILDâ€™S EDUCATION</span>
                                 </h2>
 
                             </div>
@@ -663,14 +665,14 @@
                             <div class="col-md-2">
                                 <h2 class="heading-md">
                                     <i class="icon-custom rounded-x icon-lg icon-bg-dark icon-line icon-user"></i>
-                                    <span>CHILD’S MARRIAGE PLAN</span>
+                                    <span>CHILDâ€™S MARRIAGE PLAN</span>
                                 </h2>
 
                             </div>
                             <div class="col-md-2">
                                 <h2 class="heading-md">
                                     <i class="icon-custom rounded-x icon-lg icon-bg-dark icon-line icon-user"></i>
-                                    <span>CHILD’S MARRIAGE PLAN</span>
+                                    <span>CHILDâ€™S MARRIAGE PLAN</span>
                                 </h2>
 
                             </div>
@@ -688,23 +690,23 @@
                 <div class="row text-center">
                     <h1 style="color:#293542  !important;margin-bottom:40px;text-align:center;font-size:39px;font-family: 'Open Sans', 'Source Sans Pro', sans-serif;">Myths about mutual funds</h1>
                     <div class="row">
-                       <div class="col-md-4">
-                           <img src="http://demobyrightfoot.in/wp-content/uploads/2016/10/OE5MDX0.jpg" style="height:400px" />
-                       </div>
+                        <div class="col-md-4">
+                            <img src="http://demobyrightfoot.in/wp-content/uploads/2016/10/OE5MDX0.jpg" style="height:400px" />
+                        </div>
                         <div class="col-md-8">
                             <div class="panel-group acc-v1" id="accordion-1">
                                 <div class="panel panel-default">
                                     <div class="panel-heading AnchorCursorPointer">
                                         <h4 class="panel-title">
                                             <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-1" data-target="#collapse-One" style="height:45px;text-decoration:none">
-                                                						
+
                                                 <h1 style="color:#293542  !important;text-align:left;font-size:17px;font-family: 'Open Sans', 'Source Sans Pro', sans-serif;"><i class="fa fa-laptop"></i> Myth : Mutual Funds are for experts	</h1>
                                             </a>
                                         </h4>
                                     </div>
                                     <div id="collapse-One" class="panel-collapse collapse in">
                                         <div class="panel-body fund-detal">
-                                         <p style="color:black;text-align:justify">Fact : Part of the fear of Mutual Funds is that everything will go above your head and that only experts in finance can understand how they work. This is not true at all! Unlike the equity market, you don’t have to take the call on when to buy or sell shares, the fund manager will do it for you. It is his job to track various sectors and companies. He will help you decide where to invest your money. So in actuality, even if you aren’t a financial expert, you will still have access to someone who is, and with his help there’s no doubt you will make the right decisions.</p>
+                                            <p style="color:black;text-align:justify">Fact : Part of the fear of Mutual Funds is that everything will go above your head and that only experts in finance can understand how they work. This is not true at all! Unlike the equity market, you donâ€™t have to take the call on when to buy or sell shares, the fund manager will do it for you. It is his job to track various sectors and companies. He will help you decide where to invest your money. So in actuality, even if you arenâ€™t a financial expert, you will still have access to someone who is, and with his help thereâ€™s no doubt you will make the right decisions.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -719,7 +721,7 @@
                                     </div>
                                     <div id="collapse-Two" class="panel-collapse collapse">
                                         <div class="panel-body">
-                                            <p style="color:black;text-align:justify">Fact : Yes, long-term investments have a slight advantage, but that doesn’t mean that Mutual Funds are only for such investors. In fact, there are various short-term schemes where you can invest from a day to a few weeks.</p>
+                                            <p style="color:black;text-align:justify">Fact : Yes, long-term investments have a slight advantage, but that doesnâ€™t mean that Mutual Funds are only for such investors. In fact, there are various short-term schemes where you can invest from a day to a few weeks.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -749,7 +751,7 @@
                                     </div>
                                     <div id="collapse-Four" class="panel-collapse collapse">
                                         <div class="panel-body fund-detal">
-                                            <p style="color:black;text-align:justify">Fact : This simply comes down to a subconscious movement towards what seems to be cheaper. But the fact is that what matters is the percentage return on invested funds. For example, given a similar performance level of 10% appreciation, a Rs. 10 NAV will rise to Rs. 11 whereas a fund with a NAV of Rs. 200 will rise to Rs. 220. The reality is, due to an already demonstrated performance, the chance of the Rs. 200 scheme posting the 10% appreciation is higher than the one that has just started its journey. So instead of concentrating on a “low” NAV and more number of units, it is worthwhile to consider other factors like the performance track record, fund management and volatility that determine the portfolio return.</p>
+                                            <p style="color:black;text-align:justify">Fact : This simply comes down to a subconscious movement towards what seems to be cheaper. But the fact is that what matters is the percentage return on invested funds. For example, given a similar performance level of 10% appreciation, a Rs. 10 NAV will rise to Rs. 11 whereas a fund with a NAV of Rs. 200 will rise to Rs. 220. The reality is, due to an already demonstrated performance, the chance of the Rs. 200 scheme posting the 10% appreciation is higher than the one that has just started its journey. So instead of concentrating on a â€œlowâ€ NAV and more number of units, it is worthwhile to consider other factors like the performance track record, fund management and volatility that determine the portfolio return.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -765,7 +767,7 @@
                                     </div>
                                     <div id="collapse-five" class="panel-collapse collapse">
                                         <div class="panel-body fund-detal">
-                                            <p style="color:black;text-align:justify">Fact : This is one of the most long standing myths which today have absolutely no value whatsoever. Most funds today allow investments as low as Rs. 1000, with no limits on the maximum amount. In fact, even for Equity linked savings schemes the amount is as low as Rs. 500. What’s more, there is no monthly or annual maintenance charge even if you don’t transact further. Mutual Funds also offer the SIP facility in many of their schemes which allows you to invest small amounts of your choice regularly.</p>
+                                            <p style="color:black;text-align:justify">Fact : This is one of the most long standing myths which today have absolutely no value whatsoever. Most funds today allow investments as low as Rs. 1000, with no limits on the maximum amount. In fact, even for Equity linked savings schemes the amount is as low as Rs. 500. Whatâ€™s more, there is no monthly or annual maintenance charge even if you donâ€™t transact further. Mutual Funds also offer the SIP facility in many of their schemes which allows you to invest small amounts of your choice regularly.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -795,7 +797,7 @@
                                     </div>
                                     <div id="collapse-seven" class="panel-collapse collapse">
                                         <div class="panel-body fund-detal">
-                                            <p style="color:black;text-align:justify">Fact : This is a very common misconception because of the general association of Mutual Funds with shares. Buy you must remember that Mutual Funds invest in shares, so they can get in and out whenever the Fund Manager deems appropriate. If the Fund Manager feels that a stock has peaked, he can choose to sell it. To understand the reality of this myth better you need to understand that the NAV is nothing but a reflection of the market value of the shares held by the fund on any day. In all probability the NAV is high on account of a good performance over the years. Imagine two schemes. Scheme A is a new scheme with an NAV of Rs. 15 and Scheme B is an old scheme with an NAV of Rs. 150. If the holdings of both these schemes increase by 10%, the NAV of both schemes will go up by 10%. The NAV of scheme A will be Rs. 16.5 and that of scheme B be Rs. 165. So you realise that it doesn’t really matter if the NAV is Rs. 15 or Rs. 150.</p>
+                                            <p style="color:black;text-align:justify">Fact : This is a very common misconception because of the general association of Mutual Funds with shares. Buy you must remember that Mutual Funds invest in shares, so they can get in and out whenever the Fund Manager deems appropriate. If the Fund Manager feels that a stock has peaked, he can choose to sell it. To understand the reality of this myth better you need to understand that the NAV is nothing but a reflection of the market value of the shares held by the fund on any day. In all probability the NAV is high on account of a good performance over the years. Imagine two schemes. Scheme A is a new scheme with an NAV of Rs. 15 and Scheme B is an old scheme with an NAV of Rs. 150. If the holdings of both these schemes increase by 10%, the NAV of both schemes will go up by 10%. The NAV of scheme A will be Rs. 16.5 and that of scheme B be Rs. 165. So you realise that it doesnâ€™t really matter if the NAV is Rs. 15 or Rs. 150.</p>
                                         </div>
                                     </div>
                                 </div>
