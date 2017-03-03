@@ -2097,7 +2097,13 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
             }
         }
     }
+    $scope.removeKeyOfPostJson = function () {
+        for (let a = 0; a < $localStorage.POstJson.InvestmentList.length; a++) {
+            delete $localStorage.POstJson.InvestmentList.$$hashKey;
+        };
+    };
     $scope.CreatePlanFunction = function () {
+        $scope.removeKeyOfPostJson();
         var CreateUserList = FundsService.CreatePlan.PostPromise($localStorage.POstJson);
         CreateUserList.then(
         // OnSuccess function
@@ -2118,6 +2124,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         }
       )
     }
+  
     $rootScope.InvestNow = function (Page) {
         if ($localStorage.setCounterStatus || Page !=undefined)
         {
@@ -2179,6 +2186,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                         $scope.SIP_GOAL_Final_SHOW = true;
 
                         $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
+                        
 
                         $scope.CreatePlanFunction();
 
