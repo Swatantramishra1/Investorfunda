@@ -2099,7 +2099,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
     }
     $scope.removeKeyOfPostJson = function () {
         for (let a = 0; a < $localStorage.POstJson.InvestmentList.length; a++) {
-            delete $localStorage.POstJson.InvestmentList.$$hashKey;
+            delete $localStorage.POstJson.InvestmentList[a].$$hashKey;
         };
     };
     $scope.CreatePlanFunction = function () {
