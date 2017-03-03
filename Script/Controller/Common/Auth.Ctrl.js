@@ -29,7 +29,7 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
                 $rootScope.LoginStatus = true;
                 $localStorage.UserDetails = answer.data.GetLoginResult.Result;
                 $rootScope.UserDetails = answer.data.GetLoginResult.Result;
-                if ($localStorage.CurrentStatusOfPage == "ChildPlan")
+                if ($localStorage.CurrentStatusOfPage == "ChildGoal")
                 {
                     $localStorage.ChildState = true;
                     $state.go('ChildGoal');
@@ -50,6 +50,10 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
                 else if ($localStorage.CurrentStatusOfPage == "ChildMerrage") {
                     //$localStorage.MutualFundsState = true;
                     $state.go('ChildMerrage');
+                }
+                else if ($localStorage.CurrentStatusOfPage == "StartSIP") {
+                    //$localStorage.MutualFundsState = true;
+                    $state.go('StartSIP');
                 }
                 else  {
                     
