@@ -36,7 +36,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
           controller: "SIP.Ctrl"
       }).state('StartSIP', {
           url: "/StartSIP",
-          templateUrl: "../../Webform/Common/SIP/StartSip.html",
+          templateUrl: "../../Webform/Common/SIP/EasySip.html",
           controller: "SIP.Ctrl"
       })
         .state('EasySIP', {

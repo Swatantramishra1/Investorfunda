@@ -8,34 +8,22 @@
         
         <div class="col-sm-12">
             
-            <div class="panel-body">
+            <div class="panel-body" ng-if="Investment.firstStepSip">
                 <form class="margin-bottom-40" role="form">
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="exampleInputEmail1">YOUR INVESTMENT HORIZON</label>
                             <select class="form-control" ng-model="Investment.horizone">
                                 <option>Select Horizon</option>
-                                <option ng-value="1">1 Year</option>
-                                <option ng-value="2">2 Year</option>
-                                <option ng-value="3">3 Year</option>
-                                <option ng-value="4">4 Year</option>
-                                <option ng-value="5">5 Year</option>
-                                <option ng-value="6">6 Year</option>
-                                <option ng-value="7">7 Year</option>
-                                <option ng-value="8">8 Year</option>
-                                <option ng-value="9">9 Year</option>
-                                <option ng-value="10">10 Year</option>
-                                <option ng-value="11">11 Year</option>
-                                <option ng-value="12">12 Year</option>
-                                <option ng-value="13">13 Year</option>
-                                <option ng-value="14">14 Year</option>
+                                <option ng-value="{{$index+1}}" ng-repeat="i in getRepeatNumber(setNumber) track by $index">{{$index+1}} Year</option>
+                              
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4" ng-if="startSipPage">
                         <div class="form-group">
                             <label for="exampleInputPassword1">YOUR MONTHLY INVESTMENT IS</label>
-                            <select class="form-control" ng-model="Investment.MonthllyInvestment">
+                            <select class="form-control" ng-model="Investment.amount">
                                 <option>Select Investment</option>
                                 <option ng-value="2000">2000</option>
                                 <option ng-value="4000">4000</option>
@@ -54,6 +42,12 @@
                             </select>
                         </div>
                     </div>
+                    <div class="col-md-4" ng-if="easytSipPage">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Your ONE TIME INVESTMENT IS</label>
+                           <input type="text" class="form-control" ng-model="Investment.amount" />
+                        </div>
+                    </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="exampleInputPassword1">CHOOSE YOUR RISK PROFILE</label>
@@ -66,8 +60,13 @@
                         </div>
                     </div>
 
-                    <input type="button" class="btn-u btn-u-blue" ng-click="StartSipPopup()" value="Invest Now" style="margin-left:15px"/>
+                    <input type="button" class="btn-u btn-u-blue" ng-click="StartPopup()" value="Invest Now" style="margin-left:15px"/>
                 </form>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-12 margin-bottom-60" ng-if="SIP_GOAL_Final_SHOW">
+                    <div ng-include="'Webform/Common/Html/planForYourFutureStep3.html'"></div>
+                </div>
             </div>
         </div>
     </div>
