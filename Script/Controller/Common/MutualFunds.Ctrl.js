@@ -15,32 +15,54 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
     };
     var ListEx = {};
     $scope.InvestmentList = [];
-    $localStorage.POstJson = {
-        "User_ID": "",
-        "userPlan": {
-            "MasterPlan_ID": '6',
-            "Goal": "",
-            "CurrentAge": "",
-            "CourseTime": "",
-            "CourseDuration": "",
-            "CourseFeePerYear": "",
-            "LivingCostPerYear": "",
-            "SavedAmount_Lumpsum": "",
-            "InflationRate": "",
-            "TotalCourseFees": "",
-            "TotalLivingExpanses": "",
-            "TotalAmount": "",
-            "TotalLumpsumAmount": "",
-            "EstimatedInflationRate": ""
-        },
-        "userPortfolio": {
-            "Equity": "",
-            "Debt": "",
-            "EstimatedTotalSIPAmt": "",
-            "Scheme_IDs": ""
-        },
-   "InvestmentList":$scope.InvestmentList
-    }
+    $localStorage.POstJson =
+        {
+
+            "User_ID": "",
+            "userPlan":
+            {
+                "Plan_ID": "",
+                "MasterPlan_ID": "1",
+                "User_ID": "",
+                "GoalName": "",
+                "PresentAge": "",
+                "GoalTimeToStart": "",
+                "GoalDuration": "",
+                "GoalPerYearCost": "",
+                "GoalPerYearLivingCost": "",
+                "GoalLumpsum": "",
+                "GoalInflationRate": "",
+                "GoalTotalCost": "",
+                "GoalLivingTotalCost": "",
+                "GoalTotalAmount": "",
+                "GoalTotalLumpsumAmount": "",
+                "EstimatedInflationRate": "",
+                "GoalDateOfSip": "",
+                "GoalRetirementYear": "",
+                "GoalRetirementExpense": "",
+                "GoalRetirementMonthlyExpenditure": "",
+                "GoalHousePlanYear": "",
+                "GoalHouseCurrentCost": "",
+                "GoalHouseDownPayment": "",
+                "GoalHouseLoanYear": "",
+                "GoalChildMerrageBudgetAmount": "",
+                "Risk": ""
+            },
+            "userPortfolio":
+            {
+                "Portfolio_ID": "",
+                "Plan_ID": "",
+                "User_ID": "",
+                "Equity": "",
+                "Debt": "",
+                "Gold": "",
+                "EstimatedTotalSIPAmt": "",
+                "Scheme_IDs": ""
+            },
+            "InvestmentList": $scope.InvestmentList
+        };
+
+
     $localStorage.tempData = {};
     $scope.SchemeLimitTo = 15;
     $scope.GetFundList = function (AmcCode, CategoryCode, SchemeOption) {
@@ -81,6 +103,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             getDetailsFundsHouse.then(
             // OnSuccess function
             function (response) {
+                HideLoader();
                 $localStorage.LSFundsHouse = response.data.response.data.Schemelist.Scheme;
                 $scope.FundsHouse = response.data.response.data.Schemelist.Scheme;
 
@@ -88,7 +111,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             // OnFailure function
             function (reason) {
 
-                console.log(reason.GetLoginResult.ResponseMessage)
+                HideLoader();
                 $scope.somethingWrong = reason;
                 $scope.error = true;
             });
@@ -96,6 +119,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             FundCategoryEQUITY.then(
             // OnSuccess function
             function (response) {
+                HideLoader();
                 $localStorage.LSFundCategoryEQUITY = response.data.response.data.Schemelist.Scheme;
                 $scope.FundCategoryEQUITY = response.data.response.data.Schemelist.Scheme;
 
@@ -111,6 +135,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             FundCategoryHybrid.then(
             // OnSuccess function
             function (response) {
+                HideLoader();
                 $localStorage.LSFundCategoryHybrid = response.data.response.data.Schemelist.Scheme;
                 $scope.FundCategoryHybrid = response.data.response.data.Schemelist.Scheme;
 
@@ -126,6 +151,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             FundCategoryDebt.then(
             // OnSuccess function
             function (response) {
+                HideLoader();
                 $localStorage.LSFundCategoryDebt = response.data.response.data.Schemelist.Scheme;
                 $scope.FundCategoryDebt = response.data.response.data.Schemelist.Scheme;
 
@@ -238,14 +264,10 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             "Amount": $localStorage.SchemeAmount,
             "DateString": "",
             "Scheme_ID": $localStorage.CurrentScheme.mf_cocode,
-            "InvestmentType": "LUMPSUM",
-            "DueDate": ""
+            "InvestmentType": $localStorage.CurrentStatusOfPage,
+            "DueDate": "1/March/2017"
 
-                            
-
-
-                           
-        })
+        });
         $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
 
         var CreateUserList = FundsService.CreatePlan.PostPromise($localStorage.POstJson);
@@ -253,10 +275,12 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         // OnSuccess function
         function (answer) {
             HideLoader();
+            $localStorage.CurrentStatusOfPage = "";
             $localStorage.CurrentSchemeCode = "";
             $localStorage.CurrentScheme = [];
             $localStorage.SchemeAmount = "";
             $scope.InvestmentList = {};
+            $localStorage.MutualFundsState = false;
             //window.location = "../../../Webform/User/dist/index.html"
             if (answer.CreateUsersPlanResult.ResponseCode == "0") {
                 alert("Plan Created Succesfully")
@@ -305,7 +329,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
     }
     if ($localStorage.LoginStatus)
     {
-        if ($localStorage.CurrentStatusOfPage == "MutualfundsLumpSum")
+        if ($localStorage.CurrentStatusOfPage === "LUMPSUM" || $localStorage.CurrentStatusOfPage === "SIP")
         {
             if( $localStorage.LSStatus)
             {
@@ -697,7 +721,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         $scope.ApplyFilterOnFundsList();
     }
     
-    $scope.InvestLumpsum = function (index, Page) {
+    $scope.InvestLumpsum = function (index, Page,Type) {
         var tesmp = "";
         if (Page != undefined)
         {
@@ -720,13 +744,36 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             }
           
             if ($localStorage.MutualFundsState) {
+                if (Type === undefined || Type === "") {
+                    Type = $localStorage.CurrentStatusOfPage;
+                }
+                if (Type === "LUMPSUM") {
+                    $localStorage.POstJson.userPlan.MasterPlan_ID = "6";
+                }
+                else if (Type === "SIP") {
+                    $localStorage.POstJson.userPlan.MasterPlan_ID = "8";
+                }
+                //if ($localStorage.CurrentScheme !== undefined)
+                //{
+                //    $localStorage.CurrentScheme = $scope.FundsList[index];
+                //}
                 $scope.InvestorFundaConfMessage("Confirmation of Proceed", "Do you realy want to proceed for Scheme");
             }
             else {
-                $localStorage.CurrentScheme = $scope.FundsList[index];
-                $localStorage.IndexCurrentCode = index;
-                $localStorage.CurrentStatusOfPage = "MutualfundsLumpSum";
-                $state.go('Authentication', { From: 'Mutualfunds' });
+                if (index !== undefined)
+                {
+                    $localStorage.CurrentScheme = $scope.FundsList[index];
+                    $localStorage.IndexCurrentCode = index;
+                    $localStorage.CurrentStatusOfPage = Type;
+                    if (Type === "LUMPSUM") {
+                        $localStorage.POstJson.userPlan.MasterPlan_ID = "6";
+                    }
+                    else if (Type === "SIP") {
+                        $localStorage.POstJson.userPlan.MasterPlan_ID = "8";
+                    }
+                    $state.go('Authentication', { From: 'Mutualfunds' });
+                }
+               
             }
         }
         else {
@@ -742,11 +789,14 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
     }
 
     //Confirmation Popup
-    if ($localStorage.CurrentStatusOfPage == "MutualfundsLumpSum") {
-        if ($localStorage.CurrentSchemeCode != "")
+    if ($localStorage.CurrentStatusOfPage === "SIP" || $localStorage.CurrentStatusOfPage === "LUMPSUM") {
+        if ($localStorage.CurrentScheme !== undefined)
         {
-            $scope.InvestLumpsum($localStorage.CurrentSchemeCode);
+            if ($localStorage.CurrentScheme.mf_cocode != "") {
+                $scope.InvestLumpsum($localStorage.CurrentScheme.mf_cocode);
+            }
         }
+        
         else {
             $scope.OnloadFunction();
         }
