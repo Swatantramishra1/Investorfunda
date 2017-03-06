@@ -21,6 +21,27 @@
             return deferObject.promise;
         }
     };
+    GetUserInfoList = {
+
+        getPromise: function (UserID) {
+            var promise = $http.get(API_GetUserDetailsInfo + UserID),
+                  deferObject = deferObject || $q.defer();
+
+            promise.then(
+              // OnSuccess function
+              function (answer) {
+                  // This code will only run if we have a successful promise.
+                  deferObject.resolve(answer);
+              },
+              // OnFailure function
+              function (reason) {
+                  // This code will only run if we have a failed promise.
+                  deferObject.reject(reason);
+              });
+
+            return deferObject.promise;
+        }
+    };
     GetUserPlanList = {
 
         getPromise: function (ClientCode) {
@@ -66,6 +87,7 @@
     return {
         GetUserList: GetUserList,
         GetUserPlanList: GetUserPlanList,
-        GetUserInvestmentDetailsList: GetUserInvestmentDetailsList
+        GetUserInvestmentDetailsList: GetUserInvestmentDetailsList,
+        GetUserInfoList: GetUserInfoList
     }
 }])

@@ -22,7 +22,7 @@
 <div class="movie_top">
     <div class="col-md-12 movie_box">
       <div class="col-md-6">
-          <p>Name : {{usernvestmentdetails[0].Name}}</p>
+          <p style="cursor:pointer" data-toggle="modal" data-target="#myModal" ng-click="GetAllDetails()">Name : {{usernvestmentdetails[0].Name}}</p>
           <p>Client Code : {{usernvestmentdetails[0].ClientCode}}</p>
           <p>Transaction Type : {{usernvestmentdetails[0].ClientType}}</p>
           <p>Transaction ID : {{usernvestmentdetails[0].NSDLDP_ID}}</p>
@@ -74,7 +74,94 @@
         <!---728x90--->
   
     </div>
- 
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                
+
+                  
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#1acollapseOne">
+                                            <span class="glyphicon glyphicon-file">
+                                            </span>User details
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div data-target="1acollapseOne" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <p>Name : {{userCompleteDetails.UserProfileData.FirstName}}</p>
+                                        <p>DOB : {{userCompleteDetails.UserProfileData.DateOfBirth}}</p>
+                                        <p>Pan Card : {{userCompleteDetails.UserProfileData.PANNumber}}</p>
+                                        <p>Gender : {{userCompleteDetails.UserProfileData.Gender}}</p>
+                                        <p>Holdibg Nature : {{userCompleteDetails.UserProfileData.HoldingNature_Name}}</p>
+                                        <p>Tax Status : {{userCompleteDetails.UserProfileData.TaxStatus_Name}}</p>
+                                        <p>Occupation Mode : </p>
+                                        <p>Dividend Pay Mode :{{userCompleteDetails.UserProfileData.DividentPayMode}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#2acollapseOne">
+                                    <span class="glyphicon glyphicon-file">
+                                    </span>Bank details
+                                </a>
+                            </h4>
+                        </div>
+                        <div data-target="2acollapseOne" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <p>Bank Name : {{userCompleteDetails.BankDetailsData.BankName}}</p>
+                                <p>IFSC Code : {{userCompleteDetails.BankDetailsData.Bank_IFSC}}</p>
+                                <p>Account No : {{userCompleteDetails.BankDetailsData.Bank_AccountNo}}</p>
+                                <p>Account Type : {{userCompleteDetails.BankDetailsData.Bank_AccountTypeName}}</p>
+                                <p>Name As Per Account : {{userCompleteDetails.BankDetailsData.NameAsPerBank}}</p>
+                               
+                            </div>
+                        </div>
+                    </div>
+             
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#2acollapseOne">
+                                    <span class="glyphicon glyphicon-file">
+                                    </span>Depository details
+                                </a>
+                            </h4>
+                        </div>
+                        <div data-target="2acollapseOne" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <p>Client Type : {{userCompleteDetails.DepositoryDetailsData.ClientType}}</p>
+                                <p >Depository Name : {{userCompleteDetails.DepositoryDetailsData.DepositoryName}}</p>
+                                <p >CSDL/NSDL DP ID : {{userCompleteDetails.DepositoryDetailsData.NSDLDP_ID}}</p>
+                                <p >CSDL BANK ACT. : {{userCompleteDetails.DepositoryDetailsData.CDSLBenAcNo}}</p>
+                                <p >NSDL BANK ACT : {{userCompleteDetails.DepositoryDetailsData.NSDLBenAcNo}}</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
     <div class="clearfix"> </div>
 </div>
 <script>
