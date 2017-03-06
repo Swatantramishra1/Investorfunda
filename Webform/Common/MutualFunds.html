@@ -109,7 +109,7 @@
                             <th>Category</th>
                             <th>Nav</th>
                             <th>Return(%)3 Year</th>
-                            <th>Rating By Crisil</th>
+                            <!--<th>Rating By Crisil</th>-->
                             <th>Analysis</th>
                             <th>Amount</th>
                             <th>Action</th>
@@ -120,7 +120,7 @@
                         <!-- Temp Data -->
 
                         
-                        <tr>
+                        <!--<tr>
                             <td>0</td>
                             <td  class="OnHoverSchemename"> RELIANCE TOP 200 FUND - GROWTH PLAN - GROWTH</td>
                             <td class="hidden-sm">GROWTH</td>
@@ -145,7 +145,7 @@
                                     </ul>
                                 </div>
                             </td>
-                        </tr>
+                        </tr>-->
 
                         <!-- Repeat List of All mutual funds -->
                         <tr ng-repeat="MF in FundsList | filter : filterprodcut | limitTo : SchemeLimitTo" id="{{MF.SchemeID}}" >
@@ -154,7 +154,7 @@
                             <td class="hidden-sm">{{MF.CategoryName}}</td>
                             <td>{{MF.NAV | number:2}}</td>
                             <td><span class="label label-warning">{{MF.Return_3Yr | number:2}} %</span></td>
-                            <td>2</td>
+                            <!--<td>2</td>-->
                             <td><img src="../../Img/bar_graph1.png" style="height:16px;cursor:pointer" ng-click="showAdvanced($index)" /></td>
                             <td><input type="text" style="width:60px" id="{{$index}}Amount"   /></td>
                             <td><div class="btn-group">
@@ -165,10 +165,10 @@
     <ul class="dropdown-menu" role="menu">
         <li><a ng-click="InvestLumpsum($index,'Page','LUMPSUM')"><i class="fa fa-inr"></i> Buy Lumpsum</a></li>
         <li><a ng-click="InvestLumpsum($index,'Page','SIP')"><i class="fa fa-inr"></i> Buy SIP</a></li>
-        <li><a ><i class="fa fa-shopping-cart"></i> Add to cart as Lumpsum</a></li>
-        <li><a ><i class="fa fa-shopping-cart"></i> Add to cart as SIP</a></li>
-        <li class="divider"></li>
-        <li><a ><i class="fa fa-heart-o"></i> Add To WatchList</a></li>
+        <!--<li><a ><i class="fa fa-shopping-cart"></i> Add to cart as Lumpsum</a></li>
+        <li><a ><i class="fa fa-shopping-cart"></i> Add to cart as SIP</a></li>-->
+        <!--<li class="divider"></li>-->
+        <!--<li><a ><i class="fa fa-heart-o"></i> Add To WatchList</a></li>-->
     </ul>
 </div></td>
                         </tr>
