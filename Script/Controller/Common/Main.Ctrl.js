@@ -1,4 +1,4 @@
-﻿app.controller("MainCtrl", ['$scope', '$rootScope', '$http', 'fileUpload', function ($scope, $rootScope, $http, fileUpload) {
+﻿app.controller("MainCtrl", ['$scope', '$rootScope', '$http', 'fileUpload', '$window', function ($scope, $rootScope, $http, fileUpload, $window) {
 
     //********Defined Area*****************
     $scope.total_amount_invested = 11110;
@@ -10,6 +10,8 @@
     {
         "color": "red"
     }
+    $scope.desktopHeight = window.innerHeight - 110 + 'px';
+
     $scope.calculate_SIP = function () {
         var principal = parseFloat($scope.SIP_Money_bar);
         $scope.total_amount_invested = principal * 12;

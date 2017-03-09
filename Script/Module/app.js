@@ -81,7 +81,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url: "/MutualFundsList",
         templateUrl: "../../Webform/Common/MutualFunds.html",
         controller: "MtualFunds.Ctrl"
-    }).state('AdminUpload', {
+    }).state('ELSS', {
+        url: "/ELSS",
+        templateUrl: "../../Webform/Common/ElssListing.html",
+        controller: "MtualFunds.Ctrl"
+    })
+        .state('AdminUpload', {
         url: "/AdminUpload",
         templateUrl: "../../WebForm/HtmlPages/Admin/ExportExcel.html",
         controller: "MainCtrl"

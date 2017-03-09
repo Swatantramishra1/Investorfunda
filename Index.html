@@ -3,7 +3,11 @@
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!-->
 <html lang="en" ng-app="app">
-
+<style>
+    html {
+        overflow-x:hidden;
+    }
+</style>
 <!--<![endif]-->
 <head>
     <title>InvestorFunda | Welcome...</title>
@@ -44,12 +48,6 @@
 
     <link href="DesignContent/Plugins/Style/Others/rzslider.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
-
-    <style>
-        html {
-            overflow-x: hidden;
-        }
-    </style>
 </head>
 
 <body class="header-fixed" style="font-family:MuseoSans,Lato,Helvetica,Arial,sans-serif !important">
@@ -140,7 +138,7 @@
                                         <a href="javascript:void(0);">Save Taxes</a>
                                         <ul class="dropdown-menu">
 
-                                            <li><a href="#">ELSS TAX SAVING SIP </a></li>
+                                            <li><a ui-sref="ELSS">ELSS TAX SAVING SIP </a></li>
                                             <li><a href="#">Customized tax saving portfolio</a></li>
                                         </ul>
                                     </li>
@@ -301,11 +299,37 @@
 
         <div class="col-lg-12" style="background-color:#f5f5f5;" ui-view></div>
 
-
-
-
+        <div style="width:100%;background-color: #757575;margin-bottom:100px;height:auto;">
+            <div class="row" style="margin-bottom:0;width:80%;margin-left:auto;margin-right:auto;margin-bottom:0 !important;">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <h1 class="footer_Header">Buy Now</h1>
+                    <ul style="list-style-type: square;">
+                        <li class="list_Style">text 1</li>
+                        <li class="list_Style">text 2</li>
+                        <li class="list_Style">text 3</li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <h1 class="footer_Header">Recent Posts</h1>
+                    <ul style="list-style-type: square;">
+                        <li class="list_Style">text 1</li>
+                        <li class="list_Style">text 2</li>
+                        <li class="list_Style">text 3</li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <h1 class="footer_Header">Footer Links</h1>
+                    <ul style="list-style-type: square;">
+                        <li class="list_Style">text 1</li>
+                        <li class="list_Style">text 2</li>
+                        <li class="list_Style">text 3</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+                
         <div class="copyright footer">
-            <div class="container">
+            <div class="container">               
                 <div class="row">
                     <div class="col-md-6">
                         <p>

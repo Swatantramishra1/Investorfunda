@@ -15,6 +15,83 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
     };
     var ListEx = {};
     $scope.InvestmentList = [];
+    $scope.ElssList =[ {
+        "Rank": "1",
+        "SchemeName": "Franklin India Taxshield - Growth",
+        "ISIN": "INF090I01775",
+        "BSESchmecode": "034-GR",
+        "MinInvst": "500",
+        "MFtype": "ELSS",
+        "Minsip": "6",
+        "date": "1,7,10,20,25",
+        "multiplier": "500"
+    },
+                  {
+                      "Rank": "2",
+                      "SchemeName": "Axis Long Term Equity Fund - Growth",
+                      "ISIN": "INF846K01131",
+                      "BSESchmecode": "AXFTSGP-GR",
+                      "MinInvst": "500",
+                      "MFtype": "ELSS",
+                      "Minsip": "6",
+                      "date": "1-30 all days",
+                      "multiplier": "500"
+                  },
+                  {
+                      "Rank": "3",
+                      "SchemeName": "Birla Sun Life Tax Relief 96 - Growth",
+                      "ISIN": "INF209K01108",
+                      "BSESchmecode": "02G",
+                      "MinInvst": "500",
+                      "MFtype": "ELSS",
+                      "Minsip": "6",
+                      "date": "1,7,10,14,15,21,20,28",
+                      "multiplier": "1"
+                  },
+                  {
+                      "Rank": "4",
+                      "SchemeName": "ICICI Prudential Long Term Equity Fund (Tax Saving) - Reg - Growth",
+                      "ISIN": "INF109K01464",
+                      "BSESchmecode": "1",
+                      "MinInvst": "500",
+                      "MFtype": "ELSS",
+                      "Minsip": "6",
+                      "date": "1,7,15,20,28",
+                      "multiplier": "1"
+                  },
+                  {
+                      "Rank": "5",
+                      "SchemeName": "HDFC TAXSAVER - GROWTH OPTION",
+                      "ISIN": "INF179K01BB8",
+                      "BSESchmecode": "32",
+                      "MinInvst": "500",
+                      "MFtype": "ELSS",
+                      "Minsip": "12",
+                      "date": "1,5,10,15,20,25",
+                      "multiplier": "500"
+                  },
+                  {
+                      "Rank": "6",
+                      "SchemeName": "LIC MF Tax Plan - Growth",
+                      "ISIN": "INF767K01956",
+                      "BSESchmecode": "LCTPGP-GR",
+                      "MinInvst": "500",
+                      "MFtype": "ELSS",
+                      "Minsip": "12",
+                      "date": "1,7,10,15,25",
+                      "multiplier": "500"
+                  },
+                  {
+                      "Rank": "7",
+                      "SchemeName": "KOTAK TAX SAVER-GROWTH",
+                      "ISIN": "INF174K01369",
+                      "BSESchmecode": "K144TS-GR",
+                      "MinInvst": "500",
+                      "MFtype": "ELSS",
+                      "Minsip": "6",
+                      "date": "1,7,10,14,20,21,25,28",
+                      "multiplier": "500"
+                  }];
     $localStorage.POstJson =
         {
 
