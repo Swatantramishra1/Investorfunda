@@ -85,6 +85,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url: "/ELSS",
         templateUrl: "../../Webform/Common/ElssListing.html",
         controller: "MtualFunds.Ctrl"
+    }).state('CustomElss', {
+        url: "/CustomElss",
+        templateUrl: "../../Webform/Common/ElssCustomise.html",
+        controller: "MtualFunds.Ctrl"
     })
         .state('AdminUpload', {
         url: "/AdminUpload",
