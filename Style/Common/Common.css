@@ -51,7 +51,7 @@
 }
 .md-button.md-default-theme.md-raised, .md-button.md-raised 
 {
-    background-color:rgba(102,0,51,1) !important;
+    background-color:#008080 !important;
     color:white !important;
 }
 
@@ -128,8 +128,10 @@ font-size:31px;
  }
  .btn-u
  {
-     background-color:rgba(102,0,51,1) !important;
+     background-color:#008080 !important;
      color:white;
+     text-transform:uppercase;
+     font:bold;
  }
  .ListInvestmenttd{
      text-align:center !important;
