@@ -3582,7 +3582,10 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
     //*************************************************Easy SIP******************************************************************
     $scope.setNumber = 50;
     $scope.Investment = {
-        firstStepSip:true
+        firstStepSip: true,
+        horizone: "0",
+        amount: "0",
+        risk:"0"
     }
     
     $scope.getRepeatNumber = function (num) {

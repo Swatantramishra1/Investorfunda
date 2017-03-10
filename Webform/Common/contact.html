@@ -13,7 +13,7 @@
         <script type='text/javascript'>function init_map()
 {
     var myOptions = { zoom: 13, center: new google.maps.LatLng(19.128274299999994, 72.89640625400398), mapTypeId: google.maps.MapTypeId.ROADMAP };
-    map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
+    map = new google.maps.Map(document.getElementById('gmap_anvas'), myOptions);
     marker = new google.maps.Marker({ map: map, position: new google.maps.LatLng(19.128274299999994, 72.89640625400398) });
     infowindow = new google.maps.InfoWindow({ content: '<strong>InvestorFunda </strong><br>502, The Summit Business Bay, Andheri Kurla Road, Opp. Cinemax Cinema, Andheri (East) Mumbai - 400093<br>' });
     google.maps.event.addListener(marker, 'click', function () { infowindow.open(map, marker); }); infowindow.open(map, marker);
@@ -55,33 +55,25 @@
 
         <div class="col-md-3">
             <!-- Contacts -->
-            <div class="headline"><h2>Contacts</h2></div>
+            <div class="headline"><h2>Contact</h2></div>
             <ul class="list-unstyled who margin-bottom-30">
-                <li><a href="#"><i class="fa fa-home"></i>5502, The Summit Business Bay,
+                <li><a href="#"><i class="fa fa-home"></i>502, The Summit Business Bay,
 Andheri Kurla Road,
 Opp. Cinemax Cinema, Andheri (East)
 Mumbai - 400093</a></li>
-                <li><a href="#"><i class="fa fa-envelope"></i>support@investorfunda.com</a></li>
+                <li><a href="#"><i class="fa fa-envelope"></i>contact@investorfunda.com</a></li>
                 <li><a href="#"><i class="fa fa-phone"></i>022- 26813700</a></li>
-                <li><a href="#"><i class="fa fa-globe"></i>http://www.example.com</a></li>
+                <li><a href="#"><i class="fa fa-globe"></i>http://www.investorfunda.com</a></li>
             </ul>
 
             <!-- Business Hours -->
             <div class="headline"><h2>Business Hours</h2></div>
             <ul class="list-unstyled margin-bottom-30">
-                <li><strong>Monday-Friday:</strong> 10am to 8pm</li>
-                <li><strong>Saturday:</strong> 11am to 3pm</li>
-                <li><strong>Sunday:</strong> Closed</li>
+                <li><strong>Monday-Friday:</strong> 9am to 6pm</li>
+                <li><strong>Saturday:</strong> 10am to 5pm</li>
             </ul>
 
-            <!-- Why we are? -->
-            <div class="headline"><h2>Why we are?</h2></div>
-            <p>Our motivation is to help to understand investment for people</p>
-            <ul class="list-unstyled">
-                <li><i class="fa fa-check color-green"></i> Simplyfi Life</li>
-                <li><i class="fa fa-check color-green"></i> Dedication </li>
-                <li><i class="fa fa-check color-green"></i> Will of good work</li>
-            </ul>
+           
         </div><!--/col-md-3-->
     </div><!--/row-->
 

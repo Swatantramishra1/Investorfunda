@@ -12,9 +12,9 @@
                 <form class="margin-bottom-40" role="form">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">YOUR INVESTMENT HORIZON</label>
+                            <label for="exampleInputEmail1">For how long you wish to stay invested?</label>
                             <select class="form-control" ng-model="Investment.horizone">
-                                <option>Select Horizon</option>
+                                <option value="0">Select Horizon</option>
                                 <option ng-value="{{$index+1}}" ng-repeat="i in getRepeatNumber(setNumber) track by $index">{{$index+1}} Year</option>
                               
                             </select>
@@ -24,7 +24,7 @@
                         <div class="form-group">
                             <label for="exampleInputPassword1">YOUR MONTHLY INVESTMENT IS</label>
                             <select class="form-control" ng-model="Investment.amount">
-                                <option>Select Investment</option>
+                                <option value="0">Select Investment</option>
                                 <option ng-value="2000">2000</option>
                                 <option ng-value="4000">4000</option>
                                 <option ng-value="6000">6000</option>
@@ -45,14 +45,14 @@
                     <div class="col-md-4" ng-if="easytSipPage">
                         <div class="form-group">
                             <label for="exampleInputPassword1">Your ONE TIME INVESTMENT IS</label>
-                           <input type="text" class="form-control" ng-model="Investment.amount" />
+                           <input type="text" class="form-control" placeholder="Enter Amount want to invest" ng-model="Investment.amount" />
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="exampleInputPassword1">CHOOSE YOUR RISK PROFILE</label>
                             <select class="form-control" ng-model="Investment.risk">
-                                <option>Select Risk</option>
+                                <option value="0">Select Risk</option>
                                 <option ng-value="Low">Low</option>
                                 <option ng-value="Moderate">Moderate</option>
                                 <option ng-value="High">High</option>
@@ -60,7 +60,8 @@
                         </div>
                     </div>
 
-                    <input type="button" class="btn-u btn-u-blue" ng-click="StartPopup()" value="Invest Now" style="margin-left:15px"/>
+                    <a class="AnchorCursorPointer btn-u btn-u-blue" ng-click="StartPopup()" style="margin-left:15px;font:bold;color:white" >Invest Now</a>
+                   
                 </form>
             </div>
             <div class="panel-body">
