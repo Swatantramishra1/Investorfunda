@@ -865,6 +865,25 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         alert(ID)
     }
 
+    //Tax Saving Amount Start
+
+    $scope.InvestNowTax = function (From) {
+        if(From==="know")
+        {
+            $scope.investForm = true;
+            $scope.taxCalculator = false;
+        }
+    else
+        {
+            $scope.investForm = false;
+            $scope.taxCalculator = true;
+        }
+    };
+
+
+    //Tax Saving Amount End
+
+
     //Confirmation Popup
     if ($localStorage.CurrentStatusOfPage === "SIP" || $localStorage.CurrentStatusOfPage === "LUMPSUM") {
         if ($localStorage.CurrentScheme !== undefined)

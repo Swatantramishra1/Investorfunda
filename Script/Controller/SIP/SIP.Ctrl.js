@@ -3253,6 +3253,12 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
     //****************************Easy SIP**************************************
     $scope.EasySIP_Step1 = true;
     $scope.EasySIP_Step2 = false;
+    $scope.MonthlyInvetmentAmount = [];
+    for (var a = 1; a <= 200; a++)
+
+    {
+        $scope.MonthlyInvetmentAmount.push(a * 1000);
+    }
     $scope.StartSipPopup = function () {
         $rootScope.InvestmtntValue = $scope.Investment;
         $mdDialog.show({

@@ -1,7 +1,6 @@
 ﻿<div class="col-md-12 margin-bottom-60" style="background-color:white">
-<div class="row margin-bottom-10" style="background-color:gray" ng-show="EasySIP_Step1">
-
-    <img src="../../../Img/EasySip.png" style="width:100%" />
+<div class="row margin-bottom-10"  ng-show="EasySIP_Step1" style="text-align:center">
+    <img src="../../../Img/StartSip/startSIP.png" style="height:425px" />
 </div>
 <div class="row margin-bottom-40" ng-show="EasySIP_Step1">
     <div class="row tab-v3">
@@ -12,7 +11,7 @@
                 <form class="margin-bottom-40" role="form">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">For how long you wish to stay invested?</label>
+                            <label for="exampleInputEmail1">For How Long You Wish To Stay Invested?</label>
                             <select class="form-control" ng-model="Investment.horizone">
                                 <option value="0">Select Horizon</option>
                                 <option ng-value="{{$index+1}}" ng-repeat="i in getRepeatNumber(setNumber) track by $index">{{$index+1}} Year</option>
@@ -22,35 +21,23 @@
                     </div>
                     <div class="col-md-4" ng-if="startSipPage">
                         <div class="form-group">
-                            <label for="exampleInputPassword1">YOUR MONTHLY INVESTMENT IS</label>
+                            <label for="exampleInputPassword1">Your Monthly Investment Is</label>
                             <select class="form-control" ng-model="Investment.amount">
                                 <option value="0">Select Investment</option>
-                                <option ng-value="2000">2000</option>
-                                <option ng-value="4000">4000</option>
-                                <option ng-value="6000">6000</option>
-                                <option ng-value="8000">8000</option>
-                                <option ng-value="10000">10000</option>
-                                <option ng-value="12000">12000</option>
-                                <option ng-value="14000">14000</option>
-                                <option ng-value="16000">16000</option>
-                                <option ng-value="18000">18000</option>
-                                <option ng-value="20000">20000</option>
-                                <option ng-value="22000">22000</option>
-                                <option ng-value="24000">24000</option>
-                                <option ng-value="26000">26000</option>
-                                <option ng-value="28000">28000</option>
+                                <option ng-value="500">500</option>
+                                <option ng-value="Amount" ng-repeat="Amount in MonthlyInvetmentAmount">{{Amount}}</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-md-4" ng-if="easytSipPage">
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Your ONE TIME INVESTMENT IS</label>
+                            <label for="exampleInputPassword1">Your One Time Investment Is</label>
                            <input type="text" class="form-control" placeholder="Enter Amount want to invest" ng-model="Investment.amount" />
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="exampleInputPassword1">CHOOSE YOUR RISK PROFILE</label>
+                            <label for="exampleInputPassword1">Choose Your Risk Profile</label>
                             <select class="form-control" ng-model="Investment.risk">
                                 <option value="0">Select Risk</option>
                                 <option ng-value="Low">Low</option>
@@ -60,7 +47,7 @@
                         </div>
                     </div>
 
-                    <a class="AnchorCursorPointer btn-u btn-u-blue" ng-click="StartPopup()" style="margin-left:15px;font:bold;color:white" >Invest Now</a>
+                    <a class="AnchorCursorPointer btn-u btn-u-blue btnRight" ng-click="StartPopup()"  >Invest Now</a>
                    
                 </form>
             </div>

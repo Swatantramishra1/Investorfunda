@@ -54,41 +54,42 @@
 
 
     <div class="wrapper">
-        <!--=== Header ===-->
-        <div class="header ">
-            <!-- Topbar -->
-            <div class="topbar">
-                <div class="container">
-                    <!-- Topbar Navigation -->
-                    <ul class="loginbar pull-right" ng-show="!LoginStatus">
-                        <li class="topbar-devider"></li>
-                        <li><a ui-sref="contact">Contact</a></li>
-                        <li class="topbar-devider"></li>
-                        <li><a href="#">Help</a></li>
-                        <li class="topbar-devider"></li>
-                        <li><a ui-sref="Authentication">Log in/Free SignUp</a></li>
-                    </ul>
-                    <ul class="loginbar pull-right" ng-show="LoginStatus">
-                        <li class="topbar-devider"></li>
-                        <li><a href="Webform/User/dist/index.html">{{UserDetails.Name}}</a></li>
-                        <li class="topbar-devider"></li>
-                        <li><a ng-click="Logout()">Logout</a></li>
+        <div class="row">
+            <!--=== Header ===-->
+            <div class="header ">
+                <!-- Topbar -->
+                <div class="topbar">
+                    <div class="container">
+                        <!-- Topbar Navigation -->
+                        <ul class="loginbar pull-right" ng-show="!LoginStatus">
+                            <li class="topbar-devider"></li>
+                            <li><a ui-sref="contact">Contact</a></li>
+                            <li class="topbar-devider"></li>
+                            <li><a href="#">Help</a></li>
+                            <li class="topbar-devider"></li>
+                            <li><a ui-sref="Authentication">Log in/Free SignUp</a></li>
+                        </ul>
+                        <ul class="loginbar pull-right" ng-show="LoginStatus">
+                            <li class="topbar-devider"></li>
+                            <li><a href="Webform/User/dist/index.html">{{UserDetails.Name}}</a></li>
+                            <li class="topbar-devider"></li>
+                            <li><a ng-click="Logout()">Logout</a></li>
 
-                    </ul>
-                    <!-- End Topbar Navigation -->
+                        </ul>
+                        <!-- End Topbar Navigation -->
+                    </div>
                 </div>
-            </div>
-            <!-- End Topbar -->
-            <!-- Navbar -->
-            <div class="navbar navbar-default" role="navigation">
-                <div class="container">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="fa fa-bars"></span>
-                        </button>
-                        <a class="navbar-brand AnchorCursorPointer" href="#" style="text-align:center;margin-top:-13px;color:white;font-family:Open Sans-serif">
+                <!-- End Topbar -->
+                <!-- Navbar -->
+                <div class="navbar navbar-default" role="navigation">
+                    <div class="container">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="fa fa-bars"></span>
+                            </button>
+                            <a class="navbar-brand AnchorCursorPointer" href="#" style="text-align:center;margin-top:-13px;color:white;font-family:Open Sans-serif">
 
                             <img src="Img/IF_logo.png" style="height:37px;width: auto" /><br />
                             <span style="font-family:Open Sans">INVESTORFUNDA</span>
@@ -298,35 +299,86 @@
             <!-- End Navbar -->
         </div>
         <!--=== End Header ===-->
+	</div>
 
         <div class="col-lg-12" style="background-color:#f5f5f5;" ui-view></div>
 
-        <div style="width:100%;background-color: #757575;height:auto;">
-            <div class="row" style="margin-bottom:0;width:80%;margin-left:auto;margin-right:auto;margin-bottom:0 !important;">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <h1 class="footer_Header">Buy Now</h1>
-                    <ul style="list-style-type: square;">
+        <div calss="row" style="width:100%;margin-bottom:58px;height:auto;background-color: #008080;">
+            <div class="row" style="width:90%;margin-left:auto;margin-right:auto;">
+                <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12">
+                    <h1 class="footer_Text" style="padding-top:50px;">Get in touch</h1>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                    <h1 class="footer_Text" style="padding-top:50px;">(888)428-9482</h1>
+                </div>
+                <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
+                    <h1 class="footer_Text" style="padding-top:50px;">support@investorfunda.com</h1>                    
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                    <h1 class="footer_Text" style="padding-top:50px;">Ask a question</h1>                    
+                </div>
+            </div>
+            <div class="row" style="padding-top:50px;"> 
+                <center>
+                    <i class="fa fa-4x fa-facebook-square" style="color:white;"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-4x fa-twitter" style="color:white;"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-4x fa-youtube" style="color:black;"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                </center>
+            </div>
+            <div class="row" style="padding-top:50px;margin-bottom:0;width:90%;margin-left:auto;margin-right:auto;margin-bottom:0 !important;">
+                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" style="border-right:2px solid white;">
+                    <h1 class="footer_Header">About us</h1>
+                    <ul style="list-style-type: none;" class="footer_list">
+                        <li class="list_Style">Contact us</li>
+                        <li class="list_Style">Careers</li>
+                        <li class="list_Style">Media</li>
+                        <li class="list_Style"><a href="#" style="color:white;text-decoration:none;">Privacy</a></li>
+                        <li class="list_Style"><a href="#" style="color:white;text-decoration:none;">Terms of use</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" style="border-right:2px solid white;">
+                    <h1 class="footer_Header">Why Inverstor Funda</h1>
+                    <ul style="list-style-type: none;" class="footer_list">
+                        <li class="list_Style">Our Mission</li>
+                        <li class="list_Style">What We Do</li>
+                        <li class="list_Style">Security</li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="border-right:2px solid white;align-content:center;">
+                    <center>
+                        <h1 class="footer_Header">Learn Investing</h1>
+                        <ul style="list-style-type: none;" class="footer_list">
+                            <li class="list_Style">Videos</li>                            
+                        </ul>
+                    </center>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" style="border-right:2px solid white;">
+                    <h1 class="footer_Header">Blog</h1>
+                    <!--<ul style="list-style-type: none;">
                         <li class="list_Style">text 1</li>
                         <li class="list_Style">text 2</li>
                         <li class="list_Style">text 3</li>
-                    </ul>
+                    </ul>-->
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <h1 class="footer_Header">Recent Posts</h1>
-                    <ul style="list-style-type: square;">
+                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                    <h1 class="footer_Header">FAQs</h1>
+                    <!--<ul style="list-style-type: none;">
                         <li class="list_Style">text 1</li>
                         <li class="list_Style">text 2</li>
                         <li class="list_Style">text 3</li>
-                    </ul>
+                    </ul>-->
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <h1 class="footer_Header">Footer Links</h1>
-                    <ul style="list-style-type: square;">
-                        <li class="list_Style">text 1</li>
-                        <li class="list_Style">text 2</li>
-                        <li class="list_Style">text 3</li>
-                    </ul>
+            </div>
+            <div class="row" style="width:90%;margin-left:auto;margin-right:auto;padding-top:50px;">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h1 class="footer_Text">Mutual fund investments are subject to market risks. Please read the scheme information and other related documents carefully before investing.</h1>
                 </div>
+            </div>
+            <div class="row" style="width:90%;margin-left:auto;margin-right:auto;padding-top:20px;">
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                    <h1 class="footer_Text">Crazy Achievers Pvt. Ltd.(ARN code 113792) makes no warranties or representations, express or implied, on Productss offered through the platform. It accepts no liability for any damages or losses, however caused, in connection with the use of, or on the reliance of its product or related services.(Link)of the website are applicable.</h1>
+                </div>     
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"></div>
             </div>
         </div>
                 
@@ -335,7 +387,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <p>
-                            2016 &copy; Rightfoot. ALL Rights Reserved.
+                            2017 &copy; Rightfoot. ALL Rights Reserved.
                             <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
                         </p>
                     </div>
