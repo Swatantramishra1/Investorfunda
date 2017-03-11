@@ -26,10 +26,10 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Assesment Year</label>
-                        <select class="form-control" ng-model="Investment.horizone">
+                        <select class="form-control" ng-model="InvestmentKnow.horizone">
                             <option>Select Horizon</option>
-                            <option ng-value="{{$index+1}}">2016-2017 Year</option>
-                            <option ng-value="{{$index+1}}">2017-2018 Year</option>
+                            <option ng-value="20162017">2016-2017 Year</option>
+                            <option ng-value="20172018">2017-2018 Year</option>
 
                         </select>
                     </div>
@@ -38,13 +38,13 @@
                 <div class="col-md-4" >
                     <div class="form-group">
                         <label for="exampleInputPassword1">Investment Amount</label>
-                        <input type="text" class="form-control" ng-model="Investment.amount" />
+                        <input type="text" class="form-control" ng-model="InvestmentKnow.amount" />
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="exampleInputPassword1">Mode Of Investment</label>
-                        <select class="form-control" ng-model="Investment.risk">
+                        <select class="form-control" ng-model="InvestmentKnow.risk">
                             <option>Select Mode</option>
                             <option ng-value="SIP">SIP</option>
                             <option ng-value="LUMPSUM">ONE TIME INVESTMENT</option>
@@ -61,12 +61,12 @@
                 <div class="row margin-bottom-10">
                     <div class="col-md-6">
                         <label>Your Age</label>
-                        <input type="text" class="form-control" />
+                        <input type="text" class="form-control"ng-model="TaxStatusVal.presentAge" />
                         
                     </div>
                     <div class="col-md-6">
                         <label>Premium for Life Insurance</label>
-                        <input type="text" class="form-control" />
+                        <input type="text" class="form-control" ng-model="TaxStatusVal.insurancePremium"/>
                         
                     </div>
                 </div>
@@ -74,56 +74,61 @@
                     <div class="col-md-6">
                         <label>Assessment Year</label>
                      
-                            <select class="form-control">
+                            <select class="form-control" ng-model="TaxStatusVal.assessmentYear">
                                 <option selected="selected" value="0">Select Assessment Year</option>
-                                <option value="2016-2017">2016-2017 Year</option>
-                                <option value="2017-2018">2016-2017 Year</option>
+                                <option value="20162017">2016-2017 Year</option>
+                                <option value="20172018">2017-2018 Year</option>
                             </select>
                        
                     </div>
                     <div class="col-md-6">
                         <label>5 Year Bank Fixed Deposit</label>
-                       <input type="text" class="form-control" />
+                       <input type="text" class="form-control" ng-model="TaxStatusVal.fixedDeposite"/>
                     </div>
                 </div>
                 <div class="row margin-bottom-10">
                     <div class="col-md-6">
                         <label>Gross Annual Income/Salary (with all allowances)</label>
-                        <input type="text" class="form-control" />
+                        <input type="text" class="form-control" ng-model="TaxStatusVal.grossSalary" />
                         
                     </div>
                     <div class="col-md-6">
                         <label>Repayment for House Loan (Principal portion)</label>
-                        <input type="text" class="form-control" />
+                        <input type="text" class="form-control" ng-model="TaxStatusVal.houseLoan" />
                        
                     </div>
                 </div>
                 <div class="row margin-bottom-10">
                     <div class="col-md-6">
                         <label>Employee Provident Fund (EPF)</label>
-                        <input type="text" class="form-control" />
+                        <input type="text" class="form-control" ng-model="TaxStatusVal.epf" />
                        
                     </div>
                     <div class="col-md-6">
                         <label>NSC</label>
-                        <input type="text" class="form-control" />
+                        <input type="text" class="form-control" ng-model="TaxStatusVal.nsc" />
                        
                     </div>
                 </div>
                 <div class="row margin-bottom-10">
                     <div class="col-md-6">
                         <label>Public Provident Fund (PPF)</label>
-                        <input type="text" class="form-control" />
+                        <input type="text" class="form-control" ng-model="TaxStatusVal.ppf" />
                         
                     </div>
                     <div class="col-md-6">
                         <label>Any Other Tax Deduction Under 80c</label>
-                        <input type="text" class="form-control" />
+                        <input type="text" class="form-control" ng-model="TaxStatusVal.otherAmount" />
                         
                     </div>
                 </div>
-                <input type="button" class="btn-u btn-u-blue btnRightWithout" ng-click="StartPopup()" value="Invest Now"  />
+                <input type="button" class="btn-u btn-u-blue btnRightWithout" ng-click="CalculateTaxStatus()" value="Invest Now"  />
+
+                <div class="col-lg-12" style="font-size:21px;font:bold" ng-show="TaxStatusVal.taxCalculatorAmount !=''">
+                    Taxable Amount is {{TaxStatusVal.taxCalculatorAmount}}
+                </div>
             </form>
         </div>
-    </div>
+        
+        </div>
 </div>

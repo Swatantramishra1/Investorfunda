@@ -1,7 +1,7 @@
 ﻿/// <reference path="../../../Webform/Common/Popup/MutualFundsDetailPopup.html" />
 app.controller("MtualFunds.Ctrl", ['$scope', '$rootScope', '$http', 'fileUpload', '$mdDialog', 'FundsService', '$stateParams', '$state', '$localStorage', '$interval', '$timeout',
-function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $stateParams, $state, $localStorage,$interval, $timeout) {
-    
+function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $stateParams, $state, $localStorage, $interval, $timeout) {
+
     $rootScope.Logout = function () {
         $localStorage.LoginStatus = false;
         $rootScope.LoginStatus = false;
@@ -15,7 +15,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
     };
     var ListEx = {};
     $scope.InvestmentList = [];
-    $scope.ElssList =[ {
+    $scope.ElssList = [{
         "Rank": "1",
         "SchemeName": "Franklin India Taxshield - Growth",
         "ISIN": "INF090I01775",
@@ -248,8 +248,8 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             // OnSuccess function
             function (response) {
                 HideLoader();
-              
-               // $localStorage.LSFundsDetailsData = response.data.response.data;
+
+                // $localStorage.LSFundsDetailsData = response.data.response.data;
                 $rootScope.FundsDetailsData = response.data.response.data;
                 $scope.Return_3Mon = $scope.FundsDetailsData.Schemelist.Scheme.Return_3Mon;
                 $scope.Return_6Mon = $scope.FundsDetailsData.Schemelist.Scheme.Return_6Mon;
@@ -330,8 +330,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         }
         HideLoader();
     }
-    $rootScope.InsertPlanForMutuals=function()
-    {
+    $rootScope.InsertPlanForMutuals = function () {
         //alert($localStorage.CurrentSchemeCode)
         ShowLoader();
         $scope.InvestmentList.push({
@@ -361,7 +360,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             //window.location = "../../../Webform/User/dist/index.html"
             if (answer.CreateUsersPlanResult.ResponseCode == "0") {
                 alert("Plan Created Succesfully")
-               // window.location = answer.CreateUsersPlanResult.ResponseMessage;
+                // window.location = answer.CreateUsersPlanResult.ResponseMessage;
             }
 
             //$scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
@@ -404,24 +403,21 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         }
         $mdDialog.hide();
     }
-    if ($localStorage.LoginStatus)
-    {
-        if ($localStorage.CurrentStatusOfPage === "LUMPSUM" || $localStorage.CurrentStatusOfPage === "SIP")
-        {
-            if( $localStorage.LSStatus)
-            {
-                
+    if ($localStorage.LoginStatus) {
+        if ($localStorage.CurrentStatusOfPage === "LUMPSUM" || $localStorage.CurrentStatusOfPage === "SIP") {
+            if ($localStorage.LSStatus) {
+
                 $rootScope.FundTopHolding = $localStorage.LSFundTopHolding;
                 $rootScope.FundAssetAllocation = $localStorage.LSFundAssetAllocation;
                 $scope.FundsList = $localStorage.LSFundsList;
-          
+
 
                 $scope.FundCategoryDebt = $localStorage.LSFundCategoryDebt;
                 $scope.FundCategoryHybrid = $localStorage.LSFundCategoryHybrid;
                 $scope.FundCategoryEQUITY = $localStorage.LSFundCategoryEQUITY;
                 $scope.FundsHouse = $localStorage.LSFundsHouse;
 
-                
+
             }
         }
         else {
@@ -433,7 +429,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
     else {
         $scope.OnloadFunction();
     }
-  
+
     $scope.InvestorFundaConfMessage = function (Header, Content) {
         $rootScope.MessageHeader = Header;
         $rootScope.MessageContent = Content;
@@ -463,8 +459,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             $mdDialog.cancel();
         };
 
-        $scope.ClickToProcedNextStep=function()
-        {
+        $scope.ClickToProcedNextStep = function () {
             $rootScope.InsertPlanForMutuals();
         }
         $scope.answer = function (answer) {
@@ -477,16 +472,14 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
     $scope.Return_3Yr = 0;
     $scope.Return_5Yr = 0;
 
-        //Onload Loader
-   
+    //Onload Loader
+
     //$scope.Timer = $interval(function () {
     //    SchemeLimitTo = SchemeLimitTo + 5;
     //}, 1000);
-   
-    $scope.CheckFundsListExists=function()
-    {
-        if ($('tr').find('td').length == 1)
-        {
+
+    $scope.CheckFundsListExists = function () {
+        if ($('tr').find('td').length == 1) {
             $scope.FundsListShowMore = true;
         }
         else {
@@ -494,131 +487,130 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         }
     }
 
-    
-        
-   
 
-        $scope.ShowMore=function()
-        {
-            $scope.SchemeLimitTo =$scope.SchemeLimitTo+ 15;
-        }
-        $scope.DataForChart = [
-                     {
-                       label: "3 Month",
-                       value: $scope.Return_3Mon
-                    },
-                    {
-                        label: "6 Month",
-                        value: $scope.Return_6Mon
-                    },
-                    {
-                        label: "1 Year",
-                        value: $scope.Return_1Yr
-                    },
-                    {
-                        label: "3 Year",
-                        value: $scope.Return_3Yr
-                    },
-                    {
-                        label: "5 Year",
-                        value: $scope.Return_5Yr
-                    }];
-        $scope.datasourceData = {
-            "chart": {
-                "caption": "NAV Performance",
-                "xaxisname": "Month",
-                "yaxisname": "Changes",
-                "theme": "fint"
-            },
-            "categories": [
+
+
+
+    $scope.ShowMore = function () {
+        $scope.SchemeLimitTo = $scope.SchemeLimitTo + 15;
+    }
+    $scope.DataForChart = [
+                 {
+                     label: "3 Month",
+                     value: $scope.Return_3Mon
+                 },
                 {
-                    "category": [
-                        {
-                            "label": "Jan"
-                        },
-                        {
-                            "label": "Feb"
-                        },
-                        {
-                            "label": "Mar"
-                        },
-                        {
-                            "label": "Apr"
-                        },
-                        {
-                            "label": "May"
-                        },
-                        {
-                            "label": "Jun"
-                        },
-                        {
-                            "label": "Jul"
-                        },
-                        {
-                            "label": "Aug"
-                        },
-                        {
-                            "label": "Sep"
-                        },
-                        {
-                            "label": "Oct"
-                        },
-                        {
-                            "label": "Nov"
-                        },
-                        {
-                            "label": "Dec"
-                        }
-                    ]
-                }
-            ],
-            "dataset": [
-                
+                    label: "6 Month",
+                    value: $scope.Return_6Mon
+                },
                 {
-                    "seriesname": "NAV",
-                    "renderas": "area",
-                    "showvalues": "0",
-                    "data": [
-                        {
-                            "value": "4000"
-                        },
-                        {
-                            "value": "5000"
-                        },
-                        {
-                            "value": "3000"
-                        },
-                        {
-                            "value": "4000"
-                        },
-                        {
-                            "value": "1000"
-                        },
-                        {
-                            "value": "7000"
-                        },
-                        {
-                            "value": "1000"
-                        },
-                        {
-                            "value": "4000"
-                        },
-                        {
-                            "value": "1000"
-                        },
-                        {
-                            "value": "8000"
-                        },
-                        {
-                            "value": "2000"
-                        },
-                        {
-                            "value": "7000"
-                        }
-                    ]
-                }
-            ]
-        }
+                    label: "1 Year",
+                    value: $scope.Return_1Yr
+                },
+                {
+                    label: "3 Year",
+                    value: $scope.Return_3Yr
+                },
+                {
+                    label: "5 Year",
+                    value: $scope.Return_5Yr
+                }];
+    $scope.datasourceData = {
+        "chart": {
+            "caption": "NAV Performance",
+            "xaxisname": "Month",
+            "yaxisname": "Changes",
+            "theme": "fint"
+        },
+        "categories": [
+            {
+                "category": [
+                    {
+                        "label": "Jan"
+                    },
+                    {
+                        "label": "Feb"
+                    },
+                    {
+                        "label": "Mar"
+                    },
+                    {
+                        "label": "Apr"
+                    },
+                    {
+                        "label": "May"
+                    },
+                    {
+                        "label": "Jun"
+                    },
+                    {
+                        "label": "Jul"
+                    },
+                    {
+                        "label": "Aug"
+                    },
+                    {
+                        "label": "Sep"
+                    },
+                    {
+                        "label": "Oct"
+                    },
+                    {
+                        "label": "Nov"
+                    },
+                    {
+                        "label": "Dec"
+                    }
+                ]
+            }
+        ],
+        "dataset": [
+
+            {
+                "seriesname": "NAV",
+                "renderas": "area",
+                "showvalues": "0",
+                "data": [
+                    {
+                        "value": "4000"
+                    },
+                    {
+                        "value": "5000"
+                    },
+                    {
+                        "value": "3000"
+                    },
+                    {
+                        "value": "4000"
+                    },
+                    {
+                        "value": "1000"
+                    },
+                    {
+                        "value": "7000"
+                    },
+                    {
+                        "value": "1000"
+                    },
+                    {
+                        "value": "4000"
+                    },
+                    {
+                        "value": "1000"
+                    },
+                    {
+                        "value": "8000"
+                    },
+                    {
+                        "value": "2000"
+                    },
+                    {
+                        "value": "7000"
+                    }
+                ]
+            }
+        ]
+    }
     $scope.MfPopUp = function () {
         $mdDialog.show({
             controller: MFSortDetails,
@@ -629,7 +621,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         });
     };
     $scope.showAdvanced = function (SchemeID) {
-      
+
         ShowLoader();
         var getDetailsOfMutualFunds = FundsService.FundsDetails.getPromise(SchemeID);
         getDetailsOfMutualFunds.then(
@@ -647,32 +639,31 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             $scope.error = true;
         });
     };
-   
+
 
     function MFSortDetails($scope, $mdDialog) {
 
         $scope.FundsDetails = $rootScope.FundsDetailsData;
 
 
-        $scope.hide = function() {
+        $scope.hide = function () {
             $mdDialog.hide();
         };
 
-        $scope.cancel = function() {
+        $scope.cancel = function () {
             $mdDialog.cancel();
         };
 
-        $scope.answer = function(answer) {
+        $scope.answer = function (answer) {
             $mdDialog.hide(answer);
         };
     }
 
-    $scope.GoForMFDetails=function(Scheme_ID)
-    {
+    $scope.GoForMFDetails = function (Scheme_ID) {
         $localStorage.Scheme_ID = Scheme_ID;
         $state.go('MutualFunds');
     }
-    
+
     $scope.myDataSourceStart = {
         chart: {
             caption: "Returns Snapshot",
@@ -680,7 +671,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             numberPrefix: "%",
             theme: "ocean"
         },
-        data:  [
+        data: [
                      {
                          label: "3 Month",
                          value: $scope.Return_3Mon
@@ -714,11 +705,9 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         }
         ];
 
-    $scope.ApplyFilterOnFundsList=function()
-    {
+    $scope.ApplyFilterOnFundsList = function () {
         var FinalOutPutList = {};
-        if(ArrayList[0].FundsHouseList.length>0)
-        {
+        if (ArrayList[0].FundsHouseList.length > 0) {
             var ids = [];
             _.each(ArrayList[0].FundsHouseList, function (objFundsHouseList) { ids.push(objFundsHouseList.mf_cocode); });
 
@@ -730,8 +719,8 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             });
 
         }
-       else if (ArrayList[1].FundsEquityList.length > 0) {
-           
+        else if (ArrayList[1].FundsEquityList.length > 0) {
+
             var ids = [];
             _.each(ArrayList[1].FundsEquityList, function (objFundsEquityHouseList) { ids.push(objFundsEquityHouseList.CategoryCode); });
 
@@ -744,23 +733,20 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
 
         }
 
-        
 
-        if ((ArrayList[0].FundsHouseList.length > 0) || (ArrayList[1].FundsEquityList.length > 0))
-        {
+
+        if ((ArrayList[0].FundsHouseList.length > 0) || (ArrayList[1].FundsEquityList.length > 0)) {
         }
         else {
             $scope.FundsList = ListEx;
         }
         HideLoader();
     }
-    $scope.SortFundsList=function(FilterType,Code)
-    {
+    $scope.SortFundsList = function (FilterType, Code) {
         ShowLoader();
         var SelectedList = {};
         var SelectionExists = false;
-        if(FilterType=='FundsHouse')
-        {
+        if (FilterType == 'FundsHouse') {
             SelectedList = {
                 "mf_cocode": Code
             }
@@ -768,8 +754,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                 return obj.mf_cocode == Code
             })
 
-            if(SelectionExists)
-            {
+            if (SelectionExists) {
                 ArrayList[0].FundsHouseList = _.filter(ArrayList[0].FundsHouseList, function (obj) {
                     return obj.mf_cocode !== Code
                 })
@@ -797,29 +782,26 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         }
         $scope.ApplyFilterOnFundsList();
     }
-    
-    $scope.InvestLumpsum = function (index, Page,Type) {
+
+    $scope.InvestLumpsum = function (index, Page, Type) {
         var tesmp = "";
-        if (Page != undefined)
-        {
-            tesmp = document.getElementById(index+"Amount").value;
+        if (Page != undefined) {
+            tesmp = document.getElementById(index + "Amount").value;
         }
         else {
             tesmp = "";
         }
-        if (tesmp  !="" || ($localStorage.SchemeAmount != undefined && $localStorage.SchemeAmount !=""))
-        {
-            if (Page != undefined)
-            {
+        if (tesmp != "" || ($localStorage.SchemeAmount != undefined && $localStorage.SchemeAmount != "")) {
+            if (Page != undefined) {
                 $localStorage.CurrentScheme = $scope.FundsList[index];
                 $localStorage.IndexCurrentCode = index;
-                $localStorage.SchemeAmount = document.getElementById(index+"Amount").value;
+                $localStorage.SchemeAmount = document.getElementById(index + "Amount").value;
             }
             else {
                 //document.getElementById($localStorage.IndexCurrentCode + "Amount").value = $localStorage.SchemeAmount;
-              
+
             }
-          
+
             if ($localStorage.MutualFundsState) {
                 if (Type === undefined || Type === "") {
                     Type = $localStorage.CurrentStatusOfPage;
@@ -837,8 +819,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                 $scope.InvestorFundaConfMessage("Confirmation of Proceed", "Do you realy want to proceed for Scheme");
             }
             else {
-                if (index !== undefined)
-                {
+                if (index !== undefined) {
                     $localStorage.CurrentScheme = $scope.FundsList[index];
                     $localStorage.IndexCurrentCode = index;
                     $localStorage.CurrentStatusOfPage = Type;
@@ -850,53 +831,112 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                     }
                     $state.go('Authentication', { From: 'Mutualfunds' });
                 }
-               
+
             }
         }
         else {
             alert("Please insert value")
         }
-      
-        
+
+
     };
 
-    $scope.ChangeAmount=function(ID)
-    {
+    $scope.ChangeAmount = function (ID) {
         alert(ID)
     }
 
     //Tax Saving Amount Start
 
     $scope.InvestNowTax = function (From) {
-        if(From==="know")
-        {
+        if (From === "know") {
             $scope.investForm = true;
             $scope.taxCalculator = false;
         }
-    else
-        {
+        else {
             $scope.investForm = false;
             $scope.taxCalculator = true;
         }
     };
+    $scope.InvestmentKnow = {
+        horizone: "",
+        amount: "",
+        risk:""
+    }
+    $scope.TaxStatusVal = {
+        presentAge: "",
+        insurancePremium: "0",
+        assessmentYear: "",
+        fixedDeposite: "0",
+        grossSalary: "0",
+        houseLoan: "0",
+        epf: "0",
+        nsc: "0",
+        ppf: "0",
+        otherAmount: "0",
+        taxCalculatorAmount: ""
 
+    }
+    $scope.CalculateTaxStatus = function () {
+        var totalOtherAmount = 0;
+        TaxPayableAmount = 0;
+        var Edutax = 0;
+        if (parseInt($scope.TaxStatusVal.grossSalary) <= 500000) {
+            totalOtherAmount = parseInt($scope.TaxStatusVal.insurancePremium) + parseInt($scope.TaxStatusVal.fixedDeposite) + parseInt($scope.TaxStatusVal.houseLoan)
+            parseInt($scope.TaxStatusVal.epf) + parseInt($scope.TaxStatusVal.nsc) + parseInt($scope.TaxStatusVal.ppf) + parseInt($scope.TaxStatusVal.otherAmount);
+            TaxPayableAmount = parseInt($scope.TaxStatusVal.grossSalary) - totalOtherAmount;
+            TaxPayableAmount = (TaxPayableAmount - 250000) * 0.1;
+            Edutax = 600;
+            TaxPayableAmount = TaxPayableAmount + Edutax;
+            $scope.TaxStatusVal.taxCalculatorAmount = TaxPayableAmount;
+        }
+        else if (parseInt($scope.TaxStatusVal.grossSalary) > 500000 || parseInt($scope.TaxStatusVal.grossSalary) <= 1000000) {
+            totalOtherAmount = parseInt($scope.TaxStatusVal.insurancePremium) + parseInt($scope.TaxStatusVal.fixedDeposite) + parseInt($scope.TaxStatusVal.houseLoan)
+            parseInt($scope.TaxStatusVal.epf) + parseInt($scope.TaxStatusVal.nsc) + parseInt($scope.TaxStatusVal.ppf) + parseInt($scope.TaxStatusVal.otherAmount);
+            TaxPayableAmount = parseInt($scope.TaxStatusVal.grossSalary) - totalOtherAmount;
+            TaxPayableAmount = ((TaxPayableAmount - 500000) * 0.2) + 25000;
+            Edutax = 810;
+            TaxPayableAmount = TaxPayableAmount + Edutax;
+            $scope.TaxStatusVal.taxCalculatorAmount = TaxPayableAmount;
+        }
+        else {
+            totalOtherAmount = parseInt($scope.TaxStatusVal.insurancePremium) + parseInt($scope.TaxStatusVal.fixedDeposite) + parseInt($scope.TaxStatusVal.houseLoan)
+            parseInt($scope.TaxStatusVal.epf) + parseInt($scope.TaxStatusVal.nsc) + parseInt($scope.TaxStatusVal.ppf) + parseInt($scope.TaxStatusVal.otherAmount);
+            TaxPayableAmount = parseInt($scope.TaxStatusVal.grossSalary) - totalOtherAmount;
+            TaxPayableAmount = ((TaxPayableAmount - 1000000) * 0.3) + 125000;
+            Edutax = 810;
+            TaxPayableAmount = TaxPayableAmount + Edutax;
+            $scope.TaxStatusVal.taxCalculatorAmount = TaxPayableAmount;
+        }
+
+        $scope.investForm = true;
+        $scope.taxCalculator = false;
+        if (parseInt($scope.TaxStatusVal.taxCalculatorAmount) > 0)
+        {
+            $scope.InvestmentKnow.amount = $scope.TaxStatusVal.taxCalculatorAmount;
+            $scope.InvestmentKnow.horizone = $scope.TaxStatusVal.assessmentYear;
+            alert("Your Taxable amount is " + $scope.InvestmentKnow.amount);
+        }
+        else {
+            alert("You do not come under Taxable amount");
+        }
+        
+    };
 
     //Tax Saving Amount End
 
 
     //Confirmation Popup
     if ($localStorage.CurrentStatusOfPage === "SIP" || $localStorage.CurrentStatusOfPage === "LUMPSUM") {
-        if ($localStorage.CurrentScheme !== undefined)
-        {
+        if ($localStorage.CurrentScheme !== undefined) {
             if ($localStorage.CurrentScheme.mf_cocode != "") {
                 $scope.InvestLumpsum($localStorage.CurrentScheme.mf_cocode);
             }
         }
-        
+
         else {
             $scope.OnloadFunction();
         }
-        
+
     }
 }]);
 
