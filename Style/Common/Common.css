@@ -396,7 +396,7 @@ text-align:center;
     color:white !important;
 }
 .footerCss{
-    background-color:#293542;
+    background-color:#293542 !important;
     width:100%;
     margin-bottom:58px;
     height:auto;
