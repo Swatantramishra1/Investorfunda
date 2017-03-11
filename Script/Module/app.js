@@ -98,6 +98,14 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url: "/contact",
         templateUrl: "../../Webform/Common/contact.html",
         controller: "MainCtrl"
+    }).state('privacy', {
+        url: "/privacy",
+        templateUrl: "../../Webform/Common/privacyPolicy.html",
+        controller: "MainCtrl"
+    }).state('terms', {
+        url: "/terms",
+        templateUrl: "../../Webform/Common/terms.html",
+        controller: "MainCtrl"
     });
 
     //.state('state1.list', {
