@@ -96,6 +96,13 @@ md-content.md-default-theme, md-content {
 	background-color: white !important;
 	margin-bottom:60px;
 }
+.lableFontSize{
+    font-size:18px;
+}
+
+.inputMarginTop{
+    margin-top:10px;
+}
 .Circular_div
 {
 
