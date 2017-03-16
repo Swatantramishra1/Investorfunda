@@ -863,7 +863,7 @@
             if ($localStorage.LoginStatus) {
                 //Entry Point For User
                 $scope.UserBasic = {
-                    img: "",
+                    img: "../../../../Img/Clients/defaultImage.png",
                     Name: $localStorage.UserDetails.Name,
                     EmailID: $localStorage.UserDetails.Username,
                 }

@@ -27,7 +27,7 @@
                     </md-input-container>
                     <div class="row margin-bottom-20">
                         <div class="col-md-9">
-                            Ammount I want to invest per annum (Rs)(<span class="red-text">Annualy in thousands</span> )
+                            Amount I want to invest per annum (Rs)(<span class="red-text">Annualy in thousands</span> )
                             <rzslider rz-slider-model="SIP_AmountInvestment.value"
                                       rz-slider-options="SIP_AmountInvestment.options"></rzslider>
                         </div>
@@ -45,7 +45,7 @@
                         </div>
                         <div class="col-md-3">
                             <md-input-container class="md-block" style="height:25px;margin-top:7px">
-                                <lable>Retire Age</lable>
+                                <lable>Retirement Age</lable>
                                 <input type="number" ng-model="SIP_RetireAge.value">
                             </md-input-container>
                         </div>
@@ -104,7 +104,7 @@
            
                 </div>
                 <div class="row text-right" ng-show="showDataStep2.isShowDataRetirement">
-                    <md-button  ng-show="!Retirement_Step1" ng-click="Retirement_Back()"><i class="fa fa-backward"></i> Back</md-button>
+                   
                     <md-button ng-show="!Retirement_Step1" class="md-raised" ng-click="Portfolio_InvestNow()">Help Me Achieve This</md-button>
                     <md-button ng-show="Retirement_Step1" class="md-raised" ng-click="Portfolio_CalculateRetirement()">Calculate</md-button>
                 </div>
