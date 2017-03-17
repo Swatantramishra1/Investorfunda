@@ -6,41 +6,7 @@
 <div class="row text-center " style="font-weight:600;background-color:#1069a1;padding:16px 8px 16px 8px"> <h2 style="color:white">{{FundsDetailsData.Schemelist.Scheme.SchemeName}}</h2></div>
 
 
-<div class="col-md-12">
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <td style="background-color:rgba(255, 204, 65, 0.83);color:black;font-weight:500;text-transform:uppercase">Market summary</td>
-                <td>SENSEX <i class="fa fa-arrow-up"></i> 28,230</td>
-                <td>SENSEX <i class="fa fa-arrow-up"></i> 28,230</td>
-                <td>SENSEX <i class="fa fa-arrow-up"></i> 28,230</td>
-            </tr>
-        </thead>
-    </table>
-</div>
-<div class="col-md-12">
-    <div class="col-xs-4">
-        <div class="form-group">
-            <label for="SchemeName">ENTER SCHEME</label>
-            <input type="text" class="form-control">
-        </div>
-    </div>
-    <div class="col-xs-4">
-        <div class="form-group">
-            <label for="SchemeName">BY FUND FAMILY</label>
 
-            <select class="form-control">
-                <option>Select</option>
-            </select>
-        </div>
-    </div>
-    <div class="col-xs-4">
-        <div class="form-group">
-            <label for="SchemeName">BY FUND CATEGORY</label>
-            <input type="text" class="form-control">
-        </div>
-    </div>
-</div>
 <div class="col-md-12">
     <div class="col-xs-9">
         <h4>Performance of {{FundsDetailsData.Schemelist.Scheme.SchemeName}}</h4>
@@ -61,7 +27,7 @@
                 <th>Change (%)</th>
                 <th>Dividend</th>
                 <th>Assets</th>
-                <th>Rating <span style="font-size:10px">By Crisil</span></th>
+               
             </tr>
             <tr>
                 <td>{{FundsDetailsData.Schemelist.Scheme.NAV | number:2}}</td>
@@ -70,7 +36,7 @@
                 <td>0</td>
                 <td>{{FundsDetailsData.Schemelist.Scheme.DividendPercentage_Latest}}</td>
                 <td>{{FundsDetailsData.Schemelist.Scheme.AssetSize | number:2}} Crore </td>
-                <td class="start_Color"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i></td>
+               
             </tr>
         </thead>
     </table>
