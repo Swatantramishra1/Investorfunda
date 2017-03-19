@@ -1,5 +1,5 @@
 ﻿<div class="col-md-12 margin-bottom-60" style="background-color:white">
-<div class="row margin-bottom-10"  ng-show="EasySIP_Step1" style="text-align:center">
+<div class="row margin-bottom-10"  ng-if="Investment.firstStepSip" style="text-align:center">
     <img src="../../../Img/StartSip/startSIP.png" style="height:425px" />
 </div>
 <div class="row margin-bottom-40" ng-show="EasySIP_Step1">
@@ -47,7 +47,7 @@
                         </div>
                     </div>
 
-                    <a class="AnchorCursorPointer btn-u btn-u-blue btnRight" ng-click="StartPopup()"  >Invest Now</a>
+                    <a class="AnchorCursorPointer btn-u btn-u-blue btnRight margin-top-20" ng-click="StartPopup()"  >Invest Now</a>
                    
                 </form>
             </div>

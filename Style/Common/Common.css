@@ -131,7 +131,9 @@ md-content.md-default-theme, md-content {
 .lableFontSize{
     font-size:18px;
 }
-
+.margin-top-20 {
+    margin-top: 20px;
+}
 .inputMarginTop{
     margin-top:10px;
 }
