@@ -81,14 +81,19 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url: "/MutualFundsList",
         templateUrl: "../../Webform/Common/MutualFunds.html",
         controller: "MtualFunds.Ctrl"
-    }).state('ELSS', {
+    })
+        .state('Faq', {
+            url: "/Faq",
+            templateUrl: "../../Webform/Common/faq.html",
+            controller: "MtualFunds.Ctrl"
+        }).state('ELSS', {
         url: "/ELSS",
         templateUrl: "../../Webform/Common/ElssListing.html",
         controller: "MtualFunds.Ctrl"
     }).state('CustomElss', {
         url: "/CustomElss",
         templateUrl: "../../Webform/Common/ElssCustomise.html",
-        controller: "MtualFunds.Ctrl"
+        controller: "SIP.Ctrl"
     })
         .state('AdminUpload', {
         url: "/AdminUpload",

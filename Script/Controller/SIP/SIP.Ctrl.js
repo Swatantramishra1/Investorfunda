@@ -3634,4 +3634,85 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         $scope.Portfolio_Parameter.Risk = $scope.Investment.risk;
     }
 
+
+
+    //*************************************************Save TAx ******************************************************************
+    //Tax Saving Amount Start
+
+    $scope.InvestNowTax = function (From) {
+        if (From === "know") {
+            $scope.investForm = true;
+            $scope.taxCalculator = false;
+        }
+        else {
+            $scope.investForm = false;
+            $scope.taxCalculator = true;
+        }
+    };
+    $scope.InvestmentKnow = {
+        horizone: "",
+        amount: "",
+        risk: ""
+    }
+    $scope.TaxStatusVal = {
+        presentAge: "",
+        insurancePremium: "0",
+        assessmentYear: "",
+        fixedDeposite: "0",
+        grossSalary: "0",
+        houseLoan: "0",
+        epf: "0",
+        nsc: "0",
+        ppf: "0",
+        otherAmount: "0",
+        taxCalculatorAmount: ""
+
+    }
+    $scope.CalculateTaxStatus = function () {
+        var totalOtherAmount = 0;
+        TaxPayableAmount = 0;
+        var Edutax = 0;
+        if (parseInt($scope.TaxStatusVal.grossSalary) <= 500000) {
+            totalOtherAmount = parseInt($scope.TaxStatusVal.insurancePremium) + parseInt($scope.TaxStatusVal.fixedDeposite) + parseInt($scope.TaxStatusVal.houseLoan)
+            parseInt($scope.TaxStatusVal.epf) + parseInt($scope.TaxStatusVal.nsc) + parseInt($scope.TaxStatusVal.ppf) + parseInt($scope.TaxStatusVal.otherAmount);
+            TaxPayableAmount = parseInt($scope.TaxStatusVal.grossSalary) - totalOtherAmount;
+            TaxPayableAmount = (TaxPayableAmount - 250000) * 0.1;
+            Edutax = 600;
+            TaxPayableAmount = TaxPayableAmount + Edutax;
+            $scope.TaxStatusVal.taxCalculatorAmount = TaxPayableAmount;
+        }
+        else if (parseInt($scope.TaxStatusVal.grossSalary) > 500000 || parseInt($scope.TaxStatusVal.grossSalary) <= 1000000) {
+            totalOtherAmount = parseInt($scope.TaxStatusVal.insurancePremium) + parseInt($scope.TaxStatusVal.fixedDeposite) + parseInt($scope.TaxStatusVal.houseLoan)
+            parseInt($scope.TaxStatusVal.epf) + parseInt($scope.TaxStatusVal.nsc) + parseInt($scope.TaxStatusVal.ppf) + parseInt($scope.TaxStatusVal.otherAmount);
+            TaxPayableAmount = parseInt($scope.TaxStatusVal.grossSalary) - totalOtherAmount;
+            TaxPayableAmount = ((TaxPayableAmount - 500000) * 0.2) + 25000;
+            Edutax = 810;
+            TaxPayableAmount = TaxPayableAmount + Edutax;
+            $scope.TaxStatusVal.taxCalculatorAmount = TaxPayableAmount;
+        }
+        else {
+            totalOtherAmount = parseInt($scope.TaxStatusVal.insurancePremium) + parseInt($scope.TaxStatusVal.fixedDeposite) + parseInt($scope.TaxStatusVal.houseLoan)
+            parseInt($scope.TaxStatusVal.epf) + parseInt($scope.TaxStatusVal.nsc) + parseInt($scope.TaxStatusVal.ppf) + parseInt($scope.TaxStatusVal.otherAmount);
+            TaxPayableAmount = parseInt($scope.TaxStatusVal.grossSalary) - totalOtherAmount;
+            TaxPayableAmount = ((TaxPayableAmount - 1000000) * 0.3) + 125000;
+            Edutax = 810;
+            TaxPayableAmount = TaxPayableAmount + Edutax;
+            $scope.TaxStatusVal.taxCalculatorAmount = TaxPayableAmount;
+        }
+
+        $scope.investForm = true;
+        $scope.taxCalculator = false;
+        if (parseInt($scope.TaxStatusVal.taxCalculatorAmount) > 0) {
+            $scope.InvestmentKnow.amount = $scope.TaxStatusVal.taxCalculatorAmount;
+            $scope.InvestmentKnow.horizone = $scope.TaxStatusVal.assessmentYear;
+            alert("Your Taxable amount is " + $scope.InvestmentKnow.amount);
+        }
+        else {
+            alert("You do not come under Taxable amount");
+        }
+
+    };
+
+    //Tax Saving Amount End
+
 }]);
