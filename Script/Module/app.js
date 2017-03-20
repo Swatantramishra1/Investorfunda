@@ -1,4 +1,5 @@
-﻿/// <reference path="../../../WebForm/HtmlPages/SIP/SIP_Goal.html" />
+﻿/// <reference path="../../Webform/Common/ElssCustomise.html" />
+/// <reference path="../../../WebForm/HtmlPages/SIP/SIP_Goal.html" />
 /// <reference path="../../WebForm/HtmlPages/HomePage.html" />
 /// <reference path="../../Webform/Common/Home.html" />
 

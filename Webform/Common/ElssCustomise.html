@@ -7,7 +7,7 @@
     }
 </style>
 <div class="container">
-    <div class="row" style="height:20%;">
+       <div class="row" style="height:20%;" ng-if="TaxElssCustomiseStep1">
         <div class="col-lg-12" style="margin-top:20px">
             <div class="col-lg-3 " style="text-align:center">
                 <img src="../../Img/StartSip/KnowTax.png" style="height:250px" />
@@ -44,7 +44,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="exampleInputPassword1">Mode Of Investment</label>
-                        <select class="form-control" ng-model="InvestmentKnow.risk">
+                        <select class="form-control" ng-model="InvestmentKnow.InvestMentType">
                             <option>Select Mode</option>
                             <option ng-value="SIP">SIP</option>
                             <option ng-value="LUMPSUM">ONE TIME INVESTMENT</option>
@@ -52,7 +52,7 @@
                     </div>
                 </div>
 
-                <input type="button" class="btn-u btn-u-blue btnRight" ng-click="StartPopup()" value="Invest Now"  />
+                <input type="button" class="btn-u btn-u-blue btnRight" ng-click="ElssCalculation()" value="Invest Now"  />
             </form>
         </div>
         <!--ng-if="taxCalculator"-->
@@ -131,4 +131,8 @@
         </div>
         
         </div>
+    
+      <div class="row" ng-if="!TaxElssCustomiseStep1">
+          <div ng-include="'Webform/Common/Html/planForYourFutureStep3.html'"></div>
+      </div>
 </div>

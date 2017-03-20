@@ -1939,6 +1939,16 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                 $scope.SIP_GOAL_Final_SHOW = true;
 
                 break;
+            case "Elss":
+                $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation(1, $scope.Portfolio_Parameter.TotalMonthlyInvestment, undefined, "CarPlan");
+                $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+                //if ($scope.Portfolio_Parameter.TotalM onthlyInvestment >= 2500)
+                //{
+                $scope.BuyTour_Step1 = false;
+                $scope.BuyTour_Step2 = false;
+                $scope.SIP_GOAL_Final_SHOW = true;
+
+                break;
         }
 
         $scope.ShowDiv("1");
@@ -3638,7 +3648,85 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
     //*************************************************Save TAx ******************************************************************
     //Tax Saving Amount Start
-
+       $scope.TaxElssCustomiseStep2 = false;
+        $scope.TaxElssCustomiseStep1 =true;
+    $scope.ElssList = [{
+        "Rank": "1",
+        "SchemeName": "Franklin India Taxshield - Growth",
+        "ISIN": "INF090I01775",
+        "BSESchmecode": "034-GR",
+        "MinInvst": "500",
+        "MFtype": "ELSS",
+        "Minsip": "6",
+        "date": "1,7,10,20,25",
+        "multiplier": "500"
+    },
+                  {
+                      "Rank": "2",
+                      "SchemeName": "Axis Long Term Equity Fund - Growth",
+                      "ISIN": "INF846K01131",
+                      "BSESchmecode": "AXFTSGP-GR",
+                      "MinInvst": "500",
+                      "MFtype": "ELSS",
+                      "Minsip": "6",
+                      "date": "1-30 all days",
+                      "multiplier": "500"
+                  },
+                  {
+                      "Rank": "3",
+                      "SchemeName": "Birla Sun Life Tax Relief 96 - Growth",
+                      "ISIN": "INF209K01108",
+                      "BSESchmecode": "02G",
+                      "MinInvst": "500",
+                      "MFtype": "ELSS",
+                      "Minsip": "6",
+                      "date": "1,7,10,14,15,21,20,28",
+                      "multiplier": "1"
+                  },
+                  {
+                      "Rank": "4",
+                      "SchemeName": "ICICI Prudential Long Term Equity Fund (Tax Saving) - Reg - Growth",
+                      "ISIN": "INF109K01464",
+                      "BSESchmecode": "1",
+                      "MinInvst": "500",
+                      "MFtype": "ELSS",
+                      "Minsip": "6",
+                      "date": "1,7,15,20,28",
+                      "multiplier": "1"
+                  },
+                  {
+                      "Rank": "5",
+                      "SchemeName": "HDFC TAXSAVER - GROWTH OPTION",
+                      "ISIN": "INF179K01BB8",
+                      "BSESchmecode": "32",
+                      "MinInvst": "500",
+                      "MFtype": "ELSS",
+                      "Minsip": "12",
+                      "date": "1,5,10,15,20,25",
+                      "multiplier": "500"
+                  },
+                  {
+                      "Rank": "6",
+                      "SchemeName": "LIC MF Tax Plan - Growth",
+                      "ISIN": "INF767K01956",
+                      "BSESchmecode": "LCTPGP-GR",
+                      "MinInvst": "500",
+                      "MFtype": "ELSS",
+                      "Minsip": "12",
+                      "date": "1,7,10,15,25",
+                      "multiplier": "500"
+                  },
+                  {
+                      "Rank": "7",
+                      "SchemeName": "KOTAK TAX SAVER-GROWTH",
+                      "ISIN": "INF174K01369",
+                      "BSESchmecode": "K144TS-GR",
+                      "MinInvst": "500",
+                      "MFtype": "ELSS",
+                      "Minsip": "6",
+                      "date": "1,7,10,14,20,21,25,28",
+                      "multiplier": "500"
+                  }];
     $scope.InvestNowTax = function (From) {
         if (From === "know") {
             $scope.investForm = true;
@@ -3652,7 +3740,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
     $scope.InvestmentKnow = {
         horizone: "",
         amount: "",
-        risk: ""
+        InvestMentType: ""
     }
     $scope.TaxStatusVal = {
         presentAge: "",
@@ -3712,7 +3800,75 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         }
 
     };
+    $scope.ElssCalculation = function () {
+        $scope.sampleStructure = [];
+        var amountInvestment = $scope.InvestmentKnow.amount;
+        if ($scope.InvestmentKnow.InvestMentType == "SIP")
+        {
+            amountInvestment = ($scope.InvestmentKnow.amount / 12).toFixed(0);
+        }
+        $scope.Portfolio_Parameter.TotalMonthlyInvestment = amountInvestment;
+        $scope.Portfolio_Parameter.EstematedYear = 1;
 
+        if ($scope.Portfolio_Parameter.TotalMonthlyInvestment > 1000)
+        {
+            $scope.sampleStructure.push({
+                "SchemeName": $scope.ElssList[0].SchemeName,
+                "BSESchemeCode": $scope.ElssList[0].BSESchmecode,
+                "ISIN": $scope.ElssList[0].ISIN,
+                "DueDate": $scope.ElssList[0].date,
+                "Amount": parseInt((50 / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment),
+            "DateString": "",
+            "Scheme_ID": "",
+            "InvestmentType": $scope.InvestmentKnow.InvestMentType
+
+            });
+            $scope.sampleStructure.push({
+                "SchemeName": $scope.ElssList[1].SchemeName,
+                "BSESchemeCode": $scope.ElssList[1].BSESchmecode,
+                "ISIN": $scope.ElssList[1].ISIN,
+                "DueDate": $scope.ElssList[1].date,
+                "Amount": parseInt((50 / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment),
+                "DateString": "",
+                "Scheme_ID": "",
+                "InvestmentType": $scope.InvestmentKnow.InvestMentType
+
+            });
+        }
+        else if ($scope.Portfolio_Parameter.TotalMonthlyInvestment > 500 && $scope.Portfolio_Parameter.TotalMonthlyInvestment <= 1000)
+        {
+            $scope.sampleStructure.push({
+                "SchemeName": $scope.ElssList[0].SchemeName,
+                "BSESchemeCode": $scope.ElssList[0].BSESchmecode,
+                "ISIN": $scope.ElssList[0].ISIN,
+                "DueDate": $scope.ElssList[0].date,
+                "Amount": parseInt((50 / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment),
+                "DateString": "",
+                "Scheme_ID": "",
+                "InvestmentType": $scope.InvestmentKnow.InvestMentType
+
+            });
+        }
+        else {
+            $scope.sampleStructure.push({
+                "SchemeName": $scope.ElssList[0].SchemeName,
+                "BSESchemeCode": $scope.ElssList[0].BSESchmecode,
+                "ISIN": $scope.ElssList[0].ISIN,
+                "DueDate": $scope.ElssList[0].date,
+                "Amount": 500,
+                "DateString": "",
+                "Scheme_ID": "",
+                "InvestmentType": $scope.InvestmentKnow.InvestMentType
+
+            });
+        }
+        $scope.Portfolio_Parameter.Equity = $scope.Portfolio_Parameter.TotalMonthlyInvestment;
+        $scope.Portfolio_Parameter.Debt = 0;
+        $scope.Portfolio_Parameter.Gold = 0;
+        $scope.TaxElssCustomiseStep1 = false;
+        $scope.TaxElssCustomiseStep2 = true;
+
+           };
     //Tax Saving Amount End
 
 }]);
