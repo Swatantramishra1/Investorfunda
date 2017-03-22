@@ -3729,6 +3729,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                   }];
     $scope.InvestNowTax = function (From) {
         if (From === "know") {
+            $scope.checkIKnowDontKnow = false;
             $scope.investForm = true;
             $scope.taxCalculator = false;
         }
@@ -3805,7 +3806,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         var amountInvestment = $scope.InvestmentKnow.amount;
         if ($scope.InvestmentKnow.InvestMentType == "SIP")
         {
-            if (!$scope.checkIKnowDontKnow)
+            if ($scope.checkIKnowDontKnow)
             {
                 $scope.checkIKnowDontKnow = false;
                 amountInvestment = ($scope.InvestmentKnow.amount / 12).toFixed(0);

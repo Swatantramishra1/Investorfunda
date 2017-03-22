@@ -107,7 +107,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     }).state('compare', {
         url: "/compare",
         templateUrl: "../../Webform/Common/compare.html",
-        controller: "MainCtrl"
+        controller: "MtualFunds.Ctrl"
     }).state('privacy', {
         url: "/privacy",
         templateUrl: "../../Webform/Common/privacyPolicy.html",

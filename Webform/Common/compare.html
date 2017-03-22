@@ -1,66 +1,180 @@
-﻿<table class="table table-bordered = margin-top-20">
+﻿
+
+<div class="col-md-12 margin-bottom-50" ng-if="compreListView">
+    <!-- Begin Sidebar Menu -->
+    <div class="col-md-3 rounded-2x">
+        <ul class="list-group sidebar-nav-v1" id="sidebar-nav">
+            <!-- Typography -->
+            <li class="list-group-item list-toggle">
+                <a class="AnchorCursorPointer"><i class="fa fa-eye-slash"></i> All Mutual Funds</a>
+            </li>
+            <li class="list-group-item list-toggle">
+                <a class="AnchorCursorPointer"><i class="fa fa-thumbs-up"></i> Recommended Funds</a>
+            </li>
+            <li class="list-group-item list-toggle">
+                <a class="AnchorCursorPointer"><i class="fa fa-star"></i> Top Ranking Funds</a>
+            </li>
+            <li class="list-group-item list-toggle">
+                <a class="AnchorCursorPointer"><i class="fa fa-bar-chart-o"></i> Top Performing Funds</a>
+            </li>
+            <!-- End Typography -->
+            <!-- Forms -->
+            <li class="list-group-item active">
+                <a class="AnchorCursorPointer" data-target="#collapse-forms" data-toggle="collapse">Filter By Funds</a>
+                <ul id="collapse-forms" class="collapse in">
+                    <li class="list-group-item list-toggle">
+                        <a class="AnchorCursorPointer" data-target="#collapse-AssetsType" data-toggle="collapse"><i class="fa fa-eye-slash"></i> Asset Type</a>
+                        <ul id="collapse-AssetsType" class="collapse in">
+
+                            <li>
+                                <a class="accordion-toggle" data-target="#Equity" data-toggle="collapse"><i class="fa fa-flask"></i> Equity</a>
+                                <ul id="Equity" class="collapse">
+                                    <li ng-repeat="EquityName in FundCategoryEQUITY" style="border-bottom:1px solid rgba(128, 128, 128, 0.84)" ng-click="SortFundsList('Equity',EquityName.VCLASSCODE)">
+                                        <input type="checkbox" class="col-xs-2" />
+                                        {{EquityName.VCLASS}}
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a class="accordion-toggle" data-target="#collapse-Hybrid" data-toggle="collapse"><i class="fa fa-flask"></i> Hybrid</a>
+                                <ul id="collapse-Hybrid" class="collapse">
+                                    <li ng-repeat="HybridName in FundCategoryHybrid" style="border-bottom:1px solid rgba(128, 128, 128, 0.84)">
+                                        <input type="checkbox" class="col-xs-2" />
+                                        {{HybridName.VCLASS}}
+                                    </li>
+                                </ul>
+
+
+
+                            </li>
+                            <li>
+                                <a class="accordion-toggle" data-target="#collapse-Debt" data-toggle="collapse"><i class="fa fa-flask"></i> Debt</a>
+                                <ul id="collapse-Debt" class="collapse">
+                                    <li ng-repeat="DebtName in FundCategoryDebt" style="border-bottom:1px solid rgba(128, 128, 128, 0.84)">
+                                        <input type="checkbox" class="col-xs-2" />
+                                        {{DebtName.VCLASS}}
+                                    </li>
+                                </ul>
+
+
+
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="list-group-item list-toggle">
+                        <a class="AnchorCursorPointer" data-target="#collapse-FundOption" data-toggle="collapse"><i class="fa fa-inr"></i> Fund Options</a>
+                        <ul id="collapse-FundOption" class="collapse">
+                            <li><input type="checkbox" class="col-xs-2" ng-click="SortFundsList('FundsOption',Growth)" /> Growth</li>
+                            <li><input type="checkbox" class="col-xs-2" ng-click="SortFundsList('FundsOption',Dividend)" /> Dividend</li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item list-toggle">
+                        <a class="AnchorCursorPointer" data-target="#collapse-FundHouse" data-toggle="collapse"><i class="fa fa-inr"></i> Fund House</a>
+                        <ul id="collapse-FundHouse" class="collapse">
+                            <li ng-repeat="FundsHouseName in FundsHouse" style="border-bottom:1px solid rgba(128, 128, 128, 0.84)">
+                                <input type="checkbox" ng-click="SortFundsList('FundsHouse',FundsHouseName.mf_cocode)" class="col-xs-2" /> {{FundsHouseName.FundName}}
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+    <!-- End Sidebar Menu -->
+    <!-- Begin Content -->
+    <div class="col-md-9">
+        <div class="row">
+            <div class="col-sm-6">
+            </div>
+            <div class="col-sm-6">
+            </div>
+        </div>
+        <div class="alert alert-info fade in rounded-2x">
+            <button data-dismiss="alert" class="close" type="button">×</button>
+            <h3>Methodology of choosing Funds </h3>
+            All the funds of top AMC are listed in this section to deliver convenience to the investors. View a list of top and best funds from each mutual fund category to make a smart investment decision. Check all mutual funds to invest in SIP or Lumpsum in the way you want.
+        </div>
+        <div class="panel panel-green margin-bottom-40">
+            <div class="panel-heading">
+                <h3 class="panel-title text-right"><input type="button" class="btn btn-primary"  value="Compare" ng-click="compareFunds()" /></h3>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>SR. No.</th>
+                        <th>Scheme</th>
+                        <th>Category</th>
+                        <th>Nav</th>
+                        <th>Return(%)3 Year</th>
+                        <!--<th>Rating By Crisil</th>-->
+                        <th>Analysis</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="MF in FundsList | filter : filterprodcut | limitTo : SchemeLimitTo" id="{{MF.SchemeID}}">
+                        <td>{{$index+1}}</td>
+                        <td ng-click="GoForMFDetails(MF.SchemeID)" class="OnHoverSchemename"> {{MF.SchemeName}}</td>
+                        <td class="hidden-sm">{{MF.CategoryName}}</td>
+                        <td>{{MF.NAV | number:2}}</td>
+                        <td><span class="label label-warning">{{MF.Return_3Yr | number:2}} %</span></td>
+                        <!--<td>2</td>-->
+                        <td><img src="../../Img/bar_graph1.png" style="height:16px;cursor:pointer" ng-click="showAdvanced($index)" /></td>
+                        <td>
+                            <input type="checkbox" ng-click="SelectCompare($index)" />
+                        </td>
+                       
+                    </tr>
+                    <tr>
+                        <td colspan="9">
+                            <md-button class="md-raised md-primary form-control" ng-disabled="FundsListShowMore" ng-click="ShowMore()" style="margin:0"><i class="fa fa-plus"></i> Show More </md-button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <!-- End Content -->
+</div>
+
+
+
+
+<table class="table table-bordered = margin-top-20" ng-if="compreTableView">
     <thead>
         <tr>
-            <th colspan="4" class="text-center"> Comparision</th>
+         <th><input type="button" value="Back" ng-click="gobackFundsCompare()" />  </th>   
+         <th colspan="3" class="text-center" style="background-color:#293542;color:white"> Comparision of Funds</th>
             
         </tr>
         <tr>
             <th>Funds</th>
-            <th class="text-center">A</th>
-            <th class="text-center">B</th>
-            <th class="text-center">C</th>
+            <th class="text-center">Fund A</th>
+            <th class="text-center">Fund B</th>
+            <th class="text-center">Fund C</th>
         </tr>
 
     </thead>
     <tbody>
-        <tr>
-            <td>Latest NAV</td>
-            <td class="text-center">12</td>
-            <td class="text-center">22</td>
-            <td class="text-center">34</td>
+        <tr ng-repeat="compareData in CompareJson">
+            <td style="width: 200px;"><strong>{{compareData.ColumnName}}</strong> </td>
+            <td class="text-center text-justify">{{compareData.Data1}}</td>
+            <td class="text-center text-justify">{{compareData.Data2}}</td>
+            <td class="text-center text-justify">{{compareData.Data3}}</td>
         </tr>
         <tr>
-            <td>3 months</td>
-            <td class="text-center">12</td>
-            <td class="text-center">22</td>
-            <td class="text-center">34</td>
+            <td><strong>Select Funds</strong></td>
+            <td><input type="button" class="btn btn-primary rounded-2x" value="Select Fund A" ng-click="SelectcompareFunds()" /></td>
+            <td><input type="button" class="btn btn-primary rounded-2x" value="Select Fund B" ng-click="SelectcompareFunds()" /></td>
+            <td><input type="button" class="btn btn-primary rounded-2x" value="Select Fund C" ng-click="SelectcompareFunds()" /></td>
         </tr>
-        <tr>
-            <td>1 year</td>
-            <td class="text-center">12</td>
-            <td class="text-center">22</td>
-            <td class="text-center">34</td>
-        </tr>
-        <tr>
-            <td>3 year</td>
-            <td class="text-center">12</td>
-            <td class="text-center">22</td>
-            <td class="text-center">34</td>
-        </tr>
-        <tr>
-            <td>5 year</td>
-            <td class="text-center">12</td>
-            <td class="text-center">22</td>
-            <td class="text-center">34</td>
-        </tr>
-        <tr>
-            <td>5 year</td>
-            <td class="text-center">12</td>
-            <td class="text-center">22</td>
-            <td class="text-center">34</td>
-        </tr>
-        <tr>
-            <td>Investment objecvtive</td>
-            <td class="text-center">12</td>
-            <td class="text-center">22</td>
-            <td class="text-center">34</td>
-        </tr>
-        <tr>
-            <td>Asset allocation</td>
-            <td class="text-center">12</td>
-            <td class="text-center">22</td>
-            <td class="text-center">34</td>
-        </tr>
+      
     </tbody>
 
 </table>

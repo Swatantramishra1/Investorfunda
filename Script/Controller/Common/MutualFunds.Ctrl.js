@@ -172,7 +172,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
     }
     $scope.OnloadFunction = function () {
         ShowLoader();
-        if ($state.current.name == 'MutualFundsList') {
+        if ($state.current.name == 'MutualFundsList' || $state.current.name == 'compare') {
             //OnLoad Calss
             $scope.GetFundList('-', '-', 'Growth');
 
@@ -242,7 +242,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             });
             HideLoader();
         }
-        else {
+        else if ($state.current.name == 'MutualFunds') {
             var getDetailsOfMutualFunds = FundsService.FundsDetails.getPromise($localStorage.Scheme_ID);
             getDetailsOfMutualFunds.then(
             // OnSuccess function
@@ -486,10 +486,6 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             $scope.FundsListShowMore = false;
         }
     }
-
-
-
-
 
     $scope.ShowMore = function () {
         $scope.SchemeLimitTo = $scope.SchemeLimitTo + 15;
@@ -845,9 +841,6 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         alert(ID)
     }
 
-   
-
-
     //Confirmation Popup
     if ($localStorage.CurrentStatusOfPage === "SIP" || $localStorage.CurrentStatusOfPage === "LUMPSUM") {
         if ($localStorage.CurrentScheme !== undefined) {
@@ -860,6 +853,221 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             $scope.OnloadFunction();
         }
 
+    }
+
+
+
+    //Compare Profile
+    $scope.compreListView = true;
+    $scope.compreTableView = false;
+    $scope.CompareJson = [
+       {
+           ColumnName: "Scheme Name",
+           Data1: "",
+           Data2: "",
+           Data3: ""
+       },
+       {
+           ColumnName: "Latest NAV",
+           Data1: "",
+           Data2: "",
+           Data3: ""
+       },
+       {
+           ColumnName: "3 months",
+           Data1: "",
+           Data2: "",
+           Data3: ""
+       },
+       {
+           ColumnName: "1 year",
+           Data1: "",
+           Data2: "",
+           Data3: ""
+       },
+       {
+           ColumnName: "3 year",
+           Data1: "",
+           Data2: "",
+           Data3: ""
+       },
+       {
+           ColumnName: "5 year",
+           Data1: "",
+           Data2: "",
+           Data3: ""
+       },
+       {
+           ColumnName: "Investment objecvtive",
+           Data1: "",
+           Data2: "",
+           Data3: ""
+       },
+       {
+           ColumnName: "Asset allocation",
+           Data1: "",
+           Data2: "",
+           Data3: ""
+       },
+       {
+           ColumnName: "Category",
+           Data1: "",
+           Data2: "",
+           Data3: ""
+       }
+       ,
+       {
+           ColumnName: "Invest plan",
+           Data1: "",
+           Data2: "",
+           Data3: ""
+       },
+       {
+           ColumnName: "Benchmark",
+           Data1: "",
+           Data2: "",
+           Data3: ""
+       },
+       {
+           ColumnName: "Asset size",
+           Data1: "",
+           Data2: "",
+           Data3: ""
+       }
+       ,
+       {
+           ColumnName: "Min Investment",
+           Data1: "",
+           Data2: "",
+           Data3: ""
+       },
+       {
+           ColumnName: "Last dividend",
+           Data1: "",
+           Data2: "",
+           Data3: ""
+       },
+       {
+           ColumnName: "Bonus",
+           Data1: "",
+           Data2: "",
+           Data3: ""
+       },
+       {
+           ColumnName: "Exit Load",
+           Data1: "",
+           Data2: "",
+           Data3: ""
+       }
+       
+    ]
+    $scope.compareIndex = [];
+    $scope.SelectCompare=function(Index)
+    {
+        if ($scope.compareIndex.length <= 3)
+        {
+            if ($scope.compareIndex.length != 3)
+                $scope.compareIndex.push($scope.FundsList[Index].SchemeID);
+            else
+                alert("You can not select more than 3 Scheme")
+        }
+        else
+        {
+            alert("You can not select more than 3 Scheme")
+        }
+        
+    }
+
+    $scope.compareFunds = function () {
+        var countTemp = 0;
+        for(var a=0;a<$scope.compareIndex.length;a++)
+        {
+            var getDetailsOfMutualFunds = FundsService.FundsDetails.getPromise($scope.compareIndex[a]);
+            getDetailsOfMutualFunds.then(
+            // OnSuccess function
+            function (response) {
+                // $localStorage.LSFundsDetailsData = response.data.response.data;
+                $rootScope.FundsDetailsData = response.data.response.data;
+                switch (countTemp)
+                {
+                    case 0:
+                       
+                        $scope.CompareJson[0].Data1 =  $scope.FundsDetailsData.Schemelist.Scheme.SchemeName;
+                        $scope.CompareJson[1].Data1 = $scope.FundsDetailsData.Schemelist.Scheme.NAV;
+                        $scope.CompareJson[2].Data1 = (parseFloat($scope.FundsDetailsData.Schemelist.Scheme.Return_3Mon)).toFixed(2);
+                        $scope.CompareJson[3].Data1 = (parseFloat($scope.FundsDetailsData.Schemelist.Scheme.Return_1Yr)).toFixed(2);
+                        $scope.CompareJson[4].Data1 = (parseFloat($scope.FundsDetailsData.Schemelist.Scheme.Return_3Yr)).toFixed(2);
+                        $scope.CompareJson[5].Data1 = (parseFloat($scope.FundsDetailsData.Schemelist.Scheme.Return_5Yr)).toFixed(2);
+                        $scope.CompareJson[6].Data1 = $scope.FundsDetailsData.Schemelist.Scheme.objective;
+                        $scope.CompareJson[7].Data1 = "";
+                        $scope.CompareJson[8].Data1 = $scope.FundsDetailsData.Schemelist.Scheme.CategoryName;
+                        $scope.CompareJson[9].Data1 = "";
+                        $scope.CompareJson[10].Data1 = $scope.FundsDetailsData.Schemelist.Scheme.BenchmarkName;
+                        $scope.CompareJson[11].Data1 = (parseFloat($scope.FundsDetailsData.Schemelist.Scheme.AssetSize)).toFixed(2) + "Cr";
+                        $scope.CompareJson[12].Data1 = $scope.FundsDetailsData.Schemelist.Scheme.MinimumInvestment;
+                        $scope.CompareJson[13].Data1 = $scope.FundsDetailsData.Schemelist.Scheme.DividendPercentage_Latest;
+                        $scope.CompareJson[14].Data1 = $scope.FundsDetailsData.Schemelist.Scheme.Bonus_Latest;
+                        $scope.CompareJson[15].Data1 = $scope.FundsDetailsData.Schemelist.Scheme.ExitLoad;
+                        countTemp++;
+                        break;
+
+                    case 1:
+                        $scope.CompareJson[0].Data2 = $scope.FundsDetailsData.Schemelist.Scheme.SchemeName;
+                        $scope.CompareJson[1].Data2 = $scope.FundsDetailsData.Schemelist.Scheme.NAV;
+                        $scope.CompareJson[2].Data2 = (parseFloat($scope.FundsDetailsData.Schemelist.Scheme.Return_3Mon)).toFixed(2);
+                        $scope.CompareJson[3].Data2 = (parseFloat($scope.FundsDetailsData.Schemelist.Scheme.Return_1Yr)).toFixed(2);
+                        $scope.CompareJson[4].Data2 = (parseFloat($scope.FundsDetailsData.Schemelist.Scheme.Return_3Yr)).toFixed(2);
+                        $scope.CompareJson[5].Data2 = (parseFloat($scope.FundsDetailsData.Schemelist.Scheme.Return_5Yr)).toFixed(2);
+                        $scope.CompareJson[6].Data2 = $scope.FundsDetailsData.Schemelist.Scheme.objective;
+                        $scope.CompareJson[7].Data2 = "";
+                        $scope.CompareJson[8].Data2 = $scope.FundsDetailsData.Schemelist.Scheme.CategoryName;
+                        $scope.CompareJson[9].Data2 = "";
+                        $scope.CompareJson[10].Data2 = $scope.FundsDetailsData.Schemelist.Scheme.BenchmarkName;
+                        $scope.CompareJson[11].Data2 = (parseFloat($scope.FundsDetailsData.Schemelist.Scheme.AssetSize)).toFixed(2) + "Cr";
+                        $scope.CompareJson[12].Data2 = $scope.FundsDetailsData.Schemelist.Scheme.MinimumInvestment;
+                        $scope.CompareJson[13].Data2 = $scope.FundsDetailsData.Schemelist.Scheme.DividendPercentage_Latest;
+                        $scope.CompareJson[14].Data2 = $scope.FundsDetailsData.Schemelist.Scheme.Bonus_Latest;
+                        $scope.CompareJson[15].Data2 = $scope.FundsDetailsData.Schemelist.Scheme.ExitLoad;
+                        countTemp++;
+                        break;
+                    case 2:
+                        $scope.CompareJson[0].Data3 = $scope.FundsDetailsData.Schemelist.Scheme.SchemeName;
+                        $scope.CompareJson[1].Data3 = $scope.FundsDetailsData.Schemelist.Scheme.NAV;
+                        $scope.CompareJson[2].Data3 = (parseFloat($scope.FundsDetailsData.Schemelist.Scheme.Return_3Mon)).toFixed(2);
+                        $scope.CompareJson[3].Data3 = (parseFloat($scope.FundsDetailsData.Schemelist.Scheme.Return_1Yr)).toFixed(2);
+                        $scope.CompareJson[4].Data3 = (parseFloat($scope.FundsDetailsData.Schemelist.Scheme.Return_3Yr)).toFixed(2);
+                        $scope.CompareJson[5].Data3 = (parseFloat($scope.FundsDetailsData.Schemelist.Scheme.Return_5Yr)).toFixed(2);
+                        $scope.CompareJson[6].Data3 = $scope.FundsDetailsData.Schemelist.Scheme.objective;
+                        $scope.CompareJson[7].Data3 = "";
+                        $scope.CompareJson[8].Data3 = $scope.FundsDetailsData.Schemelist.Scheme.CategoryName;
+                        $scope.CompareJson[9].Data3 = "";
+                        $scope.CompareJson[10].Data3 = $scope.FundsDetailsData.Schemelist.Scheme.BenchmarkName;
+                        $scope.CompareJson[11].Data3 = (parseFloat($scope.FundsDetailsData.Schemelist.Scheme.AssetSize)).toFixed(2) + "Cr";
+                        $scope.CompareJson[12].Data3 = $scope.FundsDetailsData.Schemelist.Scheme.MinimumInvestment;
+                        $scope.CompareJson[13].Data3 = $scope.FundsDetailsData.Schemelist.Scheme.DividendPercentage_Latest;
+                        $scope.CompareJson[14].Data3 = $scope.FundsDetailsData.Schemelist.Scheme.Bonus_Latest;
+                        $scope.CompareJson[15].Data3 = $scope.FundsDetailsData.Schemelist.Scheme.ExitLoad;
+                        $scope.compreListView = false;
+                        $scope.compreTableView = true;
+                        countTemp++
+                        break;
+                }
+               
+            },
+            // OnFailure function
+            function (reason) {
+                HideLoader();
+                console.log(reason.GetLoginResult.ResponseMessage)
+                $scope.somethingWrong = reason;
+                $scope.error = true;
+            });
+        }
+    }
+
+    $scope.gobackFundsCompare = function () {
+        $scope.compreListView = true;
+        $scope.compreTableView = false;
+        $scope.compareIndex = [];
     }
 }]);
 

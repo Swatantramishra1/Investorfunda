@@ -339,24 +339,7 @@
         ]
     }
 
-    $scope.CompareJson = [{
-        "Scheme Name":"",
-        "Latest NAV": "",
-        "3 months": "",
-        "1 year": "",
-        "3 year": "",
-        "5 year": "",
-        "Investment objecvtive": "",
-        "Asset allocation": "",
-        "Category": "",
-        "Invest plan": "",
-        "Benchmark": "",
-        "Asset size": "",
-        "Min Investment": "",
-        "Last dividend": "",
-        "Bonus": "",
-        "Exit Load":""
-    }]
+   
 
     $scope.uploadFile = function () {
         var file = $scope.myFile;

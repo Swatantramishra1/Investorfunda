@@ -1,7 +1,7 @@
-﻿<div class="row" style="padding-bottom:10px;height:50px;">
+﻿<div class="row" style="padding-bottom:10px;height:50px;" >
     <div class="col-lg-12">
         <h1 style="color:#000000 !important;font-family:Arial;text-align:center">
-            Your Portfolio
+            Your Portfolio 
         </h1>
     </div>
 
@@ -139,6 +139,6 @@
 
 
     <div class="col-lg-12 text-right">
-   <input type="checkbox" />I / We have read the Offer Document / Scheme Information Document / Statement of Additional Information / WIFS T&C.     <md-button class="md-raised" ng-click="InvestNow('Page')">INVEST NOW</md-button>
+   <input type="checkbox" ng-model="checkTickBox" />I / We have read the Offer Document / Scheme Information Document / Statement of Additional Information / CAPL T&C.     <md-button class="md-raised" ng-disabled="!checkTickBox" ng-click="InvestNow('Page')">INVEST NOW</md-button>
     </div>
 </div>
