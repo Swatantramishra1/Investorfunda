@@ -104,6 +104,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url: "/contact",
         templateUrl: "../../Webform/Common/contact.html",
         controller: "MainCtrl"
+    }).state('compare', {
+        url: "/compare",
+        templateUrl: "../../Webform/Common/compare.html",
+        controller: "MainCtrl"
     }).state('privacy', {
         url: "/privacy",
         templateUrl: "../../Webform/Common/privacyPolicy.html",

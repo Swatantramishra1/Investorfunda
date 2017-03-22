@@ -1,4 +1,4 @@
-﻿app.controller("MainCtrl", ['$scope', '$rootScope', '$http', 'fileUpload', '$window', function ($scope, $rootScope, $http, fileUpload, $window) {
+﻿app.controller("MainCtrl", ['$scope', '$rootScope', '$http', 'fileUpload', '$window', 'FundsService', function ($scope, $rootScope, $http, fileUpload, $window, FundsService) {
 
     //********Defined Area*****************
     $scope.total_amount_invested = 11110;
@@ -339,7 +339,24 @@
         ]
     }
 
-    
+    $scope.CompareJson = [{
+        "Scheme Name":"",
+        "Latest NAV": "",
+        "3 months": "",
+        "1 year": "",
+        "3 year": "",
+        "5 year": "",
+        "Investment objecvtive": "",
+        "Asset allocation": "",
+        "Category": "",
+        "Invest plan": "",
+        "Benchmark": "",
+        "Asset size": "",
+        "Min Investment": "",
+        "Last dividend": "",
+        "Bonus": "",
+        "Exit Load":""
+    }]
 
     $scope.uploadFile = function () {
         var file = $scope.myFile;
@@ -348,5 +365,32 @@
         var uploadUrl = "/fileUpload";
         fileUpload.uploadFileToUrl(file, uploadUrl);
     };
+
+
+    $scope.compareCall = function () {
+
+        for (var a = 2; a < 5; a++)
+        {
+            var getFundsDetails = FundsService.FundsDetails.getPromise(a);
+            getFundsDetails.then(
+            // OnSuccess function
+            function (answer) {
+
+
+                $scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
+
+
+            },
+            // OnFailure function
+            function (reason) {
+                HideLoader();
+                $scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
+                //$scope.somethingWrong = reason;
+                //$scope.error = true;
+            }
+          )
+        }
+       
+    }
 }]);
 

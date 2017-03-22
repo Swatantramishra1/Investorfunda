@@ -3787,7 +3787,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
             TaxPayableAmount = TaxPayableAmount + Edutax;
             $scope.TaxStatusVal.taxCalculatorAmount = TaxPayableAmount;
         }
-
+        $scope.checkIKnowDontKnow = true;
         $scope.investForm = true;
         $scope.taxCalculator = false;
         if (parseInt($scope.TaxStatusVal.taxCalculatorAmount) > 0) {
@@ -3805,7 +3805,15 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         var amountInvestment = $scope.InvestmentKnow.amount;
         if ($scope.InvestmentKnow.InvestMentType == "SIP")
         {
-            amountInvestment = ($scope.InvestmentKnow.amount / 12).toFixed(0);
+            if (!$scope.checkIKnowDontKnow)
+            {
+                $scope.checkIKnowDontKnow = false;
+                amountInvestment = ($scope.InvestmentKnow.amount / 12).toFixed(0);
+            }
+            else {
+                amountInvestment = $scope.InvestmentKnow.amount;
+            }
+           
         }
         $scope.Portfolio_Parameter.TotalMonthlyInvestment = amountInvestment;
         $scope.Portfolio_Parameter.EstematedYear = 1;
