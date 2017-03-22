@@ -966,10 +966,10 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
     {
         if ($scope.compareIndex.length <= 3)
         {
-            if ($scope.compareIndex.length != 3)
-                $scope.compareIndex.push($scope.FundsList[Index].SchemeID);
-            else
-                alert("You can not select more than 3 Scheme")
+            
+                if ($scope.compareIndex.indexOf($scope.FundsList[Index].SchemeID) == -1)
+                    $scope.compareIndex.push($scope.FundsList[Index].SchemeID);
+           
         }
         else
         {

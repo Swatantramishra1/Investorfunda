@@ -1,5 +1,5 @@
 ﻿
-
+<link href="../../Style/Common/checkbox.css" rel="stylesheet" />
 <div class="col-md-12 margin-bottom-50" ng-if="compreListView">
     <!-- Begin Sidebar Menu -->
     <div class="col-md-3 rounded-2x">
@@ -126,7 +126,13 @@
                         <!--<td>2</td>-->
                         <td><img src="../../Img/bar_graph1.png" style="height:16px;cursor:pointer" ng-click="showAdvanced($index)" /></td>
                         <td>
-                            <input type="checkbox" ng-click="SelectCompare($index)" />
+                          
+                            <div class="checkbox" ng-click="SelectCompare($index)">
+                                <label style="font-size: 1.5em">
+                                    <input type="checkbox" value="">
+                                    <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                </label>
+                            </div>
                         </td>
                        
                     </tr>
