@@ -2,9 +2,28 @@
 <div class="col-md-12 margin-bottom-50 margin-top-20">
     <!-- Begin Sidebar Menu -->
     <div class="col-md-3 rounded-2x">
+        <ul class="list-group sidebar-nav-v1" id="sidebar-nav">
+            <li class="list-group-item active">
+                <a class="AnchorCursorPointer" data-target="#collapse-forms" data-toggle="collapse">Filter</a>
+                <ul id="collapse-forms" class="collapse in">
+                    <li class="list-group-item list-toggle listValPar">
+                        <a class="AnchorCursorPointer" data-target="#collapse-AssetsType" data-toggle="collapse"><i class="fa fa-eye-slash"></i> Select Funds Category</a>
+                        <ul id="collapse-AssetsType" class="collapse in">
 
-        <div ng-include="'Webform/Common/mutualFundsLeft.html'"></div>
-    </div>
+                            <li ng-repeat="(department, MFList) in groups" class="listVal">
+                                <a style="cursor:pointer" ng-click="filterTopFunds(department)"><i class="fa fa-flask"></i> {{department}}</a>
+
+                            </li>
+
+
+                        </ul>
+                    </li>
+
+
+                </ul>
+            </li>
+            </ul>
+</div>
     <!-- End Sidebar Menu -->
     <!-- Begin Content -->
     <div class="col-md-9">
@@ -34,10 +53,10 @@
                 </thead>
                 <tbody ng-repeat="(department, MFList) in groups">
                     <!-- Repeat List of All mutual funds -->
-                    <tr>
+                    <tr ng-if="department==FilterTempValue">
                         <td colspan="4" ><strong>{{department}}</strong> </td>
                     </tr>
-                    <tr ng-repeat="Elss in MFList">
+                    <tr ng-repeat="Elss in MFList" ng-if="Elss.MFtype==FilterTempValue">
                         <td>{{$index+1}}</td>
                         <td class="OnHoverSchemename"> {{Elss.SchemeName}}</td>
                         <td><input type="text" style="width:60px" id="{{$index}}Amount" /></td>

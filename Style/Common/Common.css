@@ -13,6 +13,10 @@
 .carousel-caption{
 	padding-top:170px;
 }
+.listVal a:hover{
+    color:slategray !important;
+}
+
 .row3Paragraph{
 	color:black !important;
 	font-family:Open Sans;

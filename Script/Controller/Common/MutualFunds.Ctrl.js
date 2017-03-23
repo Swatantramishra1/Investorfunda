@@ -1638,5 +1638,12 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         $scope.compreTableView = false;
         $scope.compareIndex = [];
     }
+
+
+    //Our Top Mutual Funds
+    $scope.FilterTempValue = "EQ large cap";
+    $scope.filterTopFunds = function (param) {
+        $scope.FilterTempValue = param;
+    }
 }]);
 
