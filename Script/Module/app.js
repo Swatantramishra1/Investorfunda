@@ -113,6 +113,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: "/recommonded",
             templateUrl: "../../Webform/Common/recommonded.html",
             controller: "MtualFunds.Ctrl"
+        }).state('corporateFixedDeposite', {
+            url: "/corporateFixedDeposite",
+            templateUrl: "../../Webform/Common/corporateFixedDeposite.html",
+            controller: "MtualFunds.Ctrl"
         }).state('privacy', {
         url: "/privacy",
         templateUrl: "../../Webform/Common/privacyPolicy.html",
