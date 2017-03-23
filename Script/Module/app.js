@@ -7,7 +7,7 @@
 //    angular.bootstrap(document.body, ['app']);
 //});
 
-var app = angular.module('app', ['ngMaterial', 'ui.router', 'ngStorage', 'rzModule', 'ng-fusioncharts']);
+var app = angular.module('app', ['ngMaterial', 'ui.router', 'ngStorage', 'rzModule', 'ng-fusioncharts', 'angular.filter']);
 //, 'ui.router']
 app.config(function ($stateProvider, $urlRouterProvider) {
     //
@@ -108,7 +108,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url: "/compare",
         templateUrl: "../../Webform/Common/compare.html",
         controller: "MtualFunds.Ctrl"
-    }).state('privacy', {
+    })
+        .state('recommonded', {
+            url: "/recommonded",
+            templateUrl: "../../Webform/Common/recommonded.html",
+            controller: "MtualFunds.Ctrl"
+        }).state('privacy', {
         url: "/privacy",
         templateUrl: "../../Webform/Common/privacyPolicy.html",
         controller: "MainCtrl"

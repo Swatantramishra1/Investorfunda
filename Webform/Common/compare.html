@@ -1,89 +1,12 @@
 ﻿
 <link href="../../Style/Common/checkbox.css" rel="stylesheet" />
-<div class="col-md-12 margin-bottom-50" ng-if="compreListView">
+
+
+
+<div class="col-md-12 margin-bottom-50 margin-top-20" ng-if="compreListView">
     <!-- Begin Sidebar Menu -->
     <div class="col-md-3 rounded-2x">
-        <ul class="list-group sidebar-nav-v1" id="sidebar-nav">
-            <!-- Typography -->
-            <li class="list-group-item list-toggle">
-                <a class="AnchorCursorPointer"><i class="fa fa-eye-slash"></i> All Mutual Funds</a>
-            </li>
-            <li class="list-group-item list-toggle">
-                <a class="AnchorCursorPointer"><i class="fa fa-thumbs-up"></i> Recommended Funds</a>
-            </li>
-            <li class="list-group-item list-toggle">
-                <a class="AnchorCursorPointer"><i class="fa fa-star"></i> Top Ranking Funds</a>
-            </li>
-            <li class="list-group-item list-toggle">
-                <a class="AnchorCursorPointer"><i class="fa fa-bar-chart-o"></i> Top Performing Funds</a>
-            </li>
-            <!-- End Typography -->
-            <!-- Forms -->
-            <li class="list-group-item active">
-                <a class="AnchorCursorPointer" data-target="#collapse-forms" data-toggle="collapse">Filter By Funds</a>
-                <ul id="collapse-forms" class="collapse in">
-                    <li class="list-group-item list-toggle">
-                        <a class="AnchorCursorPointer" data-target="#collapse-AssetsType" data-toggle="collapse"><i class="fa fa-eye-slash"></i> Asset Type</a>
-                        <ul id="collapse-AssetsType" class="collapse in">
-
-                            <li>
-                                <a class="accordion-toggle" data-target="#Equity" data-toggle="collapse"><i class="fa fa-flask"></i> Equity</a>
-                                <ul id="Equity" class="collapse">
-                                    <li ng-repeat="EquityName in FundCategoryEQUITY" style="border-bottom:1px solid rgba(128, 128, 128, 0.84)" ng-click="SortFundsList('Equity',EquityName.VCLASSCODE)">
-                                        <input type="checkbox" class="col-xs-2" />
-                                        {{EquityName.VCLASS}}
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a class="accordion-toggle" data-target="#collapse-Hybrid" data-toggle="collapse"><i class="fa fa-flask"></i> Hybrid</a>
-                                <ul id="collapse-Hybrid" class="collapse">
-                                    <li ng-repeat="HybridName in FundCategoryHybrid" style="border-bottom:1px solid rgba(128, 128, 128, 0.84)">
-                                        <input type="checkbox" class="col-xs-2" />
-                                        {{HybridName.VCLASS}}
-                                    </li>
-                                </ul>
-
-
-
-                            </li>
-                            <li>
-                                <a class="accordion-toggle" data-target="#collapse-Debt" data-toggle="collapse"><i class="fa fa-flask"></i> Debt</a>
-                                <ul id="collapse-Debt" class="collapse">
-                                    <li ng-repeat="DebtName in FundCategoryDebt" style="border-bottom:1px solid rgba(128, 128, 128, 0.84)">
-                                        <input type="checkbox" class="col-xs-2" />
-                                        {{DebtName.VCLASS}}
-                                    </li>
-                                </ul>
-
-
-
-                            </li>
-
-                        </ul>
-                    </li>
-                    <li class="list-group-item list-toggle">
-                        <a class="AnchorCursorPointer" data-target="#collapse-FundOption" data-toggle="collapse"><i class="fa fa-inr"></i> Fund Options</a>
-                        <ul id="collapse-FundOption" class="collapse">
-                            <li><input type="checkbox" class="col-xs-2" ng-click="SortFundsList('FundsOption',Growth)" /> Growth</li>
-                            <li><input type="checkbox" class="col-xs-2" ng-click="SortFundsList('FundsOption',Dividend)" /> Dividend</li>
-                        </ul>
-                    </li>
-                    <li class="list-group-item list-toggle">
-                        <a class="AnchorCursorPointer" data-target="#collapse-FundHouse" data-toggle="collapse"><i class="fa fa-inr"></i> Fund House</a>
-                        <ul id="collapse-FundHouse" class="collapse">
-                            <li ng-repeat="FundsHouseName in FundsHouse" style="border-bottom:1px solid rgba(128, 128, 128, 0.84)">
-                                <input type="checkbox" ng-click="SortFundsList('FundsHouse',FundsHouseName.mf_cocode)" class="col-xs-2" /> {{FundsHouseName.FundName}}
-                            </li>
-
-                        </ul>
-                    </li>
-
-                </ul>
-            </li>
-
-        </ul>
+        <div ng-include="'Webform/Common/mutualFundsLeft.html'"></div>
     </div>
     <!-- End Sidebar Menu -->
     <!-- Begin Content -->
@@ -176,9 +99,9 @@
         </tr>
         <tr>
             <td><strong>Select Funds</strong></td>
-            <td><input type="button" class="btn btn-primary rounded-2x" value="Select Fund A" ng-click="SelectcompareFunds()" /></td>
-            <td><input type="button" class="btn btn-primary rounded-2x" value="Select Fund B" ng-click="SelectcompareFunds()" /></td>
-            <td><input type="button" class="btn btn-primary rounded-2x" value="Select Fund C" ng-click="SelectcompareFunds()" /></td>
+            <td><input type="button" class="btn btn-primary rounded-2x" value="Select" ng-click="SelectcompareFunds()" /></td>
+            <td><input type="button" class="btn btn-primary rounded-2x" value="Select" ng-click="SelectcompareFunds()" /></td>
+            <td><input type="button" class="btn btn-primary rounded-2x" value="Select" ng-click="SelectcompareFunds()" /></td>
         </tr>
       
     </tbody>

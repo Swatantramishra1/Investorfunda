@@ -31,6 +31,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         currentState = $state.current.name;
         $scope.showDataStep2 = GetCommonData.getChildTourCommonData;
     }
+    $scope.ourGrouper = 'MFtype';
     $scope.SIPGoalStructureDate =
 
        [
