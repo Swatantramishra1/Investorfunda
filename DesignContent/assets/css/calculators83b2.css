@@ -1,0 +1,820 @@
+.calculator {
+  text-align: left;
+  color: #1f1f1f;
+}
+
+.calculator table {
+  font: inherit;
+}
+
+.calculator h2 {
+  font-size: 22px;
+  font-weight: bold;
+  padding-right: 35px;
+  color: #26abaa;
+}
+
+[data-control]>p {
+  padding-right: 50px;
+}
+
+#goal-sip-investments, #goal-sip-pmt, #sip-investments, #sip-future-value {
+  font-weight: bold;
+}
+
+.calculator .input, .calculator .output {
+  width: 50%;
+  float: left;
+  box-sizing: border-box;
+}
+
+.calculator .output {
+  float: right;
+  padding-left: 110px;
+}
+
+.calculator label {
+  font-weight: normal;
+  margin-top: 10px;
+  margin-left: 110px;
+  margin-bottom: -30px;
+  font-size: 16px;
+}
+
+.calculator .parameter {
+  height: 90px;
+  line-height: 90px;
+  overflow: hidden;
+}
+
+.parameter .min, .parameter .max {
+  float: left;
+  line-height: 1em;
+  margin-top: 50px;
+  color: #666;
+  width: 40px;
+}
+
+.parameter .max {
+  text-align: right;
+  width: 60px;
+  margin-left: -70px;
+}
+
+.calculator input {
+  float: left;
+  font-family: "Noticia Text", Georgia, "Times New Roman", serif;
+}
+
+.calculator input[type='radio'] {
+  float: none;
+  font-size: 24px;
+  width: 30px;
+}
+
+.calculator .radio-buttons {
+  height: auto;
+  line-height: 2.5em;
+  margin: 20px 0px;
+}
+
+.radio-buttons input[type='radio'] {
+  display: none;
+}
+
+.radio-buttons label {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  padding-left: 70px;
+  margin: 0px 30px 10px 0px;
+  font-size: 18px;
+}
+
+.radio-buttons label:before {
+  content: "";
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  position: absolute;
+  left: 30px;
+  bottom: 1px;
+  background-color: #ddd;
+  border: 1px solid #ccc;
+  border-radius: 100%;
+}
+
+input[type=radio]:checked+label:before {
+  content: "\2022";
+  color: #999;
+  font-size: 30px;
+  text-align: center;
+  line-height: 26px;
+}
+
+.calculator img {
+  width: 90px;
+  height: auto;
+}
+
+.calculator input[type='number'] {
+  font-size: 22px;
+  width: 30%;
+  margin-top: 18px;
+}
+
+.rupee, .percent, .years {
+  width: 80px;
+  height: 80px;
+  float: left;
+}
+
+#goal-sip-amount {
+  width: 70%;
+  margin-right: 9%;
+  float: right;
+}
+
+#goal-sip-calculator .goal-amount {
+  margin-left: 180px;
+  margin-bottom: -20px;
+}
+
+#inflation-calculator .rupee {
+  background: #fff url('../images/inflation-rupee.png') no-repeat 0 0;
+  background-size: contain;
+}
+
+#inflation-calculator .percent {
+  background: #fff url('../images/inflation-percent.png') no-repeat 0 0;
+  background-size: contain;
+}
+
+#inflation-calculator .years {
+  background: #fff url('../images/inflation-years.png') no-repeat 0 0;
+  background-size: contain;
+}
+
+#sip-calculator .rupee {
+  background: #fff url('../images/sip-rupee.png') no-repeat 0 0;
+  background-size: contain;
+}
+
+#sip-calculator .percent {
+  background: #fff url('../images/sip-percent.png') no-repeat 0 0;
+  background-size: contain;
+}
+
+#sip-calculator .years {
+  background: #fff url('../images/sip-years.png') no-repeat 0 0;
+  background-size: contain;
+}
+
+#goal-sip-calculator .rupee {
+  background: #fff url('../images/goal-rupee.png') no-repeat 0 0;
+  background-size: contain;
+}
+
+#goal-sip-calculator .percent {
+  background: #fff url('../images/goal-percent.png') no-repeat 0 0;
+  background-size: contain;
+}
+
+#goal-sip-calculator .years {
+  background: #fff url('../images/goal-years.png') no-repeat 0 0;
+  background-size: contain;
+}
+
+#inflation-calculator input[type='number'] {
+  border: 2px solid #09a6a3;
+}
+
+#sip-calculator input[type='number'] {
+  border: 2px solid #dfac2c;
+}
+
+#goal-sip-calculator input[type='number'] {
+  border: 2px solid #17abe1;
+}
+
+.calculate p {
+  text-align: left;
+}
+
+#sip-calculator .calculate, #goal-sip-calculator .calculate {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#sip-calculator .calculate button, #goal-sip-calculator .calculate button {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#sip-calculator table, #goal-sip-calculator table {
+  margin-top: 30px;
+}
+
+#sip-calculator td, #goal-sip-calculator td {
+  font-size: 16px;
+  padding: 6px;
+}
+
+#sip-calculator td {
+  border: 2px solid #dfac2c;
+  background-color: #fff;
+}
+
+#goal-sip-calculator td {
+  border: 2px solid #1795CF;
+  background-color: #fff;
+}
+
+#sip-future-value, #sip-investments, #sip-earnings, #goal-sip-pmt, #goal-sip-investments, #goal-sip-earnings {
+  margin-left: 4px;
+}
+
+#sip-calculator .output, #goal-sip-calculator .output {
+  width: 40%;
+  height: 400px;
+  padding-left: 0px;
+}
+
+#sip-calculator .output {
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: 0% 0%;
+  margin-top: 40px;
+}
+
+#goal-sip-calculator .output {
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: 0% 0%;
+}
+
+input[type='range'] {
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type='range']:focus {
+  outline: none;
+}
+
+input[type='range']::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 6px 0;
+  color: transparent;
+}
+
+input[type='range']::-ms-fill-lower {
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #ccc, 0px 0px 1px #ccc;
+}
+
+input[type='range']::-ms-fill-upper {
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #ccc, 0px 0px 1px #ccc;
+}
+
+.calculator input[type='range'] {
+  width: 50%;
+  margin-top: 30px;
+  margin-left: -44px;
+}
+
+.calculator input[type='range']::-webkit-slider-runnable-track {
+  cursor: pointer;
+  width: 100%;
+  height: 5px;
+  box-shadow: 1px 1px 1px #ccc, 0px 0px 1px #ccc;
+  border: none;
+  border-radius: 1.3px;
+}
+
+.calculator input[type='range']::-webkit-slider-thumb {
+  cursor: pointer;
+  margin-top: -5px;
+  width: 16px;
+  height: 16px;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px #ccc, 0px 0px 1px #ccc;
+}
+
+.calculator input[type='range']::-moz-range-track {
+  cursor: pointer;
+  width: 100%;
+  height: 5px;
+  border: none;
+  border-radius: 1.3px;
+  box-shadow: 1px 1px 1px #ccc, 0px 0px 1px #ccc;
+}
+
+.calculator input[type='range']::-moz-range-thumb {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px #ccc, 0px 0px 1px #ccc;
+}
+
+.calculator input[type='range']::-ms-thumb {
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  margin-top: 1px;
+}
+
+#block-goalsipcalculator, #block-sipcalculator, #block-inflationcalculator {
+  margin-top: -25px;
+  margin-bottom: 0px !important;
+}
+
+.page-node-type-article #block-goalsipcalculator, .page-node-type-article #block-sipcalculator, .page-node-type-article #block-inflationcalculator {
+  margin-top: 0px;
+}
+
+#inflation-calculator>p, #sip-calculator>p, #goal-sip-calculator>p {
+  font-size: 18px!important;
+}
+
+#inflation-calculator input[type='range']::-webkit-slider-runnable-track {
+  background: #d4edec;
+}
+
+#inflation-calculator input[type='range']::-webkit-slider-thumb {
+  background: #11a9a4;
+}
+
+#inflation-calculator input[type='range']:focus::-webkit-slider-runnable-track {
+  background: #d4edec;
+}
+
+#inflation-calculator input[type='range']::-moz-range-track {
+  background: #d4edec;
+}
+
+#inflation-calculator input[type='range']::-moz-range-thumb {
+  background: #11a9a4;
+}
+
+#inflation-calculator input[type='range']::-ms-fill-lower {
+  background: #d4edec;
+}
+
+#inflation-calculator input[type='range']:focus::-ms-fill-lower {
+  background: #d4edec;
+}
+
+#inflation-calculator input[type='range']::-ms-fill-upper {
+  background: #d4edec;
+}
+
+#inflation-calculator input[type='range']:focus::-ms-fill-upper {
+  background: #d4edec;
+}
+
+#inflation-calculator input[type='range']::-ms-thumb {
+  background: #11a9a4;
+}
+
+#sip-calculator input[type='range']::-webkit-slider-runnable-track {
+  background: #ede7d4;
+}
+
+#sip-calculator input[type='range']::-webkit-slider-thumb {
+  background: #de9e04;
+}
+
+#sip-calculator input[type='range']:focus::-webkit-slider-runnable-track {
+  background: #ede7d4;
+}
+
+#sip-calculator input[type='range']::-moz-range-track {
+  background: #ede7d4;
+}
+
+#sip-calculator input[type='range']::-moz-range-thumb {
+  background: #de9e04;
+}
+
+#sip-calculator input[type='range']::-ms-fill-lower {
+  background: #ede7d4;
+}
+
+#sip-calculator input[type='range']:focus::-ms-fill-lower {
+  background: #ede7d4;
+}
+
+#sip-calculator input[type='range']::-ms-fill-upper {
+  background: #ede7d4;
+}
+
+#sip-calculator input[type='range']:focus::-ms-fill-upper {
+  background: #ede7d4;
+}
+
+#sip-calculator input[type='range']::-ms-thumb {
+  background: #de9e04;
+}
+
+#goal-sip-calculator input[type='range']::-webkit-slider-runnable-track {
+  background: #d4e5ed;
+}
+
+#goal-sip-calculator input[type='range']::-webkit-slider-thumb {
+  background: #16b6ec;
+}
+
+#goal-sip-calculator input[type='range']:focus::-webkit-slider-runnable-track {
+  background: #d4e5ed;
+}
+
+#goal-sip-calculator input[type='range']::-moz-range-track {
+  background: #d4e5ed;
+}
+
+#goal-sip-calculator input[type='range']::-moz-range-thumb {
+  background: #16b6ec;
+}
+
+#goal-sip-calculator input[type='range']::-ms-fill-lower {
+  background: #d4e5ed;
+}
+
+#goal-sip-calculator input[type='range']:focus::-ms-fill-lower {
+  background: #d4e5ed;
+}
+
+#goal-sip-calculator input[type='range']::-ms-fill-upper {
+  background: #d4e5ed;
+}
+
+#goal-sip-calculator input[type='range']:focus::-ms-fill-upper {
+  background: #d4e5ed;
+}
+
+#goal-sip-calculator input[type='range']::-ms-thumb {
+  background: #16b6ec;
+}
+
+#sip-calculator canvas, #goal-sip-calculator canvas {
+  width: 90% !important;
+  height: auto !important;
+}
+
+#sip-calculator canvas {
+  margin-top: 30px;
+}
+
+#goal-sip-calculator canvas {
+  margin-top: 50px;
+}
+
+.inflation-arc {
+  margin-left: -5%;
+  width: 122px !important;
+}
+
+.goal-sip-arc {
+  margin-left: 97%;
+  margin-top: -49%;
+  width: 120px!important;
+}
+
+.sip-arc {
+  margin-left: 100%;
+  width: 120px!important;
+  margin-top: -59%;
+}
+
+.calculator button {
+  font-size: 18px;
+  font-weight: bold;
+  width: auto;
+  border: 0px;
+  background: linear-gradient(#f37a07, #dd6d21);
+  color: #fff;
+  padding: 5px;
+}
+
+#inflation-calculator .input, #sip-calculator .input, #goal-sip-calculator .input {
+  width: 60%;
+  background-image: url('../images/green-arrow.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 100% 0%;
+  padding-right: 5%;
+}
+
+#sip-calculator .input {
+  background-image: url('../images/yellow-arrow.png');
+  background-size: 153px;
+  padding-right: 10%;
+}
+
+#goal-sip-calculator .input {
+  background-image: url('../images/blue-arrow.png');
+  background-size: 125px;
+  padding-right: 8%;
+}
+
+#inflation-calculator .output {
+  width: 40%;
+  height: 300px;
+  padding-top: 120px;
+  padding-left: 0px;
+}
+
+#inflation-calculator .output button {
+  width: 20%;
+  margin-left: 5%;
+  margin-right: 5%;
+  float: left;
+}
+
+#inflation-calculator .output .result {
+  float: left;
+  font-size: 36px;
+  line-height: 1.5em;
+  color: #fff;
+  background: linear-gradient(to right, #11a9a4, #56dcaf);
+  border-radius: 30px;
+  padding: 0px 20px;
+  margin-top: -11px;
+}
+
+#inflation-calculator .output .smaller-result {
+  margin-top: -16px;
+  font-size: 36px;
+}
+
+#inflation-calculator .output .smallest-result {
+  margin-top: -4px;
+  font-size: 20px;
+}
+
+a.back-to-top {
+  display: none;
+  width: 30px;
+  height: 30px;
+  position: fixed;
+  z-index: 999;
+  right: 20px;
+  bottom: 20px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  background-color: #038d8a;
+  color: #fff;
+  font-size: 16px;
+  text-indent: 4px;
+  line-height: 30px;
+}
+
+.page-node-1 #goal-sip-calculator {
+  border: 0px;
+}
+
+#goal-sip-calculator .calculate {
+  float: right;
+  width: 40%;
+  margin-top: 110px;
+}
+
+@media all and (min-width: 851px) and (max-width: 1280px) {
+  .calculator label {
+    margin-left: 80px;
+  }
+  .calculator input[type="range"] {
+    width: 52%;
+  }
+  .radio-buttons label {
+    margin-left: 0px;
+  }
+  #inflation-calculator .input {
+    padding-right: 9%;
+  }
+  .rupee, .percent, .years {
+    width: 70px;
+  }
+  #sip-calculator .input {
+    padding-right: 14%;
+    background-size: 147px;
+    background-position: 101% 0%;
+  }
+  #goal-sip-calculator .input {
+    padding-right: 10%;
+    background-size: 120px;
+    background-position: 100% 15%;
+  }
+  #goal-sip-calculator .calculate {
+    float: right;
+    width: 40%;
+    margin-top: 110px;
+  }
+  #goal-sip-amount {
+    width: 60%;
+    margin-right: 4%;
+  }
+}
+
+@media all and (min-width: 851px) and (max-width: 1024px) {
+  #goal-sip-amount {
+    width: 60%;
+    margin-right: 4%;
+  }
+}
+
+@media all and (max-width: 850px) {
+  .calculator label {
+    font-weight: normal;
+    margin-top: 0px;
+    margin-left: 40px;
+    margin-bottom: 0px;
+  }
+  .calculator .input, .calculator .output {
+    width: 100%;
+    float: none;
+    display: block;
+    box-sizing: border-box;
+  }
+  .calculator .output {
+    text-align: center;
+    padding: 0px;
+    margin-top: 20px;
+  }
+  .parameter .min, .parameter .max {
+    margin-top: 35px;
+  }
+  #goal-sip-amount {
+    margin-left: 15px;
+    width: 75%;
+  }
+  #goal-sip-calculator .goal-amount {
+    margin-left: 60px;
+    margin-bottom: -7px;
+  }
+  #inflation-calculator .input, #inflation-calculator .output, #sip-calculator .input, #sip-calculator .output, #goal-sip-calculator .input, #goal-sip-calculator .output {
+    width: 100%;
+    padding: 0px;
+    background: none;
+  }
+  #sip-calculator .output, #goal-sip-calculator .output {
+    margin-top: 0px;
+  }
+  #inflation-calculator .output {
+    padding: 0px;
+    height: auto;
+  }
+  .rupee, .percent, .years {
+    width: 17%;
+    height: auto;
+  }
+  .calculator .parameter {
+    height: 70px;
+    line-height: 70px;
+  }
+  .calculator input[type='range'] {
+    width: 48%;
+    margin-top: 20px;
+    margin-left: -45px;
+  }
+  .calculator input[type='number'] {
+    width: 35%;
+    margin-top: 8px;
+  }
+  .calculator .output button, .calculator .output .result, #inflation-calculator .output button {
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .calculator .output button, #inflation-calculator .output button {
+    margin-bottom: 10px;
+    width: auto;
+  }
+  #inflation-calculator .output button {
+    margin-bottom: 60px;
+  }
+  #inflation-calculator .output .result {
+    float: none;
+    display: inline-block;
+    font-size: 30px;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #inflation-calculator .output .smaller-result {
+    font-size: 24px;
+    margin-top: -30px;
+  }
+  #inflation-calculator .output .smallest-result {
+    font-size: 20px;
+    margin-top: -30px;
+  }
+  #sip-calculator .output, #goal-sip-calculator .output {
+    height: auto;
+    padding: 0px;
+    text-align: center;
+  }
+  #sip-calculator canvas, #goal-sip-calculator canvas {
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50% !important;
+    height: auto !important;
+  }
+  .radio-buttons label {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding-left: 40px;
+    margin: 0px 30px 10px 0px;
+    font-size: 14px;
+    line-height: 1.6em;
+  }
+  .radio-buttons label:before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    position: absolute;
+    left: 10px;
+    bottom: 1px;
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    border-radius: 100%;
+  }
+  input[type=radio]:checked+label:before {
+    content: "\2022";
+    color: #999;
+    font-size: 20px;
+    text-align: center;
+    line-height: 18px;
+  }
+}
+
+@media all and (max-width: 800px) {
+  .rupee, .percent, .years {
+    width: 9%;
+    height: auto;
+  }
+  .calculator label {
+    margin-top: 25px;
+    margin-left: 110px;
+    margin-bottom: -22px;
+  }
+  #goal-sip-amount {
+    width: 70%;
+  }
+  #goal-sip-calculator .goal-amount {
+    margin-left: 190px;
+  }
+  #goal-sip-calculator .calculate {
+    float: left;
+    width: 40%;
+    margin-top: 47px;
+  }
+}
+
+@media all and (max-width: 360px) {
+  .rupee, .percent, .years {
+    width: 17%;
+  }
+  .calculator label {
+    margin-top: 0px;
+    margin-left: 40px;
+    margin-bottom: 0px;
+  }
+  #goal-sip-calculator .goal-amount {
+    margin-left: 100px;
+  }
+  #goal-sip-calculator .calculate {
+    width: 100%;
+    margin-top: 47px;
+  }
+  #goal-sip-amount {
+    width: 69%;
+  }
+}
+
+@media all and (max-width: 320px) {
+  .calculator label {
+    margin-left: 23px !important;
+  }
+}
