@@ -34,8 +34,8 @@
             var total_amount_invested = period * instalment_amount * 12;
             var expected_amount_on_maturity = instalment_amount * ((Math.pow(1 + int_rate_per_period, no_of_compounding_periods) - 1) / int_rate_per_period) * (1 + int_rate_per_period);
             //document.getElementById("totalInvested").value = total_amount_invested.toFixed(2);
-            $scope.calulated_Money_SIP = expected_amount_on_maturity.toFixed(2);
-
+            $scope.calulated_Money_SIP = addCommas(expected_amount_on_maturity.toFixed(2));
+          
 
         }
 

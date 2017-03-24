@@ -16,7 +16,43 @@
 .listVal a:hover{
     color:slategray !important;
 }
+.fontSliderheader{
+    
+    font-family: 'Montserrat','Arial';
+    color: #000000;
+    font-size: 175%;
+    text-shadow: none;
+    line-height: 1.5;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
 
+}
+.fontSlidersubHeader{
+    
+    font-family: 'Montserrat','Arial';
+    color: #282828;
+    font-size: 87.5%;
+    text-shadow: none;
+    line-height: 1.5;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    text-align: left;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    margin-left: 20%;
+
+}
+.caurselCaption{
+    top: -5%;
+    left: 0%;
+    text-align:left;
+}
 .row3Paragraph{
 	color:black !important;
 	font-family:Open Sans;
