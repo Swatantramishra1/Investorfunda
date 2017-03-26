@@ -1,9 +1,9 @@
 ﻿
 #loading {
-    position: absolute; 
-    width: 100%; 
+    position: absolute;
+    width: 100%;
+    background: url('../../Img/loading.gif')  no-repeat center center;
     height: 100%;
-    background: url('http://premiumhydraulicoil.chevronlubricants.com/rtc/css/images/buffering.gif') no-repeat center center;
 }
 
 .AnchorCursorPointer{
