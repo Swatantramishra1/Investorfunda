@@ -1422,10 +1422,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             $scope.OnloadFunction();
         }
 
-    }
-
-
-
+    };
     //Compare Profile
     $scope.compreListView = true;
     $scope.compreTableView = false;

@@ -567,23 +567,7 @@ input[type='range']::-ms-fill-upper {
   font-size: 20px;
 }
 
-a.back-to-top {
-  display: none;
-  width: 30px;
-  height: 30px;
-  position: fixed;
-  z-index: 999;
-  right: 20px;
-  bottom: 20px;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  border-radius: 15px;
-  background-color: #038d8a;
-  color: #fff;
-  font-size: 16px;
-  text-indent: 4px;
-  line-height: 30px;
-}
+
 
 .page-node-1 #goal-sip-calculator {
   border: 0px;
