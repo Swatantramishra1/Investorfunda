@@ -1348,10 +1348,17 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         $scope.ApplyFilterOnFundsList();
     }
 
-    $scope.InvestLumpsum = function (index, Page, Type) {
+    $scope.InvestLumpsum = function (index, Page, Type,Amount,From) {
         var tesmp = "";
         if (Page != undefined) {
-            tesmp = document.getElementById(index + "Amount").value;
+            if (From == "Compare")
+            {
+                tesmp = Amount;
+            }
+            else {
+                tesmp = document.getElementById(index + "Amount").value;
+            }
+            
         }
         else {
             tesmp = "";
@@ -1360,7 +1367,13 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             if (Page != undefined) {
                 $localStorage.CurrentScheme = $scope.FundsList[index];
                 $localStorage.IndexCurrentCode = index;
-                $localStorage.SchemeAmount = document.getElementById(index + "Amount").value;
+                if (From == "Compare") {
+                    $localStorage.SchemeAmount = Amount;
+                }
+                else {
+                    $localStorage.SchemeAmount = document.getElementById(index + "Amount").value;
+                }
+                
             }
             else {
                 //document.getElementById($localStorage.IndexCurrentCode + "Amount").value = $localStorage.SchemeAmount;
@@ -1528,13 +1541,18 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
        
     ]
     $scope.compareIndex = [];
+    $scope.compareTempIndexes = [];
     $scope.SelectCompare=function(Index)
     {
         if ($scope.compareIndex.length <= 3)
         {
             
-                if ($scope.compareIndex.indexOf($scope.FundsList[Index].SchemeID) == -1)
-                    $scope.compareIndex.push($scope.FundsList[Index].SchemeID);
+            if ($scope.compareIndex.indexOf($scope.FundsList[Index].SchemeID) == -1)
+            {
+                $scope.compareTempIndexes.push(Index);
+                $scope.compareIndex.push($scope.FundsList[Index].SchemeID);
+            }
+                    
            
         }
         else
@@ -1636,7 +1654,13 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         $scope.compareIndex = [];
     }
 
-
+    $scope.clickCompareVal = function (Index) {
+        $scope.showCompareInvestmentDiv = true;
+        $scope.TempIndexScope = Index;
+    };
+    $scope.investCompare = function () {
+        $scope.InvestLumpsum($scope.TempIndexScope, 'Page', $scope.compareSelectInvestmentModeVal, $scope.compareAmountVal, 'Compare')
+    }
     //Our Top Mutual Funds
     $scope.FilterTempValue = "EQ large cap";
     $scope.filterTopFunds = function (param) {

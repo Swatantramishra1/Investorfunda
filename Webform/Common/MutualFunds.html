@@ -39,36 +39,6 @@
                     </thead>
                     <tbody>
 
-                        <!-- Temp Data -->
-
-                        
-                        <!--<tr>
-                            <td>0</td>
-                            <td  class="OnHoverSchemename"> RELIANCE TOP 200 FUND - GROWTH PLAN - GROWTH</td>
-                            <td class="hidden-sm">GROWTH</td>
-                            <td>0.4</td>
-                            <td><span class="label label-warning">4 %</span></td>
-                            <td>2</td>
-                            <td><img src="../../Img/bar_graph1.png" style="height:16px;cursor:pointer" ng-click="showAdvanced(1)" /></td>
-                            <td><input type="text" style="width:60px" id="EARGAmount"  /></td>
-                            <td>
-                                <div class="btn-group">
-                                    <button type="button" class="btn-u dropdown-toggle" data-toggle="dropdown">
-                                        Select
-                                        <i class="fa fa-angle-down"></i>
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a ng-click="InvestLumpsum('EARG','Page')"><i class="fa fa-inr"></i> Buy Lumpsum</a></li>
-                                        <li><a ><i class="fa fa-inr"></i> Buy SIP</a></li>
-                                        <li><a ><i class="fa fa-shopping-cart"></i> Add to cart as Lumpsum</a></li>
-                                        <li><a ><i class="fa fa-shopping-cart"></i> Add to cart as SIP</a></li>
-                                        <li class="divider"></li>
-                                        <li><a ><i class="fa fa-heart-o"></i> Add To WatchList</a></li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>-->
-
                         <!-- Repeat List of All mutual funds -->
                         <tr ng-repeat="MF in FundsList | filter : filterprodcut | limitTo : SchemeLimitTo" id="{{MF.SchemeID}}" >
                             <td>{{$index+1}}</td>
@@ -87,10 +57,7 @@
     <ul class="dropdown-menu" role="menu">
         <li><a ng-click="InvestLumpsum($index,'Page','LUMPSUM')"><i class="fa fa-inr"></i> Buy Lumpsum</a></li>
         <li><a ng-click="InvestLumpsum($index,'Page','SIP')"><i class="fa fa-inr"></i> Buy SIP</a></li>
-        <!--<li><a ><i class="fa fa-shopping-cart"></i> Add to cart as Lumpsum</a></li>
-        <li><a ><i class="fa fa-shopping-cart"></i> Add to cart as SIP</a></li>-->
-        <!--<li class="divider"></li>-->
-        <!--<li><a ><i class="fa fa-heart-o"></i> Add To WatchList</a></li>-->
+ 
     </ul>
 </div></td>
                         </tr>

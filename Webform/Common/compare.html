@@ -99,9 +99,36 @@
         </tr>
         <tr>
             <td><strong>Select Funds</strong></td>
-            <td><input type="button" class="btn btn-primary rounded-2x" value="Select" ng-click="SelectcompareFunds()" /></td>
-            <td><input type="button" class="btn btn-primary rounded-2x" value="Select" ng-click="SelectcompareFunds()" /></td>
-            <td><input type="button" class="btn btn-primary rounded-2x" value="Select" ng-click="SelectcompareFunds()" /></td>
+            <td ng-repeat="index in compareTempIndexes"><input type="button" class="btn btn-primary rounded-2x" value="Select" ng-click="clickCompareVal(index,'Page','SIP')" />
+            </td>
+            
+        </tr>
+        <tr>
+            <td>
+
+            </td>
+            <td colspan="3" ng-if="showCompareInvestmentDiv">
+                <div class="col-lg-12">
+                    <div class="col-lg-3">Amount</div>
+                    <div class="col-lg-9"><input type="text" class="form-control" ng-model="compareAmountVal" /> </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-3">Investment Mode</div>
+                    <div class="col-lg-9"><select class="form-control" ng-model="compareSelectInvestmentModeVal">
+                                              <option>Select Type</option>
+                                              <option ng-value="SIP">SIP</option>
+                                              <option ng-value="LUMPSUM">One Time Investment</option>                                                                            
+                        </select> </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-3">
+                    <input type="button" value="Invest Now" class="btn btn-success"  ng-click="investCompare()" />
+                    
+                    </div>
+                    
+                </div>
+            </td>
+
         </tr>
       
     </tbody>
