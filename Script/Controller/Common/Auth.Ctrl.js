@@ -56,16 +56,33 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
                     
                     $state.go('StartSIP');
                 }
-                else if ($localStorage.CurrentStatusOfPage == "LUMPSUM") {
+                else if ($localStorage.CurrentStatusOfPage == "LUMPSUM" || $localStorage.CurrentStatusOfPage == "SIP") {
                     //$localStorage.MutualFundsState = true;
-                    $localStorage.MutualFundsState = true;
-                    $state.go('MutualFundsList');
+
+                    switch($localStorage.CurrentStateOfPage)
+                    {
+                        case 'MutualFundsList':
+                            $localStorage.MutualFundsState = true;
+                            $state.go('MutualFundsList');
+                            break;
+
+                        case 'recommonded':
+                            $localStorage.MutualFundsState = true;
+                            $state.go('recommonded');
+                            break;
+
+                        case 'compare':
+                            $localStorage.MutualFundsState = true;
+                            $state.go('compare');
+                            break;
+                        case 'ELSS':
+                            $localStorage.MutualFundsState = true;
+                            $state.go('ELSS');
+                            break;
+                    }
+                    
                 }
-                else if ($localStorage.CurrentStatusOfPage == "SIP") {
-                    //$localStorage.MutualFundsState = true;
-                    $localStorage.MutualFundsState = true;
-                    $state.go('MutualFundsList');
-                }
+                
                 else  {
                     
                     window.location = "../../../Webform/User/dist/index.html"

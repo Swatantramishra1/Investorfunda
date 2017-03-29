@@ -2123,7 +2123,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
             $localStorage.CurrentStatusOfPage = "";
             alert("Plan Created Succesfully");
             $localStorage.ChildState = false;
-            $state.go('SIP');
+            $state.go($state.current.name);
         
 
         },
@@ -2535,6 +2535,74 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                         }
                         $localStorage.CurrentStatusOfPage = "StartSIP";
                         $state.go('Authentication', { From: 'StartSIP' });
+                    }
+                    break;
+
+                case "CustomElss":
+
+                    if ($localStorage.CurrentStatusOfPage != currentState) {
+                        $localStorage.POstJson = {
+
+                            "User_ID": "",
+                            "userPlan":
+                            {
+                                "Plan_ID": "",
+                                "MasterPlan_ID": "10",
+                                "User_ID": "",
+                                "GoalName": "Custom Elss",
+                                "PresentAge": "",
+                                "GoalTimeToStart": "",
+                                "GoalDuration": "1",
+                                "GoalPerYearCost": "",
+                                "GoalPerYearLivingCost": "",
+                                "GoalLumpsum": $scope.Portfolio_Parameter.TotalMonthlyInvestment,
+                                "GoalInflationRate": "",
+                                "GoalTotalCost": "",
+                                "GoalLivingTotalCost": "",
+                                "GoalTotalAmount": $scope.Portfolio_Parameter.TotalMonthlyInvestment,
+                                "GoalTotalLumpsumAmount": "",
+                                "EstimatedInflationRate": "",
+                                "GoalDateOfSip": "",
+                                "GoalRetirementYear": "",
+                                "GoalRetirementExpense": "",
+                                "GoalRetirementMonthlyExpenditure": "",
+                                "GoalHousePlanYear": "",
+                                "GoalHouseCurrentCost": "",
+                                "GoalHouseDownPayment": "",
+                                "GoalHouseLoanYear": "",
+                                "GoalChildMerrageBudgetAmount": "",
+                                "Risk": ""
+                            },
+                            "userPortfolio":
+                            {
+                                "Portfolio_ID": "",
+                                "Plan_ID": "",
+                                "User_ID": "",
+                                "Equity": $scope.Portfolio_Parameter.Equity,
+                                "Debt": $scope.Portfolio_Parameter.Debt,
+                                "Gold": $scope.Portfolio_Parameter.Gold,
+                                "EstimatedTotalSIPAmt": $scope.Portfolio_Parameter.TotalMonthlyInvestment,
+                                "Scheme_IDs": ""
+                            },
+                            "InvestmentList": $scope.sampleStructure
+                        }
+                    }
+                    if ($localStorage.LoginStatus) {
+                        $scope.SIP_GOAL_SHOW = false;
+                        $scope.SIP_GOAL_Setting_SHOW = false;
+                        $scope.SIP_GOAL_Final_SHOW = true;
+
+                        $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
+
+                        $scope.CreatePlanFunction();
+
+                    }
+                    else {
+                        for (let a = 0; a < $scope.sampleStructure.length; a++) {
+                            $scope.sampleStructure[a].InvestmentType = "CustomElss";
+                        }
+                        $localStorage.CurrentStatusOfPage = "CustomElss";
+                        $state.go('Authentication', { From: 'CustomElss' });
                     }
                     break;
             }

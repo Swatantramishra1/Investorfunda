@@ -1387,22 +1387,25 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
 
             }
 
-            if ($localStorage.MutualFundsState) {
-                if (Type === undefined || Type === "") {
-                    Type = $localStorage.CurrentStatusOfPage;
+            
+                if ($localStorage.LoginStatus)
+                {
+                    if (Type === undefined || Type === "") {
+                        Type = $localStorage.CurrentStatusOfPage;
+                    }
+                    if (Type === "LUMPSUM") {
+                        $localStorage.POstJson.userPlan.MasterPlan_ID = "6";
+                    }
+                    else if (Type === "SIP") {
+                        $localStorage.POstJson.userPlan.MasterPlan_ID = "8";
+                    }
+                    //if ($localStorage.CurrentScheme !== undefined)
+                    //{
+                    //    $localStorage.CurrentScheme = $scope.FundsList[index];
+                    //}
+                    $scope.InvestorFundaConfMessage("Confirmation of Proceed", "Do you realy want to proceed for Scheme");
                 }
-                if (Type === "LUMPSUM") {
-                    $localStorage.POstJson.userPlan.MasterPlan_ID = "6";
-                }
-                else if (Type === "SIP") {
-                    $localStorage.POstJson.userPlan.MasterPlan_ID = "8";
-                }
-                //if ($localStorage.CurrentScheme !== undefined)
-                //{
-                //    $localStorage.CurrentScheme = $scope.FundsList[index];
-                //}
-                $scope.InvestorFundaConfMessage("Confirmation of Proceed", "Do you realy want to proceed for Scheme");
-            }
+          
             else {
                 if (index !== undefined) {
                     if (BseCode != undefined) {
@@ -1419,7 +1422,9 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                     else if (Type === "SIP") {
                         $localStorage.POstJson.userPlan.MasterPlan_ID = "8";
                     }
-                    $state.go('Authentication', { From: 'Mutualfunds' });
+                    $localStorage.CurrentStatusOfPage = Type;
+                    $localStorage.CurrentStateOfPage = $state.current.name;
+                    $state.go('Authentication', { From: $state.current.name });
                 }
 
             }
@@ -1554,6 +1559,10 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
     ]
     $scope.compareIndex = [];
     $scope.compareTempIndexes = [];
+    $scope.compareVal = {
+        compareSelectInvestmentModeVal: "",
+        compareAmountVal: ""
+    };
     $scope.SelectCompare=function(Index)
     {
         if ($scope.compareIndex.length <= 3)
@@ -1671,7 +1680,8 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         $scope.TempIndexScope = Index;
     };
     $scope.investCompare = function () {
-        $scope.InvestLumpsum($scope.TempIndexScope, 'Page', $scope.compareSelectInvestmentModeVal, $scope.compareAmountVal, 'Compare')
+        console.log($scope.compareVal.compareSelectInvestmentModeVal);
+        $scope.InvestLumpsum($scope.TempIndexScope, 'Page', $scope.compareVal.compareSelectInvestmentModeVal, $scope.compareVal.compareAmountVal, 'Compare')
     }
     //Our Top Mutual Funds
     $scope.FilterTempValue = "EQ large cap";
