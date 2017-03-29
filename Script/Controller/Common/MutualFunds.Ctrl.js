@@ -1365,7 +1365,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         }
         if (tesmp != "" || ($localStorage.SchemeAmount != undefined && $localStorage.SchemeAmount != "")) {
             if (Page != undefined) {
-                if (BseCode != undefined || Elss !=undefined) 
+                if (BseCode != undefined) 
                 {
                     $localStorage.CurrentScheme = BseCode;
                 }
@@ -1405,7 +1405,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             }
             else {
                 if (index !== undefined) {
-                    if (BseCode != undefined || Elss !=undefined) {
+                    if (BseCode != undefined) {
                         $localStorage.CurrentScheme = BseCode;
                     }
                     else {
