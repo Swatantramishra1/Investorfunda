@@ -1348,7 +1348,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         $scope.ApplyFilterOnFundsList();
     }
 
-    $scope.InvestLumpsum = function (index, Page, Type,Amount,From) {
+    $scope.InvestLumpsum = function (index, Page, Type,Amount,From,BseCode) {
         var tesmp = "";
         if (Page != undefined) {
             if (From == "Compare")
@@ -1356,7 +1356,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                 tesmp = Amount;
             }
             else {
-                tesmp = document.getElementById(index + "Amount").value;
+                tesmp = document.getElementById(index+"Amount").value;
             }
             
         }
@@ -1365,7 +1365,14 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         }
         if (tesmp != "" || ($localStorage.SchemeAmount != undefined && $localStorage.SchemeAmount != "")) {
             if (Page != undefined) {
-                $localStorage.CurrentScheme = $scope.FundsList[index];
+                if (BseCode != undefined || Elss !=undefined) 
+                {
+                    $localStorage.CurrentScheme = BseCode;
+                }
+                else {
+                    $localStorage.CurrentScheme = $scope.FundsList[index];
+                }
+               
                 $localStorage.IndexCurrentCode = index;
                 if (From == "Compare") {
                     $localStorage.SchemeAmount = Amount;
@@ -1398,7 +1405,12 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             }
             else {
                 if (index !== undefined) {
-                    $localStorage.CurrentScheme = $scope.FundsList[index];
+                    if (BseCode != undefined || Elss !=undefined) {
+                        $localStorage.CurrentScheme = BseCode;
+                    }
+                    else {
+                        $localStorage.CurrentScheme = $scope.FundsList[index];
+                    }
                     $localStorage.IndexCurrentCode = index;
                     $localStorage.CurrentStatusOfPage = Type;
                     if (Type === "LUMPSUM") {
