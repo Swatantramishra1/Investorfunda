@@ -36,7 +36,7 @@
             //document.getElementById("totalInvested").value = total_amount_invested.toFixed(2);
             $scope.calulated_Money_SIP = addCommas(expected_amount_on_maturity.toFixed(2));
           
-
+            $scope.calulated_InvestedAmount = addCommas($scope.SIP_Money_bar * $scope.SIP_Year_bar * 12);
         }
 
     }

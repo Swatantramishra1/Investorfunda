@@ -87,6 +87,32 @@
 	opacity:0.8;
 	font-weight:400;
 }
+.caurselCaptionCar {
+    top: 15%;
+    left: -29%;
+    text-align: left;
+}
+.caurselCaptionHouse {
+    top: 14%;
+    left: -22%;
+    text-align: left;
+}
+.caurselCaptionTax {
+    top: -5%;
+    left: 10%;
+    text-align: left;
+}
+.caurselCaptionTour {
+    top: 15%;
+    left: 18%;
+    text-align: left;
+}
+.caurselCaptionMerrige {
+    top: 26%;
+    left: 0%;
+    text-align: left;
+}
+
 .camelCase {
 	text-transform: capitalize !important;
 }
