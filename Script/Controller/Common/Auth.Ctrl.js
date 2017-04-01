@@ -142,10 +142,13 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
             HideLoader();
             if (answer.UserRegistrationResult.ResponseCode == "0") {
                 $localStorage.IsComplete = "1";
-                window.location = "../../../Webform/User/dist/index.html"
+                $scope.ErrorMessage = "Your registration has been successfully done . Thanks for registering with us.";
+            }
+            else {
+                $scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
             }
            
-                $scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
+                
             
 
         },
