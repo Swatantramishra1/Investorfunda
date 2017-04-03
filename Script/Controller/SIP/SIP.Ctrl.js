@@ -2791,10 +2791,44 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                 TempMonthlyInvestment = parseInt($scope.Portfolio_Parameter.TotalMonthlyInvestment) - parseInt(1000);
                 if (parseInt(TempMonthlyInvestment) >= 4000) {
                     $scope.Portfolio_Parameter.TotalMonthlyInvestment = TempMonthlyInvestment;
+                    switch (currentState) {
+                        case "EasySIP":
+                          
+                            $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation($scope.Investment.horizone, $scope.Portfolio_Parameter.TotalMonthlyInvestment, $scope.Investment.risk, "EasySIP", "EasySIP");
+                            $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+                            //if ($scope.Portfolio_Parameter.TotalMonthlyInvestment >= 2500)
+                            //{
+                            $scope.Investment.firstStepSip = false;
+                            $scope.SIP_GOAL_Final_SHOW = true;
+                            $scope.Portfolio_Parameter.Risk = $scope.Investment.risk;
+                            $scope.Portfolio_Final();
+                            // $scope.Portfolio_InvestNow('Increment');
+                            $scope.ShowDiv("1");
+                            break;
+                        case "StartSIP":
+                           ;
+                            $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation($scope.Investment.horizone, $scope.Portfolio_Parameter.TotalMonthlyInvestment, $scope.Investment.risk, "EasySIP", "EasySIP");
+                            $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+                            //if ($scope.Portfolio_Parameter.TotalMonthlyInvestment >= 2500)
+                            //{
+                            $scope.Investment.firstStepSip = false;
+                            $scope.SIP_GOAL_Final_SHOW = true;
+                            $scope.Portfolio_Parameter.Risk = $scope.Investment.risk;
+                            $scope.Portfolio_Final();
+                            // $scope.Portfolio_InvestNow('Increment');
+                            $scope.ShowDiv("1");
+                            break;
+                        case "CustomElss":
+                            divideElss($scope.Portfolio_Parameter.TotalMonthlyInvestment, $scope.ElssList);
+                            //if ($scope.Portfolio_Parameter.TotalMonthlyInvestment >= 2500)
+                            //{
+                            $scope.Investment.firstStepSip = false;
+                            $scope.SIP_GOAL_Final_SHOW = true;
+                            break;
+                    }
 
-                    $scope.Portfolio_Final();
-                    // $scope.Portfolio_InvestNow('Increment');
-                    $scope.ShowDiv("1");
+                   
+                
                 }
                 else {
                     alert("You can not have less than 4000 Rupees");
@@ -2804,9 +2838,44 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
             else {
                 $scope.Portfolio_Parameter.TotalMonthlyInvestment = parseInt($scope.Portfolio_Parameter.TotalMonthlyInvestment) + parseInt(1000);
-                $scope.Portfolio_Final();
-                //$scope.Portfolio_InvestNow('Increment');
-                $scope.ShowDiv("1");
+                switch (currentState) {
+                    case "EasySIP":
+
+                        $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation($scope.Investment.horizone, $scope.Portfolio_Parameter.TotalMonthlyInvestment, $scope.Investment.risk, "EasySIP", "EasySIP");
+                        $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+                        //if ($scope.Portfolio_Parameter.TotalMonthlyInvestment >= 2500)
+                        //{
+                        $scope.Investment.firstStepSip = false;
+                        $scope.SIP_GOAL_Final_SHOW = true;
+                        $scope.Portfolio_Parameter.Risk = $scope.Investment.risk;
+                        $scope.Portfolio_Final();
+                        //$scope.Portfolio_InvestNow('Increment');
+                        $scope.ShowDiv("1");
+                        break;
+                    case "StartSIP":
+                        
+                        $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation($scope.Investment.horizone, $scope.Portfolio_Parameter.TotalMonthlyInvestment, $scope.Investment.risk, "EasySIP", "EasySIP");
+                        $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $scope.Portfolio_Parameter.TotalMonthlyInvestment);
+                        //if ($scope.Portfolio_Parameter.TotalMonthlyInvestment >= 2500)
+                        //{
+                        $scope.Investment.firstStepSip = false;
+                        $scope.SIP_GOAL_Final_SHOW = true;
+                        $scope.Portfolio_Parameter.Risk = $scope.Investment.risk;
+                        $scope.Portfolio_Final();
+                        //$scope.Portfolio_InvestNow('Increment');
+                        $scope.ShowDiv("1");
+                        break;
+                    case "CustomElss":
+                        divideElss($scope.Portfolio_Parameter.TotalMonthlyInvestment, $scope.ElssList);
+                        //if ($scope.Portfolio_Parameter.TotalMonthlyInvestment >= 2500)
+                        //{
+                        $scope.Investment.firstStepSip = false;
+                        $scope.SIP_GOAL_Final_SHOW = true;
+                        break;
+                }
+
+
+               
             }
         }
 
@@ -3936,6 +4005,63 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         }
 
     };
+    function divideElss(Amount,Array) {
+        $scope.Portfolio_Parameter.EstematedYear = 1;
+        $scope.sampleStructure = [];
+        if (Amount > 1000) {
+            $scope.sampleStructure.push({
+                "SchemeName": Array[0].SchemeName,
+                "BSESchemeCode": Array[0].BSESchmecode,
+                "ISIN": Array[0].ISIN,
+                "DueDate": Array[0].date,
+                "Amount": parseInt((50 / 100) * Amount),
+                "DateString": "",
+                "Scheme_ID": "",
+                "InvestmentType": $scope.InvestmentKnow.InvestMentType
+
+            });
+            $scope.sampleStructure.push({
+                "SchemeName": Array[1].SchemeName,
+                "BSESchemeCode": Array[1].BSESchmecode,
+                "ISIN": Array[1].ISIN,
+                "DueDate": Array[1].date,
+                "Amount": parseInt((50 / 100) * Amount),
+                "DateString": "",
+                "Scheme_ID": "",
+                "InvestmentType": $scope.InvestmentKnow.InvestMentType
+
+            });
+        }
+        else if (Amount > 500 && Amount <= 1000) {
+            $scope.sampleStructure.push({
+                "SchemeName": Array[0].SchemeName,
+                "BSESchemeCode": Array[0].BSESchmecode,
+                "ISIN": Array[0].ISIN,
+                "DueDate": Array[0].date,
+                "Amount": parseInt((50 / 100) * Amount),
+                "DateString": "",
+                "Scheme_ID": "",
+                "InvestmentType": $scope.InvestmentKnow.InvestMentType
+
+            });
+        }
+        else {
+            $scope.sampleStructure.push({
+                "SchemeName": Array[0].SchemeName,
+                "BSESchemeCode": Array[0].BSESchmecode,
+                "ISIN": Array[0].ISIN,
+                "DueDate": Array[0].date,
+                "Amount": 500,
+                "DateString": "",
+                "Scheme_ID": "",
+                "InvestmentType": $scope.InvestmentKnow.InvestMentType
+
+            });
+        }
+        $scope.Portfolio_Parameter.Equity = Amount;
+        $scope.Portfolio_Parameter.Debt = 0;
+        $scope.Portfolio_Parameter.Gold = 0;
+    }
     $scope.ElssCalculation = function () {
         $scope.sampleStructure = [];
         var amountInvestment = $scope.InvestmentKnow.amount;
@@ -3952,67 +4078,13 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
            
         }
         $scope.Portfolio_Parameter.TotalMonthlyInvestment = amountInvestment;
-        $scope.Portfolio_Parameter.EstematedYear = 1;
-
-        if ($scope.Portfolio_Parameter.TotalMonthlyInvestment > 1000)
-        {
-            $scope.sampleStructure.push({
-                "SchemeName": $scope.ElssList[0].SchemeName,
-                "BSESchemeCode": $scope.ElssList[0].BSESchmecode,
-                "ISIN": $scope.ElssList[0].ISIN,
-                "DueDate": $scope.ElssList[0].date,
-                "Amount": parseInt((50 / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment),
-            "DateString": "",
-            "Scheme_ID": "",
-            "InvestmentType": $scope.InvestmentKnow.InvestMentType
-
-            });
-            $scope.sampleStructure.push({
-                "SchemeName": $scope.ElssList[1].SchemeName,
-                "BSESchemeCode": $scope.ElssList[1].BSESchmecode,
-                "ISIN": $scope.ElssList[1].ISIN,
-                "DueDate": $scope.ElssList[1].date,
-                "Amount": parseInt((50 / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment),
-                "DateString": "",
-                "Scheme_ID": "",
-                "InvestmentType": $scope.InvestmentKnow.InvestMentType
-
-            });
-        }
-        else if ($scope.Portfolio_Parameter.TotalMonthlyInvestment > 500 && $scope.Portfolio_Parameter.TotalMonthlyInvestment <= 1000)
-        {
-            $scope.sampleStructure.push({
-                "SchemeName": $scope.ElssList[0].SchemeName,
-                "BSESchemeCode": $scope.ElssList[0].BSESchmecode,
-                "ISIN": $scope.ElssList[0].ISIN,
-                "DueDate": $scope.ElssList[0].date,
-                "Amount": parseInt((50 / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment),
-                "DateString": "",
-                "Scheme_ID": "",
-                "InvestmentType": $scope.InvestmentKnow.InvestMentType
-
-            });
-        }
-        else {
-            $scope.sampleStructure.push({
-                "SchemeName": $scope.ElssList[0].SchemeName,
-                "BSESchemeCode": $scope.ElssList[0].BSESchmecode,
-                "ISIN": $scope.ElssList[0].ISIN,
-                "DueDate": $scope.ElssList[0].date,
-                "Amount": 500,
-                "DateString": "",
-                "Scheme_ID": "",
-                "InvestmentType": $scope.InvestmentKnow.InvestMentType
-
-            });
-        }
-        $scope.Portfolio_Parameter.Equity = $scope.Portfolio_Parameter.TotalMonthlyInvestment;
-        $scope.Portfolio_Parameter.Debt = 0;
-        $scope.Portfolio_Parameter.Gold = 0;
+        divideElss($scope.Portfolio_Parameter.TotalMonthlyInvestment, $scope.ElssList);
         $scope.TaxElssCustomiseStep1 = false;
         $scope.TaxElssCustomiseStep2 = true;
 
-           };
+    };
+
+
     //Tax Saving Amount End
 
 }]);

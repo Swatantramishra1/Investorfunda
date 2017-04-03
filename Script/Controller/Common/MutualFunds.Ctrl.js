@@ -901,6 +901,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
     }
     $rootScope.InsertPlanForMutuals = function () {
         //alert($localStorage.CurrentSchemeCode)
+        $scope.InvestmentList = [];
         ShowLoader();
         $scope.InvestmentList.push({
             "ISIN": $localStorage.CurrentScheme.ISIN,
@@ -913,8 +914,9 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             "DueDate": "1/March/2017"
 
         });
+        $localStorage.POstJson.InvestmentList = $scope.InvestmentList;
         $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
-
+        $localStorage.POstJson.userPortfolio.EstimatedTotalSIPAmt = $localStorage.SchemeAmount;
         var CreateUserList = FundsService.CreatePlan.PostPromise($localStorage.POstJson);
         CreateUserList.then(
         // OnSuccess function
@@ -1347,8 +1349,20 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         }
         $scope.ApplyFilterOnFundsList();
     }
-
-    $scope.InvestLumpsum = function (index, Page, Type,Amount,From,BseCode) {
+    function findWithAttr(array, attr, value) {
+        for (var i = 0; i < array.length; i += 1) {
+            if (array[i][attr] === value) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    $scope.InvestLumpsum = function (index, Page, Type, Amount, From, BseCode) {
+        $localStorage.CurrentScheme = {
+            ISIN: "",
+            SchemeName: "",
+            mf_cocode: ""
+        };
         var tesmp = "";
         if (Page != undefined) {
             if (From == "Compare")
@@ -1367,10 +1381,27 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             if (Page != undefined) {
                 if (BseCode != undefined) 
                 {
-                    $localStorage.CurrentScheme = BseCode;
+                    if ($state.current.name == "recommonded")
+                    {
+
+                        
+                        var indexVal = findWithAttr($scope.SIPGoalStructureDate,'BSESchmecode', BseCode);
+                        $localStorage.CurrentScheme.mf_cocode = $scope.SIPGoalStructureDate[indexVal].BSESchmecode;
+                        $localStorage.CurrentScheme.ISIN = $scope.SIPGoalStructureDate[indexVal].ISIN;
+                        $localStorage.CurrentScheme.SchemeName = $scope.SIPGoalStructureDate[indexVal].SchemeName;
+                       
+                    }
+                    else {
+                        $localStorage.CurrentScheme.mf_cocode = BseCode;
+                    }
+                    
+                   
                 }
                 else {
-                    $localStorage.CurrentScheme = $scope.FundsList[index];
+                    $localStorage.CurrentScheme.mf_cocode=$scope.FundsList[index].BSESchmecode;
+                    $localStorage.CurrentScheme.ISIN = $scope.FundsList[index].ISIN;
+                    $localStorage.CurrentScheme.SchemeName = $scope.FundsList[index].SchemeName;
+                 
                 }
                
                 $localStorage.IndexCurrentCode = index;
@@ -1399,20 +1430,29 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                     else if (Type === "SIP") {
                         $localStorage.POstJson.userPlan.MasterPlan_ID = "8";
                     }
-                    //if ($localStorage.CurrentScheme !== undefined)
-                    //{
-                    //    $localStorage.CurrentScheme = $scope.FundsList[index];
-                    //}
+                    $localStorage.CurrentStatusOfPage = Type;
+                  
                     $scope.InvestorFundaConfMessage("Confirmation of Proceed", "Do you realy want to proceed for Scheme");
                 }
           
             else {
                 if (index !== undefined) {
                     if (BseCode != undefined) {
-                        $localStorage.CurrentScheme = BseCode;
+                        if ($state.current.name == "recommonded") {
+                            var indexVal = $scope.groups.indexOf(BseCode);
+                            $localStorage.CurrentScheme.mf_cocode = $scope.groups[indexVal].BSESchmecode;
+                            $localStorage.CurrentScheme.ISIN = $scope.groups[indexVal].ISIN;
+                            $localStorage.CurrentScheme.SchemeName = $scope.groups[indexVal].SchemeName;
+
+                        }
+                        else {
+                            $localStorage.CurrentScheme.mf_cocode = BseCode;
+                        }
                     }
                     else {
-                        $localStorage.CurrentScheme = $scope.FundsList[index];
+                        $localStorage.CurrentScheme.mf_cocode = $scope.FundsList[index].BSESchmecode;
+                        $localStorage.CurrentScheme.ISIN = $scope.FundsList[index].ISIN;
+                        $localStorage.CurrentScheme.SchemeName = $scope.FundsList[index].SchemeName;
                     }
                     $localStorage.IndexCurrentCode = index;
                     $localStorage.CurrentStatusOfPage = Type;
