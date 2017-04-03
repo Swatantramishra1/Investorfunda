@@ -1439,10 +1439,10 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                 if (index !== undefined) {
                     if (BseCode != undefined) {
                         if ($state.current.name == "recommonded") {
-                            var indexVal = $scope.groups.indexOf(BseCode);
-                            $localStorage.CurrentScheme.mf_cocode = $scope.groups[indexVal].BSESchmecode;
-                            $localStorage.CurrentScheme.ISIN = $scope.groups[indexVal].ISIN;
-                            $localStorage.CurrentScheme.SchemeName = $scope.groups[indexVal].SchemeName;
+                            var indexVal = $scope.SIPGoalStructureDate.indexOf(BseCode);
+                            $localStorage.CurrentScheme.mf_cocode = $scope.SIPGoalStructureDate[indexVal].BSESchmecode;
+                            $localStorage.CurrentScheme.ISIN = $scope.SIPGoalStructureDate[indexVal].ISIN;
+                            $localStorage.CurrentScheme.SchemeName = $scope.SIPGoalStructureDate[indexVal].SchemeName;
 
                         }
                         else {
