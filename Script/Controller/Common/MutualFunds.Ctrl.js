@@ -583,7 +583,6 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
        ]
 
     $scope.groups = _.groupBy($scope.SIPGoalStructureDate, "MFtype");
-    console.log($scope.groups);
     $scope.ElssList = [{
         "Rank": "1",
         "SchemeName": "Franklin India Taxshield - Growth",
