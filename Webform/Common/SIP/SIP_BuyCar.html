@@ -2,7 +2,7 @@
     <div class="row">
         <div class="shadow-wrapper margin-bottom-10">
             <div class="tag-box tag-box-v1 box-shadow shadow-effect-2">
-                <h2><strong>BUY A CAR PLAN</strong>   </h2>
+                <h2><strong>BUY A CAR PLAN <span ng-show="Portfolio_Parameter.Portfolio_Name !=''"> For <span style="color:rgba(102,0,51,1);text-transform:uppercase"> {{Portfolio_Parameter.Portfolio_Name}}</span></span></strong>   </h2>
                 <p>Make sure your goal is at right direction which help us to provide best way to invest.</p>
             </div>
         </div>
@@ -25,7 +25,7 @@
                         <label> How much does your dream car cost?</label>
                         <input ng-model="Portfolio_Parameter.Portfolio_GoalAmount">
                     </md-input-container>
-                    <md-input-container class="md-block">
+                    <md-input-container class="md-block mdSelectContainerCss">
                         <label>In how many years you wish to buy it?</label>
                         <md-select ng-model="Portfolio_Parameter.Portfolio_Year">
                             <md-option value="0"><em>None</em></md-option>
@@ -35,7 +35,7 @@
 
                         </md-select>
                     </md-input-container>
-                    <md-input-container class="md-block" ng-show="false">
+                    <md-input-container class="md-block mdSelectContainerCss" ng-show="false">
                         <label>Period To Acheive Goal Month:</label>
                         <md-select ng-model="Portfolio_Parameter.Portfolio_Month">
                             <md-option value="0"><em>None</em></md-option>
@@ -45,7 +45,7 @@
 
                         </md-select>
                     </md-input-container>
-                    <md-input-container class="md-block">
+                    <md-input-container class="md-block mdSelectContainerCss">
                         <label>Rate Of Inflation (%)</label>
                         <md-select ng-model="Portfolio_Parameter.Portfolio_ROInflation">
                             <md-option value="0"><em>None</em></md-option>

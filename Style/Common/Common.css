@@ -1,4 +1,16 @@
 ﻿
+.mdSelectContainerCss{
+    margin-top: 32px;
+}
+.mdSelectContainerCss > label {
+    font-size:16px !important;
+    font-weight:700;
+}
+.mdSelectContainerCss > md-select {
+     font-size:14px !important;
+     font-weight:700;
+}
+
 #loading {
     position: absolute;
     width: 100%;
@@ -220,7 +232,7 @@ md-content.md-default-theme, md-content {
 	margin-bottom:60px;
 }
 .lableFontSize{
-	font-size:18px;
+	font-size:16px;
 }
 .margin-top-20 {
 	margin-top: 20px;

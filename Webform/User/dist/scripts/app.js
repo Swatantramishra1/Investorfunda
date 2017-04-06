@@ -868,6 +868,10 @@
                     EmailID: $localStorage.UserDetails.Username,
                 }
                 if ($localStorage.UserDetails.IsComplete == "1") {
+                    $localStorage.UserDetails = {
+                        kYCRegistartion: true,
+                        kYCStatus:""
+                    };
                     $location.path('/Profile');
                 }
             }
@@ -1382,6 +1386,13 @@
                     //$scope.error = true;
                 }
               )
+            }
+            if ($localStorage.UserDetails.IsComplete == "1") {
+                if( $localStorage.UserDetails.kYCRegistartion)
+                {
+
+                }
+            
             }
             $scope.OnLoadProfileData();
             HideLoader();
