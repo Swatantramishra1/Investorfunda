@@ -148,6 +148,34 @@ a.text-purple:hover {
 .xsmall {
   font-size: 10px;
 }
+.themeColor{
+color:#008080 !important;
+  }
+.marginTop45{
+margin-top:45px;
+}
+.BgColorWhite{
+    background-color:white !important;
+}
+.marginTop25{
+margin-top:25px;
+}
+.borderRightForm{
+    border-right: 1px solid #008080;
+}
+.themeBgColorBtn{
+    background-color:#008080 !important;
+    color:white;
+    border-color: #008080 !important;
+}
+
+.fontWeight700{
+    font-weight:700;
+}
+.formText{
+        border-bottom-color: #008080 !important;
+    background-color: transparent;
+}
 .form-control {
   box-shadow: none;
   -webkit-transition: 0.2s ease-in-out;

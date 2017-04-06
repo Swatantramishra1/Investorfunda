@@ -17,8 +17,12 @@
             </div>
             <div ng-class="BuyHouse_Step2 ? 'col-md-12' : 'col-md-7'" style="text-align:left;padding-top:20px" md-theme="default">
                 <div class="col-md-12" style="padding:0px" ng-show="BuyHouse_Step1">
+                    <md-input-container class="md-block ">
+                        <label class="lableFontSize" style="margin-bottom:10px;">What is your age? <span ng-show="Portfolio_Parameter.currentYourAge.length>0">({{Portfolio_Parameter.currentYourAge}} Year)</span></label>
+                        <input class="inputMarginTop" ng-model="Portfolio_Parameter.currentYourAge" type="range" min="15" max="65">
+                    </md-input-container>
                     <md-input-container class="md-block">
-                        <label>Year in which you plan a buy?</label>
+                        <label>Year in which you plan to buy?</label>
                         <input ng-model="Portfolio_Parameter.planBoughtYear">
                     </md-input-container>
                     <md-input-container class="md-block" style="margin-top:30px">
@@ -33,10 +37,7 @@
                         <label class="lableFontSize" style="margin-bottom:10px;">Loan repayment period <span ng-show="Portfolio_Parameter.loanPeriodYear.length>0">({{Portfolio_Parameter.loanPeriodYear}} Year)</span></label>
                         <input class="inputMarginTop" ng-model="Portfolio_Parameter.loanPeriodYear" type="range" min="3" max="50">
                     </md-input-container>
-                    <md-input-container class="md-block ">
-                        <label class="lableFontSize" style="margin-bottom:10px;">What is your age? <span ng-show="Portfolio_Parameter.currentYourAge.length>0">({{Portfolio_Parameter.currentYourAge}} Year)</span></label>
-                        <input class="inputMarginTop" ng-model="Portfolio_Parameter.currentYourAge" type="range" min="15" max="65">
-                    </md-input-container>
+                  
                     <md-input-container class="md-block">
                         <label>Amount you wish to invest right now?  </label>
                         <input ng-model="Portfolio_Parameter.amountWantToInvestNow">

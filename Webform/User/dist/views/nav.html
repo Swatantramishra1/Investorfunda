@@ -9,7 +9,7 @@
 
 <!-- Site nav (vertical) -->
 
-<nav class="site-nav clearfix" role="navigation">
+<nav class="site-nav clearfix" role="navigation" ng-show="!HideNavBarIsComplete">
 	<div class="profile clearfix mb15">
 		<img check-image ng-src="{{UserBasic.img}}"  alt="{{UserBasic.Name}}" >
 		<div class="group">
@@ -19,7 +19,7 @@
 	</div>
 
 	<!-- navigation -->
-	<ul class="list-unstyled clearfix nav-list mb15" collapse-nav-accordion highlight-active>
+	<ul class="list-unstyled clearfix nav-list mb15" collapse-nav-accordion highlight-active ng-if="UserDetails.IsComplete !=1">
 		<li>
 			<a href="#/dashboard" md-ink-ripple>
 				<i class="ion ion-monitor"></i>
@@ -32,6 +32,6 @@
 
 
 <!-- nav-foot -->
-<footer class="nav-foot">
+<footer class="nav-foot" ng-show="!HideNavBarIsComplete">
 	<p>2016 &copy; <span><a href="http://rightfoot.in" target="_blank"> RightFoot.in</a> </span></p>
 </footer>

@@ -868,6 +868,7 @@
                     EmailID: $localStorage.UserDetails.Username,
                 }
                 if ($localStorage.UserDetails.IsComplete == "1") {
+                    $localStorage.HideNavBarIsComplete = true;
                     $localStorage.UserDetails = {
                         kYCRegistartion: true,
                         kYCStatus:""
@@ -876,6 +877,7 @@
                 }
             }
             else {
+                $localStorage.HideNavBarIsComplete = false;
                 window.location = "../../../../Index.html"
             }
 
@@ -1359,33 +1361,41 @@
           )
             $scope.OnLoadProfileData=function()
             {
-                var UserDetailsPromis = CommonSrvc.GetUserDetailsInfo.getPromise($localStorage.UserDetails.LoginID);
-                UserDetailsPromis.then(
-                // OnSuccess function
-                function (answer) {
-               
-                    if (answer.data.GetUserProfileDetailsInfoResult.ResponseCode == 0) {
-                        
-                        
-                        $scope.UserDetailInfo = answer.data.GetUserProfileDetailsInfoResult.Result;
-                       // $scope.UserDetailInfo.UserProfileData.DateOfBirth = new Date($scope.UserDetailInfo.UserProfileData.DateOfBirth);
-                        document.getElementById("CartNotificationTotal").innerText=parseInt($scope.UserDetailInfo.UserProfileData.AddedCartCount) + parseInt($scope.UserDetailInfo.UserProfileData.AddedFavCount);
-                        
-
-                    }
-                    else {
-                        $scope.ErrorMessage = answer.data.GetUserProfileDetailsInfoResult.ResponseMessage;
-                    }
-
-                },
-                // OnFailure function
-                function (reason) {
-                    HideLoader();
-                    $scope.ErrorMessage = answer.data.GetLoginResult.ResponseMessage;
-                    //$scope.somethingWrong = reason;
-                    //$scope.error = true;
+                if ($localStorage.UserDetails.IsComplete == "1") {
+                    $rootScope.HideNavBarIsComplete = true;
+                   
                 }
-              )
+                else {
+                   
+                    var UserDetailsPromis = CommonSrvc.GetUserDetailsInfo.getPromise($localStorage.UserDetails.LoginID);
+                    UserDetailsPromis.then(
+                    // OnSuccess function
+                    function (answer) {
+
+                        if (answer.data.GetUserProfileDetailsInfoResult.ResponseCode == 0) {
+
+
+                            $scope.UserDetailInfo = answer.data.GetUserProfileDetailsInfoResult.Result;
+                            // $scope.UserDetailInfo.UserProfileData.DateOfBirth = new Date($scope.UserDetailInfo.UserProfileData.DateOfBirth);
+                            document.getElementById("CartNotificationTotal").innerText = parseInt($scope.UserDetailInfo.UserProfileData.AddedCartCount) + parseInt($scope.UserDetailInfo.UserProfileData.AddedFavCount);
+
+
+                        }
+                        else {
+                            $scope.ErrorMessage = answer.data.GetUserProfileDetailsInfoResult.ResponseMessage;
+                        }
+
+                    },
+                    // OnFailure function
+                    function (reason) {
+                        HideLoader();
+                        $scope.ErrorMessage = answer.data.GetLoginResult.ResponseMessage;
+                        //$scope.somethingWrong = reason;
+                        //$scope.error = true;
+                    }
+                  )
+                }
+              
             }
             if ($localStorage.UserDetails.IsComplete == "1") {
                 if( $localStorage.UserDetails.kYCRegistartion)

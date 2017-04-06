@@ -14,7 +14,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="exampleInputEmail1">For How Long You Wish To Stay Invested?</label>
-                            <select class="form-control" ng-model="Investment.horizone">
+                            <select class="form-control" ng-model="Investment.horizone" >
                                 <option value="0">Select Horizon</option>
                                 <option ng-value="{{$index+1}}" ng-repeat="i in getRepeatNumber(setNumber) track by $index">{{$index+1}} Year</option>
                               
@@ -24,7 +24,7 @@
                     <div class="col-md-4" ng-if="startSipPage">
                         <div class="form-group">
                             <label for="exampleInputPassword1">Your Monthly Investment Is</label>
-                            <select class="form-control" ng-model="Investment.amount">
+                            <select class="form-control" ng-model="Investment.amount" >
                                 <option value="0">Select Investment</option>
                                 <option ng-value="500">500</option>
                                 <option ng-value="Amount" ng-repeat="Amount in MonthlyInvetmentAmount">{{Amount}}</option>
@@ -40,7 +40,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="exampleInputPassword1">Choose Your Risk Profile</label>
-                            <select class="form-control" ng-model="Investment.risk">
+                            <select class="form-control" ng-model="Investment.risk" >
                                 <option value="0">Select Risk</option>
                                 <option ng-value="Low">Low</option>
                                 <option ng-value="Moderate">Moderate</option>
