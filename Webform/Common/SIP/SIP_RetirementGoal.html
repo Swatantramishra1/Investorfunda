@@ -13,7 +13,7 @@
             <div class="col-md-5"  ng-show="!Retirement_Step2">
 
                 <img src="http://demobyrightfoot.in/wp-content/uploads/2017/03/HK_2721-1.png" style="width:100%" />
-                <p style="text-align: center;font-size: 18px;"><strong>&nbsp;Gift yourself the best retirement</strong></p>
+                <p style="text-align: center;font-size: 18px;"><h3 class="text-center"><strong>&nbsp;Gift yourself the best retirement</strong></h3></p>
             </div>
             <div  ng-class="Retirement_Step2 ? 'col-md-12' : 'col-md-7'" style="text-align:left;padding-top:20px" md-theme="default">
                 <div class="col-md-12" style="padding:0px" ng-show="Retirement_Step1">
@@ -27,18 +27,6 @@
                     </md-input-container>
                     <div class="row margin-bottom-20">
                         <div class="col-md-9">
-                            Amount I want to invest per annum (Rs)(<span class="red-text">Annualy in thousands</span> )
-                            <rzslider rz-slider-model="SIP_AmountInvestment.value"
-                                      rz-slider-options="SIP_AmountInvestment.options"></rzslider>
-                        </div>
-                        <div class="col-md-3">
-                            <md-input-container class="md-block" style="height:25px;margin-top:32px">
-                                <input type="number" ng-model="SIP_AmountInvestment.value">
-                            </md-input-container>
-                        </div>
-                    </div>
-                    <div class="row margin-bottom-20">
-                        <div class="col-md-9">
                             Age you want to retire?(<span class="red-text">in Years</span> )
                             <rzslider rz-slider-model="SIP_RetireAge.value"
                                       rz-slider-options="SIP_RetireAge.options"></rzslider>
@@ -50,19 +38,20 @@
                             </md-input-container>
                         </div>
                     </div>
-                    <!--<div class="row margin-bottom-20">
+                    <div class="row margin-bottom-20">
                         <div class="col-md-9">
-                            Your current monthly expenditure?(<span class="red-text">in thousands</span> )
-                            <rzslider rz-slider-model="SIP_CurrentMonthlyExpndtr.value"
-                                      rz-slider-options="SIP_CurrentMonthlyExpndtr.options"></rzslider>
+                            Amount you want to invest right now? (<span class="red-text">Annualy in thousands</span> )
+                            <rzslider rz-slider-model="SIP_AmountInvestment.value"
+                                      rz-slider-options="SIP_AmountInvestment.options"></rzslider>
                         </div>
                         <div class="col-md-3">
-                            <md-input-container class="md-block" style="height:25px;margin-top:7px">
-                                <lable>Expenditure</lable>
-                                <input type="number" ng-model="SIP_CurrentMonthlyExpndtr.value">
+                            <md-input-container class="md-block" style="height:25px;margin-top:32px">
+                                <input type="number" ng-model="SIP_AmountInvestment.value">
                             </md-input-container>
                         </div>
-                    </div>-->
+                    </div>
+                   
+                    
                     <div class="row margin-bottom-20">
                         <div class="col-md-9">
                             By what % will the expenses change after your Retirement
@@ -89,23 +78,12 @@
 
 
                     <div ng-include="'Webform/Common/Html/planForYourFutureStep2.html'"></div>
-                    <!--<div class="row margin-bottom-20" style="font-size:34px">
-                        <div class="col-md-12" style="color:black">
-                            Your investment of <span><img src="../../../images/red-rupee-icon.png" style="width:22px;margin-bottom: 0px;"></span>
-                            <span class="red-text" id="amount-poc"> {{Portfolio_Parameter.TotalInvestedMoneyByUser}}/-</span>
-                            at rate of interest of <span class="red-text" id="rate-poc">
-                           {{Portfolio_Parameter.Portfolio_InflationRate }}% </span>after 
-                           <span class="red-text" id="term-poc">{{Portfolio_Parameter.EstematedYear}} Years </span> will grow to -
-                        </div>
-                        <div class="col-md-12 size-large text-success">
-                            <i class="fa fa-rupee"></i> {{Portfolio_Parameter.CalculatedTotalMoney}}
-                        </div>
-                     </div>-->
+             
            
                 </div>
                 <div class="row text-right" ng-show="showDataStep2.isShowDataRetirement">
                    
-                    <md-button ng-show="!Retirement_Step1" class="md-raised" ng-click="Portfolio_InvestNow()">Help Me Achieve This</md-button>
+                  
                     <md-button ng-show="Retirement_Step1" class="md-raised" ng-click="Portfolio_CalculateRetirement()">Calculate</md-button>
                 </div>
 

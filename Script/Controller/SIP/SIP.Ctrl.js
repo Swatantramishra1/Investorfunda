@@ -3712,7 +3712,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
             }
     };
     $scope.SIP_Percet_bar = {
-        value: 7,
+        value: 0,
         options:
             {
                 showSelectionBar: true,
@@ -3720,7 +3720,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                     return '#2AE02A';
                 },
                 ceil: 50,
-                floor: 0,
+                floor: -50,
                 showTicks: 5,
                 onChange: function () { checkSliderVal() }
 
