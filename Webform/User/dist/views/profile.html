@@ -769,7 +769,7 @@
 
     </div> <!-- #end page-wrap -->
 </div>
-<div class="page page-dashboard" ng-show="HideNavBarIsComplete">
+<div class="page page-dashboard" ng-controller="ProfileCtrl" ng-show="HideNavBarIsComplete">
     <h3 class="text-center themeColor" style="font-weight:700">KYC   Registration </h3>
     <h5 class="text-center">KYC is one time exercise while dealing in securities markets - once KYC is done you need not undergo the same process again when you approach another intermediary.
 
@@ -785,7 +785,8 @@
                     <div class="form-group">
 
                         <div class="col-md-12" style="margin-top:-12px">
-                            <input type="text" class="form-control formText" style="padding-left:5px" required>
+                            <input type="text" class="form-control formText" ng-model="profilePanCard" ng-keyup="checkPanCardValidation()" style="padding-left:5px" required>
+                            <p ng-show="!isPanCardValid || profilePanCard.length<10" style="color:red">Please Enter Correct Pan Card</p>
                         </div>
                     </div>
                 </form>
@@ -796,13 +797,10 @@
                 </small>
             </div>
             <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
-                <small>
-                    (When PAN CARD IS INSERTED WE WILL VERIFY HE IS KYC compliant or not .If yes then user will directly jump to forms . Before that down options won’t appear)
-
-                </small>
+                
             </div>
         </div>
-    <div class="col-lg-12 marginTop25" style="margin-bottom:20px">
+    <div class="col-lg-12 marginTop25" style="margin-bottom:20px" ng-if="isPanCardValid">
 
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 borderRightForm">
             <h4 class="fontWeight700">Your Aadhaar number</h4>
@@ -865,7 +863,7 @@
 
             <form role="form" class="form-horizontal text-center marginTop25">
                
-                <button class="btn btn-primary themeBgColorBtn " type="button">SUBMIT </button>
+                <button class="btn btn-primary themeBgColorBtn " type="button" ng-click="submitProfile('doNotKnow')">SUBMIT </button>
             </form>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">

@@ -27,7 +27,7 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
                 $localStorage.setCounterStatus = true;
                 $localStorage.LoginStatus = true;
                 $rootScope.LoginStatus = true;
-                $localStorage.UserDetails = answer.data.GetLoginResult.Result;
+                $localStorage.TempUserDetails = answer.data.GetLoginResult.Result;
                 $rootScope.UserDetails = answer.data.GetLoginResult.Result;
                 if ($localStorage.CurrentStatusOfPage == "ChildGoal")
                 {
@@ -135,6 +135,8 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
             };
 
         ShowLoader();
+
+
         var askForPromise = ULoginService.Register.PostPromise(PostDataReq);
         askForPromise.then(
         // OnSuccess function

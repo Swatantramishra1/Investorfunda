@@ -823,7 +823,7 @@
                 $rs.safeApply(function () {
                     $rs.isMobile = m.matches ? !0 : !1
                 })
-            }), $scope.navFull = !0, $scope.toggleNav = function () {
+            }), $scope.navFull = !0, $rs.toggleNav = function () {
                 $scope.navFull = $scope.navFull ? !1 : !0, $rs.navOffCanvas = $rs.navOffCanvas ? !1 : !0, console.log("navOffCanvas: " + $scope.navOffCanvas), $timeout(function () {
                     $rs.$broadcast("c3.resize")
                 }, 260)
@@ -864,11 +864,12 @@
                 //Entry Point For User
                 $scope.UserBasic = {
                     img: "../../../../Img/Clients/defaultImage.png",
-                    Name: $localStorage.UserDetails.Name,
-                    EmailID: $localStorage.UserDetails.Username,
+                    Name: $localStorage.TempUserDetails.Name,
+                    EmailID: $localStorage.TempUserDetails.Username,
                 }
-                if ($localStorage.UserDetails.IsComplete == "1") {
-                    $localStorage.HideNavBarIsComplete = true;
+                if ($localStorage.TempUserDetails.IsComplete == "1") {
+                    $rs.toggleNav();
+                    $rs.HideNavBarIsComplete = true;
                     $localStorage.UserDetails = {
                         kYCRegistartion: true,
                         kYCStatus:""
@@ -877,9 +878,14 @@
                 }
             }
             else {
-                $localStorage.HideNavBarIsComplete = false;
+                
+                $rs.HideNavBarIsComplete = false;
                 window.location = "../../../../Index.html"
             }
+
+            //$('#LoaderShow').modal('hide');
+            //$('body').removeClass('modal-open');
+            $('div').removeClass('modal-backdrop');
 
 
 
@@ -900,7 +906,8 @@
             }, $scope.goFullScreen = function () {
                 Fullscreen.isEnabled() ? Fullscreen.cancel() : Fullscreen.all()
             };
-            var UserDetailsPromis = CommonSrvc.GetUserDetailsInfo.getPromise($localStorage.UserDetails.LoginID);
+            
+            var UserDetailsPromis = CommonSrvc.GetUserDetailsInfo.getPromise($localStorage.TempUserDetails.LoginID);
             UserDetailsPromis.then(
             // OnSuccess function
             function (answer) {
@@ -946,7 +953,7 @@
                 $scope.InvestorFundaMsg.Header = "List of Cart";
                 $scope.getPaymentStatus=function(BSECode)
                 {
-                    var GetUserPaymentStatus = CommonSrvc.GetUserPaymentStatus.getPromise(BSECode, $localStorage.UserDetails.LoginID);
+                    var GetUserPaymentStatus = CommonSrvc.GetUserPaymentStatus.getPromise(BSECode, $localStorage.TempUserDetails.LoginID);
                     GetUserPaymentStatus.then(
               // OnSuccess function
               function (answer) {
@@ -973,7 +980,7 @@
                 }
 
                 $scope.getPaymentstring = function () {
-                    var GetUserPaymentString = CommonSrvc.GetUserPaymentString.getPromise($localStorage.UserDetails.LoginID);
+                    var GetUserPaymentString = CommonSrvc.GetUserPaymentString.getPromise($localStorage.TempUserDetails.LoginID);
                     GetUserPaymentString.then(
               // OnSuccess function
               function (answer) {
@@ -1000,7 +1007,7 @@
                 }
 
                 
-                var UserCartDetails = CommonSrvc.GetCartListDetails.getPromise($localStorage.UserDetails.LoginID);
+                var UserCartDetails = CommonSrvc.GetCartListDetails.getPromise($localStorage.TempUserDetails.LoginID);
                 UserCartDetails.then(
                 // OnSuccess function
                 function (answer) {
@@ -1139,7 +1146,7 @@
     })
         .controller("ProfileCtrl", ["$scope", "CommonSrvc", "$localStorage", "$filter", "$http", "$mdToast", '$rootScope', 'validateSrvc', function ($scope, CommonSrvc, $localStorage, $filter, $http, $mdToast, $rootScope, validateSrvc) {
 
-
+            $('div').removeClass('modal-backdrop');
             $scope.showCustomToast = function () {
                 $mdToast.show({
                     hideDelay: 30000,
@@ -1153,6 +1160,35 @@
             }
             //Onload Function
            
+            function ProfileDataView() {
+                var UserDetailsPromis = CommonSrvc.GetUserDetailsInfo.getPromise($localStorage.TempUserDetails.LoginID);
+                UserDetailsPromis.then(
+                // OnSuccess function
+                function (answer) {
+
+                    if (answer.data.GetUserProfileDetailsInfoResult.ResponseCode == 0) {
+
+
+                        $scope.UserDetailInfo = answer.data.GetUserProfileDetailsInfoResult.Result;
+                        // $scope.UserDetailInfo.UserProfileData.DateOfBirth = new Date($scope.UserDetailInfo.UserProfileData.DateOfBirth);
+                        document.getElementById("CartNotificationTotal").innerText = parseInt($scope.UserDetailInfo.UserProfileData.AddedCartCount) + parseInt($scope.UserDetailInfo.UserProfileData.AddedFavCount);
+                        $rootScope.HideNavBarIsComplete = false;
+
+                    }
+                    else {
+                        $scope.ErrorMessage = answer.data.GetUserProfileDetailsInfoResult.ResponseMessage;
+                    }
+
+                },
+                // OnFailure function
+                function (reason) {
+                    HideLoader();
+                    $scope.ErrorMessage = answer.data.GetLoginResult.ResponseMessage;
+                    //$scope.somethingWrong = reason;
+                    //$scope.error = true;
+                }
+              )
+            }
             ShowLoader();
             $scope.GenderList = ["Male","Female","Other"]
             var CountryPromis = CommonSrvc.GetCountryDetails.getPromise();
@@ -1361,43 +1397,47 @@
           )
             $scope.OnLoadProfileData=function()
             {
-                if ($localStorage.UserDetails.IsComplete == "1") {
-                    $rootScope.HideNavBarIsComplete = true;
-                   
-                }
-                else {
-                   
-                    var UserDetailsPromis = CommonSrvc.GetUserDetailsInfo.getPromise($localStorage.UserDetails.LoginID);
-                    UserDetailsPromis.then(
-                    // OnSuccess function
-                    function (answer) {
-
-                        if (answer.data.GetUserProfileDetailsInfoResult.ResponseCode == 0) {
-
-
-                            $scope.UserDetailInfo = answer.data.GetUserProfileDetailsInfoResult.Result;
-                            // $scope.UserDetailInfo.UserProfileData.DateOfBirth = new Date($scope.UserDetailInfo.UserProfileData.DateOfBirth);
-                            document.getElementById("CartNotificationTotal").innerText = parseInt($scope.UserDetailInfo.UserProfileData.AddedCartCount) + parseInt($scope.UserDetailInfo.UserProfileData.AddedFavCount);
-
-
-                        }
-                        else {
-                            $scope.ErrorMessage = answer.data.GetUserProfileDetailsInfoResult.ResponseMessage;
-                        }
-
-                    },
-                    // OnFailure function
-                    function (reason) {
-                        HideLoader();
-                        $scope.ErrorMessage = answer.data.GetLoginResult.ResponseMessage;
-                        //$scope.somethingWrong = reason;
-                        //$scope.error = true;
+                if ($localStorage.TempUserDetails.IsComplete == "1") {
+                    if ($localStorage.TempUserDetails.RegistrationType == "2")
+                    {
+                        $rootScope.HideNavBarIsComplete = false;
                     }
-                  )
+                    else {
+                        $rootScope.HideNavBarIsComplete = true;
+                    }
+                    
+                   
                 }
-              
+                
+                var UserDetailsPromis = CommonSrvc.GetUserDetailsInfo.getPromise($localStorage.TempUserDetails.LoginID);
+                UserDetailsPromis.then(
+                // OnSuccess function
+                function (answer) {
+
+                    if (answer.data.GetUserProfileDetailsInfoResult.ResponseCode == 0) {
+
+
+                        $scope.UserDetailInfo = answer.data.GetUserProfileDetailsInfoResult.Result;
+                        // $scope.UserDetailInfo.UserProfileData.DateOfBirth = new Date($scope.UserDetailInfo.UserProfileData.DateOfBirth);
+                        document.getElementById("CartNotificationTotal").innerText = parseInt($scope.UserDetailInfo.UserProfileData.AddedCartCount) + parseInt($scope.UserDetailInfo.UserProfileData.AddedFavCount);
+
+
+                    }
+                    else {
+                        $scope.ErrorMessage = answer.data.GetUserProfileDetailsInfoResult.ResponseMessage;
+                    }
+
+                },
+                // OnFailure function
+                function (reason) {
+                    HideLoader();
+                    $scope.ErrorMessage = answer.data.GetLoginResult.ResponseMessage;
+                    //$scope.somethingWrong = reason;
+                    //$scope.error = true;
+                }
+              )
             }
-            if ($localStorage.UserDetails.IsComplete == "1") {
+            if ($localStorage.TempUserDetails.IsComplete == "1") {
                 if( $localStorage.UserDetails.kYCRegistartion)
                 {
 
@@ -1452,7 +1492,7 @@
 
             $scope.Update = function () {
                 let UserDetailsUpdate = {
-                    "User_ID": $localStorage.UserDetails.LoginID,
+                    "User_ID": $localStorage.TempUserDetails.LoginID,
                     "userprofile": $scope.UserDetailInfo.UserProfileData,
 
                     "listAddress": $scope.UserDetailInfo.AddressDetailsData,
@@ -1534,7 +1574,7 @@
 
             $scope.SaveBankDetails = function () {
                 var BankDetailsUpdate = {
-                    "User_ID": $localStorage.UserDetails.LoginID,
+                    "User_ID": $localStorage.TempUserDetails.LoginID,
                     "userprofile": {
 
                     },
@@ -1548,7 +1588,7 @@
                     },
                     "bankdetails":[ {
                         "BankDetails_ID": $scope.UserDetailInfo.BankDetailsData.BankDetails_ID,
-                        "User_ID": $localStorage.UserDetails.LoginID,
+                        "User_ID": $localStorage.TempUserDetails.LoginID,
                         "Bank_ID": $scope.UserDetailInfo.BankDetailsData.Bank_ID,
                         "Bank_IFSC": $scope.UserDetailInfo.BankDetailsData.Bank_IFSC,
                         "Bank_AccountTypeID": $scope.UserDetailInfo.BankDetailsData.Bank_AccountTypeID,
@@ -1606,16 +1646,16 @@
                     "Nominee_DOB": "",
                     "Nominee_AllocationPercentage": "",
                     "UR_Nominee_ID": "",
-                    "User_ID": $localStorage.UserDetails.LoginID
+                    "User_ID": $localStorage.TempUserDetails.LoginID
                 })
             }
            
             $scope.SaveNomineeDetails = function () {
                 var NomineeDetailsUpdate = {};
                 var listNomineeDetails = [];
-                console.log($scope.UserDetailInfo.NomineeDetailsData);
+               
                  NomineeDetailsUpdate = {
-                     "User_ID": $localStorage.UserDetails.LoginID,
+                     "User_ID": $localStorage.TempUserDetails.LoginID,
                     "userprofile": {
 
                     },
@@ -1663,7 +1703,7 @@
                 var UploadDetailsUpdate = {};
                 var listDocumentDetails = [];
                  UploadDetailsUpdate = {
-                     "User_ID": $localStorage.UserDetails.LoginID,
+                     "User_ID": $localStorage.TempUserDetails.LoginID,
                     "userprofile": {
 
                     },
@@ -1690,7 +1730,7 @@
                        
                 
                         "DocumentUpload_ID": $scope.UserDetailInfo.UploadDocumentDetailsData[a].DocumentUpload_ID,
-                        "User_ID": $localStorage.UserDetails.LoginID,
+                        "User_ID": $localStorage.TempUserDetails.LoginID,
                         "DocumentType": $scope.UserDetailInfo.UploadDocumentDetailsData[a].DocumentType,
                         "DocumentName": $scope.UserDetailInfo.UploadDocumentDetailsData[a].DocumentName,
                         "DocumentPath": $scope.UserDetailInfo.UploadDocumentDetailsData[a].DocumentPath,
@@ -1721,7 +1761,7 @@
                 var UploadDetailsUpdate = {};
                 var listDocumentDetails = [];
                 UploadDetailsUpdate = {
-                    "User_ID": $localStorage.UserDetails.LoginID,
+                    "User_ID": $localStorage.TempUserDetails.LoginID,
                     "userprofile": {
 
                     },
@@ -1748,7 +1788,7 @@
 
 
                         "DocumentUpload_ID": $scope.UserDetailInfo.UploadDocumentDetailsData[a].DocumentUpload_ID,
-                        "User_ID": $localStorage.UserDetails.LoginID,
+                        "User_ID": $localStorage.TempUserDetails.LoginID,
                         "DocumentType": $scope.UserDetailInfo.UploadDocumentDetailsData[a].DocumentType,
                         "DocumentName": $scope.UserDetailInfo.UploadDocumentDetailsData[a].DocumentName,
                         "DocumentPath": $scope.UserDetailInfo.UploadDocumentDetailsData[a].DocumentPath,
@@ -1774,7 +1814,76 @@
            $scope.showCustomToast();
        });
             }
-            
+            //Registration Process
+            function pan_card(textObj) {
+                var regpan = /^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/;
+                /*C - Company 
+                P - Person 
+                H - HUF(Hindu Undivided Family) 
+                F - Firm 
+                A - Association of Persons (AOP) 
+                T - AOP (Trust) 
+                B - Body of Individuals (BOI) 
+                L - Local Authority 
+                J - Artificial Juridical Person 
+                G - Govt.*/
+                var code = /([C,P,H,F,A,T,B,L,J,G])/;
+                var code_chk = textObj.substring(3, 4);
+                if (textObj !== "") {
+                    if (regpan.test(textObj) == false) {
+                        return false;
+                    }
+                    if (code.test(code_chk) == false) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+            }
+            $scope.checkPanCardValidation = function () {
+                if(pan_card($scope.profilePanCard))
+                {
+                    $scope.isPanCardValid = true;
+                }
+                else {
+                    $scope.isPanCardValid = false;
+                }
+                
+            }
+
+            $scope.submitProfile = function (param) {
+                switch(param)
+                {
+                    case 'doNotKnow':
+                        var postData = {
+                            "User_ID": $localStorage.TempUserDetails.LoginID,
+                            "RegistrationTypeID": "2",
+                            "PanCard": $scope.profilePanCard
+
+                        }
+                        $http.post(API_UserRegistrationType, JSON.stringify(postData))
+              .success(function (data, status) {
+
+
+                  if (data.UpdateRegistrationType_IDResult.ResponseCode == 0) {
+                      $localStorage.TempUserDetails.RegistrationType = "2";
+                      $rootScope.HideNavBarIsComplete = false;
+                      ProfileDataView();
+                      // alert(data.UpdateUserDetailsResult.ResponseMessage);
+                  }
+
+              })
+          .catch(function (response) {
+              var d = response.data;
+              $rootScope.UploadMessage = data.UpdateUserDetailsResult.ResponseMessage;
+              $scope.showCustomToast();
+          });
+
+                       
+                        
+                        break;
+                }
+            }
             
         }])
 }();
