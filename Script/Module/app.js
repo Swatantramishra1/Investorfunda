@@ -7,12 +7,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     //
     // For any unmatched url, redirect to /state1
     $urlRouterProvider.otherwise("/Index");
-    //
+
     // Now set up the states
     $stateProvider
       .state('Index', {
           url: "/Index",
-          templateUrl: "http://localhost:59012/Webform/Common/Home.html",
+          templateUrl: "../../Webform/Common/Home.html",
           controller: "MainCtrl"
       })
         .state('CAL', {
