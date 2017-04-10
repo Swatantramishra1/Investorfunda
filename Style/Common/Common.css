@@ -10,7 +10,19 @@
      font-size:14px !important;
      font-weight:700;
 }
-
+.headerPadding{
+    padding-left:15px;
+    padding-right:15px;
+}
+.themeBgColor{
+        background-color: #008080 !important;
+}
+.navbar-default .navbar-toggle {
+    border-color: #008080 !important;
+}
+.navbar-toggle:hover {
+    background: #008080 !important;
+}
 #loading {
     position: absolute;
     width: 100%;
