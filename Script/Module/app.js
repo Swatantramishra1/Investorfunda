@@ -43,11 +43,13 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url: "/ChildGoal",
         templateUrl: "../../Webform/Common/SIP/SIP_ChildGoal.html",
         controller: "SIP.Ctrl"
-    }).state('Retirement', {
+    })
+        .state('Retirement', {
         url: "/Retirement",
         templateUrl: "../../Webform/Common/SIP/SIP_RetirementGoal.html",
         controller: "SIP.Ctrl"
-    }).state('HousePlan', {
+        })
+        .state('HousePlan', {
         url: "/HousePlan",
         templateUrl: "../../Webform/Common/SIP/SIP_BuyHouse.html",
         controller: "SIP.Ctrl"
