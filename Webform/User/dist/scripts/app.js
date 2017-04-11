@@ -869,7 +869,8 @@
                 }
                 if ($localStorage.TempUserDetails.IsComplete == "1") {
                     $rs.toggleNav();
-                    $rs.HideNavBarIsComplete = true;
+                    $rs.HideNavBarIsCompleteKYC = true;
+                    $rs.BgColorWhite = true;
                     $localStorage.UserDetails = {
                         kYCRegistartion: true,
                         kYCStatus:""
@@ -879,7 +880,7 @@
             }
             else {
                 
-                $rs.HideNavBarIsComplete = false;
+                $rs.HideNavBarIsCompleteProfile = true;
                 window.location = "../../../../Index.html"
             }
 
@@ -1159,7 +1160,8 @@
                 $scope.Data = $rootScope.UploadMessage;
             }
             //Onload Function
-           
+            $scope.userAdharCard = "";
+            $scope.userAdharCardCheckBOx = false;
             function ProfileDataView() {
                 var UserDetailsPromis = CommonSrvc.GetUserDetailsInfo.getPromise($localStorage.TempUserDetails.LoginID);
                 UserDetailsPromis.then(
@@ -1170,9 +1172,11 @@
 
 
                         $scope.UserDetailInfo = answer.data.GetUserProfileDetailsInfoResult.Result;
+                        $scope.UserDetailInfo.UserProfileData.DividentPayMode_ID = "2";
+                        $scope.UserDetailInfo.UserProfileData.CommunicationMode_ID = "3";
                         // $scope.UserDetailInfo.UserProfileData.DateOfBirth = new Date($scope.UserDetailInfo.UserProfileData.DateOfBirth);
                         document.getElementById("CartNotificationTotal").innerText = parseInt($scope.UserDetailInfo.UserProfileData.AddedCartCount) + parseInt($scope.UserDetailInfo.UserProfileData.AddedFavCount);
-                        $rootScope.HideNavBarIsComplete = false;
+                        $rootScope.HideNavBarIsCompleteProfile = true;
 
                     }
                     else {
@@ -1400,10 +1404,14 @@
                 if ($localStorage.TempUserDetails.IsComplete == "1") {
                     if ($localStorage.TempUserDetails.RegistrationType == "2")
                     {
-                        $rootScope.HideNavBarIsComplete = false;
+                        $rootScope.HideNavBarIsCompleteProfile = true;
+                        $rootScope.HideNavBarIsCompleteKYC = false;
+                        $rootScope.HideNavBarIsCompleteAdharCard = false;
                     }
                     else {
-                        $rootScope.HideNavBarIsComplete = true;
+                        $rootScope.HideNavBarIsCompleteKYC = true;
+                        $rootScope.HideNavBarIsCompleteAdharCard = false;
+                        $rootScope.BgColorWhite = true;
                     }
                     
                    
@@ -1867,7 +1875,9 @@
 
                   if (data.UpdateRegistrationType_IDResult.ResponseCode == 0) {
                       $localStorage.TempUserDetails.RegistrationType = "2";
-                      $rootScope.HideNavBarIsComplete = false;
+                      $rootScope.HideNavBarIsCompleteProfile = true;
+                      $rootScope.HideNavBarIsCompleteAdharCard = false;
+                      $rootScope.HideNavBarIsCompleteKYC = false;
                       ProfileDataView();
                       // alert(data.UpdateUserDetailsResult.ResponseMessage);
                   }
@@ -1884,7 +1894,15 @@
                         break;
                 }
             }
-            
+            $scope.adharCardValidation=function()
+            {
+                console.log($scope.userAdharCardV);
+                $scope.userAdharCard = $scope.userAdharCardV;
+                $rootScope.HideNavBarIsCompleteProfile = false;
+                $rootScope.HideNavBarIsCompleteAdharCard = true;
+                $rootScope.BgColorWhite = true;
+                $rootScope.HideNavBarIsCompleteKYC = false;
+            }
         }])
 }();
 

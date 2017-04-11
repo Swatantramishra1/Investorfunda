@@ -26,8 +26,8 @@
 #loading {
     position: absolute;
     width: 100%;
-    background: url('../../Img/loading.gif')  no-repeat center center;
-    height: 100%;
+    /*background: url('../../Img/loading.gif')  no-repeat center center;*/
+    height: 500px;
 }
 
 .AnchorCursorPointer{
@@ -374,7 +374,6 @@ font-size:31px;
 	  padding-bottom: 30px;
 	  line-height: 1.9;
 	  font-weight: 300;
-	  padding: 0 36.81px 36.81px;
 	  margin-bottom: .4em;
 }
   .edit-age {

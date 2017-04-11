@@ -5,777 +5,778 @@
             border-bottom: 1px solid gray;
     }
 </style>
+<div class="row" ng-controller="ProfileCtrl">
+    <div class="page page-dashboard" ng-show="HideNavBarIsCompleteProfile">
 
-<div class="page page-dashboard" ng-controller="ProfileCtrl" ng-show="!HideNavBarIsComplete">
+        <div class="page-wrap">
 
-    <div class="page-wrap">
-
-        <div class="row">
-            <!-- dashboard header -->
-            <div class="col-md-12">
-                <div class="dash-head clearfix mt15 mb20">
-                    <div class="left">
-                        <h4 class="mb5 text-light">Setting Your Profile here</h4>
+            <div class="row">
+                <!-- dashboard header -->
+                <div class="col-md-12">
+                    <div class="dash-head clearfix mt15 mb20">
+                        <div class="left">
+                            <h4 class="mb5 text-light">Setting Your Profile here</h4>
+                        </div>
+                        <!--<div class="right mt10">
+                            <span sparkline type="bar" bar-color="#4CAF50">10,8,4,10,7,0,3,4,6,5,9,12,9</span>
+                            <h5 class="text-bold mb0 mt5">$1,33,404</h5>
+                        </div>-->
                     </div>
-                    <!--<div class="right mt10">
-                        <span sparkline type="bar" bar-color="#4CAF50">10,8,4,10,7,0,3,4,6,5,9,12,9</span>
-                        <h5 class="text-bold mb0 mt5">$1,33,404</h5>
-                    </div>-->
                 </div>
-            </div>
-        </div> <!-- #end row -->
-        <div class="row">
-            
+            </div> <!-- #end row -->
+            <div class="row">
 
 
-            <div class="panel panel-default mb20 panel-hovered project-stats table-responsive">
-                <div class="panel-heading"><strong>{{UserBasic.Name}}</strong>  Profile Summary</div>
-                <div class="panel-body">
-                    <div class="col-md-12">
-                        <div class="col-md-2">
-                            <div class="profile clearfix mb15">
-                                <img check-image ng-src="{{UserBasic.img}}" alt="{{UserBasic.Name}}" style="border-radius: 50%;
+
+                <div class="panel panel-default mb20 panel-hovered project-stats table-responsive">
+                    <div class="panel-heading"><strong>{{UserBasic.Name}}</strong>  Profile Summary</div>
+                    <div class="panel-body">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <div class="profile clearfix mb15">
+                                    <img check-image ng-src="{{UserBasic.img}}" alt="{{UserBasic.Name}}" style="border-radius: 50%;
     border: 1px solid green;width:160px">
 
-                            </div>
-                            <div class="row " style="margin-bottom:7px">
-                                <span>Your Profile</span>
-                                <button class="btn btn-success btn-xs right" md-ink-ripple>70% </button>
-                            </div>
-                            <div class="row" style="margin-bottom:7px">
-                                <span>PAN :</span>
-                                <button class="btn btn-android btn-xs right" md-ink-ripple>{{UserDetailInfo.UserProfileData.PANNumber}} </button>
-                            </div>
-                            <div class="row" style="margin-bottom:7px">
-                                <button type="button" class="btn  btn-gplus btn-icon-inline form-control" md-ink-ripple style="font-size:18px"><i class="ion ion-settings" style="font-size:21px"></i>Setting</button>
-                                <!--<button class="btn btn-success btn-xs form-control" md-ink-ripple style="font-size:16px"><i class="fa fa-refresh"></i>  </button>-->
-                            </div>
-                            <div class="row" style="margin-bottom:7px">
-                                <button type="button" class="btn  btn-facebook btn-icon-inline form-control" md-ink-ripple style="font-size:18px"><i class="ion ion-person-add" style="font-size:21px"></i>Add Member</button>
-                             
-                            </div>
-                            <!--<ul class="list-unstyled clearfix mb15">
-                                <li class="divider">
-                                    
-                                </li>
-                                <li class="divider">
-                                    <span>PAN</span>
-                                    <a class="btn btn-android btn-xs right" md-ink-ripple>BOAPMN1314N </a>
-                                </li>
-                             
-                            </ul>-->
-                        </div>
-                        
-                        <div class="col-md-9 col-md-push-1">
-                            <div ng-cloak>
-                                <md-content>
-                                    <md-tabs md-dynamic-height md-border-bottom>
-                                        <md-tab label="Edit Profile">
-                                            <md-content class="md-padding">
-                                                <div class="row">
+                                </div>
+                                <div class="row " style="margin-bottom:7px">
+                                    <span>Your Profile</span>
+                                    <button class="btn btn-success btn-xs right" md-ink-ripple>70% </button>
+                                </div>
+                                <div class="row" style="margin-bottom:7px">
+                                    <span>PAN :</span>
+                                    <button class="btn btn-android btn-xs right" md-ink-ripple>{{UserDetailInfo.UserProfileData.PANNumber}} </button>
+                                </div>
+                                <div class="row" style="margin-bottom:7px">
+                                    <button type="button" class="btn  btn-gplus btn-icon-inline form-control" md-ink-ripple style="font-size:18px"><i class="ion ion-settings" style="font-size:21px"></i>Setting</button>
+                                    <!--<button class="btn btn-success btn-xs form-control" md-ink-ripple style="font-size:16px"><i class="fa fa-refresh"></i>  </button>-->
+                                </div>
+                                <div class="row" style="margin-bottom:7px">
+                                    <button type="button" class="btn  btn-facebook btn-icon-inline form-control" md-ink-ripple style="font-size:18px"><i class="ion ion-person-add" style="font-size:21px"></i>Add Member</button>
 
-                                                    <!-- col-left -->
-                                                    <div class="col-sm-12 col-md-12">
-                                                        <div class="panel panel-default panel-hovered panel-stacked mb20">
-                                                            <div class="panel-heading">Profile Summary</div>
-                                                            <div class="panel-body">
+                                </div>
+                                <!--<ul class="list-unstyled clearfix mb15">
+                                    <li class="divider">
 
-                                                                <form role="form" class="form-horizontal">
-                                                                    <!-- form horizontal acts as a row -->
-                                                                    <!-- normal control -->
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 control-label">First Name <i style="color:red">*</i></label>
-                                                                        <div class="col-md-9">
-                                                                            <input type="text" class="form-control" required placeholder="First Name" ng-model="UserDetailInfo.UserProfileData.FirstName">
+                                    </li>
+                                    <li class="divider">
+                                        <span>PAN</span>
+                                        <a class="btn btn-android btn-xs right" md-ink-ripple>BOAPMN1314N </a>
+                                    </li>
+
+                                </ul>-->
+                            </div>
+
+                            <div class="col-md-9 col-md-push-1">
+                                <div ng-cloak>
+                                    <md-content>
+                                        <md-tabs md-dynamic-height md-border-bottom>
+                                            <md-tab label="Edit Profile">
+                                                <md-content class="md-padding">
+                                                    <div class="row">
+
+                                                        <!-- col-left -->
+                                                        <div class="col-sm-12 col-md-12">
+                                                            <div class="panel panel-default panel-hovered panel-stacked mb20">
+                                                                <div class="panel-heading">Profile Summary</div>
+                                                                <div class="panel-body">
+
+                                                                    <form role="form" class="form-horizontal">
+                                                                        <!-- form horizontal acts as a row -->
+                                                                        <!-- normal control -->
+                                                                        <div class="form-group">
+                                                                            <label class="col-md-3 control-label">First Name <i style="color:red">*</i></label>
+                                                                            <div class="col-md-9">
+                                                                                <input type="text" class="form-control" required placeholder="First Name" ng-model="UserDetailInfo.UserProfileData.FirstName">
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 control-label">Last Name <i style="color:red">*</i></label>
-                                                                        <div class="col-md-9">
-                                                                            <input type="text" class="form-control" required placeholder="Last Name" ng-model="UserDetailInfo.UserProfileData.LastName">
+                                                                        <div class="form-group">
+                                                                            <label class="col-md-3 control-label">Last Name <i style="color:red">*</i></label>
+                                                                            <div class="col-md-9">
+                                                                                <input type="text" class="form-control" required placeholder="Last Name" ng-model="UserDetailInfo.UserProfileData.LastName">
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 control-label ">Gender <i style="color:red">*</i></label>
-                                                                        <div class="col-md-9">
-                                                                            <md-select placeholder="Gender" required ng-model="UserDetailInfo.UserProfileData.Gender" class="md-block" style="margin-top: -10px;width:100%">
-                                                                                <md-option ng-value="0" ng-disabled="true">Select Gender</md-option>
-                                                                                <md-option ng-value="Gender" ng-repeat="Gender in GenderList">{{Gender}}</md-option>
-                                                                                
-                                                                            </md-select>
-                                                    
+                                                                        <div class="form-group">
+                                                                            <label class="col-md-3 control-label ">Gender <i style="color:red">*</i></label>
+                                                                            <div class="col-md-9">
+                                                                                <md-select placeholder="Gender" required ng-model="UserDetailInfo.UserProfileData.Gender" class="md-block" style="margin-top: -10px;width:100%">
+                                                                                    <md-option ng-value="0" ng-disabled="true">Select Gender</md-option>
+                                                                                    <md-option ng-value="Gender" ng-repeat="Gender in GenderList">{{Gender}}</md-option>
+
+                                                                                </md-select>
+
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="col-md-3 control-label ">Tax Status <i style="color:red">*</i></label>
+                                                                            <div class="col-md-9">
+                                                                                <md-select placeholder="Tax Status" ng-model="UserDetailInfo.UserProfileData.TaxStatus_ID" class="md-block" style="margin-top: -10px;width:100%">
+                                                                                    <md-option ng-value="0" ng-disabled="true">Select Status</md-option>
+                                                                                    <md-option ng-value="TaxStatusVal.TaxID" ng-repeat="TaxStatusVal in TaxStatusList">{{TaxStatusVal.TaxStatusName}}</md-option>
+                                                                                </md-select>
+
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="col-md-3 control-label ">Hoalding Nature <i style="color:red">*</i></label>
+                                                                            <div class="col-md-9">
+
+
+                                                                                <md-select placeholder="Holding Nature" ng-model="UserDetailInfo.UserProfileData.HoldingNature_ID" class="md-block" style="margin-top: -10px;width:100%">
+                                                                                    <md-option ng-value="0" ng-disabled="true">Select Holding Nature</md-option>
+                                                                                    <md-option ng-value="HoldingnatureVal.HoldingNature_ID" ng-repeat="HoldingnatureVal in HoldingNatureDpwn">{{HoldingnatureVal.Holding_Nature}}</md-option>
+                                                                                </md-select>
+
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="form-group" ng-show="UserDetailInfo.UserProfileData.HoldingNature_ID !='1'">
+                                                                            <label class="col-md-3 control-label">Second Applicant <i style="color:red">*</i></label>
+                                                                            <div class="col-md-9">
+                                                                                <input type="text" required class="form-control" placeholder="Second Applicant" ng-model="UserDetailInfo.UserProfileData.UR_2ndApplicant">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group" ng-show="UserDetailInfo.UserProfileData.HoldingNature_ID !='1'">
+                                                                            <label class="col-md-3 control-label">Second Applicant Pan Card <i style="color:red">*</i></label>
+                                                                            <div class="col-md-9">
+                                                                                <input type="text" required class="form-control" placeholder="Second Applicant" ng-model="UserDetailInfo.UserProfileData.UR_2ndApplicantPanCard">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group" ng-show="UserDetailInfo.UserProfileData.HoldingNature_ID !='1'">
+                                                                            <label class="col-md-3 control-label">Thrid Applicant</label>
+                                                                            <div class="col-md-9">
+                                                                                <input type="text" class="form-control" placeholder="Third Applicant" ng-model="UserDetailInfo.UserProfileData.UR_3rdApplicant">
+                                                                            </div>
                                                                         </div>
 
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 control-label ">Tax Status <i style="color:red">*</i></label>
-                                                                        <div class="col-md-9">
-                                                                            <md-select placeholder="Tax Status" ng-model="UserDetailInfo.UserProfileData.TaxStatus_ID" class="md-block" style="margin-top: -10px;width:100%">
-                                                                                <md-option ng-value="0" ng-disabled="true">Select Status</md-option>
-                                                                                <md-option ng-value="TaxStatusVal.TaxID" ng-repeat="TaxStatusVal in TaxStatusList">{{TaxStatusVal.TaxStatusName}}</md-option>
-                                                                            </md-select>
-                                                                          
+                                                                        <div class="form-group" ng-show="UserDetailInfo.UserProfileData.HoldingNature_ID !='1'">
+                                                                            <label class="col-md-3 control-label">Thrid Applicant Pan Card</label>
+                                                                            <div class="col-md-9">
+                                                                                <input type="text" class="form-control" placeholder="Third Applicant" ng-model="UserDetailInfo.UserProfileData.UR_3rdApplicantPanCard">
+                                                                            </div>
                                                                         </div>
-                                                                        
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 control-label ">Hoalding Nature <i style="color:red">*</i></label>
-                                                                        <div class="col-md-9">
-
-                                                                        
-                                                                            <md-select placeholder="Holding Nature" ng-model="UserDetailInfo.UserProfileData.HoldingNature_ID" class="md-block" style="margin-top: -10px;width:100%">
-                                                                                <md-option ng-value="0" ng-disabled="true">Select Holding Nature</md-option>
-                                                                                <md-option ng-value="HoldingnatureVal.HoldingNature_ID" ng-repeat="HoldingnatureVal in HoldingNatureDpwn">{{HoldingnatureVal.Holding_Nature}}</md-option>
-                                                                            </md-select>
-                                                                         
-                                                                        </div>
-
-                                                                    </div>
-                                                                    <div class="form-group" ng-show="UserDetailInfo.UserProfileData.HoldingNature_ID !='1'">
-                                                                        <label class="col-md-3 control-label">Second Applicant <i style="color:red">*</i></label>
-                                                                        <div class="col-md-9">
-                                                                            <input type="text" required class="form-control"  placeholder="Second Applicant" ng-model="UserDetailInfo.UserProfileData.UR_2ndApplicant">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group" ng-show="UserDetailInfo.UserProfileData.HoldingNature_ID !='1'">
-                                                                        <label class="col-md-3 control-label">Second Applicant Pan Card <i style="color:red">*</i></label>
-                                                                        <div class="col-md-9">
-                                                                            <input type="text" required class="form-control" placeholder="Second Applicant" ng-model="UserDetailInfo.UserProfileData.UR_2ndApplicantPanCard">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group" ng-show="UserDetailInfo.UserProfileData.HoldingNature_ID !='1'">
-                                                                        <label class="col-md-3 control-label">Thrid Applicant</label>
-                                                                        <div class="col-md-9">
-                                                                            <input type="text" class="form-control" placeholder="Third Applicant" ng-model="UserDetailInfo.UserProfileData.UR_3rdApplicant">
-                                                                        </div>
-                                                                    </div>
-                                                                   
-                                                                    <div class="form-group" ng-show="UserDetailInfo.UserProfileData.HoldingNature_ID !='1'">
-                                                                        <label class="col-md-3 control-label">Thrid Applicant Pan Card</label>
-                                                                        <div class="col-md-9">
-                                                                            <input type="text" class="form-control" placeholder="Third Applicant" ng-model="UserDetailInfo.UserProfileData.UR_3rdApplicantPanCard">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 control-label ">Date Of Birth <i style="color:red">*</i></label>
-                                                                        <div class="col-md-9">
-                                                                            <!--<div class="input-group"
-                                                                                 moment-picker="swa"
-                                                                                 format="YYYY-MM-DD">
-                                                                                <span class="input-group-addon">
-                                                                                    <i class="fa fa-calendar"></i>
-                                                                                </span>
-                                                                                <input class="form-control"
-                                                                                       placeholder="Select a date"
-                                                                                       ng-model="UserDetailInfo.UserProfileData.DateOfBirth"
-                                                                                       ng-model-options="{ updateOn: 'blur' }">
-                                                                            </div>-->
-                                                                                <input type="text"   ng-model="UserDetailInfo.UserProfileData.DateOfBirth" placeholder="DD/MM/YYYY"  class="form-control" />
+                                                                        <div class="form-group">
+                                                                            <label class="col-md-3 control-label ">Date Of Birth <i style="color:red">*</i></label>
+                                                                            <div class="col-md-9">
+                                                                                <!--<div class="input-group"
+                                                                                     moment-picker="swa"
+                                                                                     format="YYYY-MM-DD">
+                                                                                    <span class="input-group-addon">
+                                                                                        <i class="fa fa-calendar"></i>
+                                                                                    </span>
+                                                                                    <input class="form-control"
+                                                                                           placeholder="Select a date"
+                                                                                           ng-model="UserDetailInfo.UserProfileData.DateOfBirth"
+                                                                                           ng-model-options="{ updateOn: 'blur' }">
+                                                                                </div>-->
+                                                                                <input type="text" ng-model="UserDetailInfo.UserProfileData.DateOfBirth" placeholder="DD/MM/YYYY" class="form-control" />
                                                                                 <!--<input type="text" class="form-control datepicker" datepicker-popup="{{format}}" ng-model="UserDetailInfo.UserProfileData.DateOfBirth" is-open="opened" min-date="minDate" max-date="'2025-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true"
                                                                                        show-button-bar="false"  />
                                                                                 <span class="input-group-btn">
                                                                                     <button type="button" class="btn btn-default ion ion-calendar" ng-click="open($event)"></i></button>
                                                                                 </span>-->
-                                                                            
-                                                                        </div>
 
-                                                                    </div>
-                                                                  
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 control-label">Pan Card No <i style="color:red">*</i></label>
-                                                                        <div class="col-md-9">
-                                                                            <input type="text" class="form-control" placeholder="Pan Card No" ng-disabled="true" ng-model="UserDetailInfo.UserProfileData.PANNumber">
-                                                                        </div>
-                                                                    </div>
-                                                                    
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 control-label ">Source Of Income<i style="color:red">*</i> </label>
-                                                                        <div class="col-md-9">
-                                                                            <md-select placeholder="Source Of Wealth" ng-model="UserDetailInfo.UserProfileData.SOW_ID" class="md-block" style="margin-top: -10px;width:100%">
-                                                                                <md-option ng-value="0" ng-disabled="true">Select Status</md-option>
-                                                                                <md-option ng-value="SourceOfWealthListVal.SourceOfWealth_ID" ng-repeat="SourceOfWealthListVal in SourceOfWealthList">{{SourceOfWealthListVal.SourceOf_Wealth}}</md-option>
-                                                                            </md-select>
-                                                                            <!--<ui-select ng-model="SourceOfWealth.selected" search-enabled="true">
-                                                                                <ui-select-match placeholder="Select Source Of Wealth">{{$select.selected.SourceOf_Wealth}}</ui-select-match>
-                                                                                <ui-select-choices repeat="SourceOfWealthListVal in SourceOfWealthList">
-                                                                                    <div ng-bind-html="SourceOfWealthListVal.SourceOf_Wealth | highlight: $select.search"></div>
-
-                                                                                </ui-select-choices>
-                                                                            </ui-select>-->
-                                                                        </div>
-
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 control-label ">Divident Pay Mode <i style="color:red">*</i></label>
-                                                                        <div class="col-md-9">
-                                                                            <md-select placeholder="Divident Pay Mode" ng-model="UserDetailInfo.UserProfileData.DividentPayMode_ID" class="md-block" style="margin-top: -10px;width:100%">
-                                                                                <md-option ng-value="0" ng-disabled="true">Select</md-option>
-                                                                                <md-option ng-value="DividentPayMode.DividentPayMode_ID" ng-repeat="DividentPayMode in DividentPayModeDpwn">{{DividentPayMode.DividentMode}}</md-option>
-                                                                            </md-select>
-                                                 
-                                                                        </div>
-
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 control-label ">Communication Mode <i style="color:red">*</i></label>
-                                                                        <div class="col-md-9">
-                                                                            <md-select placeholder="Communication Mode" ng-model="UserDetailInfo.UserProfileData.CommunicationModeID" class="md-block" style="margin-top: -10px;width:100%">
-                                                                                <md-option ng-value="0" ng-disabled="true">Select Communication Mode</md-option>
-                                                                                <md-option ng-value="CommunicationVal.CommunicationMode_ID" ng-repeat="CommunicationVal in CommunicationDpwn">{{CommunicationVal.CommunicationMode_Name}}</md-option>
-                                                                            </md-select>
+                                                                            </div>
 
                                                                         </div>
 
-                                                                    </div>
-                                                                    <!--<div class="form-group">
-                                                                        <label class="col-md-3 control-label ">Your Income</label>
-                                                                        <div class="col-md-9">
-
-                                                                            <ui-select ng-model="YourIncome.selected" search-enabled="true">
-                                                                                <ui-select-match placeholder="Select Your Income">{{$select.selected.YourIncomeName}}</ui-select-match>
-                                                                                <ui-select-choices repeat="YourIncomeVal in YourIncomeList">
-                                                                                    <div ng-bind-html="YourIncomeVal.YourIncomeName | highlight: $select.search"></div>
-
-                                                                                </ui-select-choices>
-                                                                            </ui-select>
+                                                                        <div class="form-group">
+                                                                            <label class="col-md-3 control-label">Pan Card No <i style="color:red">*</i></label>
+                                                                            <div class="col-md-9">
+                                                                                <input type="text" class="form-control" placeholder="Pan Card No" ng-disabled="true" ng-model="UserDetailInfo.UserProfileData.PANNumber">
+                                                                            </div>
                                                                         </div>
 
-                                                                    </div>-->
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 control-label">Mobile No <i style="color:red">*</i></label>
-                                                                        <div class="col-md-9">
-                                                                            <input type="text" class="form-control" placeholder="Mobile No" ng-disabled="true" ng-model="UserDetailInfo.UserProfileData.MobileNo">
+                                                                        <div class="form-group">
+                                                                            <label class="col-md-3 control-label ">Source Of Income<i style="color:red">*</i> </label>
+                                                                            <div class="col-md-9">
+                                                                                <md-select placeholder="Source Of Wealth" ng-model="UserDetailInfo.UserProfileData.SOW_ID" class="md-block" style="margin-top: -10px;width:100%">
+                                                                                    <md-option ng-value="0" ng-disabled="true">Select Status</md-option>
+                                                                                    <md-option ng-value="SourceOfWealthListVal.SourceOfWealth_ID" ng-repeat="SourceOfWealthListVal in SourceOfWealthList">{{SourceOfWealthListVal.SourceOf_Wealth}}</md-option>
+                                                                                </md-select>
+                                                                                <!--<ui-select ng-model="SourceOfWealth.selected" search-enabled="true">
+                                                                                    <ui-select-match placeholder="Select Source Of Wealth">{{$select.selected.SourceOf_Wealth}}</ui-select-match>
+                                                                                    <ui-select-choices repeat="SourceOfWealthListVal in SourceOfWealthList">
+                                                                                        <div ng-bind-html="SourceOfWealthListVal.SourceOf_Wealth | highlight: $select.search"></div>
+
+                                                                                    </ui-select-choices>
+                                                                                </ui-select>-->
+                                                                            </div>
+
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 control-label">Guardian Name </label>
-                                                                        <div class="col-md-9">
-                                                                            <input type="text" class="form-control" required placeholder="Guardian Name" ng-model="UserDetailInfo.UserProfileData.GuardianName">
+                                                                        <div class="form-group">
+                                                                            <label class="col-md-3 control-label ">Divident Pay Mode <i style="color:red">*</i></label>
+                                                                            <div class="col-md-9">
+                                                                                <md-select placeholder="Divident Pay Mode" ng-model="UserDetailInfo.UserProfileData.DividentPayMode_ID" class="md-block" style="margin-top: -10px;width:100%">
+                                                                                    <md-option ng-value="0" ng-disabled="true">Select</md-option>
+                                                                                    <md-option ng-value="DividentPayMode.DividentPayMode_ID" ng-repeat="DividentPayMode in DividentPayModeDpwn">{{DividentPayMode.DividentMode}}</md-option>
+                                                                                </md-select>
+
+                                                                            </div>
+
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 control-label">Guardian PanCard </label>
-                                                                        <div class="col-md-9">
-                                                                            <input type="text" class="form-control" required placeholder="Guardian PanCard" ng-model="UserDetailInfo.UserProfileData.GuardianPanCard">
+                                                                        <div class="form-group">
+                                                                            <label class="col-md-3 control-label ">Communication Mode <i style="color:red">*</i></label>
+                                                                            <div class="col-md-9">
+                                                                                <md-select placeholder="Communication Mode" ng-model="UserDetailInfo.UserProfileData.CommunicationModeID" class="md-block" style="margin-top: -10px;width:100%">
+                                                                                    <md-option ng-value="0" ng-disabled="true">Select Communication Mode</md-option>
+                                                                                    <md-option ng-value="CommunicationVal.CommunicationMode_ID" ng-repeat="CommunicationVal in CommunicationDpwn">{{CommunicationVal.CommunicationMode_Name}}</md-option>
+                                                                                </md-select>
+
+                                                                            </div>
+
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 control-label">2nd Applicant PanCard</label>
-                                                                        <div class="col-md-9">
-                                                                            <input type="text" class="form-control" required placeholder="2nd Applicant PanCard" ng-model="UserDetailInfo.UserProfileData.SecondApplicantPanCard">
+                                                                        <!--<div class="form-group">
+                                                                            <label class="col-md-3 control-label ">Your Income</label>
+                                                                            <div class="col-md-9">
+
+                                                                                <ui-select ng-model="YourIncome.selected" search-enabled="true">
+                                                                                    <ui-select-match placeholder="Select Your Income">{{$select.selected.YourIncomeName}}</ui-select-match>
+                                                                                    <ui-select-choices repeat="YourIncomeVal in YourIncomeList">
+                                                                                        <div ng-bind-html="YourIncomeVal.YourIncomeName | highlight: $select.search"></div>
+
+                                                                                    </ui-select-choices>
+                                                                                </ui-select>
+                                                                            </div>
+
+                                                                        </div>-->
+                                                                        <div class="form-group">
+                                                                            <label class="col-md-3 control-label">Mobile No <i style="color:red">*</i></label>
+                                                                            <div class="col-md-9">
+                                                                                <input type="text" class="form-control" placeholder="Mobile No" ng-disabled="true" ng-model="UserDetailInfo.UserProfileData.MobileNo">
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 control-label">3rd Applicant PanCard</label>
-                                                                        <div class="col-md-9">
-                                                                            <input type="text" class="form-control" required placeholder="3rd Applicant PanCard" ng-model="UserDetailInfo.UserProfileData.ThirdApplicantPanCard">
+                                                                        <div class="form-group">
+                                                                            <label class="col-md-3 control-label">Guardian Name </label>
+                                                                            <div class="col-md-9">
+                                                                                <input type="text" class="form-control" required placeholder="Guardian Name" ng-model="UserDetailInfo.UserProfileData.GuardianName">
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 control-label">Email ID <i style="color:red">*</i></label>
-                                                                        <div class="col-md-9">
-                                                                            <input type="text" class="form-control" placeholder="Email ID" ng-disabled="true" ng-model="UserDetailInfo.UserProfileData.EmailID">
+                                                                        <div class="form-group">
+                                                                            <label class="col-md-3 control-label">Guardian PanCard </label>
+                                                                            <div class="col-md-9">
+                                                                                <input type="text" class="form-control" required placeholder="Guardian PanCard" ng-model="UserDetailInfo.UserProfileData.GuardianPanCard">
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                    <div class="col-md-12">
-                                                                        <div class="panel-group acc-v1" id="accordion-1">
-                                                                            <div class="panel panel-default">
-                                                                                <div class="panel-heading">
-                                                                                    <h4 class="panel-title">
-                                                                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-1" data-target="#collapse-One">
-                                                                                            Contact Details
-                                                                                            <i class="fa fa-plus right" style="color:black"></i>
-                                                                                            
-                                                                                        </a>
-                                                                                    </h4>
-                                                                                </div>
-                                                                                <div id="collapse-One" class="panel-collapse collapse">
-                                                                                    <div class="panel-body" ng-repeat="Address in  UserDetailInfo.AddressDetailsData">
-                                                                                        <div class="panel-heading">#{{$index+1}} - {{Address.AddressType}}</div>
-                                                                                        <div class="panel-body">
+                                                                        <div class="form-group">
+                                                                            <label class="col-md-3 control-label">2nd Applicant PanCard</label>
+                                                                            <div class="col-md-9">
+                                                                                <input type="text" class="form-control" required placeholder="2nd Applicant PanCard" ng-model="UserDetailInfo.UserProfileData.SecondApplicantPanCard">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="col-md-3 control-label">3rd Applicant PanCard</label>
+                                                                            <div class="col-md-9">
+                                                                                <input type="text" class="form-control" required placeholder="3rd Applicant PanCard" ng-model="UserDetailInfo.UserProfileData.ThirdApplicantPanCard">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="col-md-3 control-label">Email ID <i style="color:red">*</i></label>
+                                                                            <div class="col-md-9">
+                                                                                <input type="text" class="form-control" placeholder="Email ID" ng-disabled="true" ng-model="UserDetailInfo.UserProfileData.EmailID">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <div class="col-md-12">
+                                                                                <div class="panel-group acc-v1" id="accordion-1">
+                                                                                    <div class="panel panel-default">
+                                                                                        <div class="panel-heading">
+                                                                                            <h4 class="panel-title">
+                                                                                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-1" data-target="#collapse-One">
+                                                                                                    Contact Details
+                                                                                                    <i class="fa fa-plus right" style="color:black"></i>
 
-                                                                                            <div class="row">
-                                                                                                <div class="form-group">
-                                                                                                    <label class="col-md-3 control-label ">Country <i style="color:red">*</i></label>
-                                                                                                    <div class="col-md-9">
-                                                                                                        <md-select placeholder="Country" ng-model="Address.CountryID"  class="md-block" style="margin-top: -10px;width:100%">
-                                                                                                            <md-option ng-value="0" ng-disabled="true">Select Country</md-option>
-                                                                                                            <md-option ng-value="countryName.Country_ID" ng-repeat="countryName in CountryListDetails" ng-click="SelectedCountry(countryName.Country_ID)">{{countryName.Country_Name}}</md-option>
-                                                                                                        </md-select>
-                                                                                                        <!--<select class="form-control" ng-model="Address.CountryName" >
-                                                                                                            <option ng-value="0" ng-disabled="true">Select Country</option>
-                                                                                                            <option ng-repeat="countryName in CountryListDetails" ng-value="countryName.Country_Name" ng-click="SelectedCountry($index)">{{countryName.Country_Name}}</option>
-                                                                                                        </select>-->
-                                                                                                        <!--<ui-select ng-model="$scope.ContryList.selected" search-enabled="true" ng-change="SelectedCountry($select.selected.Country_ID)">
-                                                                                                            <ui-select-match placeholder="Select Country">{{$select.selected.Country_Name}}</ui-select-match>
-                                                                                                            <ui-select-choices repeat="countryName in CountryListDetails">
-                                                                                                                <div ng-bind-html="countryName.Country_Name | highlight: $select.search"></div>
+                                                                                                </a>
+                                                                                            </h4>
+                                                                                        </div>
+                                                                                        <div id="collapse-One" class="panel-collapse collapse">
+                                                                                            <div class="panel-body" ng-repeat="Address in  UserDetailInfo.AddressDetailsData">
+                                                                                                <div class="panel-heading">#{{$index+1}} - {{Address.AddressType}}</div>
+                                                                                                <div class="panel-body">
 
-                                                                                                            </ui-select-choices>
-                                                                                                        </ui-select>-->
-                                                                                                    </div>
+                                                                                                    <div class="row">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="col-md-3 control-label ">Country <i style="color:red">*</i></label>
+                                                                                                            <div class="col-md-9">
+                                                                                                                <md-select placeholder="Country" ng-model="Address.CountryID" class="md-block" style="margin-top: -10px;width:100%">
+                                                                                                                    <md-option ng-value="0" ng-disabled="true">Select Country</md-option>
+                                                                                                                    <md-option ng-value="countryName.Country_ID" ng-repeat="countryName in CountryListDetails" ng-click="SelectedCountry(countryName.Country_ID)">{{countryName.Country_Name}}</md-option>
+                                                                                                                </md-select>
+                                                                                                                <!--<select class="form-control" ng-model="Address.CountryName" >
+                                                                                                                    <option ng-value="0" ng-disabled="true">Select Country</option>
+                                                                                                                    <option ng-repeat="countryName in CountryListDetails" ng-value="countryName.Country_Name" ng-click="SelectedCountry($index)">{{countryName.Country_Name}}</option>
+                                                                                                                </select>-->
+                                                                                                                <!--<ui-select ng-model="$scope.ContryList.selected" search-enabled="true" ng-change="SelectedCountry($select.selected.Country_ID)">
+                                                                                                                    <ui-select-match placeholder="Select Country">{{$select.selected.Country_Name}}</ui-select-match>
+                                                                                                                    <ui-select-choices repeat="countryName in CountryListDetails">
+                                                                                                                        <div ng-bind-html="countryName.Country_Name | highlight: $select.search"></div>
 
-                                                                                                </div>
-                                                                                                <div class="form-group">
-                                                                                                    <label class="col-md-3 control-label ">State <i style="color:red">*</i></label>
-                                                                                                    <div class="col-md-9">
+                                                                                                                    </ui-select-choices>
+                                                                                                                </ui-select>-->
+                                                                                                            </div>
 
-                                                                                                        <md-select placeholder="State" ng-model="Address.StateID" class="md-block" style="margin-top: -10px;width:100%">
-                                                                                                            <md-option ng-value="0" ng-disabled="true">Select State</md-option>
-                                                                                                            <md-option ng-value="StateName.State_ID" ng-repeat="StateName in StateListDetails" ng-click="SelectedState(StateName.State_ID)">{{StateName.State_Name}}</md-option>
-                                                                                                        </md-select>
-                                                                                                        <!--<select class="form-control" ng-model="Address.StateName">
-                                                                                                            <option ng-value="0" ng-disabled="true">Select </option>
-                                                                                                            <option ng-repeat="StateName in StateListDetails" ng-value="StateName.State_Name" ng-click="SelectedState(StateName.State_ID)">{{StateName.State_Name}}</option>
-                                                                                                        </select>-->
-                                                                                                        <!--<ui-select ng-model="$scope.StateList.selected" search-enabled="true" ng-disabled="StateListDetails.length<=0" ng-change="SelectedState($select.selected.State_ID)">
-                                                                                                            <ui-select-match placeholder="Select State">{{$select.selected.State_Name}}</ui-select-match>
-                                                                                                            <ui-select-choices repeat="StateName in StateListDetails | filter: $select.search">
-                                                                                                                <div ng-bind-html="StateName.State_Name "></div>
+                                                                                                        </div>
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="col-md-3 control-label ">State <i style="color:red">*</i></label>
+                                                                                                            <div class="col-md-9">
 
-                                                                                                            </ui-select-choices>
-                                                                                                        </ui-select>-->
-                                                                                                    </div>
+                                                                                                                <md-select placeholder="State" ng-model="Address.StateID" class="md-block" style="margin-top: -10px;width:100%">
+                                                                                                                    <md-option ng-value="0" ng-disabled="true">Select State</md-option>
+                                                                                                                    <md-option ng-value="StateName.State_ID" ng-repeat="StateName in StateListDetails" ng-click="SelectedState(StateName.State_ID)">{{StateName.State_Name}}</md-option>
+                                                                                                                </md-select>
+                                                                                                                <!--<select class="form-control" ng-model="Address.StateName">
+                                                                                                                    <option ng-value="0" ng-disabled="true">Select </option>
+                                                                                                                    <option ng-repeat="StateName in StateListDetails" ng-value="StateName.State_Name" ng-click="SelectedState(StateName.State_ID)">{{StateName.State_Name}}</option>
+                                                                                                                </select>-->
+                                                                                                                <!--<ui-select ng-model="$scope.StateList.selected" search-enabled="true" ng-disabled="StateListDetails.length<=0" ng-change="SelectedState($select.selected.State_ID)">
+                                                                                                                    <ui-select-match placeholder="Select State">{{$select.selected.State_Name}}</ui-select-match>
+                                                                                                                    <ui-select-choices repeat="StateName in StateListDetails | filter: $select.search">
+                                                                                                                        <div ng-bind-html="StateName.State_Name "></div>
 
-                                                                                                </div>
-                                                                                                <div class="form-group">
-                                                                                                    <label class="col-md-3 control-label ">City <i style="color:red">*</i></label>
-                                                                                                    <div class="col-md-9">
-                                                                                                        <md-select placeholder="City" ng-model="Address.CityID" class="md-block" style="margin-top: -10px;width:100%">
-                                                                                                            <md-option ng-value="0" ng-disabled="true">Select City</md-option>
-                                                                                                            <md-option ng-value="CityName.City_ID" ng-repeat="CityName in CityListDetails" >{{CityName.City_Name}}</md-option>
-                                                                                                        </md-select>
-                                                                                                        <!--<md-select placeholder="Assign to user" ng-model="Address.StateName" class="md-block" style="margin-top: -10px;width:100%">
-                                                                                                            <md-option ng-value="0" ng-disabled="true">Select State</md-option>
-                                                                                                            <md-option ng-value="StateName.State_Name" ng-repeat="StateName in StateListDetails" ng-click="SelectedState(StateName.State_ID)">{{StateName.State_Name}}</md-option>
-                                                                                                        </md-select>
+                                                                                                                    </ui-select-choices>
+                                                                                                                </ui-select>-->
+                                                                                                            </div>
 
-                                                                                                        <ui-select ng-model="$scope.CityListVal.selected" search-enabled="true" ng-disabled="CityListDetails.length<=0">
-                                                                                                            <ui-select-match placeholder="Select City">{{$select.selected.City_Name}}</ui-select-match>
-                                                                                                            <ui-select-choices repeat="CityName in CityListDetails">
-                                                                                                                <div ng-bind-html="CityName.City_Name | highlight: $select.search"></div>
+                                                                                                        </div>
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="col-md-3 control-label ">City <i style="color:red">*</i></label>
+                                                                                                            <div class="col-md-9">
+                                                                                                                <md-select placeholder="City" ng-model="Address.CityID" class="md-block" style="margin-top: -10px;width:100%">
+                                                                                                                    <md-option ng-value="0" ng-disabled="true">Select City</md-option>
+                                                                                                                    <md-option ng-value="CityName.City_ID" ng-repeat="CityName in CityListDetails">{{CityName.City_Name}}</md-option>
+                                                                                                                </md-select>
+                                                                                                                <!--<md-select placeholder="Assign to user" ng-model="Address.StateName" class="md-block" style="margin-top: -10px;width:100%">
+                                                                                                                    <md-option ng-value="0" ng-disabled="true">Select State</md-option>
+                                                                                                                    <md-option ng-value="StateName.State_Name" ng-repeat="StateName in StateListDetails" ng-click="SelectedState(StateName.State_ID)">{{StateName.State_Name}}</md-option>
+                                                                                                                </md-select>
 
-                                                                                                            </ui-select-choices>
-                                                                                                        </ui-select>-->
-                                                                                                    </div>
+                                                                                                                <ui-select ng-model="$scope.CityListVal.selected" search-enabled="true" ng-disabled="CityListDetails.length<=0">
+                                                                                                                    <ui-select-match placeholder="Select City">{{$select.selected.City_Name}}</ui-select-match>
+                                                                                                                    <ui-select-choices repeat="CityName in CityListDetails">
+                                                                                                                        <div ng-bind-html="CityName.City_Name | highlight: $select.search"></div>
 
-                                                                                                </div>
-                                                                                                <div class="form-group">
-                                                                                                    <label class="col-md-3 control-label">Pin Code <i style="color:red">*</i></label>
-                                                                                                    <div class="col-md-9">
-                                                                                                        <input type="text" required class="form-control" placeholder="Pin Code" ng-model="Address.PinCode">
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                
-                                                                                                <div class="form-group">
-                                                                                                    <label class="col-md-3 control-label">Address <i style="color:red">*</i></label>
-                                                                                                    <div class="col-md-9">
-                                                                                                        <textarea rows="5" class="form-control resize-v" placeholder="Address" ng-model="Address.Address"></textarea>
+                                                                                                                    </ui-select-choices>
+                                                                                                                </ui-select>-->
+                                                                                                            </div>
+
+                                                                                                        </div>
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="col-md-3 control-label">Pin Code <i style="color:red">*</i></label>
+                                                                                                            <div class="col-md-9">
+                                                                                                                <input type="text" required class="form-control" placeholder="Pin Code" ng-model="Address.PinCode">
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="col-md-3 control-label">Address <i style="color:red">*</i></label>
+                                                                                                            <div class="col-md-9">
+                                                                                                                <textarea rows="5" class="form-control resize-v" placeholder="Address" ng-model="Address.Address"></textarea>
+                                                                                                            </div>
+                                                                                                        </div>
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
-                                                                                        </div>
                                                                                     </div>
+
+                                                                                </div>
                                                                             </div>
-                                                                            
                                                                         </div>
-                                                                    </div>
-                                                                    </div>
-                                                                    <div class="clearfix right">
-                                                                        <span ng-show="errorMessage.length>0" style="color:red">{{errorMessage}}</span>   <button class="btn btn-primary mr5" type="button" ng-click="Update()">Save & Next <i class="fa fa-arrow-right"></i> </button>
-                                                                        
-                                                                    </div>
-                                                                </form>
+                                                                        <div class="clearfix right">
+                                                                            <span ng-show="errorMessage.length>0" style="color:red">{{errorMessage}}</span>   <button class="btn btn-primary mr5" type="button" ng-click="Update()">Save & Next <i class="fa fa-arrow-right"></i> </button>
+
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </div> <!-- #end col-left -->
+                                                        </div> <!-- #end col-left -->
 
                                                     </div>
-</md-content>
-                                        </md-tab>
-                                        <md-tab label="Bank Details">
-                                            <md-content class="md-padding">
-                                                <div class="row">
-                                                    <!-- col-left -->
-                                                    <div class="col-sm-12 col-md-12">
-                                                        <div class="panel panel-default panel-hovered panel-stacked mb20">
-                                                            <div class="panel-heading">Bank Details</div>
-                                                            <div class="panel-body">
-                                                                <form role="form" class="form-horizontal">
-                                                                    <!-- form horizontal acts as a row -->
-                                                                    <!-- normal control -->
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 control-label ">Select Bank <i style="color:red">*</i></label>
-                                                                        <div class="col-md-9">
-                                                                            <md-select placeholder="Select Bank" required ng-model="UserDetailInfo.BankDetailsData.Bank_ID" class="md-block" style="margin-top: -10px;width:100%">
-                                                                                <md-option ng-value="0" ng-disabled="true">Select Bank </md-option>
-                                                                                <md-option ng-value="BankStatusVal.Bank_ID" ng-repeat="BankStatusVal in BankDetailsDpwn">{{BankStatusVal.Bank_Name}}</md-option>
-                                                                            </md-select>
-                                                                            <!--<ui-select ng-model="Bank_Name.selected" search-enabled="true">
-                                                                                <ui-select-match placeholder="Select Bank">{{$select.selected.Bank_Name}}</ui-select-match>
-                                                                                <ui-select-choices repeat="BankStatusVal in BankDetailsList">
-                                                                                    <div ng-bind-html="BankStatusVal.Bank_Name | highlight: $select.search"></div>
-
-                                                                                </ui-select-choices>
-                                                                            </ui-select>-->
-                                                                        </div>
-
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 control-label">IFSC Code <i style="color:red">*</i></label>
-                                                                        <div class="col-md-9">
-                                                                            <input type="text" class="form-control" required ng-model="UserDetailInfo.BankDetailsData.Bank_IFSC" placeholder="IFSC Code">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 control-label ">Select Account Type <i style="color:red">*</i></label>
-                                                                        <div class="col-md-9">
-                                                                            <md-select placeholder="Select Account Type" required ng-model="UserDetailInfo.BankDetailsData.Bank_AccountTypeID" class="md-block" style="margin-top: -10px;width:100%">
-                                                                                <md-option ng-value="0" ng-disabled="true">Select Bank</md-option>
-                                                                                <md-option ng-value="AccountStatusVal.AccountTypeID" ng-repeat="AccountStatusVal in BankAccountStatusDpwn">{{AccountStatusVal.AccountType}}</md-option>
-                                                                            </md-select>
-                                                                            <!--<ui-select ng-model="AccountType.selected" search-enabled="true">
-                                                                                <ui-select-match placeholder="Select Account Type">{{$select.selected.AccountType}}</ui-select-match>
-                                                                                <ui-select-choices repeat="AccountStatusVal in BankAccountList">
-                                                                                    <div ng-bind-html="AccountStatusVal.AccountType | highlight: $select.search"></div>
-
-                                                                                </ui-select-choices>
-                                                                            </ui-select>-->
-                                                                        </div>
-
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 control-label">Account No <i style="color:red">*</i></label>
-                                                                        <div class="col-md-9">
-                                                                            <input type="text" class="form-control" required ng-model="UserDetailInfo.BankDetailsData.Bank_AccountNo" placeholder="Account No">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 control-label">Name as per Bank Record <i style="color:red">*</i></label>
-                                                                        <div class="col-md-9">
-                                                                            <input type="text" class="form-control" required ng-model="UserDetailInfo.BankDetailsData.NameAsPerBank" placeholder="Name as per Bank Record">
-                                                                        </div>
-                                                                    </div>
-                                                                   
-                                                                    <div class="clearfix right">
-                                                                          <button class="btn btn-primary mr5" type="submit" ng-click="SaveBankDetails()">Save & Next <i class="fa fa-arrow-right"></i> </button>
-
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div> 
-                                                <!-- #end col-left -->
-
-                                                </div>                                            
-                                            
-                                            </md-content>
-                                        </md-tab>
-                                        <md-tab label="Nominee Details">
-                                            <md-content class="md-padding">
-                                                <div class="row">
-                                                    <!-- col-left -->
-                                                    <div class="col-sm-12 col-md-12">
-                                                        <div class="panel panel-default panel-hovered panel-stacked mb20">
-                                                            <!-- NOminee Details Listing -->
-
-                                                            <div class="panel-body" ng-repeat="Nominee in  UserDetailInfo.NomineeDetailsData">
-                                                                <div class="panel-heading">#{{$index+1}} - {{Nominee.Nominee_Name}}</div>
+                                                </md-content>
+                                            </md-tab>
+                                            <md-tab label="Bank Details">
+                                                <md-content class="md-padding">
+                                                    <div class="row">
+                                                        <!-- col-left -->
+                                                        <div class="col-sm-12 col-md-12">
+                                                            <div class="panel panel-default panel-hovered panel-stacked mb20">
+                                                                <div class="panel-heading">Bank Details</div>
                                                                 <div class="panel-body">
                                                                     <form role="form" class="form-horizontal">
                                                                         <!-- form horizontal acts as a row -->
                                                                         <!-- normal control -->
                                                                         <div class="form-group">
-                                                                            <label class="col-md-3 control-label">Name</label>
+                                                                            <label class="col-md-3 control-label ">Select Bank <i style="color:red">*</i></label>
                                                                             <div class="col-md-9">
-                                                                                <input type="text" class="form-control" placeholder="Name" ng-model="Nominee.Nominee_Name">
+                                                                                <md-select placeholder="Select Bank" required ng-model="UserDetailInfo.BankDetailsData.Bank_ID" class="md-block" style="margin-top: -10px;width:100%">
+                                                                                    <md-option ng-value="0" ng-disabled="true">Select Bank </md-option>
+                                                                                    <md-option ng-value="BankStatusVal.Bank_ID" ng-repeat="BankStatusVal in BankDetailsDpwn">{{BankStatusVal.Bank_Name}}</md-option>
+                                                                                </md-select>
+                                                                                <!--<ui-select ng-model="Bank_Name.selected" search-enabled="true">
+                                                                                    <ui-select-match placeholder="Select Bank">{{$select.selected.Bank_Name}}</ui-select-match>
+                                                                                    <ui-select-choices repeat="BankStatusVal in BankDetailsList">
+                                                                                        <div ng-bind-html="BankStatusVal.Bank_Name | highlight: $select.search"></div>
+
+                                                                                    </ui-select-choices>
+                                                                                </ui-select>-->
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="col-md-3 control-label">IFSC Code <i style="color:red">*</i></label>
+                                                                            <div class="col-md-9">
+                                                                                <input type="text" class="form-control" required ng-model="UserDetailInfo.BankDetailsData.Bank_IFSC" placeholder="IFSC Code">
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label class="col-md-3 control-label ">Date Of Birth</label>
+                                                                            <label class="col-md-3 control-label ">Select Account Type <i style="color:red">*</i></label>
                                                                             <div class="col-md-9">
-                                                                                
+                                                                                <md-select placeholder="Select Account Type" required ng-model="UserDetailInfo.BankDetailsData.Bank_AccountTypeID" class="md-block" style="margin-top: -10px;width:100%">
+                                                                                    <md-option ng-value="0" ng-disabled="true">Select Bank</md-option>
+                                                                                    <md-option ng-value="AccountStatusVal.AccountTypeID" ng-repeat="AccountStatusVal in BankAccountStatusDpwn">{{AccountStatusVal.AccountType}}</md-option>
+                                                                                </md-select>
+                                                                                <!--<ui-select ng-model="AccountType.selected" search-enabled="true">
+                                                                                    <ui-select-match placeholder="Select Account Type">{{$select.selected.AccountType}}</ui-select-match>
+                                                                                    <ui-select-choices repeat="AccountStatusVal in BankAccountList">
+                                                                                        <div ng-bind-html="AccountStatusVal.AccountType | highlight: $select.search"></div>
+
+                                                                                    </ui-select-choices>
+                                                                                </ui-select>-->
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="col-md-3 control-label">Account No <i style="color:red">*</i></label>
+                                                                            <div class="col-md-9">
+                                                                                <input type="text" class="form-control" required ng-model="UserDetailInfo.BankDetailsData.Bank_AccountNo" placeholder="Account No">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="col-md-3 control-label">Name as per Bank Record <i style="color:red">*</i></label>
+                                                                            <div class="col-md-9">
+                                                                                <input type="text" class="form-control" required ng-model="UserDetailInfo.BankDetailsData.NameAsPerBank" placeholder="Name as per Bank Record">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="clearfix right">
+                                                                            <button class="btn btn-primary mr5" type="submit" ng-click="SaveBankDetails()">Save & Next <i class="fa fa-arrow-right"></i> </button>
+
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- #end col-left -->
+
+                                                    </div>
+
+                                                </md-content>
+                                            </md-tab>
+                                            <md-tab label="Nominee Details">
+                                                <md-content class="md-padding">
+                                                    <div class="row">
+                                                        <!-- col-left -->
+                                                        <div class="col-sm-12 col-md-12">
+                                                            <div class="panel panel-default panel-hovered panel-stacked mb20">
+                                                                <!-- NOminee Details Listing -->
+
+                                                                <div class="panel-body" ng-repeat="Nominee in  UserDetailInfo.NomineeDetailsData">
+                                                                    <div class="panel-heading">#{{$index+1}} - {{Nominee.Nominee_Name}}</div>
+                                                                    <div class="panel-body">
+                                                                        <form role="form" class="form-horizontal">
+                                                                            <!-- form horizontal acts as a row -->
+                                                                            <!-- normal control -->
+                                                                            <div class="form-group">
+                                                                                <label class="col-md-3 control-label">Name</label>
+                                                                                <div class="col-md-9">
+                                                                                    <input type="text" class="form-control" placeholder="Name" ng-model="Nominee.Nominee_Name">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label class="col-md-3 control-label ">Date Of Birth</label>
+                                                                                <div class="col-md-9">
+
                                                                                     <!--<input type="text" class="form-control datepicker" datepicker-popup="DD/MM/YYYY" ng-model="Nominee.Nominee_DOB"  is-open="opened" min-date="minDate" max-date="'2025-06-22'"  datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true"
                                                                                            show-button-bar="false" />
                                                                                     <span class="input-group-btn">
                                                                                         <button type="button" class="btn btn-default ion ion-calendar" ng-click="open($event)"></i></button>
                                                                                     </span>-->
-                                                                                    <!--<md-datepicker ng-model="Nominee.Nominee_DOB" md-placeholder="Date Of Birth"  
+                                                                                    <!--<md-datepicker ng-model="Nominee.Nominee_DOB" md-placeholder="Date Of Birth"
                                                                                                    md-open-on-focus></md-datepicker>-->
-                                                                                <input type="date" date-input ng-model="Nominee.Nominee_DOB" md-placeholder="Date Of Birth" class="form-control" />
-                                                                               
+                                                                                    <input type="date" date-input ng-model="Nominee.Nominee_DOB" md-placeholder="Date Of Birth" class="form-control" />
+
+                                                                                </div>
+
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label class="col-md-3 control-label ">Select Relationship</label>
+                                                                                <div class="col-md-9">
+                                                                                    <md-select placeholder="Relationship" ng-model="Nominee.Nominee_Relationship_ID" class="md-block" style="margin-top: -10px;width:100%">
+                                                                                        <md-option ng-value="0" ng-disabled="true">Select Relationship</md-option>
+                                                                                        <md-option ng-value="RelationStatusVal.Relationship_ID" ng-repeat="RelationStatusVal in BankRelationList">{{RelationStatusVal.RelationToUser}}</md-option>
+                                                                                    </md-select>
+                                                                                    <!--<ui-select ng-model="RelationshipStatus.selected" search-enabled="true">
+                                                                                        <ui-select-match placeholder="Select Relationship">{{$select.selected.RelationToUser}}</ui-select-match>
+                                                                                        <ui-select-choices repeat="RelationStatusVal in BankRelationList">
+                                                                                            <div ng-bind-html="RelationStatusVal.RelationToUser | highlight: $select.search"></div>
+
+                                                                                        </ui-select-choices>
+                                                                                    </ui-select>-->
+                                                                                </div>
+
                                                                             </div>
 
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="col-md-3 control-label ">Select Relationship</label>
-                                                                            <div class="col-md-9">
-                                                                                <md-select placeholder="Relationship" ng-model="Nominee.Nominee_Relationship_ID" class="md-block" style="margin-top: -10px;width:100%">
-                                                                                    <md-option ng-value="0" ng-disabled="true">Select Relationship</md-option>
-                                                                                    <md-option ng-value="RelationStatusVal.Relationship_ID" ng-repeat="RelationStatusVal in BankRelationList">{{RelationStatusVal.RelationToUser}}</md-option>
-                                                                                </md-select>
-                                                                                <!--<ui-select ng-model="RelationshipStatus.selected" search-enabled="true">
-                                                                                    <ui-select-match placeholder="Select Relationship">{{$select.selected.RelationToUser}}</ui-select-match>
-                                                                                    <ui-select-choices repeat="RelationStatusVal in BankRelationList">
-                                                                                        <div ng-bind-html="RelationStatusVal.RelationToUser | highlight: $select.search"></div>
+                                                                            <div class="form-group">
+                                                                                <label class="col-md-3 control-label ">Select Type</label>
+                                                                                <div class="col-md-9">
 
-                                                                                    </ui-select-choices>
-                                                                                </ui-select>-->
+                                                                                    <md-select placeholder="Nominee Status" ng-model="Nominee.Nominee_RiskType" class="md-block" style="margin-top: -10px;width:100%">
+                                                                                        <md-option ng-value="0" ng-disabled="true">Select Relationship</md-option>
+                                                                                        <md-option ng-value="NomineeStatusVal.NomineeTypeValue" ng-repeat="NomineeStatusVal in BankNomineeList">{{NomineeStatusVal.NomineeTypeValue}}</md-option>
+                                                                                    </md-select>
+
+                                                                                    <!--<ui-select ng-model="NomineeStatus.selected" search-enabled="true">
+                                                                                        <ui-select-match placeholder="Select Type">{{$select.selected.NomineeTypeValue}}</ui-select-match>
+                                                                                        <ui-select-choices repeat="NomineeStatusVal in BankNomineeList">
+                                                                                            <div ng-bind-html="NomineeStatusVal.NomineeTypeValue | highlight: $select.search"></div>
+
+                                                                                        </ui-select-choices>
+                                                                                    </ui-select>-->
+                                                                                </div>
+
                                                                             </div>
-
-                                                                        </div>
-
-                                                                        <div class="form-group">
-                                                                            <label class="col-md-3 control-label ">Select Type</label>
-                                                                            <div class="col-md-9">
-
-                                                                                <md-select placeholder="Nominee Status" ng-model="Nominee.Nominee_RiskType" class="md-block" style="margin-top: -10px;width:100%">
-                                                                                    <md-option ng-value="0" ng-disabled="true">Select Relationship</md-option>
-                                                                                    <md-option ng-value="NomineeStatusVal.NomineeTypeValue" ng-repeat="NomineeStatusVal in BankNomineeList">{{NomineeStatusVal.NomineeTypeValue}}</md-option>
-                                                                                </md-select>
-
-                                                                                <!--<ui-select ng-model="NomineeStatus.selected" search-enabled="true">
-                                                                                    <ui-select-match placeholder="Select Type">{{$select.selected.NomineeTypeValue}}</ui-select-match>
-                                                                                    <ui-select-choices repeat="NomineeStatusVal in BankNomineeList">
-                                                                                        <div ng-bind-html="NomineeStatusVal.NomineeTypeValue | highlight: $select.search"></div>
-
-                                                                                    </ui-select-choices>
-                                                                                </ui-select>-->
-                                                                            </div>
-
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="col-md-3 control-label">% Allocation</label>
-                                                                            <div class="col-md-9">
-                                                                                <input type="text" class="form-control" placeholder="% Allocation" ng-model="Nominee.Nominee_AllocationPercentage">
-                                                                            </div>
-                                                                        </div>
-
-
-                                                                  
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                            <div class="panel-body">
-                                                                <div class="clearfix right">
-                                                                    <button class="btn btn-primary mr5" type="button" ng-click="AddNominee()">Add </button>
-
-                                                                </div>
-                                                            </div>
-                                                            <!-- Add Nominee Details -->
-                                                            <div class="panel-body" ng-show="Add_Click">
-                                                                <div class="panel-heading">Add  Nominee</div>
-
-                                                                <div class="panel-body">
-                                                                    <form role="form" class="form-horizontal">
-                                                                        <!-- form horizontal acts as a row -->
-                                                                        <!-- normal control -->
-                                                                        <div class="form-group">
-                                                                            <label class="col-md-3 control-label">Name</label>
-                                                                            <div class="col-md-9">
-                                                                                <input type="text" class="form-control" placeholder="Name">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="col-md-3 control-label ">Date Of Birth</label>
-                                                                            <div class="col-md-9">
-                                                                                <div class="input-group">
-                                                                                    <input type="text" class="form-control datepicker" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2025-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true"
-                                                                                           show-button-bar="false" />
-                                                                                    <span class="input-group-btn">
-                                                                                        <button type="button" class="btn btn-default ion ion-calendar" ng-click="open($event)"></i></button>
-                                                                                    </span>
+                                                                            <div class="form-group">
+                                                                                <label class="col-md-3 control-label">% Allocation</label>
+                                                                                <div class="col-md-9">
+                                                                                    <input type="text" class="form-control" placeholder="% Allocation" ng-model="Nominee.Nominee_AllocationPercentage">
                                                                                 </div>
                                                                             </div>
 
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="col-md-3 control-label ">Select Relationship</label>
-                                                                            <div class="col-md-9">
 
-                                                                                <ui-select ng-model="RelationshipStatus.selected" search-enabled="true">
-                                                                                    <ui-select-match placeholder="Select Relationship">{{$select.selected.RelationshipStatus}}</ui-select-match>
-                                                                                    <ui-select-choices repeat="RelationStatusVal in BankRelationList">
-                                                                                        <div ng-bind-html="RelationStatusVal.RelationshipStatus | highlight: $select.search"></div>
 
-                                                                                    </ui-select-choices>
-                                                                                </ui-select>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="panel-body">
+                                                                    <div class="clearfix right">
+                                                                        <button class="btn btn-primary mr5" type="button" ng-click="AddNominee()">Add </button>
+
+                                                                    </div>
+                                                                </div>
+                                                                <!-- Add Nominee Details -->
+                                                                <div class="panel-body" ng-show="Add_Click">
+                                                                    <div class="panel-heading">Add  Nominee</div>
+
+                                                                    <div class="panel-body">
+                                                                        <form role="form" class="form-horizontal">
+                                                                            <!-- form horizontal acts as a row -->
+                                                                            <!-- normal control -->
+                                                                            <div class="form-group">
+                                                                                <label class="col-md-3 control-label">Name</label>
+                                                                                <div class="col-md-9">
+                                                                                    <input type="text" class="form-control" placeholder="Name">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label class="col-md-3 control-label ">Date Of Birth</label>
+                                                                                <div class="col-md-9">
+                                                                                    <div class="input-group">
+                                                                                        <input type="text" class="form-control datepicker" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2025-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true"
+                                                                                               show-button-bar="false" />
+                                                                                        <span class="input-group-btn">
+                                                                                            <button type="button" class="btn btn-default ion ion-calendar" ng-click="open($event)"></i></button>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label class="col-md-3 control-label ">Select Relationship</label>
+                                                                                <div class="col-md-9">
+
+                                                                                    <ui-select ng-model="RelationshipStatus.selected" search-enabled="true">
+                                                                                        <ui-select-match placeholder="Select Relationship">{{$select.selected.RelationshipStatus}}</ui-select-match>
+                                                                                        <ui-select-choices repeat="RelationStatusVal in BankRelationList">
+                                                                                            <div ng-bind-html="RelationStatusVal.RelationshipStatus | highlight: $select.search"></div>
+
+                                                                                        </ui-select-choices>
+                                                                                    </ui-select>
+                                                                                </div>
+
                                                                             </div>
 
-                                                                        </div>
+                                                                            <div class="form-group">
+                                                                                <label class="col-md-3 control-label ">Select Type</label>
+                                                                                <div class="col-md-9">
 
-                                                                        <div class="form-group">
-                                                                            <label class="col-md-3 control-label ">Select Type</label>
-                                                                            <div class="col-md-9">
+                                                                                    <ui-select ng-model="NomineeStatus.selected" search-enabled="true">
+                                                                                        <ui-select-match placeholder="Select Type">{{$select.selected.NomineeStatus}}</ui-select-match>
+                                                                                        <ui-select-choices repeat="NomineeStatusVal in BankNomineeList">
+                                                                                            <div ng-bind-html="NomineeStatusVal.NomineeStatus | highlight: $select.search"></div>
 
-                                                                                <ui-select ng-model="NomineeStatus.selected" search-enabled="true">
-                                                                                    <ui-select-match placeholder="Select Type">{{$select.selected.NomineeStatus}}</ui-select-match>
-                                                                                    <ui-select-choices repeat="NomineeStatusVal in BankNomineeList">
-                                                                                        <div ng-bind-html="NomineeStatusVal.NomineeStatus | highlight: $select.search"></div>
+                                                                                        </ui-select-choices>
+                                                                                    </ui-select>
+                                                                                </div>
 
-                                                                                    </ui-select-choices>
-                                                                                </ui-select>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label class="col-md-3 control-label">% Allocation</label>
+                                                                                <div class="col-md-9">
+                                                                                    <input type="text" class="form-control" placeholder="% Allocation">
+                                                                                </div>
                                                                             </div>
 
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="col-md-3 control-label">% Allocation</label>
-                                                                            <div class="col-md-9">
-                                                                                <input type="text" class="form-control" placeholder="% Allocation">
+
+                                                                            <div class="clearfix right">
+                                                                                <button class="btn btn-primary mr5" type="submit">Add Nominee</button>
+
                                                                             </div>
-                                                                        </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="panel-body" style="border-top:1px solid gray">
+                                                                    <div class="clearfix right">
+                                                                        <button class="btn btn-primary mr5" type="submit" ng-click="SaveNomineeDetails()">Save & Next <i class="fa fa-arrow-right"></i> </button>
+
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <!-- #end col-left -->
+
+                                                    </div>
+                                                </md-content>
+                                            </md-tab>
+                                            <md-tab label="Upload Documents">
+                                                <md-content class="md-padding">
+                                                    <div class="row">
+                                                        <!-- col-left -->
+                                                        <div class="col-sm-12 col-md-12">
+                                                            <div class="panel panel-default panel-hovered panel-stacked mb20">
+                                                                <div class="panel-heading">Nominee Details</div>
+                                                                <div class="panel-body">
+                                                                    <form role="form" class="form-horizontal">
+                                                                        <table class="table table-bordered table-striped">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th>Sr No.</th>
+                                                                                    <th>Document Type</th>
+                                                                                    <th>Upload</th>
+                                                                                    <th>Action</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr ng-repeat="UploadDocument in  UserDetailInfo.UploadDocumentDetailsData">
+                                                                                    <td>{{$index+1}}</td>
+                                                                                    <td>{{UploadDocument.DocumentName}}</td>
+
+                                                                                    <td>
+                                                                                        <input type="file" class="form-control" />
+
+                                                                                    </td>
+                                                                                    <td>{{UploadDocument.DocumentType}}  </td>
+                                                                                </tr>
+
+
+                                                                            </tbody>
+                                                                        </table>
 
 
                                                                         <div class="clearfix right">
-                                                                            <button class="btn btn-primary mr5" type="submit">Add Nominee</button>
+                                                                            <button class="btn btn-primary mr5" type="submit" ng-click="SaveUploadDetails()">Save & Next <i class="fa fa-arrow-right"></i> </button>
 
                                                                         </div>
                                                                     </form>
                                                                 </div>
                                                             </div>
-                                                            <div class="panel-body" style="border-top:1px solid gray">
-                                                                <div class="clearfix right">
-                                                                    <button class="btn btn-primary mr5" type="submit" ng-click="SaveNomineeDetails()">Save & Next <i class="fa fa-arrow-right"></i> </button>
+                                                        </div>
+                                                        <!-- #end col-left -->
 
+                                                    </div>
+                                                </md-content>
+                                            </md-tab>
+                                            <md-tab label="Depository Details">
+                                                <md-content class="md-padding">
+                                                    <div class="row">
+
+                                                        <!-- col-left -->
+                                                        <div class="col-sm-12 col-md-12">
+                                                            <div class="panel panel-default panel-hovered panel-stacked mb20">
+                                                                <div class="panel-heading">Profile Summary</div>
+                                                                <div class="panel-body">
+                                                                    <form role="form" class="form-horizontal">
+                                                                        <div class="form-group">
+                                                                            <label class="col-md-3 control-label ">Client Type</label>
+                                                                            <div class="col-md-9">
+                                                                                <md-select placeholder="Client Type" ng-model="UserDetailInfo.DepositoryDetailsData.ClientType" class="md-block" style="margin-top: -10px;width:100%" ng-change="DisableField('ClientType')">
+                                                                                    <md-option ng-value="0" ng-disabled="true">SELECT</md-option>
+                                                                                    <md-option ng-value="ClientType" ng-repeat="ClientType in ClientTypeList">{{ClientType}}</md-option>
+                                                                                </md-select>
+
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="col-md-3 control-label ">Depository Name</label>
+                                                                            <div class="col-md-9">
+                                                                                <md-select placeholder="Depository Name" ng-model="UserDetailInfo.DepositoryDetailsData.DepositoryName" ng-disabled="UserDetailInfo.DepositoryDetailsData.ClientType=='PHYSICAL'|| UserDetailInfo.DepositoryDetailsData.ClientType=='0'" class="md-block" style="margin-top: -10px;width:100%">
+                                                                                    <md-option ng-value="0" ng-disabled="true">Select</md-option>
+                                                                                    <md-option ng-value="DepositoryName" ng-repeat="DepositoryName in DepositoryNameList">{{DepositoryName}}</md-option>
+                                                                                </md-select>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="col-md-3 control-label">NSDLDP ID</label>
+                                                                            <div class="col-md-9">
+                                                                                <input type="text" class="form-control" ng-disabled="UserDetailInfo.DepositoryDetailsData.ClientType=='PHYSICAL' || UserDetailInfo.DepositoryDetailsData.ClientType=='0' " placeholder="NSDLDP ID" ng-model="UserDetailInfo.DepositoryDetailsData.NSDLDP_ID">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="col-md-3 control-label">CDSL Ben.Ac No</label>
+                                                                            <div class="col-md-9">
+                                                                                <input type="text" class="form-control" placeholder="CDSL Ben.Ac No" ng-disabled="UserDetailInfo.DepositoryDetailsData.ClientType=='PHYSICAL' || UserDetailInfo.DepositoryDetailsData.ClientType=='0'" ng-model="UserDetailInfo.DepositoryDetailsData.CDSLBenAcNo">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label class="col-md-3 control-label">NSDL Ben.Ac No</label>
+                                                                            <div class="col-md-9">
+                                                                                <input type="text" class="form-control" placeholder="NSDL Ben.Ac No" ng-disabled="UserDetailInfo.DepositoryDetailsData.ClientType=='PHYSICAL' || UserDetailInfo.DepositoryDetailsData.ClientType=='0'" ng-model="UserDetailInfo.DepositoryDetailsData.NSDLBenAcNo">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="clearfix right">
+                                                                            <button class="btn btn-primary mr5" type="submit" ng-click="SaveDepositoryDetails()">Save <i class="fa fa-arrow-right"></i> </button>
+                                                                        </div>
+                                                                    </form>
                                                                 </div>
                                                             </div>
-                                                            
-                                                        </div>
+                                                        </div> <!-- #end col-left -->
                                                     </div>
-                                                    <!-- #end col-left -->
-
-                                                </div>                                              
-                                            </md-content>
-                                        </md-tab>
-                                        <md-tab label="Upload Documents">
-                                            <md-content class="md-padding">
-                                                <div class="row">
-                                                    <!-- col-left -->
-                                                    <div class="col-sm-12 col-md-12">
-                                                        <div class="panel panel-default panel-hovered panel-stacked mb20">
-                                                            <div class="panel-heading">Nominee Details</div>
-                                                            <div class="panel-body">
-                                                                <form role="form" class="form-horizontal">
-                                                                    <table class="table table-bordered table-striped">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th>Sr No.</th>
-                                                                                <th>Document Type</th>
-                                                                                <th>Upload</th>
-                                                                                <th>Action</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            <tr ng-repeat="UploadDocument in  UserDetailInfo.UploadDocumentDetailsData">
-                                                                                <td>{{$index+1}}</td>
-                                                                                <td>{{UploadDocument.DocumentName}}</td>
-                                                                              
-                                                                                <td>
-                                                                                    <input type="file" class="form-control" />
-                                                                                 
-                                                                                </td>
-                                                                                <td>{{UploadDocument.DocumentType}}  </td>
-                                                                            </tr>
-
-
-                                                                        </tbody>
-                                                                    </table>
-
-
-                                                                    <div class="clearfix right">
-                                                                        <button class="btn btn-primary mr5" type="submit" ng-click="SaveUploadDetails()">Save & Next <i class="fa fa-arrow-right"></i> </button>
-
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- #end col-left -->
-
-                                                </div>
-                                            </md-content>
-                                        </md-tab>
-                                        <md-tab label="Depository Details">
-                                            <md-content class="md-padding">
-                                                <div class="row">
-
-                                                    <!-- col-left -->
-                                                    <div class="col-sm-12 col-md-12">
-                                                        <div class="panel panel-default panel-hovered panel-stacked mb20">
-                                                            <div class="panel-heading">Profile Summary</div>
-                                                            <div class="panel-body">
-                                                                <form role="form" class="form-horizontal">
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 control-label ">Client Type</label>
-                                                                        <div class="col-md-9">
-                                                                            <md-select placeholder="Client Type" ng-model="UserDetailInfo.DepositoryDetailsData.ClientType" class="md-block" style="margin-top: -10px;width:100%" ng-change="DisableField('ClientType')">
-                                                                                <md-option ng-value="0" ng-disabled="true">SELECT</md-option>
-                                                                                <md-option ng-value="ClientType" ng-repeat="ClientType in ClientTypeList">{{ClientType}}</md-option>
-                                                                            </md-select>
-
-                                                                        </div>
-
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 control-label ">Depository Name</label>
-                                                                        <div class="col-md-9">
-                                                                            <md-select placeholder="Depository Name" ng-model="UserDetailInfo.DepositoryDetailsData.DepositoryName" ng-disabled="UserDetailInfo.DepositoryDetailsData.ClientType=='PHYSICAL'|| UserDetailInfo.DepositoryDetailsData.ClientType=='0'" class="md-block" style="margin-top: -10px;width:100%">
-                                                                                <md-option ng-value="0" ng-disabled="true">Select</md-option>
-                                                                                <md-option ng-value="DepositoryName" ng-repeat="DepositoryName in DepositoryNameList">{{DepositoryName}}</md-option>
-                                                                            </md-select>
-                                                                        </div>
-
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 control-label">NSDLDP ID</label>
-                                                                        <div class="col-md-9">
-                                                                            <input type="text" class="form-control" ng-disabled="UserDetailInfo.DepositoryDetailsData.ClientType=='PHYSICAL' || UserDetailInfo.DepositoryDetailsData.ClientType=='0' " placeholder="NSDLDP ID" ng-model="UserDetailInfo.DepositoryDetailsData.NSDLDP_ID">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 control-label">CDSL Ben.Ac No</label>
-                                                                        <div class="col-md-9">
-                                                                            <input type="text" class="form-control" placeholder="CDSL Ben.Ac No" ng-disabled="UserDetailInfo.DepositoryDetailsData.ClientType=='PHYSICAL' || UserDetailInfo.DepositoryDetailsData.ClientType=='0'"  ng-model="UserDetailInfo.DepositoryDetailsData.CDSLBenAcNo">
-                                                                        </div>
-                                                                    </div>
-                                                                    
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 control-label">NSDL Ben.Ac No</label>
-                                                                        <div class="col-md-9">
-                                                                            <input type="text" class="form-control" placeholder="NSDL Ben.Ac No" ng-disabled="UserDetailInfo.DepositoryDetailsData.ClientType=='PHYSICAL' || UserDetailInfo.DepositoryDetailsData.ClientType=='0'" ng-model="UserDetailInfo.DepositoryDetailsData.NSDLBenAcNo" >
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="clearfix right">
-                                                                        <button class="btn btn-primary mr5" type="submit" ng-click="SaveDepositoryDetails()">Save <i class="fa fa-arrow-right"></i> </button>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div> <!-- #end col-left -->
-                                                </div>
-                                            </md-content>
-                                        </md-tab>
-                                    </md-tabs>
-                                </md-content>
+                                                </md-content>
+                                            </md-tab>
+                                        </md-tabs>
+                                    </md-content>
+                                </div>
                             </div>
-                        </div>
 
-                    </div> 
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </div> <!-- #end page-wrap -->
-</div>
-<div class="page page-dashboard" ng-controller="ProfileCtrl" ng-show="HideNavBarIsComplete">
-    <h3 class="text-center themeColor" style="font-weight:700">KYC   Registration </h3>
-    <h5 class="text-center">KYC is one time exercise while dealing in securities markets - once KYC is done you need not undergo the same process again when you approach another intermediary.
+        </div> <!-- #end page-wrap -->
+    </div>
+    <div class="page page-dashboard" ng-show="HideNavBarIsCompleteKYC">
+        <h3 class="text-center themeColor" style="font-weight:700">KYC   Registration </h3>
+        <h5 class="text-center">
+            KYC is one time exercise while dealing in securities markets - once KYC is done you need not undergo the same process again when you approach another intermediary.
 
-</h5>
-    <div class="col-lg-12 marginTop45" >
-        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+        </h5>
+        <div class="col-lg-12 marginTop45">
+            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
             </div>
             <div class="col-xs-6 col-sm-5 col-md-5 col-lg-5">
 
@@ -797,86 +798,130 @@
                 </small>
             </div>
             <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
-                
+
             </div>
         </div>
-    <div class="col-lg-12 marginTop25" style="margin-bottom:20px" ng-if="isPanCardValid">
+        <div class="col-lg-12 marginTop25" style="margin-bottom:20px" ng-show="isPanCardValid">
 
-        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 borderRightForm">
-            <h4 class="fontWeight700">Your Aadhaar number</h4>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 borderRightForm">
+                <h4 class="fontWeight700">Your Aadhaar number</h4>
+                <form role="form" class="form-horizontal">
+                    <div class="form-group">
+
+                        <div class="col-md-12" style="margin-top:-12px">
+                            <input type="text" class="form-control formText" ng-model="userAdharCardV" style="padding-left:5px" required>
+                        </div>
+                    </div>
+                </form>
+                <p>
+                    <small>
+                        Click 'Continue' below to receive an OTP to your registered mobile
+
+                    </small>
+
+                </p>
+                <p>
+                    <small>
+                        Your Aadhaar number will only be used to fetch your identity and address detail.
+
+                    </small>
+                </p>
+                <p>
+                    <small>
+                        This information is required as per SEBI regulations for Know Your Customer (KYC) verification. No biometric data will be fetched, Stored or Shared by us.
+
+
+                    </small>
+                </p>
+                <p>
+                    <small>
+                        By using Aadhaar KYC, you will be able to invest upto Rs 50,000 per year, per mutual fund company (AMC).
+
+
+
+                    </small>
+                </p>
+                <form role="form" class="form-horizontal">
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <div class="col-sm-1">
+                                <input type="checkbox" ng-model="userAdharCardCheckBOx" style="margin-left:-10px" class="checkbox" required>
+                            </div>
+                            <div class="col-sm-11">  I have read,understood & accept the above disclosures</div>
+
+
+                        </div>
+                    </div>
+                    <button class="btn btn-primary themeBgColorBtn" ng-disabled="!userAdharCardCheckBOx" ng-click="adharCardValidation()" type="button">SUBMIT </button>
+                </form>
+
+
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 borderRightForm">
+                <h4 class="fontWeight700">If You don’t have Aadhar Card</h4>
+                <small>We will help you complete your KYC process easily and smoothly, even without your Aadhar. Just follow the instructions in the subsequent pages to get started.</small>
+
+                <form role="form" class="form-horizontal text-center marginTop25">
+
+                    <button class="btn btn-primary themeBgColorBtn " type="button" ng-click="submitProfile('doNotKnow')">SUBMIT </button>
+                </form>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <h4 class="fontWeight700">If You have a Demat Account</h4>
+                <small>
+                    If you have a Demat account ,You can start investing with your existing Demat Account .It will save your time and process of Kyc
+
+                </small>
+                <form role="form" class="form-horizontal text-center marginTop25">
+
+                    <button class="btn btn-primary themeBgColorBtn" type="button" ng-click="submitProfile('doNotKnow')">SUBMIT </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="page page-dashboard" ng-show="HideNavBarIsCompleteAdharCard" >
+        <h4 class="text-center" style="font-weight:700;margin-top:15%">Your Aadhaar number</h4>
+        <h5 class="text-center">
             <form role="form" class="form-horizontal">
                 <div class="form-group">
 
                     <div class="col-md-12" style="margin-top:-12px">
-                        <input type="text" class="form-control formText" style="padding-left:5px" required>
-                    </div>
-                </div>
-            </form>
-            <p>
-                <small>
-                    Click 'Continue' below to receive an OTP to your registered mobile
-
-                </small>
-
-            </p>
-            <p>
-               <small>
-                   Your Aadhaar number will only be used to fetch your identity and address detail.
-
-               </small>
-            </p>
-            <p>
-                <small>
-                    This information is required as per SEBI regulations for Know Your Customer (KYC) verification. No biometric data will be fetched, Stored or Shared by us.
-
-
-                </small>
-            </p>
-            <p>
-                <small>
-                    By using Aadhaar KYC, you will be able to invest upto Rs 50,000 per year, per mutual fund company (AMC).
-
-
-
-                </small>
-            </p>
-            <form role="form" class="form-horizontal">
-                <div class="form-group">
-
-                    <div class="col-md-12" >
-                        <div class="col-sm-1">
-                            <input type="checkbox" style="margin-left:-10px" class="checkbox" required>
+                        <div class="col-md-5" >
                         </div>
-                        <div class="col-sm-11">  I have read,understood & accept the above disclosures</div>
-                       
+                            <div class="col-md-3">
+                                <input type="text" class="form-control formText" ng-model="userAdharCard" disabled style="padding-left:5px" required>
+                            </div>
+                            <div class="col-md-1" style="margin-left:-45px">
+                                <img src="../../../../Img/tickCorrect.png" style="width:38px" />
+                            </div>
+                        <div class="col-md-3">
+                        </div>
 
-                    </div>
+                        </div>
                 </div>
-                <button class="btn btn-primary themeBgColorBtn " type="button" >SUBMIT </button>
             </form>
-
-
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 borderRightForm">
-            <h4 class="fontWeight700">If You don’t have Aadhar Card</h4>
-            <small>We will help you complete your KYC process easily and smoothly, even without your Aadhar. Just follow the instructions in the subsequent pages to get started.</small>
-
-            <form role="form" class="form-horizontal text-center marginTop25">
-               
-                <button class="btn btn-primary themeBgColorBtn " type="button" ng-click="submitProfile('doNotKnow')">SUBMIT </button>
-            </form>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-            <h4 class="fontWeight700">If You have a Demat Account</h4>
-            <small>
-                If you have a Demat account ,You can start investing with your existing Demat Account .It will save your time and process of Kyc
-
-            </small>
+         
+        </h5>
+        <h5 class="text-center" style="font-weight:700">OTP sent to your mobile ends with OTP Sent to Mobile Number ending with *******7961</h5>
+        <p>
             <form role="form" class="form-horizontal text-center marginTop25">
 
                 <button class="btn btn-primary themeBgColorBtn" type="button">SUBMIT </button>
             </form>
-        </div>
+            
+        </p>
+        <p class="text-center">
+            <small class="text-center">
+                Didn’t receive OTP? Please <a style="text-decoration: underline;">Click Here</a> 
 
+            </small>
+        </p>
+     
     </div>
 </div>
+
