@@ -5,7 +5,7 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
         username: '',
         password: ''
     };
-   
+   $rootScope.showFooterView = false;
     $scope.Register = {
         FirstName: '',
         LastName: '',

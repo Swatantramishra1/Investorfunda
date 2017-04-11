@@ -1,33 +1,43 @@
 ﻿
+
+   .rzslider .rz-pointer {
+    top: -14px;
+    z-index: 3;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background-color: #0db9f0;
+    border-radius: 16px !important;
+}
 .mdSelectContainerCss{
-    margin-top: 32px;
+	margin-top: 32px;
 }
 .mdSelectContainerCss > label {
-    font-size:16px !important;
-    font-weight:700;
+	font-size:16px !important;
+	font-weight:700;
 }
 .mdSelectContainerCss > md-select {
-     font-size:14px !important;
-     font-weight:700;
+	 font-size:14px !important;
+	 font-weight:700;
 }
 .headerPadding{
-    padding-left:15px;
-    padding-right:15px;
+	padding-left:15px;
+	padding-right:15px;
 }
 .themeBgColor{
-        background-color: #008080 !important;
+		background-color: #008080 !important;
 }
 .navbar-default .navbar-toggle {
-    border-color: #008080 !important;
+	border-color: #008080 !important;
 }
 .navbar-toggle:hover {
-    background: #008080 !important;
+	background: #008080 !important;
 }
 #loading {
-    position: absolute;
-    width: 100%;
-    /*background: url('../../Img/loading.gif')  no-repeat center center;*/
-    height: 500px;
+	position: absolute;
+	width: 100%;
+	/*background: url('../../Img/loading.gif')  no-repeat center center;*/
+	height: 500px;
 }
 
 .AnchorCursorPointer{
@@ -46,61 +56,61 @@
 	padding-top:170px;
 }
 .listVal a:hover{
-    color:slategray !important;
+	color:slategray !important;
 }
 .fontSliderheader{
-    
-    font-family: 'Montserrat','Arial';
-    color: #000000;
-    font-size: 175%;
-    text-shadow: none;
-    line-height: 1.5;
-    font-weight: bold;
-    font-style: normal;
-    text-decoration: none;
-    letter-spacing: normal;
-    word-spacing: normal;
-    text-transform: none;
+	
+	font-family: 'Montserrat','Arial';
+	color: #000000;
+	font-size: 175%;
+	text-shadow: none;
+	line-height: 1.5;
+	font-weight: bold;
+	font-style: normal;
+	text-decoration: none;
+	letter-spacing: normal;
+	word-spacing: normal;
+	text-transform: none;
 
 }
 .fontSlidersubHeader{
-    
-    font-family: 'Montserrat','Arial';
-    color: #282828;
-    font-size: 87.5%;
-    text-shadow: none;
-    line-height: 1.5;
-    font-weight: normal;
-    font-style: normal;
-    text-decoration: none;
-    text-align: left;
-    letter-spacing: normal;
-    word-spacing: normal;
-    text-transform: none;
-    margin-left: 20%;
+	
+	font-family: 'Montserrat','Arial';
+	color: #282828;
+	font-size: 87.5%;
+	text-shadow: none;
+	line-height: 1.5;
+	font-weight: normal;
+	font-style: normal;
+	text-decoration: none;
+	text-align: left;
+	letter-spacing: normal;
+	word-spacing: normal;
+	text-transform: none;
+	margin-left: 20%;
 
 }
 .fontSlidersubHeadertax{
-    
-    font-family: 'Montserrat','Arial';
-    color: #282828;
-    font-size: 87.5%;
-    text-shadow: none;
-    line-height: 1.5;
-    font-weight: normal;
-    font-style: normal;
-    text-decoration: none;
-    text-align: left;
-    letter-spacing: normal;
-    word-spacing: normal;
-    text-transform: none;
-    margin-left: 6%;
+	
+	font-family: 'Montserrat','Arial';
+	color: #282828;
+	font-size: 87.5%;
+	text-shadow: none;
+	line-height: 1.5;
+	font-weight: normal;
+	font-style: normal;
+	text-decoration: none;
+	text-align: left;
+	letter-spacing: normal;
+	word-spacing: normal;
+	text-transform: none;
+	margin-left: 6%;
 
 }
 .caurselCaption{
-    top: -5%;
-    left: 0%;
-    text-align:left;
+	top: -5%;
+	left: 0%;
+	text-align:left;
 }
 .row3Paragraph{
 	color:black !important;
@@ -112,29 +122,29 @@
 	font-weight:400;
 }
 .caurselCaptionCar {
-    top: 15%;
-    left: -29%;
-    text-align: left;
+	top: 15%;
+	left: -29%;
+	text-align: left;
 }
 .caurselCaptionHouse {
-    top: 14%;
-    left: -22%;
-    text-align: left;
+	top: 14%;
+	left: -22%;
+	text-align: left;
 }
 .caurselCaptionTax {
-    top: -5%;
-    left: 10%;
-    text-align: left;
+	top: -5%;
+	left: 10%;
+	text-align: left;
 }
 .caurselCaptionTour {
-    top: 15%;
-    left: 18%;
-    text-align: left;
+	top: 15%;
+	left: 18%;
+	text-align: left;
 }
 .caurselCaptionMerrige {
-    top: 26%;
-    left: 0%;
-    text-align: left;
+	top: 26%;
+	left: 0%;
+	text-align: left;
 }
 
 .camelCase {
@@ -516,18 +526,18 @@ font-size:31px;
 
 .list_Style {
 	font-family:Open Sans;
-	font-size:16px;
+	font-size:13px;
 	color:silver;
 	font-weight:500;
 	cursor:pointer;
 }
 	.list_Style:hover {
-		font-size:20px;
+		font-size:14px;
 		color:white;
 	}
 
 .footer_Header {
-font-size:20px;
+font-size:15px;
 color:white;
 font-weight:600;
 font-family:Open Sans;

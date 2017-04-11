@@ -16,7 +16,7 @@
 
     .leftTopHeader {
         font-family: Open Sans;
-        font-size: 12px;
+        font-size: 13px;
         word-wrap: break-word;
         color: #293542;
     }
@@ -25,6 +25,13 @@
     border-radius: 3px !important;
     background-color: #008080 !important;
     margin-left:20%;
+                }
+
+   .carousel_Btn_Child {
+    border-radius: 3px !important;
+    background-color: #008080 !important;
+    margin-left: 26%;
+    margin-top: 9%;
 }
     .carousel_BtnChild {
     border-radius: 3px !important;
@@ -125,7 +132,6 @@
         text-align:left;
     }
     .carousel-indicators li {
-    display: inline-block;
     width: 10px;
     height: 10px;
     margin: 1px;
@@ -154,6 +160,42 @@
     height: 12px;
     background-color: #008080 !important;
 }
+      /* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2) { 
+
+}
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+ { 
+    body{
+        background-color:red !important;
+    }
+}
+
+
+/* ----------- iPhone 6+ ----------- */
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 414px) 
+  and (max-device-width: 736px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) { 
+
+     .carousel_Btn_Child {
+    border-radius: 3px !important;
+    background-color: #008080 !important;
+    margin-left: 26%;
+    margin-top: -9%;
+}
+
+}
 </style>
 
 
@@ -178,66 +220,50 @@
                 <div class="carousel-inner" role="listbox">
 
                     <div class="item active">
-                        <img src="../../Img/kid.png" alt="Chania"  style="width:100%">
-                        <div class="carousel-caption caurselCaption" >
-                            <h3 class="fontSliderheader">Your child's dream needs your planning</h3>
-                            <h5 class="fontSlidersubHeader">Plan for your child's education</h5>
-                            <md-button class="Gray_Btn carousel_Btn" ui-sref="ChildGoal">START PLANNING</md-button>
-
-
-                        </div>
+                        
+                        <img id="my_image" ui-sref="ChildGoal" src="../../Img/childWButton.png" usemap="#Map" alt="Chania"  style="width:100%">
+                       
+                      
                     </div>
 
                     <div class="item">
-                        <img src="../../Img/tennis.png" alt="Chania"  style="width:100%">
-                        <div class="carousel-caption caurselCaption" >
-
-                            <h3 class="fontSliderheader">There is nothing more relaxing than<br /> retirement,If you have planned for it</h3>
-                            <md-button class="Gray_Btn carousel_BtnRe" ui-sref="Retirement">PLAN YOUR RETIREMENT</md-button>
-
-
-
-                        </div>
+                        <img src="../../Img/retirementWButton.png" ui-sref="Retirement" alt="Chania"  style="width:100%">
+                        
                     </div>
 
                     <div class="item">
-                        <img src="../../Img/marriage.png" alt="Flower" style="width:100%">
-                        <div class="carousel-caption caurselCaption caurselCaptionMerrige" >
-                            <h3 class="fontSliderheader">Make sure, you have everything <br /> prepared for  her big day</h3>
+                        <img src="../../Img/marriageWButton (1).png" ui-sref="ChildMerrage" alt="Flower" style="width:100%">
+                        <!--<div class="carousel-caption caurselCaption caurselCaptionMerrige" >
+                        
                             <md-button class="Gray_Btn carousel_BtnChild" ui-sref="ChildMerrage">START PLANNING</md-button>
 
-                        </div>
+                        </div>-->
                     </div>
 
                     <div class="item">
-                        <img src="../../Img/buyacar.png" alt="Flower" style="width:100%">
-                        <div class="carousel-caption caurselCaption caurselCaptionCar" >
-                            <h3 class="fontSliderheader" style="text-align:center">Now just don't dream your <br /> dream car</h3>
+                        <img src="../../Img/carWButtton.png" ui-sref="CarPlan" alt="Flower" style="width:100%">
+                        <!--<div class="carousel-caption caurselCaption caurselCaptionCar" >
                             <md-button class="Gray_Btn carousel_BtnCar" ui-sref="CarPlan">PLAN IT</md-button>
-                        </div>
+                        </div>-->
                     </div>
                     <div class="item">
-                        <img src="../../Img/buyahouse.png" alt="Flower" style="width:100%">
-                        <div class="carousel-caption caurselCaption caurselCaptionHouse" >
-                            <h3 class="fontSliderheader " style="text-align:center">Now just don't dream your dream <br /> house</h3>
+                        <img src="../../Img/houseWButton.png" ui-sref="HousePlan" alt="Flower" style="width:100%">
+                        <!--<div class="carousel-caption caurselCaption caurselCaptionHouse" >
                             <md-button class="Gray_Btn carousel_BtnHouse" ui-sref="HousePlan">PLAN IT</md-button>
-                        </div>
+                        </div>-->
                     </div>
                     <div class="item">
-                        <img src="../../Img/golf.png" alt="Flower" style="width:100%">
-                        <div class="carousel-caption caurselCaption caurselCaptionTax" >
-                            <h3 class="fontSliderheader">Grow  your income not your taxes</h3>
-                            <h5 class="fontSlidersubHeadertax">Save up to  Rs. 46,350 * in  by investing in ELSS </h5>
+                        <img src="../../Img/taxWButton.png" alt="Flower" style="width:100%">
+                        <!--<div class="carousel-caption caurselCaption caurselCaptionTax" >
+        
                             <md-button class="Gray_Btn carousel_BtnTax" >PLAN IT</md-button>
-                        </div>
+                        </div>-->
                     </div>
                     <div class="item">
-                        <img src="../../Img/vaccation.png" alt="Flower" style="width:100%">
-                        <div class="carousel-caption caurselCaption caurselCaptionTour">
-                            <h3 class="fontSliderheader">Plan-pack-travel-enjoy</h3>
-                          
+                        <img src="../../Img/travelWButton.png" ui-sref="Tour" alt="Flower" style="width:100%">
+                        <!--<div class="carousel-caption caurselCaption caurselCaptionTour">
                             <md-button class="Gray_Btn carousel_BtnTour" ui-sref="Tour">PLAN IT</md-button>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
 
@@ -292,7 +318,7 @@
     <!--=== Content Part ===-->
     <div class="one-page row">
         <div class="container divider_color" ng-style="{'min-height':desktopHeight}" style="background-color:#293542;color:white;margin-top:20px;padding-top: 26px;width:100%;margin:auto;">
-            <div class="row ">
+            <div class="row " style="margin-top: 45px;">
                 <div class="col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
                 <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
                     <h5 style="text-align:center;color:#ffffff;font-size:12px;font-family:Open Sans">See how much your saving can grow through</h5>
@@ -586,7 +612,7 @@
             <div class="row" ng-style="{'min-height':desktopHeight}" style="background-color:#293542;color:white">
                 <div class="container">
                     <div class="row" style="margin-top:200px;margin-bottom:200px;">
-                        <div class="col-md-6">
+                        <div class="col-md-6 text-center">
                             <br>
                             <h1 style="color:white !important;text-align:center;font-size:34px;font-family: 'Open Sans', 'Source Sans Pro', sans-serif;">Track your investments from wherever you are </h1>
                             <h4  style="color:white !important;text-align:center">Investorfunda offers an Investment Management App built natively for your Android. </h4>
@@ -968,6 +994,44 @@
     </div><!--/one-page-->
     <!-- End Content Part -->
 </div>
+<script>
+$(function(){
+    var image_is_loaded = false;
+    $("#my_image").load(function() {
+        $(this).data('width', $(this).attr('width')).data('height', $(this).attr('height'));
+        $($(this).attr('usemap')+" area").each(function(){
+            $(this).data('coords', $(this).attr('coords'));
+        });
+
+        $(this).css('width', '100%').css('height','auto').show();
+
+        image_is_loaded = true;
+        $(window).trigger('resize');
+    });
+
+
+    function ratioCoords (coords, ratio) {
+        coord_arr = coords.split(",");
+
+        for(i=0; i < coord_arr.length; i++) {
+            coord_arr[i] = Math.round(ratio * coord_arr[i]);
+        }
+
+        return coord_arr.join(',');
+    }
+    $(window).on('resize', function(){
+        if (image_is_loaded) {
+            var img = $("#my_image");
+            var ratio = img.width()/img.data('width');
+
+            $(img.attr('usemap')+" area").each(function(){
+                console.log('1: '+$(this).attr('coords'));
+                $(this).attr('coords', ratioCoords($(this).data('coords'), ratio));
+            });
+        }
+    });
+});
+</script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
       
@@ -976,11 +1040,12 @@
         App.initSliders();
     });
     $('#myCarousel').carousel({
-        interval: 3000,
+        interval: 36747000,
         cycle: true
     });
 </script>
 <script>
+  
 $(document).ready(function(){
     $('[data-toggle="popover"]').popover();
 });

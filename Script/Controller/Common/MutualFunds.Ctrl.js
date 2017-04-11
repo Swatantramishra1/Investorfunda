@@ -1,7 +1,7 @@
 ﻿/// <reference path="../../../Webform/Common/Popup/MutualFundsDetailPopup.html" />
 app.controller("MtualFunds.Ctrl", ['$scope', '$rootScope', '$http', 'fileUpload', '$mdDialog', 'FundsService', '$stateParams', '$state', '$localStorage', '$interval', '$timeout',
 function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $stateParams, $state, $localStorage, $interval, $timeout) {
-
+    $rootScope.showFooterView = false;
     $rootScope.Logout = function () {
         $localStorage.LoginStatus = false;
         $rootScope.LoginStatus = false;

@@ -1,9 +1,10 @@
-﻿<section class="insurance-headline" style="background-color:white">
+﻿
+<section class="insurance-headline" style="background-color:white">
     <div class="row" >
         <div class="shadow-wrapper margin-bottom-10">
             <div class="tag-box tag-box-v1 box-shadow shadow-effect-2">
                 <h2><strong>RETIREMENT PLAN <span ng-show="Portfolio_Parameter.Portfolio_Name !=''"> For <span style="color:rgba(102,0,51,1);text-transform:uppercase"> {{Portfolio_Parameter.Portfolio_Name}}</span></span></strong>   </h2>
-                <p>Make sure your goal is at right direction which help us to provide best way to invest.</p>
+                <p ><h3 style="font-size: 15px;font-weight: 500">&nbsp;Gift yourself the best retirement</h3></p>
             </div>
         </div>
      
@@ -13,7 +14,7 @@
             <div class="col-md-5"  ng-show="!Retirement_Step2">
 
                 <img src="http://demobyrightfoot.in/wp-content/uploads/2017/03/HK_2721-1.png" style="width:100%" />
-                <p style="text-align: center;font-size: 18px;"><h3 class="text-center"><strong>&nbsp;Gift yourself the best retirement</strong></h3></p>
+                
             </div>
             <div  ng-class="Retirement_Step2 ? 'col-md-12' : 'col-md-7'" style="text-align:left;padding-top:20px" md-theme="default">
                 <div class="col-md-12" style="padding:0px" ng-show="Retirement_Step1">
@@ -28,6 +29,7 @@
                     <div class="row margin-bottom-20">
                         <div class="col-md-9">
                             Age you want to retire?(<span class="red-text">in Years</span> )
+                            
                             <rzslider rz-slider-model="SIP_RetireAge.value"
                                       rz-slider-options="SIP_RetireAge.options"></rzslider>
                         </div>

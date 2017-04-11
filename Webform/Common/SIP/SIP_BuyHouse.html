@@ -3,7 +3,7 @@
         <div class="shadow-wrapper margin-bottom-10">
             <div class="tag-box tag-box-v1 box-shadow shadow-effect-2">
                 <h2><strong>BUY A HOUSE PLAN</strong>   </h2>
-                <p>Make sure your goal is at right direction which help us to provide best way to invest.</p>
+                <h3 style="font-size: 15px;font-weight:500"> Lets plan for your home together</h3>
             </div>
         </div>
 
@@ -13,13 +13,15 @@
             <div class="col-md-5" ng-show="!BuyHouse_Step2">
                
                 <img src="http://demobyrightfoot.in/wp-content/uploads/2016/11/HK_3035-1-1.png" style="width:100%" />
-                <p style="text-align: center;font-size: 18px;"><h3 class="text-center"> <strong>Lets plan for your home together</strong></h3></p>
+                
             </div>
             <div ng-class="BuyHouse_Step2 ? 'col-md-12' : 'col-md-7'" style="text-align:left;padding-top:20px" md-theme="default">
                 <div class="col-md-12" style="padding:0px" ng-show="BuyHouse_Step1">
-                    <md-input-container class="md-block ">
-                        <label class="lableFontSize" style="margin-bottom:10px;">What is your age? <span ng-show="Portfolio_Parameter.currentYourAge.length>0">({{Portfolio_Parameter.currentYourAge}} Year)</span></label>
-                        <input class="inputMarginTop" ng-model="Portfolio_Parameter.currentYourAge" type="range" min="15" max="65">
+                    <md-input-container class="md-block " style="margin-bottom: -25px;">
+                        <label class="lableFontSize" style="margin-bottom: 26px">What is your age? <span ng-show="SIP_CurrentAge.value>0">({{SIP_CurrentAge.value}} Year)</span></label>
+                        <rzslider rz-slider-model="SIP_CurrentAge.value"
+                                  rz-slider-options="SIP_CurrentAge.options"></rzslider>
+                        <input class="inputMarginTop" ng-show="false" ng-model="Portfolio_Parameter.currentYourAge" type="range" min="15" max="65">
                     </md-input-container>
                     <md-input-container class="md-block">
                         <label>Year in which you plan to buy?</label>
@@ -33,9 +35,11 @@
                         <label>Down payment you wish to pay? (%)</label>
                         <input ng-model="Portfolio_Parameter.downPaymentPercentage">
                     </md-input-container>
-                    <md-input-container class="md-block">
-                        <label class="lableFontSize" style="margin-bottom:10px;">Loan repayment period <span ng-show="Portfolio_Parameter.loanPeriodYear.length>0">({{Portfolio_Parameter.loanPeriodYear}} Year)</span></label>
-                        <input class="inputMarginTop" ng-model="Portfolio_Parameter.loanPeriodYear" type="range" min="3" max="50">
+                    <md-input-container class="md-block" style="margin-bottom: -25px;">
+                        <label class="lableFontSize" style="margin-bottom: 26px">Loan repayment period <span ng-show="SIP_loanPeriodYear.value>0">({{SIP_loanPeriodYear.value}} Year)</span></label>
+                        <rzslider rz-slider-model="SIP_loanPeriodYear.value"
+                                  rz-slider-options="SIP_loanPeriodYear.options"></rzslider>
+                        <input class="inputMarginTop" ng-show="false" ng-model="Portfolio_Parameter.loanPeriodYear" type="range" min="3" max="50">
                     </md-input-container>
                   
                     <md-input-container class="md-block">

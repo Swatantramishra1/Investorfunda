@@ -3,7 +3,7 @@
         <div class="shadow-wrapper margin-bottom-10">
             <div class="tag-box tag-box-v1 box-shadow shadow-effect-2">
                 <h2><strong>BUY A CAR PLAN <span ng-show="Portfolio_Parameter.Portfolio_Name !=''"> For <span style="color:rgba(102,0,51,1);text-transform:uppercase"> {{Portfolio_Parameter.Portfolio_Name}}</span></span></strong>   </h2>
-                <p>Make sure your goal is at right direction which help us to provide best way to invest.</p>
+                <h3 style="font-size: 15px;font-weight:500">Buy your own car</h3>
             </div>
         </div>
 
@@ -13,7 +13,7 @@
             <div class="col-md-5" ng-show="!BuyCar_Step2">
 
                 <img src="http://demobyrightfoot.in/wp-content/uploads/2016/11/buyacari.png" style="width:100%" />
-                <p style="text-align: center;font-size: 18px;"><h3 class="text-center"><strong>Buy your own car</strong></h3> </p>
+               
             </div>
             <div ng-class="BuyCar_Step2 ? 'col-md-12' : 'col-md-7'" style="text-align:left;padding-top:20px" md-theme="default">
                 <div class="col-md-12" style="padding:0px" ng-show="BuyCar_Step1">
@@ -27,8 +27,12 @@
                     </md-input-container>
 
                     <md-input-container class="md-block ">
-                        <label class="lableFontSize" style="margin-bottom:10px;">In how many years you wish to buy it? <span ng-show="Portfolio_Parameter.Portfolio_Year.length>0">({{Portfolio_Parameter.Portfolio_Year}} Year)</span></label>
-                        <input class="inputMarginTop" ng-model="Portfolio_Parameter.Portfolio_Year" type="range" min="1" max="30">
+                        <label class="lableFontSize" style="margin-bottom:10px;">In how many years you wish to buy it? <span ng-show="SIP_Portfolio_Year.value>0">({{SIP_Portfolio_Year.value}} Year)</span></label>
+                        <rzslider rz-slider-model="SIP_Portfolio_Year.value"
+                                  rz-slider-options="SIP_Portfolio_Year.options"></rzslider>
+
+
+                        <input class="inputMarginTop" ng-show="false" ng-model="Portfolio_Parameter.Portfolio_Year" type="range" min="1" max="30">
                     </md-input-container>
                     
                     <md-input-container class="md-block mdSelectContainerCss" ng-show="false">

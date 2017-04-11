@@ -1,6 +1,7 @@
 ﻿app.controller("MainCtrl", ['$scope', '$rootScope', '$http', 'fileUpload', '$window', 'FundsService', function ($scope, $rootScope, $http, fileUpload, $window, FundsService) {
 
     //********Defined Area*****************
+    $rootScope.showFooterView = true;
     $scope.total_amount_invested = 11110;
     $scope.BankList = [];
     $scope.LogoName = "INVESTFUNDA";
