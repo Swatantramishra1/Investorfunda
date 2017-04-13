@@ -912,7 +912,7 @@
             $scope.LogOut = function () {
                 $localStorage.LoginStatus = false;
                 $localStorage.ChildState = false;
-                $localStorage.UserDetails = null;
+                $localStorage.TempUserDetails = null;
                 window.location = "../../../../Index.html"
             }
 

@@ -2077,7 +2077,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                 $scope.SIP_GOAL_Setting_SHOW = false;
                 $scope.SIP_GOAL_Final_SHOW = true;
 
-                $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
+                $localStorage.POstJson.User_ID = $localStorage.TempUserDetails.LoginID;
 
                 var CreateUserList = FundsService.CreatePlan.PostPromise($localStorage.POstJson);
                 CreateUserList.then(
@@ -2158,7 +2158,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
             }
 
             if ($localStorage.LoginStatus) {
-                $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
+                $localStorage.POstJson.User_ID = $localStorage.TempUserDetails.LoginID;
                 $localStorage.CurrentStatusOfPage = "ChildPlan";
                 $state.go('Authentication', { From: 'ChildPlan' });
 
@@ -2261,7 +2261,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                         $scope.SIP_GOAL_Setting_SHOW = false;
                         $scope.SIP_GOAL_Final_SHOW = true;
 
-                        $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
+                        $localStorage.POstJson.User_ID = $localStorage.TempUserDetails.LoginID;
                         
 
                         $scope.CreatePlanFunction();
@@ -2328,7 +2328,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                         $scope.SIP_GOAL_Setting_SHOW = false;
                         $scope.SIP_GOAL_Final_SHOW = true;
 
-                        $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
+                        $localStorage.POstJson.User_ID = $localStorage.TempUserDetails.LoginID;
 
                         $scope.CreatePlanFunction();
 
@@ -2393,7 +2393,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                         $scope.SIP_GOAL_Setting_SHOW = false;
                         $scope.SIP_GOAL_Final_SHOW = true;
 
-                        $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
+                        $localStorage.POstJson.User_ID = $localStorage.TempUserDetails.LoginID;
 
                         $scope.CreatePlanFunction();
 
@@ -2458,7 +2458,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                         $scope.SIP_GOAL_Setting_SHOW = false;
                         $scope.SIP_GOAL_Final_SHOW = true;
 
-                        $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
+                        $localStorage.POstJson.User_ID = $localStorage.TempUserDetails.LoginID;
 
                         $scope.CreatePlanFunction();
 
@@ -2523,7 +2523,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                         $scope.SIP_GOAL_Setting_SHOW = false;
                         $scope.SIP_GOAL_Final_SHOW = true;
 
-                        $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
+                        $localStorage.POstJson.User_ID = $localStorage.TempUserDetails.LoginID;
 
                         $scope.CreatePlanFunction();
 
@@ -2589,7 +2589,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                         $scope.SIP_GOAL_Setting_SHOW = false;
                         $scope.SIP_GOAL_Final_SHOW = true;
                        
-                        $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
+                        $localStorage.POstJson.User_ID = $localStorage.TempUserDetails.LoginID;
 
                         $scope.CreatePlanFunction();
 
@@ -2656,7 +2656,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                         $scope.SIP_GOAL_Setting_SHOW = false;
                         $scope.SIP_GOAL_Final_SHOW = true;
 
-                        $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
+                        $localStorage.POstJson.User_ID = $localStorage.TempUserDetails.LoginID;
 
                         $scope.CreatePlanFunction();
 
@@ -2723,7 +2723,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                         $scope.SIP_GOAL_Setting_SHOW = false;
                         $scope.SIP_GOAL_Final_SHOW = true;
 
-                        $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
+                        $localStorage.POstJson.User_ID = $localStorage.TempUserDetails.LoginID;
 
                         $scope.CreatePlanFunction();
 

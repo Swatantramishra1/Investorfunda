@@ -6,7 +6,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         $localStorage.LoginStatus = false;
         $rootScope.LoginStatus = false;
         $localStorage.CurrentStatusOfPage = "";
-        $localStorage.UserDetails = {};
+        $localStorage.TempUserDetails = {};
         $rootScope.UserDetails = {};
         $localStorage.LoginStatus = false;
         $localStorage.MutualFundsState = false;
@@ -914,7 +914,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
 
         });
         $localStorage.POstJson.InvestmentList = $scope.InvestmentList;
-        $localStorage.POstJson.User_ID = $localStorage.UserDetails.LoginID;
+        $localStorage.POstJson.User_ID = $localStorage.TempUserDetails.LoginID;
         $localStorage.POstJson.userPortfolio.EstimatedTotalSIPAmt = $localStorage.SchemeAmount;
         var CreateUserList = FundsService.CreatePlan.PostPromise($localStorage.POstJson);
         CreateUserList.then(
@@ -994,7 +994,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             $scope.OnloadFunction();
         }
         $rootScope.LoginStatus = $localStorage.LoginStatus;
-        $rootScope.UserDetails = $localStorage.UserDetails;
+        $rootScope.UserDetails = $localStorage.TempUserDetails;
     }
     else {
         $scope.OnloadFunction();
@@ -1438,10 +1438,15 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                 if (index !== undefined) {
                     if (BseCode != undefined) {
                         if ($state.current.name == "recommonded") {
-                            var indexVal = $scope.SIPGoalStructureDate.indexOf(BseCode);
-                            $localStorage.CurrentScheme.mf_cocode = $scope.SIPGoalStructureDate[indexVal].BSESchmecode;
-                            $localStorage.CurrentScheme.ISIN = $scope.SIPGoalStructureDate[indexVal].ISIN;
-                            $localStorage.CurrentScheme.SchemeName = $scope.SIPGoalStructureDate[indexVal].SchemeName;
+                            var indexVal = $scope.SIPGoalStructureDate.map(function (obj, index) {
+                                if (obj.BSESchmecode == BseCode) {
+                                    return index;
+                                }
+                            });
+                           
+                            $localStorage.CurrentScheme.mf_cocode = $scope.SIPGoalStructureDate[indexVal[0]].BSESchmecode;
+                            $localStorage.CurrentScheme.ISIN = $scope.SIPGoalStructureDate[indexVal[0]].ISIN;
+                            $localStorage.CurrentScheme.SchemeName = $scope.SIPGoalStructureDate[indexVal[0]].SchemeName;
 
                         }
                         else {
