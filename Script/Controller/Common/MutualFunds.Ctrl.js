@@ -1443,7 +1443,9 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                                     return index;
                                 }
                             });
-                           
+                            indexVal = indexVal.filter(function (element) {
+                                return element !== undefined;
+                            });
                             $localStorage.CurrentScheme.mf_cocode = $scope.SIPGoalStructureDate[indexVal[0]].BSESchmecode;
                             $localStorage.CurrentScheme.ISIN = $scope.SIPGoalStructureDate[indexVal[0]].ISIN;
                             $localStorage.CurrentScheme.SchemeName = $scope.SIPGoalStructureDate[indexVal[0]].SchemeName;
