@@ -142,7 +142,23 @@
 
                 }]
             }
-        }), $routeProvider.when("/ui/treeview", {
+        }),$routeProvider.when("/Download", {
+            templateUrl: "views/KYC-HTMLTOPDF.html",
+            resolve: {
+                deps: ["$ocLazyLoad", function (a) {
+                    return a.load(["ui.select", "ngTagsInput", "colorpicker.module", "ui.slider", "CommonSrvc"]).then(function () {
+                        return a.load({
+                            name: "app.ctrls",
+                            files: ["scripts/lazyload/controllers/selectCtrl.js", "scripts/lazyload/controllers/tagsInputCtrl.js", "scripts/lazyload/controllers/materialCtrl.js", "../../../../DesignContent/assets/plugins/bootstrap/js/bootstrap.min.js", "../../../../Script/Service/Common.srvc.js"]
+                        })
+                    }).then(function () {
+                        return a.load("textAngular")
+                    })
+
+                }]
+            }
+        })
+        , $routeProvider.when("/ui/treeview", {
             templateUrl: "views/ui/treeview.html",
             resolve: {
                 deps: ["$ocLazyLoad", function (a) {
@@ -914,6 +930,7 @@
             function (answer) {
 
                 if (answer.data.GetUserProfileDetailsInfoResult.ResponseCode == 0) {
+                
                     $scope.UserDetailInfo = answer.data.GetUserProfileDetailsInfoResult.Result;
                     $scope.CartNotificationTotal = parseInt($scope.UserDetailInfo.UserProfileData.AddedCartCount) + parseInt($scope.UserDetailInfo.UserProfileData.AddedFavCount) + parseInt($scope.UserDetailInfo.UserProfileData.AddedInvestment);
                     $scope.CartNotificationScheme = $scope.UserDetailInfo.UserProfileData.AddedCartCount;
@@ -1904,6 +1921,49 @@
                 $rootScope.HideNavBarIsCompleteKYC = false;
             }
         }])
+    .controller("DownloadCtrl", ["$scope", "CommonSrvc", "$localStorage", "$filter", "$http", "$mdToast", '$rootScope', 'validateSrvc', function ($scope, CommonSrvc, $localStorage, $filter, $http, $mdToast, $rootScope, validateSrvc) {
+        localStorage.setItem("TempUserName", $localStorage.TempUserDetails.Name)
+        var UserDetailsPromis = CommonSrvc.GetUserDetailsInfo.getPromise($localStorage.TempUserDetails.LoginID);
+        UserDetailsPromis.then(
+        // OnSuccess function
+        function (answer) {
+
+            if (answer.data.GetUserProfileDetailsInfoResult.ResponseCode == 0) {
+
+                alert("hi");
+                $scope.UserDetailInfo = answer.data.GetUserProfileDetailsInfoResult.Result;
+                $scope.UserDetailInfo.UserProfileData.DividentPayMode_ID = "2";
+                $scope.UserDetailInfo.UserProfileData.CommunicationMode_ID = "3";
+                // $scope.UserDetailInfo.UserProfileData.DateOfBirth = new Date($scope.UserDetailInfo.UserProfileData.DateOfBirth);
+                document.getElementById("CartNotificationTotal").innerText = parseInt($scope.UserDetailInfo.UserProfileData.AddedCartCount) + parseInt($scope.UserDetailInfo.UserProfileData.AddedFavCount);
+                $rootScope.HideNavBarIsCompleteProfile = true;
+
+            }
+            else {
+                $scope.ErrorMessage = answer.data.GetUserProfileDetailsInfoResult.ResponseMessage;
+            }
+
+        },
+        // OnFailure function
+        function (reason) {
+            HideLoader();
+            $scope.ErrorMessage = answer.data.GetLoginResult.ResponseMessage;
+            //$scope.somethingWrong = reason;
+            //$scope.error = true;
+        }
+      )
+
+        $scope.generatePDF=function()
+        {
+            alert("Print PDF");
+            var name = localStorage.getItem("TempUserName");
+            //var generatePDF = function () {
+                kendo.drawing.drawDOM($("#formConfirmation")).then(function (group) {
+                    kendo.drawing.pdf.saveAs(group, $localStorage.TempUserDetails.Name+".pdf");
+                });
+            //}
+        }
+    }])
 }();
 
 ! function () {
