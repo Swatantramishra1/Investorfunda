@@ -42,57 +42,58 @@
             <div class="panel-heading">
                 <h3 class="panel-title"><input type="text" class="form-control" placeholder="Search By Scheme Name " ng-keyup="CheckFundsListExists()" ng-model="filterprodcut.SchemeName" /></h3>
             </div>
-            <table class="table table-bordered">
-                <thead style="border-bottom:1px solid rgba(128, 128, 128, 0.67)">
-                    <tr>
-                        <th>SR. No.</th>
-                        <th>Scheme</th>
-                        <th>Amount</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody ng-repeat="(department, MFList) in groups">
-                    <!-- Repeat List of All mutual funds -->
-                    <tr ng-if="department==FilterTempValue">
-                        <td colspan="4" ><strong>{{department}}</strong> </td>
-                    </tr>
-                    <tr ng-repeat="Elss in MFList" ng-if="Elss.MFtype==FilterTempValue">
-                        <td>{{$index+1}}</td>
-                        <td class="OnHoverSchemename"> {{Elss.SchemeName}}</td>
-                        <td><input type="text" style="width:60px" id="{{$index}}Amount" /></td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn-u dropdown-toggle" data-toggle="dropdown">
-                                    Select
-                                    <i class="fa fa-angle-down"></i>
-                                </button>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a ng-click="InvestLumpsum($index,'Page','LUMPSUM','','Recommonded',Elss.BSESchmecode)"><i class="fa fa-inr"></i> Buy Lumpsum</a></li>
-                                    <li><a ng-click="InvestLumpsum($index,'Page','SIP','','Recommonded',Elss.BSESchmecode)"><i class="fa fa-inr"></i> Buy SIP</a></li>
-                                    <!--<li><a ><i class="fa fa-shopping-cart"></i> Add to cart as Lumpsum</a></li>
-                    <li><a ><i class="fa fa-shopping-cart"></i> Add to cart as SIP</a></li>-->
-                                    <!--<li class="divider"></li>-->
-                                    <!--<li><a ><i class="fa fa-heart-o"></i> Add To WatchList</a></li>-->
-                                </ul>
-                            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead style="border-bottom:1px solid rgba(128, 128, 128, 0.67)">
+                        <tr>
+                            <th>SR. No.</th>
+                            <th>Scheme</th>
+                            <th>Amount</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="(department, MFList) in groups">
+                        <!-- Repeat List of All mutual funds -->
+                        <tr ng-if="department==FilterTempValue">
+                            <td colspan="4"><strong>{{department}}</strong> </td>
+                        </tr>
+                        <tr ng-repeat="Elss in MFList" ng-if="Elss.MFtype==FilterTempValue">
+                            <td>{{$index+1}}</td>
+                            <td class="OnHoverSchemename"> {{Elss.SchemeName}}</td>
+                            <td><input type="text" style="width:60px" id="{{$index}}Amount" /></td>
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn-u dropdown-toggle" data-toggle="dropdown">
+                                        Select
+                                        <i class="fa fa-angle-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a ng-click="InvestLumpsum($index,'Page','LUMPSUM','','Recommonded',Elss.BSESchmecode)"><i class="fa fa-inr"></i> Buy Lumpsum</a></li>
+                                        <li><a ng-click="InvestLumpsum($index,'Page','SIP','','Recommonded',Elss.BSESchmecode)"><i class="fa fa-inr"></i> Buy SIP</a></li>
+                                        <!--<li><a ><i class="fa fa-shopping-cart"></i> Add to cart as Lumpsum</a></li>
+                                    <li><a ><i class="fa fa-shopping-cart"></i> Add to cart as SIP</a></li>-->
+                                        <!--<li class="divider"></li>-->
+                                        <!--<li><a ><i class="fa fa-heart-o"></i> Add To WatchList</a></li>-->
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+
+
+
+
+
+
+
+                        <!--<tr>
+                        <td colspan="9">
+                            <md-button class="md-raised md-primary form-control" ng-disabled="FundsListShowMore" ng-click="ShowMore()" style="margin:0"><i class="fa fa-plus"></i> Show More </md-button>
                         </td>
-                    </tr>
-
-                       
-                   
-
-
-
-
-                    <!--<tr>
-                <td colspan="9">
-                    <md-button class="md-raised md-primary form-control" ng-disabled="FundsListShowMore" ng-click="ShowMore()" style="margin:0"><i class="fa fa-plus"></i> Show More </md-button>
-                </td>
-            </tr>-->
-                </tbody>
-            </table>
+                    </tr>-->
+                    </tbody>
+                </table>
+            </div>
         </div>
-
     </div>
     <!-- End Content -->
 </div>

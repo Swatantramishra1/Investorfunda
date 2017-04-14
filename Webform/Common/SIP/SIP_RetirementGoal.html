@@ -41,16 +41,13 @@
                         </div>
                     </div>
                     <div class="row margin-bottom-20">
-                        <div class="col-md-9">
-                            Amount you want to invest right now? (<span class="red-text">Annualy in thousands</span> )
-                            <rzslider rz-slider-model="SIP_AmountInvestment.value"
-                                      rz-slider-options="SIP_AmountInvestment.options"></rzslider>
+                        <div class="col-md-12">
+                            Amount you want to invest right now?
+                            <input ng-model="Portfolio_Parameter.SIP_AmountInvestment">
+                            <!--<rzslider rz-slider-model="SIP_AmountInvestment.value"
+                                      rz-slider-options="SIP_AmountInvestment.options"></rzslider>-->
                         </div>
-                        <div class="col-md-3">
-                            <md-input-container class="md-block" style="height:25px;margin-top:32px">
-                                <input type="number" ng-model="SIP_AmountInvestment.value">
-                            </md-input-container>
-                        </div>
+                     
                     </div>
                    
                     

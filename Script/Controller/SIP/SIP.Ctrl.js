@@ -24,7 +24,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                 getSelectionBarColor: function () {
                     return '#2AE02A';
                 },
-                ceil: 20,
+                ceil: 30,
                 floor: 0,
 
             }
@@ -62,26 +62,32 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
     $scope.InvestmentList = [];
     currentState = $state.current.name;
     if ($state.current.name == "ChildGoal") {
+        $rootScope.houseStateCheck = false;
         currentState = $state.current.name;
         $scope.showDataStep2 = GetCommonData.getChildCommonData;
     }
     else if ($state.current.name == "Retirement") {
+        $rootScope.houseStateCheck = false;
         currentState = $state.current.name;
         $scope.showDataStep2 = GetCommonData.getRetirementCommonData;
     }
     else if ($state.current.name == "HousePlan") {
         currentState = $state.current.name;
+        $rootScope.houseStateCheck = true;
         $scope.showDataStep2 = GetCommonData.getBuyHouseCommonData;
     }
     else if ($state.current.name == "CarPlan") {
+        $rootScope.houseStateCheck = false;
         currentState = $state.current.name;
         $scope.showDataStep2 = GetCommonData.getBuyCarCommonData;
     }
     else if ($state.current.name == "ChildMerrage") {
+        $rootScope.houseStateCheck = false;
         currentState = $state.current.name;
         $scope.showDataStep2 = GetCommonData.getChildMarrigeCommonData;
     }
     else if ($state.current.name == "Tour") {
+        $rootScope.houseStateCheck = false;
         currentState = $state.current.name;
         $scope.showDataStep2 = GetCommonData.getChildTourCommonData;
     }
@@ -2289,7 +2295,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                                 "PresentAge": $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge,
                                 "GoalTimeToStart": "",
                                 "GoalDuration": $scope.Portfolio_Parameter.Portfolio_Duration,
-                                "GoalPerYearCost": parseInt($scope.SIP_AmountInvestment.value) * 1000,
+                                "GoalPerYearCost": parseInt($scope.Portfolio_Parameter.SIP_AmountInvestment),
                                 "GoalPerYearLivingCost": "",
                                 "GoalLumpsum": $scope.Portfolio_Parameter.Portfolio_LumpSumAmount,
                                 "GoalInflationRate": $scope.Portfolio_Parameter.Portfolio_InflationRate,
@@ -3030,7 +3036,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         let tempFirstAmount = $scope.Portfolio_Parameter.HouseLoanEMIAmount % 1000;
         let tempSecondAmount = 1000 - tempFirstAmount;
         $scope.Portfolio_Parameter.HouseLoanEMIAmount = $scope.Portfolio_Parameter.HouseLoanEMIAmount + parseInt(tempSecondAmount);
-        $scope.Portfolio_Parameter.TotalMonthlyInvestment = $scope.Portfolio_Parameter.HouseLoanEMIAmount
+        $scope.Portfolio_Parameter.TotalMonthlyInvestment = GetSIPAmount($scope.Portfolio_Parameter.HouseDownPayment, loanPeriodYear, 12)
         //G('spnLoanAmt').innerHTML = '<span class="Rs mR2">`</span>' + CommaRound(HouseLoanAmount);
         //G('spnMonthlyEMI').innerHTML = '<span class="Rs mR2">`</span>' + CommaRound(HouseLoanEMIAmount);
         //G('dvHouseRequiredInflatedAmount').innerHTML = '<span class="Rs45">`</span>' + CommaRound(HouseDownPayment);
@@ -3719,9 +3725,9 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         $scope.Retirement_Step2 = true;
 
         $scope.Portfolio_Parameter.CalculatedTotalMoney = CalculateRetirementAmount($scope.Portfolio_Parameter.Portfolio_MonthlyExpenditure, $scope.Portfolio_Parameter.Portfolio_InflationRate, $scope.SIP_RetireAge.value, $scope.Portfolio_Parameter.Portfolio_CurrentAge);
-        $scope.Portfolio_Parameter.TotalInvestedMoneyByUser = (parseInt($scope.SIP_AmountInvestment.value) * parseInt($scope.Portfolio_Parameter.InvestedTillYear)) + "000";
+        $scope.Portfolio_Parameter.TotalInvestedMoneyByUser = (parseInt($scope.Portfolio_Parameter.SIP_AmountInvestment) * parseInt($scope.Portfolio_Parameter.InvestedTillYear));
 
-        $scope.Portfolio_Parameter.TotalMonthlyInvestment = parseInt($scope.SIP_AmountInvestment.value) * 1000 / 12;
+        $scope.Portfolio_Parameter.TotalMonthlyInvestment = parseInt($scope.Portfolio_Parameter.SIP_AmountInvestment) / 12;
         let Amount1 = $scope.Portfolio_Parameter.TotalMonthlyInvestment % 1000;
         let Amount2 = 1000 - Amount1;
         $scope.Portfolio_Parameter.TotalMonthlyInvestment = $scope.Portfolio_Parameter.TotalMonthlyInvestment + Amount2;

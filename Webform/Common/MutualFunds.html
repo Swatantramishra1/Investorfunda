@@ -23,55 +23,60 @@
                 <div class="panel-heading">
                     <h3 class="panel-title"><input type="text" class="form-control" placeholder="Search By Scheme Name " ng-keyup="CheckFundsListExists()" ng-model="filterprodcut.SchemeName" /></h3>
                 </div>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>SR. No.</th>
-                            <th>Scheme</th>
-                            <th>Category</th>
-                            <th>Nav</th>
-                            <th>Return(%)3 Year</th>
-                            <!--<th>Rating By Crisil</th>-->
-                            <th>Analysis</th>
-                            <th>Amount</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>SR. No.</th>
+                                <th>Scheme</th>
+                                <th>Category</th>
+                                <th>Nav</th>
+                                <th>Return(%)3 Year</th>
+                                <!--<th>Rating By Crisil</th>-->
+                                <th>Analysis</th>
+                                <th>Amount</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                        <!-- Repeat List of All mutual funds -->
-                        <tr ng-repeat="MF in FundsList | filter : filterprodcut | limitTo : SchemeLimitTo" id="{{MF.SchemeID}}" >
-                            <td>{{$index+1}}</td>
-                            <td ng-click="GoForMFDetails(MF.SchemeID)" class="OnHoverSchemename"> {{MF.SchemeName}}</td>
-                            <td class="hidden-sm">{{MF.CategoryName}}</td>
-                            <td>{{MF.NAV | number:2}}</td>
-                            <td><span class="label label-warning">{{MF.Return_3Yr | number:2}} %</span></td>
-                            <!--<td>2</td>-->
-                            <td><img src="../../Img/bar_graph1.png" style="height:16px;cursor:pointer" ng-click="showAdvanced($index)" /></td>
-                            <td><input type="text" style="width:60px" id="{{$index}}Amount"   /></td>
-                            <td><div class="btn-group">
-    <button type="button" class="btn-u dropdown-toggle" data-toggle="dropdown">
-        Select
-        <i class="fa fa-angle-down"></i>
-    </button>
-    <ul class="dropdown-menu" role="menu">
-        <li><a ng-click="InvestLumpsum($index,'Page','LUMPSUM')"><i class="fa fa-inr"></i> Buy Lumpsum</a></li>
-        <li><a ng-click="InvestLumpsum($index,'Page','SIP')"><i class="fa fa-inr"></i> Buy SIP</a></li>
- 
-    </ul>
-</div></td>
-                        </tr>
+                            <!-- Repeat List of All mutual funds -->
+                            <tr ng-repeat="MF in FundsList | filter : filterprodcut | limitTo : SchemeLimitTo" id="{{MF.SchemeID}}">
+                                <td>{{$index+1}}</td>
+                                <td ng-click="GoForMFDetails(MF.SchemeID)" class="OnHoverSchemename"> {{MF.SchemeName}}</td>
+                                <td class="hidden-sm">{{MF.CategoryName}}</td>
+                                <td>{{MF.NAV | number:2}}</td>
+                                <td><span class="label label-warning">{{MF.Return_3Yr | number:2}} %</span></td>
+                                <!--<td>2</td>-->
+                                <td><img src="../../Img/bar_graph1.png" style="height:16px;cursor:pointer" ng-click="showAdvanced($index)" /></td>
+                                <td><input type="text" style="width:60px" id="{{$index}}Amount" /></td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn-u dropdown-toggle" data-toggle="dropdown">
+                                            Select
+                                            <i class="fa fa-angle-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a ng-click="InvestLumpsum($index,'Page','LUMPSUM')"><i class="fa fa-inr"></i> Buy Lumpsum</a></li>
+                                            <li><a ng-click="InvestLumpsum($index,'Page','SIP')"><i class="fa fa-inr"></i> Buy SIP</a></li>
+
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
 
 
 
 
-             <tr><td colspan="9">
-                     <md-button class="md-raised md-primary form-control" ng-disabled="FundsListShowMore" ng-click="ShowMore()" style="margin:0"><i class="fa fa-plus"></i> Show More </md-button>
-                   </td></tr>
-                    </tbody>
-                </table>
+                            <tr>
+                                <td colspan="9">
+                                    <md-button class="md-raised md-primary form-control" ng-disabled="FundsListShowMore" ng-click="ShowMore()" style="margin:0"><i class="fa fa-plus"></i> Show More </md-button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            
         </div>
         <!-- End Content -->
     </div>

@@ -21,6 +21,10 @@ function GetFutureValue(PrinAmt, Years, Rate) {
 function GetEMIAmount(LoanAmount, Years, Rate) {
     return (LoanAmount * Rate / (12 * 100) * Math.pow((1 + Rate / (12 * 100)), Years * 12)) / (Math.pow((1 + Rate / (12 * 100)), 12 * Years) - 1);
 }
+function GetSIPAmount(LoanAmount, Years, Rate) {
+    return (LoanAmount * Rate / (12 * 100) * Math.pow((1 + Rate / (12 * 100)), Years * 12)) / (Math.pow((1 + Rate / (12 * 100)), 12 * Years) - 1);
+}
+
 function rounding(a, b) {
     if (b > 0)
         return Math.round(a * Math.pow(10, b)) / Math.pow(10, b);
