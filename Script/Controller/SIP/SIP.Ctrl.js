@@ -3010,7 +3010,8 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         //var HouseFutureValue = GetFutureValue(houseCost * 100000, YearToBuy, inflationRate);
         if (InflationRate == "") { alert("Please enter Inflation Rate"); return false; }
         if (!isFinite(InflationRate)) { alert("Please enter valid rate"); return false; }
-        var HouseFutureValue = GetFutureValue(houseCost * 100000, YearToBuy, InflationRate);
+        //var HouseFutureValue = GetFutureValue(houseCost * 100000, YearToBuy, InflationRate);
+        var HouseFutureValue = GetFutureValue(houseCost, YearToBuy, InflationRate);
         //document.getElementById("housecurrentcostVal").innerHTML = GetRoundingFigure(houseCost * 100000)
         //document.getElementById("housefuturecostVal").innerHTML = GetRoundingFigure(HouseFutureValue)[0] + " <span class='fwNormal'>" + GetRoundingFigure(HouseFutureValue)[2];
         var HouseDownPayment = HouseFutureValue * parseInt(downPaymentPercentage) / 100;
@@ -3019,7 +3020,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         //$("#houseTargetAmount").val(HouseAmount);
 
 
-        $scope.Portfolio_Parameter.currentHouseCost = houseCost * 100000;
+        $scope.Portfolio_Parameter.currentHouseCost = houseCost;
         $scope.Portfolio_Parameter.HouseDownPayment = GetFutureValue(HouseAmount, YearToBuy, InflationRate);
         $scope.Portfolio_Parameter.CalculatedTotalMoney = $scope.Portfolio_Parameter.HouseDownPayment;
         //HomeInflatedAmt = CommaRound(HouseDownPayment);
