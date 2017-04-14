@@ -1930,8 +1930,20 @@
 
             if (answer.data.GetUserProfileDetailsInfoResult.ResponseCode == 0) {
 
-                alert("hi");
+                
                 $scope.UserDetailInfo = answer.data.GetUserProfileDetailsInfoResult.Result;
+                if ($scope.UserDetailInfo.UserProfileData.Gender == "Male")
+                {
+                    $scope.genderPrifix = "Mr";
+                }
+                else if ($scope.UserDetailInfo.UserProfileData.Gender == "Female")
+                {
+                    $scope.genderPrifix = "Mrs";
+                }
+                else if($scope.UserDetailInfo.UserProfileData.Gender == "Other")
+                {
+                    $scope.genderPrifix = "Oth";
+                }
                 $scope.UserDetailInfo.UserProfileData.DividentPayMode_ID = "2";
                 $scope.UserDetailInfo.UserProfileData.CommunicationMode_ID = "3";
                 // $scope.UserDetailInfo.UserProfileData.DateOfBirth = new Date($scope.UserDetailInfo.UserProfileData.DateOfBirth);

@@ -4525,7 +4525,7 @@
     <div>
         <input type="button" class="btn btn-primary" style="margin-left: 18px;" ng-click="generatePDF()" value="Download As PDF" />
     </div>
-    <div id="formConfirmation">
+    <div id="formConfirmation" style="margin-top: 15px;margin-right: 130px;margin-left: 87px;border: 1px solid;">
         <DIV id="page_1">
             <DIV id="dimg1">
                 <IMG src="CKYC-KRA-KYC-FormforIndividuals_images/CKYC-KRA-KYC-FormforIndividuals1x1.jpg" id="img1">
@@ -4545,9 +4545,11 @@
                         <TR>
                             <TD class="tr0 td0"><P class="p2 ft2">CKYC & KRA KYC Form</P></TD>
                             <TD rowspan=2 class="tr1 td1">
-                            <P class="p2 ft3">
+                            <P class="p2 ft3" style="color: black;">
 
-                                <img src="../../../../Img/logo.jpg" />
+                                <img src="../../../../Img/logo.jpg" style="width: 116px;" />
+                                <br />
+                                INVESTORFUNDA
                                 
                                 </P>
                             </TD>
@@ -4651,9 +4653,9 @@
                             <TD colspan=7 class="tr10 td17"><P class="p2 ft13">Last Name</P></TD>
                         </TR>
                         <TR>
-                            <TD class="tr9 td18"><P class="p2 ft14">&nbsp;</P></TD>
-                            <TD class="tr9 td9"><P class="p2 ft14">&nbsp;</P></TD>
-                            <TD class="tr9 td19"><P class="p2 ft14">&nbsp;</P></TD>
+                            <TD class="tr9 td18">{{genderPrifix.split('')[0]}}</TD>
+                            <TD class="tr9 td9">{{genderPrifix.split('')[1]}}</TD>
+                            <TD class="tr9 td19">{{genderPrifix.split('')[2]}}</TD>
                             <TD class="tr11 td20"><P class="p2 ft14">&nbsp;</P></TD>
                             <TD class="tr9 td21">{{UserDetailInfo.UserProfileData.FirstName.split('')[0]}}</TD>
                             <TD class="tr9 td22">{{UserDetailInfo.UserProfileData.FirstName.split('')[1]}}</TD>
@@ -4824,74 +4826,74 @@
                             <TD class="tr3 td28"><P class="p2 ft14">&nbsp;</P></TD>
                             <TD class="tr3 td29"><P class="p2 ft14">&nbsp;</P></TD>
                             <TD class="tr3 td30"><P class="p2 ft14">&nbsp;</P></TD>
-                            <TD class="tr3 td31"><P class="p14 ft15">Photo</P></TD>
+                            <TD class="tr3 td31"><P class="p14 ft15" style="color:black">Photo</P></TD>
                         </TR>
                         <TR>
-                            <TD colspan=2 class="tr12 td32"><P class="p15 ft5">M- Male</P></TD>
+                            <TD colspan=2 class="tr12 td32"> <P class="p15 ft5"><input type="checkbox" ng-checked="UserDetailInfo.UserProfileData.Gender=='Male'" /> M- Male</P></TD>
                             <TD class="tr12 td26"><P class="p2 ft14">&nbsp;</P></TD>
-                            <TD class="tr12 td27"><P class="p2 ft5">F- Female</P></TD>
-                            <TD colspan=2 class="tr12 td33"><P class="p2 ft5"><NOBR>T-Transgender</NOBR></P></TD>
+                            <TD class="tr12 td27"><P class="p2 ft5"><input type="checkbox" ng-checked="UserDetailInfo.UserProfileData.Gender=='Female'" />F- Female</P></TD>
+                            <TD colspan=2 class="tr12 td33"><P class="p2 ft5"><input type="checkbox" /><NOBR>T-Transgender</NOBR></P></TD>
                             <TD class="tr12 td30"><P class="p2 ft14">&nbsp;</P></TD>
                             <TD class="tr12 td31"><P class="p2 ft14">&nbsp;</P></TD>
                         </TR>
                         <TR>
-                            <TD colspan=2 class="tr14 td32"><P class="p15 ft5">Married</P></TD>
+                            <TD colspan=2 class="tr14 td32"><P class="p15 ft5"><input type="checkbox" />Married</P></TD>
                             <TD class="tr14 td26"><P class="p2 ft14">&nbsp;</P></TD>
-                            <TD class="tr14 td27"><P class="p2 ft5">Unmarried</P></TD>
-                            <TD class="tr14 td28"><P class="p2 ft5">Others</P></TD>
+                            <TD class="tr14 td27"><P class="p2 ft5"><input type="checkbox" />Unmarried</P></TD>
+                            <TD class="tr14 td28"><P class="p2 ft5"><input type="checkbox" />Others</P></TD>
                             <TD class="tr14 td29"><P class="p2 ft14">&nbsp;</P></TD>
                             <TD class="tr14 td30"><P class="p2 ft14">&nbsp;</P></TD>
                             <TD class="tr14 td31"><P class="p2 ft14">&nbsp;</P></TD>
                         </TR>
                         <TR>
-                            <TD colspan=2 class="tr12 td32"><P class="p15 ft5">IN- Indian</P></TD>
+                            <TD colspan=2 class="tr12 td32"><P class="p15 ft5"><input type="checkbox" checked />IN- Indian</P></TD>
                             <TD class="tr12 td26"><P class="p2 ft14">&nbsp;</P></TD>
-                            <TD class="tr12 td27"><P class="p2 ft5">Others – Country</P></TD>
+                            <TD class="tr12 td27"><P class="p2 ft5"><input type="checkbox" />Others – Country</P></TD>
                             <TD class="tr12 td28"><P class="p2 ft14">&nbsp;</P></TD>
                             <TD colspan=2 class="tr12 td34"><P class="p16 ft5">Country Code</P></TD>
                             <TD class="tr12 td31"><P class="p2 ft14">&nbsp;</P></TD>
                         </TR>
                         <TR>
                             <TD colspan=3 class="tr11 td35"><P class="p15 ft5">Resident Individual</P></TD>
-                            <TD class="tr11 td27"><P class="p2 ft5">Non Resident Indian</P></TD>
+                            <TD class="tr11 td27"><P class="p2 ft5"><input type="checkbox" />Non Resident Indian</P></TD>
                             <TD class="tr11 td28"><P class="p2 ft14">&nbsp;</P></TD>
                             <TD class="tr11 td29"><P class="p2 ft14">&nbsp;</P></TD>
                             <TD class="tr11 td30"><P class="p2 ft14">&nbsp;</P></TD>
                             <TD class="tr11 td31"><P class="p2 ft14">&nbsp;</P></TD>
                         </TR>
                         <TR>
-                            <TD colspan=3 class="tr15 td35"><P class="p15 ft5">Foreign National</P></TD>
-                            <TD class="tr15 td27"><P class="p2 ft5">Person of Indian Origin</P></TD>
+                            <TD colspan=3 class="tr15 td35"><P class="p15 ft5"><input type="checkbox" />Foreign National</P></TD>
+                            <TD class="tr15 td27"><P class="p2 ft5"><input type="checkbox" />Person of Indian Origin</P></TD>
                             <TD class="tr15 td28"><P class="p2 ft14">&nbsp;</P></TD>
                             <TD class="tr15 td29"><P class="p2 ft14">&nbsp;</P></TD>
                             <TD class="tr15 td30"><P class="p2 ft14">&nbsp;</P></TD>
                             <TD class="tr15 td31"><P class="p2 ft14">&nbsp;</P></TD>
                         </TR>
                         <TR>
-                            <TD colspan=2 class="tr10 td32"><P class="p15 ft5"><NOBR>S-Service</NOBR></P></TD>
-                            <TD class="tr10 td26"><P class="p2 ft5">Private Sector</P></TD>
-                            <TD class="tr10 td27"><P class="p2 ft5">Public Sector</P></TD>
-                            <TD colspan=2 class="tr10 td33"><P class="p2 ft5">Government Sector</P></TD>
+                            <TD colspan=2 class="tr10 td32"><P class="p15 ft5"><input type="checkbox" /><NOBR>S-Service</NOBR></P></TD>
+                            <TD class="tr10 td26"><P class="p2 ft5"><input type="checkbox" />Private Sector</P></TD>
+                            <TD class="tr10 td27"><P class="p2 ft5"><input type="checkbox" />Public Sector</P></TD>
+                            <TD colspan=2 class="tr10 td33"><P class="p2 ft5"><input type="checkbox" />Government Sector</P></TD>
                             <TD class="tr10 td30"><P class="p2 ft14">&nbsp;</P></TD>
                             <TD class="tr10 td31"><P class="p2 ft14">&nbsp;</P></TD>
                         </TR>
                         <TR>
-                            <TD colspan=2 class="tr16 td32"><P class="p15 ft5"><NOBR>O-Others</NOBR></P></TD>
-                            <TD class="tr16 td26"><P class="p2 ft5">Professional</P></TD>
-                            <TD class="tr16 td27"><P class="p2 ft5">Self Employed</P></TD>
-                            <TD class="tr16 td28"><P class="p2 ft5">Retired</P></TD>
-                            <TD class="tr16 td29"><P class="p2 ft5">Housewife</P></TD>
-                            <TD class="tr16 td30"><P class="p2 ft5">Student</P></TD>
-                            <TD class="tr16 td31"><P class="p17 ft16">Signature/</P></TD>
+                            <TD colspan=2 class="tr16 td32"><P class="p15 ft5"><input type="checkbox" /><NOBR>O-Others</NOBR></P></TD>
+                            <TD class="tr16 td26"><P class="p2 ft5"><input type="checkbox" />Professional</P></TD>
+                            <TD class="tr16 td27"><P class="p2 ft5"><input type="checkbox" />Self Employed</P></TD>
+                            <TD class="tr16 td28"><P class="p2 ft5"><input type="checkbox" />Retired</P></TD>
+                            <TD class="tr16 td29"><P class="p2 ft5"><input type="checkbox" />Housewife</P></TD>
+                            <TD class="tr16 td30"><P class="p2 ft5"><input type="checkbox" />Student</P></TD>
+                            <TD class="tr16 td31"><P class="p17 ft16" style="color:black">Signature/</P></TD>
                         </TR>
                         <TR>
-                            <TD colspan=2 rowspan=2 class="tr3 td32"><P class="p15 ft5"><NOBR>B-Business</NOBR></P></TD>
+                            <TD colspan=2 rowspan=2 class="tr3 td32"><P class="p15 ft5"><input type="checkbox" /><NOBR>B-Business</NOBR></P></TD>
                             <TD class="tr17 td26"><P class="p2 ft17">&nbsp;</P></TD>
-                            <TD rowspan=2 class="tr3 td27"><P class="p2 ft5"><NOBR>X-Not</NOBR> Categorised</P></TD>
+                            <TD rowspan=2 class="tr3 td27"><P class="p2 ft5"><input type="checkbox" /><NOBR>X-Not</NOBR> Categorised</P></TD>
                             <TD class="tr17 td28"><P class="p2 ft17">&nbsp;</P></TD>
                             <TD class="tr17 td29"><P class="p2 ft17">&nbsp;</P></TD>
                             <TD class="tr17 td30"><P class="p2 ft17">&nbsp;</P></TD>
-                            <TD class="tr17 td31"><P class="p17 ft16">Thumb Impression</P></TD>
+                            <TD class="tr17 td31"><P class="p17 ft16" style="color:black">Thumb Impression</P></TD>
                         </TR>
                         <TR>
                             <TD class="tr2 td26"><P class="p2 ft4">&nbsp;</P></TD>
@@ -5544,43 +5546,43 @@
                         <TD class="tr7 td63"><P class="p2 ft9">&nbsp;</P></TD>
                     </TR>
                     <TR>
-                        <TD class="tr17 td87"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td88"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td89"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td88"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td46"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td88"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td44"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td23"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td73"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td23"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td74"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td11"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td20"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td75"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td43"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td90"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td75"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td91"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td76"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td92"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td15"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td61"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td59"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td43"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td61"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td77"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td23"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td74"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td93"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td75"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td94"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td15"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td58"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td43"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td54"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td37"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td95"><P class="p2 ft17">&nbsp;</P></TD>
+                        <TD class="tr17 td87">{{UserDetailInfo.AddressDetailsData[0].Address.split('')[0]}}</TD>
+                        <TD class="tr17 td88"><P class="p2 ft9">&nbsp;</P></TD>
+                        <TD class="tr17 td89">{{UserDetailInfo.AddressDetailsData[0].Address.split('')[1]}}</TD>
+                        <TD class="tr17 td88"><P class="p2 ft9">&nbsp;</P></TD>
+                        <TD class="tr17 td46">{{UserDetailInfo.AddressDetailsData[0].Address.split('')[2]}}</TD>
+                        <TD class="tr17 td88"><P class="p2 ft9">&nbsp;</P></TD>
+                        <TD class="tr17 td44">{{UserDetailInfo.AddressDetailsData[0].Address.split('')[3]}}</TD>
+                        <TD class="tr17 td23"><P class="p2 ft9">&nbsp;</P></TD>
+                        <TD class="tr17 td73">{{UserDetailInfo.AddressDetailsData[0].Address.split('')[4]}}</TD>
+                        <TD class="tr17 td23"><P class="p2 ft9">&nbsp;</P></TD>
+                        <TD class="tr17 td74">{{UserDetailInfo.AddressDetailsData[0].Address.split('')[5]}}</TD>
+                        <TD class="tr17 td11"><P class="p2 ft9">&nbsp;</P></TD>
+                        <TD class="tr17 td20">{{UserDetailInfo.AddressDetailsData[0].Address.split('')[6]}}</TD>
+                        <TD class="tr17 td75"><P class="p2 ft9">&nbsp;</P></TD>
+                        <TD class="tr17 td43">{{UserDetailInfo.AddressDetailsData[0].Address.split('')[7]}}</TD>
+                        <TD class="tr17 td90"><P class="p2 ft9">&nbsp;</P></TD>
+                        <TD class="tr17 td75">{{UserDetailInfo.AddressDetailsData[0].Address.split('')[8]}}</TD>
+                        <TD class="tr17 td91"><P class="p2 ft9">&nbsp;</P></TD>
+                        <TD class="tr17 td76">{{UserDetailInfo.AddressDetailsData[0].Address.split('')[9]}}</TD>
+                        <TD class="tr17 td92"><P class="p2 ft9">&nbsp;</P></TD>
+                        <TD class="tr17 td15">{{UserDetailInfo.AddressDetailsData[0].Address.split('')[10]}}</TD>
+                        <TD class="tr17 td61"><P class="p2 ft9">&nbsp;</P></TD>
+                        <TD class="tr17 td59">{{UserDetailInfo.AddressDetailsData[0].Address.split('')[11]}}</TD>
+                        <TD class="tr17 td43"><P class="p2 ft9">&nbsp;</P></TD>
+                        <TD class="tr17 td61">{{UserDetailInfo.AddressDetailsData[0].Address.split('')[12]}}</TD>
+                        <TD class="tr17 td77"><P class="p2 ft9">&nbsp;</P></TD>
+                        <TD class="tr17 td23">{{UserDetailInfo.AddressDetailsData[0].Address.split('')[13]}}</TD>
+                        <TD class="tr17 td74"><P class="p2 ft9">&nbsp;</P></TD>
+                        <TD class="tr17 td93">{{UserDetailInfo.AddressDetailsData[0].Address.split('')[14]}}</TD>
+                        <TD class="tr17 td75"><P class="p2 ft9">&nbsp;</P></TD>
+                        <TD class="tr17 td94">{{UserDetailInfo.AddressDetailsData[0].Address.split('')[15]}}</TD>
+                        <TD class="tr17 td15"><P class="p2 ft9">&nbsp;</P></TD>
+                        <TD class="tr17 td58">{{UserDetailInfo.AddressDetailsData[0].Address.split('')[16]}}</TD>
+                        <TD class="tr17 td43"><P class="p2 ft9">&nbsp;</P></TD>
+                        <TD class="tr17 td54">{{UserDetailInfo.AddressDetailsData[0].Address.split('')[17]}}</TD>
+                        <TD class="tr17 td37"><P class="p2 ft9">&nbsp;</P></TD>
+                        <TD class="tr17 td95">{{UserDetailInfo.AddressDetailsData[0].Address.split('')[18]}}</TD>
                         <TD class="tr17 td46"><P class="p2 ft17">&nbsp;</P></TD>
                         <TD class="tr17 td88"><P class="p2 ft17">&nbsp;</P></TD>
                         <TD class="tr17 td44"><P class="p2 ft17">&nbsp;</P></TD>
@@ -6049,12 +6051,12 @@
                         <TD class="tr6 td46"><P class="p2 ft7">&nbsp;</P></TD>
                         <TD class="tr6 td43"><P class="p2 ft7">&nbsp;</P></TD>
                         <TD class="tr6 td42"><P class="p2 ft7">&nbsp;</P></TD>
-                        <TD class="tr17 td106"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td67"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td107"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td65"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td99"><P class="p2 ft17">&nbsp;</P></TD>
-                        <TD class="tr17 td83"><P class="p2 ft17">&nbsp;</P></TD>
+                        <TD class="tr17 td106">{{UserDetailInfo.AddressDetailsData[0].PinCode.split('')[0]}}</TD>
+                        <TD class="tr17 td67">{{UserDetailInfo.AddressDetailsData[0].PinCode.split('')[1]}}</TD>
+                        <TD class="tr17 td107">{{UserDetailInfo.AddressDetailsData[0].PinCode.split('')[2]}}</TD>
+                        <TD class="tr17 td65">{{UserDetailInfo.AddressDetailsData[0].PinCode.split('')[3]}}</TD>
+                        <TD class="tr17 td99">{{UserDetailInfo.AddressDetailsData[0].PinCode.split('')[4]}}</TD>
+                        <TD class="tr17 td83">{{UserDetailInfo.AddressDetailsData[0].PinCode.split('')[5]}}</TD>
                         <TD class="tr17 td81"><P class="p2 ft17">&nbsp;</P></TD>
                         <TD class="tr17 td104"><P class="p2 ft17">&nbsp;</P></TD>
                         <TD class="tr17 td83"><P class="p2 ft17">&nbsp;</P></TD>
@@ -6182,18 +6184,18 @@
                         <TD class="tr21 td40"><P class="p2 ft23">&nbsp;</P></TD>
                     </TR>
                     <TR>
-                        <TD class="tr5 td119"><P class="p2 ft14">&nbsp;</P></TD>
-                        <TD class="tr5 td124"><P class="p2 ft14">&nbsp;</P></TD>
-                        <TD class="tr5 td8"><P class="p2 ft14">&nbsp;</P></TD>
-                        <TD colspan=2 class="tr5 td19"><P class="p2 ft14">&nbsp;</P></TD>
-                        <TD colspan=2 class="tr5 td9"><P class="p2 ft14">&nbsp;</P></TD>
-                        <TD class="tr5 td81"><P class="p2 ft14">&nbsp;</P></TD>
-                        <TD class="tr5 td103"><P class="p2 ft14">&nbsp;</P></TD>
-                        <TD class="tr5 td81"><P class="p2 ft14">&nbsp;</P></TD>
-                        <TD class="tr5 td102"><P class="p2 ft14">&nbsp;</P></TD>
-                        <TD class="tr5 td83"><P class="p2 ft14">&nbsp;</P></TD>
-                        <TD class="tr5 td83"><P class="p2 ft14">&nbsp;</P></TD>
-                        <TD class="tr5 td104"><P class="p2 ft14">&nbsp;</P></TD>
+                        <TD class="tr5 td119">{{UserDetailInfo.AddressDetailsData[0].CityName.split('')[0]}}</TD>
+                        <TD class="tr5 td124" style="background-color:transparent !important"></TD>
+                        <TD class="tr5 td8">{{UserDetailInfo.AddressDetailsData[0].CityName.split('')[1]}}</TD>
+                        <TD colspan=2 class="tr5 td19">{{UserDetailInfo.AddressDetailsData[0].CityName.split('')[2]}}</TD>
+                        <TD colspan=2 class="tr5 td9">{{UserDetailInfo.AddressDetailsData[0].CityName.split('')[3]}}</TD>
+                        <TD class="tr5 td81">{{UserDetailInfo.AddressDetailsData[0].CityName.split('')[4]}}</TD>
+                        <TD class="tr5 td103">{{UserDetailInfo.AddressDetailsData[0].CityName.split('')[5]}}</TD>
+                        <TD class="tr5 td81">{{UserDetailInfo.AddressDetailsData[0].CityName.split('')[6]}}</TD>
+                        <TD class="tr5 td102">{{UserDetailInfo.AddressDetailsData[0].CityName.split('')[7]}}</TD>
+                        <TD class="tr5 td83">{{UserDetailInfo.AddressDetailsData[0].CityName.split('')[8]}}</TD>
+                        <TD class="tr5 td83">{{UserDetailInfo.AddressDetailsData[0].CityName.split('')[9]}}</TD>
+                        <TD class="tr5 td104">{{UserDetailInfo.AddressDetailsData[0].CityName.split('')[10]}}</TD>
                         <TD class="tr5 td64"><P class="p2 ft14">&nbsp;</P></TD>
                         <TD class="tr5 td85"><P class="p2 ft14">&nbsp;</P></TD>
                         <TD class="tr5 td104"><P class="p2 ft14">&nbsp;</P></TD>
@@ -6217,25 +6219,25 @@
                         <TD class="tr15 td38"><P class="p2 ft14">&nbsp;</P></TD>
                         <TD class="tr15 td37"><P class="p2 ft14">&nbsp;</P></TD>
                         <TD class="tr5 td125"><P class="p2 ft14">&nbsp;</P></TD>
-                        <TD class="tr5 td84"><P class="p2 ft14">&nbsp;</P></TD>
+                        <TD class="tr5 td84">{{UserDetailInfo.AddressDetailsData[0].CountryName.split('')[0]}}</TD>
                         <TD class="tr5 td100"><P class="p2 ft14">&nbsp;</P></TD>
-                        <TD class="tr5 td64"><P class="p2 ft14">&nbsp;</P></TD>
+                        <TD class="tr5 td64">{{UserDetailInfo.AddressDetailsData[0].CountryName.split('')[1]}}</TD>
                         <TD class="tr5 td86"><P class="p2 ft14">&nbsp;</P></TD>
                         <TD class="tr5 td99"><P class="p2 ft14">&nbsp;</P></TD>
-                        <TD class="tr5 td9"><P class="p2 ft14">&nbsp;</P></TD>
-                        <TD class="tr5 td9"><P class="p2 ft14">&nbsp;</P></TD>
-                        <TD class="tr5 td9"><P class="p2 ft14">&nbsp;</P></TD>
-                        <TD class="tr5 td69"><P class="p2 ft14">&nbsp;</P></TD>
+                        <TD class="tr5 td9">{{UserDetailInfo.AddressDetailsData[0].CountryName.split('')[2]}}</TD>
+                        <TD class="tr5 td9">{{UserDetailInfo.AddressDetailsData[0].CountryName.split('')[3]}}</TD>
+                        <TD class="tr5 td9">{{UserDetailInfo.AddressDetailsData[0].CountryName.split('')[4]}}</TD>
+                        <TD class="tr5 td69">{{UserDetailInfo.AddressDetailsData[0].CountryName.split('')[5]}}</TD>
                         <TD class="tr5 td8"><P class="p2 ft14">&nbsp;</P></TD>
-                        <TD class="tr5 td64"><P class="p2 ft14">&nbsp;</P></TD>
+                        <TD class="tr5 td64">{{UserDetailInfo.AddressDetailsData[0].CountryName.split('')[6]}}</TD>
                         <TD class="tr5 td70"><P class="p2 ft14">&nbsp;</P></TD>
-                        <TD class="tr5 td83"><P class="p2 ft14">&nbsp;</P></TD>
+                        <TD class="tr5 td83">{{UserDetailInfo.AddressDetailsData[0].CountryName.split('')[7]}}</TD>
                         <TD class="tr5 td70"><P class="p2 ft14">&nbsp;</P></TD>
-                        <TD class="tr5 td81"><P class="p2 ft14">&nbsp;</P></TD>
+                        <TD class="tr5 td81">{{UserDetailInfo.AddressDetailsData[0].CountryName.split('')[8]}}</TD>
                         <TD class="tr5 td103"><P class="p2 ft14">&nbsp;</P></TD>
-                        <TD class="tr5 td85"><P class="p2 ft14">&nbsp;</P></TD>
+                        <TD class="tr5 td85">{{UserDetailInfo.AddressDetailsData[0].CountryName.split('')[9]}}</TD>
                         <TD class="tr5 td105"><P class="p2 ft14">&nbsp;</P></TD>
-                        <TD class="tr5 td84"><P class="p2 ft14">&nbsp;</P></TD>
+                        <TD class="tr5 td84">{{UserDetailInfo.AddressDetailsData[0].CountryName.split('')[10]}}</TD>
                         <TD class="tr5 td104"><P class="p2 ft14">&nbsp;</P></TD>
                         <TD class="tr15 td74"><P class="p2 ft14">&nbsp;</P></TD>
                         <TD class="tr15 td43"><P class="p2 ft14">&nbsp;</P></TD>
