@@ -3628,7 +3628,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         //document.getElementById("Retirement_MonthlyExpenseVal").innerHTML = GetRoundingFigure(retirementmonthexp * 1000)[0] + " <span class='fwNormal'>" + GetRoundingFigure(retirementmonthexp * 1000)[2] + "</span>";
         $scope.Portfolio_Parameter.InvestedTillYear = retirementAgeVal - age;
         //var age = document.getElementById("retirement_PresentAgeVal").innerHTML;
-        var amt = RequiredRetirementAmount(parseInt(retirementmonthexp) * 1000, parseInt($scope.SIP_Percet_bar.value), parseInt(retirementAgeVal), new Number(age), Retirement_EstmMonthlyExpensePerChgVal);
+        var amt = RequiredRetirementAmount(parseInt(retirementmonthexp), parseInt($scope.SIP_Percet_bar.value), parseInt(retirementAgeVal), new Number(age), Retirement_EstmMonthlyExpensePerChgVal);
         //var goalamt = new Number(rounding(GetPrincipalValue(amt, document.getElementById("retirementAgeVal").innerHTML - age, inflationRate), GoalRounding));
         if (Retirement_EstmMonthlyExpensePerChgVal == "") { alert("Please enter Inflation Rate"); return false; }
         if (!isFinite(Retirement_EstmMonthlyExpensePerChgVal)) { alert("Please enter valid rate"); return false; }
