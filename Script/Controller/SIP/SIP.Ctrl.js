@@ -1,7 +1,22 @@
-﻿app.controller("SIP.Ctrl", ['$scope', '$rootScope', '$mdDialog', '$mdMedia', '$localStorage', '$state', 'FundsService', 'GetCommonData',
-function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsService, GetCommonData) {
+﻿app.controller("SIP.Ctrl", ['$scope', '$rootScope', '$mdDialog', '$mdMedia', '$localStorage', '$state', 'FundsService', 'GetCommonData', 'fileUploadService',
+function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsService, GetCommonData, fileUploadService) {
     $scope.val = "";
     var BseSchemeIDs = "";
+    $scope.uploadfile=function(){
+       
+        var file = $scope.myFile;
+        var uploadUrl = "../server/service.php", //Url of webservice/api/server
+            promise = fileUploadService.uploadFileToUrl(file, API_GetUploadFile);
+
+        promise.then(function (response) {
+            $scope.serverResponse = response;
+        }, function () {
+            $scope.serverResponse = 'An error has occurred';
+        })
+
+
+        console.log(file);
+    }
     //Show Hide ***************
     $scope.SIP_Portfolio_Year = {
         value: 1,
