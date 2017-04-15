@@ -15,8 +15,8 @@
                 <img src="http://demobyrightfoot.in/wp-content/uploads/2016/11/vaccationi.png" style="width:100%" />
                
             </div>
-            <div ng-class="BuyCar_Step2 ? 'col-md-12' : 'col-md-7'" style="text-align:left;padding-top:20px" md-theme="default">
-                <div class="col-md-12" style="padding:0px" ng-show="BuyTour_Step1">
+            <div ng-class="BuyCar_Step2 ? 'col-xs-12 col-sm-12 col-md-12 col-lg-12' : 'col-md-7'" style="text-align:left;padding-top:20px" md-theme="default">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:0px" ng-show="BuyTour_Step1">
                     <md-input-container class="md-block">
                         <label>Your budget for the holiday (approx.)</label>
                         <input ng-model="Portfolio_Parameter.Portfolio_GoalAmount">
@@ -39,17 +39,17 @@
                     </md-input-container>
 
                 </div>
-                <div class="col-md-12" style="padding:0px" ng-show="BuyTour_Step2">
-                    <div ng-include="'Webform/Common/Html/planForYourFutureStep2.html'"></div>
-                </div>
+               
                 <div class="row text-right">
-                    <md-button ng-show="!BuyTour_Step1" class="md-raised" ng-click="Portfolio_InvestNow()">Invest Now</md-button>
+                   
                     <md-button ng-show="BuyTour_Step1" class="md-raised" ng-click="PortfolioBuyTour_Calculate()">Calculate</md-button>
                 </div>
             </div>
         </div>
-
-        <div class="col-md-12 margin-bottom-60" ng-show="SIP_GOAL_Final_SHOW">
+        <div class="col-xs-12 col-sm-12 col-md-12" style="padding:0px;margin-right: 30px !important;margin-left: 30px !important;width: 96%;margin-bottom:20px;" ng-show="BuyTour_Step2">
+            <div ng-include="'Webform/Common/Html/planForYourFutureStep2.html'"></div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin-bottom-60" ng-show="SIP_GOAL_Final_SHOW">
             <div ng-include="'Webform/Common/Html/planForYourFutureStep3.html'"></div>
         </div>
     </div>

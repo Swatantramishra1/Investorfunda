@@ -14,6 +14,74 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         $state.go('Index');
     };
     var ListEx = {};
+
+    $scope.paragraf = [
+
+        {
+            "Equity Large Cap": [
+                
+                    "Equity Large Cap funds are among the top rated and recommended Mutual Funds in Equity sector. ",
+                    "The funds are invested in funds of companies that are well-established and have a good reputation in the market. These companies usually remain immune from short-term market volatility and have sustained revenues from their business operations. ",
+                    "These funds are best suited for investors with low-risk appetite and are eyeing for long-term growth oriented investment.  "  
+            ],
+
+            "Equity Mid/Small Cap": [
+                "Equity Mid/Small Cap companies have relatively low capital from Large cap firms.  ",
+                    "Investors with moderately high to aggressive risk prefer to invest in such funds. ",
+                    "With risk factor comes the high returns and so we recommend these funds to individuals with adequate risk appetite.  "
+            ],
+            "Equity Multi Cap": [
+                "Equity Multi Cap funds are diversified funds as the funds are divided across market capitalization (Large, Mid, Small Cap). ",
+                    "Investors with medium-long time horizon with nominal to moderate risk can invest in such funds. "
+            ],
+            "Debt Liquid Funds": [
+               "Debt liquid (withdraw anytime) funds are Mutual Funds that are least risky in the universe. ",
+                   "These funds are invested in safe and secure financial instruments like treasury bills, government securities and bonds with maturities of upto 91 days. ",
+                   "The investors get higher returns from Bank savings account and the amount invested also remains liquid without any exit load."
+            ],
+            "Debt Ultra-Short Funds": [
+               "Debt Ultra-Short term funds are simple debt funds that are comparatively a bit more risky than Debt Liquid Funds. ",
+                   "The funds in Ultra-Short funds are invested in financial instruments that have the maturity period exceeding 91 days but under one year. ",
+                   "They are often traded in the market and hence their rates keep fluctuating.",
+                   "Ultra-Short funds are also liquid funds but some funds might charge a nominal exit load if the investor withdraws investment within a stipulated time.",
+                   "Investors who want low risk and also liquidity can opt for such funds"
+            ],
+            "Gilt Funds": [
+               "Gilt Funds are invested in financial securities issued by Central and State governments. ",
+                   "These are generally high credit rated securities and have lowest risk factor involved. ",
+                   "Mostly, the interest rates of these funds remain stable and Investors with ‘No Risk’ choose this category."
+            ],
+            "Debt Income Funds": [
+              "Income funds invest in corporate bonds, government bonds and money market instruments. ",
+                  "However,they are highly vulnerable to the changes in interest rates and are suitable for investors who have a long term investment horizon and higher risk taking ability."
+                  
+            ],
+            "Balanced Funds": [
+              "Balanced Mutual Funds are invested in both Equity and Debt funds, so that the investments remain safe and there is also capital appreciation.",
+                  "Investors with low-moderate risk, eyeing long-term horizon can invest in such funds"
+
+            ],
+            "MIP Mutual Funds": [
+              "MIP or Monthly Income Plans are debt oriented funds that are invested in both debt and equity markets. ",
+                  "These funds shell out regular dividends on monthly, quarterly or yearly basis. However, the dividends are not fixed as the funds are invested in equity markets the returns fluctuate overtime. ",
+                  "Investors with conservative mindset can opt for such funds as they shell out regular incomes and are low-risk funds."
+
+            ],
+            "Credit Opportunities Mutual Funds": [
+              "Credit Opportunities are debt mutual funds that are invested in corporate bonds and securities that have a lower credit rating than AAA ratings. Credit ratings reveal the risk involved in particular securities.",
+                  "Lower than AAA rated securities come with some risk, however they give more interest than Government securities. The returns may fluctuate on these funds.",
+                  "Investors with a moderate risk appetite may opt for such funds. "
+
+            ],
+            "ELSS Mutual Funds ": [
+              "ELSS Funds are diversified equity funds which qualify for tax exemption up to a limited amount. You can invest upto 1.5 lakhs and save taxes up to 46350*.",
+                  "However, the invested amount remains locked in for the period of three years. Individuals eyeing some tax benefit and have extra corpus to invest may opt for these funds. "
+
+            ],
+        }
+    ];
+
+
     $scope.InvestmentList = [];
     $scope.ourGrouper = 'MFtype';
     $scope.SIPGoalStructureDate =
@@ -28,7 +96,20 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                     "MFtype": "EQ large cap",
                     "Minsip": "12",
                     "date": "1,5,10,15,20,25,30",
-                    "multiplier": "100"
+                    "multiplier": "100",
+                    "Discription": [
+
+                           "Equity Large Cap funds are among the top rated and recommended Mutual Funds in Equity sector. "
+
+                  ,
+
+                     "The funds are invested in funds of companies that are well-established and have a good reputation in the market. These companies usually remain immune from short-term market volatility and have sustained revenues from their business operations."
+
+                  ,
+
+                   "These funds are best suited for investors with low-risk appetite and are eyeing for long-term growth oriented investment.  "
+
+                    ]
                 },
                   {
                       "Rank": "2",
@@ -39,7 +120,20 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "EQ large cap",
                       "Minsip": "12",
                       "date": "5,7,15,21,25,28",
-                      "multiplier": "500"
+                      "multiplier": "500",
+                      "Discription": [
+
+                            "Equity Large Cap funds are among the top rated and recommended Mutual Funds in Equity sector. "
+
+                   ,
+
+                      "The funds are invested in funds of companies that are well-established and have a good reputation in the market. These companies usually remain immune from short-term market volatility and have sustained revenues from their business operations."
+
+                   ,
+
+                    "These funds are best suited for investors with low-risk appetite and are eyeing for long-term growth oriented investment.  "
+
+                      ]
                   },
                   {
                       "Rank": "3",
@@ -50,7 +144,20 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "EQ large cap",
                       "Minsip": "12",
                       "date": "1-30 all days",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+
+                           "Equity Large Cap funds are among the top rated and recommended Mutual Funds in Equity sector. "
+
+                  ,
+
+                     "The funds are invested in funds of companies that are well-established and have a good reputation in the market. These companies usually remain immune from short-term market volatility and have sustained revenues from their business operations."
+
+                  ,
+
+                   "These funds are best suited for investors with low-risk appetite and are eyeing for long-term growth oriented investment.  "
+
+                      ]
                   },
                   {
                       "Rank": "4",
@@ -61,7 +168,20 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "EQ large cap",
                       "Minsip": "12",
                       "date": "1,7,10,20,25",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+
+                           "Equity Large Cap funds are among the top rated and recommended Mutual Funds in Equity sector. "
+
+                  ,
+
+                     "The funds are invested in funds of companies that are well-established and have a good reputation in the market. These companies usually remain immune from short-term market volatility and have sustained revenues from their business operations."
+
+                  ,
+
+                   "These funds are best suited for investors with low-risk appetite and are eyeing for long-term growth oriented investment.  "
+
+                      ]
                   },
                   {
                       "Rank": "5",
@@ -72,7 +192,20 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "EQ large cap",
                       "Minsip": "6",
                       "date": "1,7,10,14,20,21, 25, 28",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+
+                             "Equity Large Cap funds are among the top rated and recommended Mutual Funds in Equity sector. "
+
+                    ,
+
+                       "The funds are invested in funds of companies that are well-established and have a good reputation in the market. These companies usually remain immune from short-term market volatility and have sustained revenues from their business operations."
+
+                    ,
+
+                     "These funds are best suited for investors with low-risk appetite and are eyeing for long-term growth oriented investment.  "
+
+                      ]
                   },
                   {
                       "Rank": "6",
@@ -83,7 +216,20 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "EQ large cap",
                       "Minsip": "12",
                       "date": "1,7,10,14,20,21, 25, 28",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+
+                           "Equity Large Cap funds are among the top rated and recommended Mutual Funds in Equity sector. "
+
+                  ,
+
+                     "The funds are invested in funds of companies that are well-established and have a good reputation in the market. These companies usually remain immune from short-term market volatility and have sustained revenues from their business operations."
+
+                  ,
+
+                   "These funds are best suited for investors with low-risk appetite and are eyeing for long-term growth oriented investment.  "
+
+                      ]
                   },
                   {
                       "Rank": "1",
@@ -91,10 +237,14 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "ISIN": "INF109K01AF8",
                       "BSESchmecode": "DFG",
                       "MinInvst": "1000",
-                      "MFtype": "EQ Multicap",
+                      "MFtype": "Equity Multi Cap",
                       "Minsip": "6",
                       "date": "1,7,10,14,15,20,25",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+                                 "Equity Multi Cap funds are diversified funds as the funds are divided across market capitalization (Large, Mid, Small Cap). ",
+                    "Investors with medium-long time horizon with nominal to moderate risk can invest in such funds. "
+                      ]
                   },
                   {
                       "Rank": "2",
@@ -102,10 +252,14 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "ISIN": "INF090I01981",
                       "BSESchmecode": "F273-GR",
                       "MinInvst": "500",
-                      "MFtype": "EQ Multicap",
+                      "MFtype": "Equity Multi Cap",
                       "Minsip": "12",
                       "date": "1,7,10,20,25",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+                                 "Equity Multi Cap funds are diversified funds as the funds are divided across market capitalization (Large, Mid, Small Cap). ",
+                    "Investors with medium-long time horizon with nominal to moderate risk can invest in such funds. "
+                      ]
                   },
                   {
                       "Rank": "3",
@@ -113,10 +267,14 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "ISIN": "INF677K01023",
                       "BSESchmecode": "FIVFG",
                       "MinInvst": "500",
-                      "MFtype": "EQ Multicap",
+                      "MFtype": "Equity Multi Cap",
                       "Minsip": "6",
                       "date": "1,5,10,15,20,25",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+                                 "Equity Multi Cap funds are diversified funds as the funds are divided across market capitalization (Large, Mid, Small Cap). ",
+                    "Investors with medium-long time horizon with nominal to moderate risk can invest in such funds. "
+                      ]
                   },
                   {
                       "Rank": "4",
@@ -124,10 +282,14 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "ISIN": "INF200K01222",
                       "BSESchmecode": "099G",
                       "MinInvst": "500",
-                      "MFtype": "EQ Multicap",
+                      "MFtype": "Equity Multi Cap",
                       "Minsip": "12",
                       "date": "1,5,10,15,20,25,30",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+                                 "Equity Multi Cap funds are diversified funds as the funds are divided across market capitalization (Large, Mid, Small Cap). ",
+                    "Investors with medium-long time horizon with nominal to moderate risk can invest in such funds. "
+                      ]
                   },
                   {
                       "Rank": "5",
@@ -135,10 +297,14 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "ISIN": "INF174K01336",
                       "BSESchmecode": "K168SF-GR",
                       "MinInvst": "500",
-                      "MFtype": "EQ Multicap",
+                      "MFtype": "Equity Multi Cap",
                       "Minsip": "6",
                       "date": "1,7,10,14,20,21, 25, 28",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+                                 "Equity Multi Cap funds are diversified funds as the funds are divided across market capitalization (Large, Mid, Small Cap). ",
+                    "Investors with medium-long time horizon with nominal to moderate risk can invest in such funds. "
+                      ]
                   },
                   {
                       "Rank": "6",
@@ -146,10 +312,14 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "ISIN": "INF209K01AJ8",
                       "BSESchmecode": "51",
                       "MinInvst": "1000",
-                      "MFtype": "EQ Multicap",
+                      "MFtype": "Equity Multi Cap",
                       "Minsip": "6",
                       "date": "1,7,10,14,20,21, 25, 28",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+                                 "Equity Multi Cap funds are diversified funds as the funds are divided across market capitalization (Large, Mid, Small Cap). ",
+                    "Investors with medium-long time horizon with nominal to moderate risk can invest in such funds. "
+                      ]
                   },
                   {
                       "Rank": "1",
@@ -157,10 +327,15 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "ISIN": "INF740K01797",
                       "BSESchmecode": "DSP157-GR",
                       "MinInvst": "500",
-                      "MFtype": "EQ Mid/small",
+                      "MFtype": "Equity Mid/Small Cap",
                       "Minsip": "12",
                       "date": "1,7,10,14,20,21, 25, 28",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+                "Equity Mid/Small Cap companies have relatively low capital from Large cap firms.  ",
+                    "Investors with moderately high to aggressive risk prefer to invest in such funds. ",
+                    "With risk factor comes the high returns and so we recommend these funds to individuals with adequate risk appetite.  "
+                      ]
                   },
                   {
                       "Rank": "2",
@@ -168,10 +343,15 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "ISIN": "INF090I01569",
                       "BSESchmecode": "F219-GR",
                       "MinInvst": "500",
-                      "MFtype": "EQ Mid/small",
+                      "MFtype": "Equity Mid/Small Cap",
                       "Minsip": "12",
                       "date": "1,7,10,20,25",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+                "Equity Mid/Small Cap companies have relatively low capital from Large cap firms.  ",
+                    "Investors with moderately high to aggressive risk prefer to invest in such funds. ",
+                    "With risk factor comes the high returns and so we recommend these funds to individuals with adequate risk appetite.  "
+                      ]
                   },
                   {
                       "Rank": "3",
@@ -179,10 +359,15 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "ISIN": "INF174K01DS9",
                       "BSESchmecode": "K123-GR",
                       "MinInvst": "1000",
-                      "MFtype": "EQ Mid/small",
+                      "MFtype": "Equity Mid/Small Cap",
                       "Minsip": "6",
                       "date": "1,7,10,14,20,21, 25, 28",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+                "Equity Mid/Small Cap companies have relatively low capital from Large cap firms.  ",
+                    "Investors with moderately high to aggressive risk prefer to invest in such funds. ",
+                    "With risk factor comes the high returns and so we recommend these funds to individuals with adequate risk appetite.  "
+                      ]
                   },
                   {
                       "Rank": "4",
@@ -190,10 +375,15 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "ISIN": "INF917K01254",
                       "BSESchmecode": "LT17-GR",
                       "MinInvst": "1000",
-                      "MFtype": "EQ Mid/small",
+                      "MFtype": "Equity Mid/Small Cap",
                       "Minsip": "6",
                       "date": "1,5,10,15,20,25,30",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+                "Equity Mid/Small Cap companies have relatively low capital from Large cap firms.  ",
+                    "Investors with moderately high to aggressive risk prefer to invest in such funds. ",
+                    "With risk factor comes the high returns and so we recommend these funds to individuals with adequate risk appetite.  "
+                      ]
                   },
                   {
                       "Rank": "5",
@@ -201,10 +391,15 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "ISIN": "INF769K01101",
                       "BSESchmecode": "MAFEBRG-GR",
                       "MinInvst": "1000",
-                      "MFtype": "EQ Mid/small",
+                      "MFtype": "Equity Mid/Small Cap",
                       "Minsip": "6",
                       "date": "1,10,20,25,28",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+                "Equity Mid/Small Cap companies have relatively low capital from Large cap firms.  ",
+                    "Investors with moderately high to aggressive risk prefer to invest in such funds. ",
+                    "With risk factor comes the high returns and so we recommend these funds to individuals with adequate risk appetite.  "
+                      ]
                   },
                   {
                       "Rank": "6",
@@ -212,10 +407,15 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "ISIN": "INF173K01155",
                       "BSESchmecode": "PCEBRGG-GR",
                       "MinInvst": "2000",
-                      "MFtype": "EQ Mid/small",
+                      "MFtype": "Equity Mid/Small Cap",
                       "Minsip": "6",
                       "date": "1,5,10,20",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+                "Equity Mid/Small Cap companies have relatively low capital from Large cap firms.  ",
+                    "Investors with moderately high to aggressive risk prefer to invest in such funds. ",
+                    "With risk factor comes the high returns and so we recommend these funds to individuals with adequate risk appetite.  "
+                      ]
                   },
                   {
                       "Rank": "1",
@@ -223,10 +423,15 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "ISIN": "INF955L01AL0",
                       "BSESchmecode": "BO114-GR",
                       "MinInvst": "500",
-                      "MFtype": "Debt liquid",
+                      "MFtype": "Debt Liquid Funds",
                       "Minsip": "12",
                       "date": "1,10,15,25",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+               "Debt liquid (withdraw anytime) funds are Mutual Funds that are least risky in the universe. ",
+                   "These funds are invested in safe and secure financial instruments like treasury bills, government securities and bonds with maturities of upto 91 days. ",
+                   "The investors get higher returns from Bank savings account and the amount invested also remains liquid without any exit load."
+                      ]
                   },
                   {
                       "Rank": "2",
@@ -234,10 +439,15 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "ISIN": "INF740K01NU2",
                       "BSESchmecode": "DS723-GR",
                       "MinInvst": "500",
-                      "MFtype": "Debt liquid",
+                      "MFtype": "Debt Liquid Funds",
                       "Minsip": "12",
                       "date": "1,7,10,14,20,21, 25, 28",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+               "Debt liquid (withdraw anytime) funds are Mutual Funds that are least risky in the universe. ",
+                   "These funds are invested in safe and secure financial instruments like treasury bills, government securities and bonds with maturities of upto 91 days. ",
+                   "The investors get higher returns from Bank savings account and the amount invested also remains liquid without any exit load."
+                      ]
                   },
                   {
                       "Rank": "3",
@@ -245,10 +455,15 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "ISIN": "INF223J01BP6",
                       "BSESchmecode": "DWSCFSG-GR",
                       "MinInvst": "1000",
-                      "MFtype": "Debt liquid",
+                      "MFtype": "Debt Liquid Funds",
                       "Minsip": "12",
                       "date": "1,5,10,15,20,25,30",
-                      "multiplier": "100"
+                      "multiplier": "100",
+                      "Discription": [
+               "Debt liquid (withdraw anytime) funds are Mutual Funds that are least risky in the universe. ",
+                   "These funds are invested in safe and secure financial instruments like treasury bills, government securities and bonds with maturities of upto 91 days. ",
+                   "The investors get higher returns from Bank savings account and the amount invested also remains liquid without any exit load."
+                      ]
                   },
                   {
                       "Rank": "4",
@@ -256,10 +471,15 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "ISIN": "INF173K01DA9",
                       "BSESchmecode": "PCLFPGG-GR",
                       "MinInvst": "2000",
-                      "MFtype": "Debt liquid",
+                      "MFtype": "Debt Liquid Funds",
                       "Minsip": "6",
                       "date": "1,5,10,20,25",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+               "Debt liquid (withdraw anytime) funds are Mutual Funds that are least risky in the universe. ",
+                   "These funds are invested in safe and secure financial instruments like treasury bills, government securities and bonds with maturities of upto 91 days. ",
+                   "The investors get higher returns from Bank savings account and the amount invested also remains liquid without any exit load."
+                      ]
                   },
                   {
                       "Rank": "3",
@@ -270,7 +490,14 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "Debt/ ultra short",
                       "Minsip": "12",
                       "date": "5,15,25",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+               "Debt Ultra-Short term funds are simple debt funds that are comparatively a bit more risky than Debt Liquid Funds. ",
+                   "The funds in Ultra-Short funds are invested in financial instruments that have the maturity period exceeding 91 days but under one year. ",
+                   "They are often traded in the market and hence their rates keep fluctuating.",
+                   "Ultra-Short funds are also liquid funds but some funds might charge a nominal exit load if the investor withdraws investment within a stipulated time.",
+                   "Investors who want low risk and also liquidity can opt for such funds"
+                      ]
                   },
                   {
                       "Rank": "1",
@@ -281,7 +508,14 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "Debt/ ultra short",
                       "Minsip": "6",
                       "date": "1,5,10,15,20,25",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+               "Debt Ultra-Short term funds are simple debt funds that are comparatively a bit more risky than Debt Liquid Funds. ",
+                   "The funds in Ultra-Short funds are invested in financial instruments that have the maturity period exceeding 91 days but under one year. ",
+                   "They are often traded in the market and hence their rates keep fluctuating.",
+                   "Ultra-Short funds are also liquid funds but some funds might charge a nominal exit load if the investor withdraws investment within a stipulated time.",
+                   "Investors who want low risk and also liquidity can opt for such funds"
+                      ]
                   },
                   {
                       "Rank": "2",
@@ -292,7 +526,14 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "Debt/ ultra short",
                       "Minsip": "6",
                       "date": "1,7,10,15,20,25",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+               "Debt Ultra-Short term funds are simple debt funds that are comparatively a bit more risky than Debt Liquid Funds. ",
+                   "The funds in Ultra-Short funds are invested in financial instruments that have the maturity period exceeding 91 days but under one year. ",
+                   "They are often traded in the market and hence their rates keep fluctuating.",
+                   "Ultra-Short funds are also liquid funds but some funds might charge a nominal exit load if the investor withdraws investment within a stipulated time.",
+                   "Investors who want low risk and also liquidity can opt for such funds"
+                      ]
                   },
                   {
                       "Rank": "1",
@@ -303,7 +544,12 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "Debt/Income",
                       "Minsip": "6",
                       "date": "1,7,10,15,20,25",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+              "Income funds invest in corporate bonds, government bonds and money market instruments. ",
+                  "However,they are highly vulnerable to the changes in interest rates and are suitable for investors who have a long term investment horizon and higher risk taking ability."
+
+                      ]
                   },
                   {
                       "Rank": "2",
@@ -314,7 +560,12 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "Debt/Income",
                       "Minsip": "6",
                       "date": "1,7,10,14,20,21, 25, 28",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+              "Income funds invest in corporate bonds, government bonds and money market instruments. ",
+                  "However,they are highly vulnerable to the changes in interest rates and are suitable for investors who have a long term investment horizon and higher risk taking ability."
+
+                      ]
                   },
                   {
                       "Rank": "3",
@@ -325,7 +576,12 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "Debt/Income",
                       "Minsip": "6",
                       "date": "5,7",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+              "Income funds invest in corporate bonds, government bonds and money market instruments. ",
+                  "However,they are highly vulnerable to the changes in interest rates and are suitable for investors who have a long term investment horizon and higher risk taking ability."
+
+                      ]
                   },
                   {
                       "Rank": "1",
@@ -336,7 +592,12 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "Debt/ GILT",
                       "Minsip": "10",
                       "date": "1,7,10,15,25",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+               "Gilt Funds are invested in financial securities issued by Central and State governments. ",
+                   "These are generally high credit rated securities and have lowest risk factor involved. ",
+                   "Mostly, the interest rates of these funds remain stable and Investors with ‘No Risk’ choose this category."
+                      ]
                   },
                   {
                       "Rank": "2",
@@ -347,7 +608,12 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "Debt/ GILT",
                       "Minsip": "10",
                       "date": "1,7,10,15,25",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+               "Gilt Funds are invested in financial securities issued by Central and State governments. ",
+                   "These are generally high credit rated securities and have lowest risk factor involved. ",
+                   "Mostly, the interest rates of these funds remain stable and Investors with ‘No Risk’ choose this category."
+                      ]
                   },
                   {
                       "Rank": "3",
@@ -358,7 +624,12 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "Debt/ GILT",
                       "Minsip": "10",
                       "date": "1,7,10,21, 25, 28",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+               "Gilt Funds are invested in financial securities issued by Central and State governments. ",
+                   "These are generally high credit rated securities and have lowest risk factor involved. ",
+                   "Mostly, the interest rates of these funds remain stable and Investors with ‘No Risk’ choose this category."
+                      ]
                   },
                   {
                       "Rank": "1",
@@ -369,7 +640,12 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "Balanced",
                       "Minsip": "6",
                       "date": "1,5,10,15,20,25",
-                      "multiplier": "100"
+                      "multiplier": "100",
+                      "Discription": [
+              "Balanced Mutual Funds are invested in both Equity and Debt funds, so that the investments remain safe and there is also capital appreciation.",
+                  "Investors with low-moderate risk, eyeing long-term horizon can invest in such funds"
+
+                      ]
                   },
                   {
                       "Rank": "2",
@@ -380,7 +656,12 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "Balanced",
                       "Minsip": "12",
                       "date": "1,7,10,20,25",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+              "Balanced Mutual Funds are invested in both Equity and Debt funds, so that the investments remain safe and there is also capital appreciation.",
+                  "Investors with low-moderate risk, eyeing long-term horizon can invest in such funds"
+
+                      ]
                   },
                   {
                       "Rank": "1",
@@ -391,7 +672,13 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "MIP",
                       "Minsip": "6",
                       "date": "1,5,10,15,20,25",
-                      "multiplier": "100"
+                      "multiplier": "100",
+                      "Discription": [
+              "MIP or Monthly Income Plans are debt oriented funds that are invested in both debt and equity markets. ",
+                  "These funds shell out regular dividends on monthly, quarterly or yearly basis. However, the dividends are not fixed as the funds are invested in equity markets the returns fluctuate overtime. ",
+                  "Investors with conservative mindset can opt for such funds as they shell out regular incomes and are low-risk funds."
+
+                      ]
                   },
                   {
                       "Rank": "2",
@@ -402,7 +689,13 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "MIP",
                       "Minsip": "6",
                       "date": "1,7,10,15,20,28",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+              "MIP or Monthly Income Plans are debt oriented funds that are invested in both debt and equity markets. ",
+                  "These funds shell out regular dividends on monthly, quarterly or yearly basis. However, the dividends are not fixed as the funds are invested in equity markets the returns fluctuate overtime. ",
+                  "Investors with conservative mindset can opt for such funds as they shell out regular incomes and are low-risk funds."
+
+                      ]
                   },
                   {
                       "Rank": "3",
@@ -413,7 +706,13 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "MIP",
                       "Minsip": "12",
                       "date": "1,5,10,15,20,25,30",
-                      "multiplier": "100"
+                      "multiplier": "100",
+                      "Discription": [
+              "MIP or Monthly Income Plans are debt oriented funds that are invested in both debt and equity markets. ",
+                  "These funds shell out regular dividends on monthly, quarterly or yearly basis. However, the dividends are not fixed as the funds are invested in equity markets the returns fluctuate overtime. ",
+                  "Investors with conservative mindset can opt for such funds as they shell out regular incomes and are low-risk funds."
+
+                      ]
                   },
                   {
                       "Rank": "1",
@@ -424,7 +723,13 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "Credit Opportunities",
                       "Minsip": "12",
                       "date": "1,5,15,20,25",
-                      "multiplier": "100"
+                      "multiplier": "100",
+                      "Discription": [
+              "Credit Opportunities are debt mutual funds that are invested in corporate bonds and securities that have a lower credit rating than AAA ratings. Credit ratings reveal the risk involved in particular securities.",
+                  "Lower than AAA rated securities come with some risk, however they give more interest than Government securities. The returns may fluctuate on these funds.",
+                  "Investors with a moderate risk appetite may opt for such funds. "
+
+                      ]
                   },
                   {
                       "Rank": "2",
@@ -435,7 +740,13 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "Credit Opportunities",
                       "Minsip": "6",
                       "date": "1,7,14,21,25",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+              "Credit Opportunities are debt mutual funds that are invested in corporate bonds and securities that have a lower credit rating than AAA ratings. Credit ratings reveal the risk involved in particular securities.",
+                  "Lower than AAA rated securities come with some risk, however they give more interest than Government securities. The returns may fluctuate on these funds.",
+                  "Investors with a moderate risk appetite may opt for such funds. "
+
+                      ]
                   },
                   {
                       "Rank": "3",
@@ -446,7 +757,13 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "Credit Opportunities",
                       "Minsip": "12",
                       "date": "1,5,10,15,20,25,30",
-                      "multiplier": "100"
+                      "multiplier": "100",
+                      "Discription": [
+              "Credit Opportunities are debt mutual funds that are invested in corporate bonds and securities that have a lower credit rating than AAA ratings. Credit ratings reveal the risk involved in particular securities.",
+                  "Lower than AAA rated securities come with some risk, however they give more interest than Government securities. The returns may fluctuate on these funds.",
+                  "Investors with a moderate risk appetite may opt for such funds. "
+
+                      ]
                   },
                   {
                       "Rank": "4",
@@ -457,7 +774,13 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "Credit Opportunities",
                       "Minsip": "6",
                       "date": "1,7,15,20,28",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+              "Credit Opportunities are debt mutual funds that are invested in corporate bonds and securities that have a lower credit rating than AAA ratings. Credit ratings reveal the risk involved in particular securities.",
+                  "Lower than AAA rated securities come with some risk, however they give more interest than Government securities. The returns may fluctuate on these funds.",
+                  "Investors with a moderate risk appetite may opt for such funds. "
+
+                      ]
                   },
                   {
                       "Rank": "1",
@@ -468,7 +791,12 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "ELSS",
                       "Minsip": "6",
                       "date": "1,7,10,20,25",
-                      "multiplier": "500"
+                      "multiplier": "500",
+                      "Discription": [
+              "ELSS Funds are diversified equity funds which qualify for tax exemption up to a limited amount. You can invest upto 1.5 lakhs and save taxes up to 46350*.",
+                  "However, the invested amount remains locked in for the period of three years. Individuals eyeing some tax benefit and have extra corpus to invest may opt for these funds. "
+
+                      ]
                   },
                   {
                       "Rank": "2",
@@ -479,7 +807,12 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "ELSS",
                       "Minsip": "6",
                       "date": "1-30 all days",
-                      "multiplier": "500"
+                      "multiplier": "500",
+                      "Discription": [
+              "ELSS Funds are diversified equity funds which qualify for tax exemption up to a limited amount. You can invest upto 1.5 lakhs and save taxes up to 46350*.",
+                  "However, the invested amount remains locked in for the period of three years. Individuals eyeing some tax benefit and have extra corpus to invest may opt for these funds. "
+
+                      ]
                   },
                   {
                       "Rank": "3",
@@ -490,7 +823,12 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "ELSS",
                       "Minsip": "6",
                       "date": "1,7,10,14,15,21,20,28",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+              "ELSS Funds are diversified equity funds which qualify for tax exemption up to a limited amount. You can invest upto 1.5 lakhs and save taxes up to 46350*.",
+                  "However, the invested amount remains locked in for the period of three years. Individuals eyeing some tax benefit and have extra corpus to invest may opt for these funds. "
+
+                      ]
                   },
                   {
                       "Rank": "4",
@@ -501,7 +839,12 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "ELSS",
                       "Minsip": "6",
                       "date": "1,7,15,20,28",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": [
+              "ELSS Funds are diversified equity funds which qualify for tax exemption up to a limited amount. You can invest upto 1.5 lakhs and save taxes up to 46350*.",
+                  "However, the invested amount remains locked in for the period of three years. Individuals eyeing some tax benefit and have extra corpus to invest may opt for these funds. "
+
+                      ]
                   },
                   {
                       "Rank": "5",
@@ -512,7 +855,12 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "ELSS",
                       "Minsip": "12",
                       "date": "1,5,10,15,20,25",
-                      "multiplier": "500"
+                      "multiplier": "500",
+                      "Discription": [
+              "ELSS Funds are diversified equity funds which qualify for tax exemption up to a limited amount. You can invest upto 1.5 lakhs and save taxes up to 46350*.",
+                  "However, the invested amount remains locked in for the period of three years. Individuals eyeing some tax benefit and have extra corpus to invest may opt for these funds. "
+
+                      ]
                   },
                   {
                       "Rank": "6",
@@ -523,7 +871,12 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "ELSS",
                       "Minsip": "12",
                       "date": "1,7,10,15,25",
-                      "multiplier": "500"
+                      "multiplier": "500",
+                      "Discription": [
+              "ELSS Funds are diversified equity funds which qualify for tax exemption up to a limited amount. You can invest upto 1.5 lakhs and save taxes up to 46350*.",
+                  "However, the invested amount remains locked in for the period of three years. Individuals eyeing some tax benefit and have extra corpus to invest may opt for these funds. "
+
+                      ]
                   },
                   {
                       "Rank": "7",
@@ -534,7 +887,12 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "ELSS",
                       "Minsip": "6",
                       "date": "1,7,10,14,20,21,25,28",
-                      "multiplier": "500"
+                      "multiplier": "500",
+                      "Discription": [
+              "ELSS Funds are diversified equity funds which qualify for tax exemption up to a limited amount. You can invest upto 1.5 lakhs and save taxes up to 46350*.",
+                  "However, the invested amount remains locked in for the period of three years. Individuals eyeing some tax benefit and have extra corpus to invest may opt for these funds. "
+
+                      ]
                   },
                   {
                       "Rank": "1",
@@ -545,7 +903,8 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "Gold",
                       "Minsip": "6",
                       "date": "1,5,15,20,25",
-                      "multiplier": "500"
+                      "multiplier": "500",
+                      "Discription": []
                   },
                   {
                       "Rank": "2",
@@ -556,7 +915,8 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "Gold",
                       "Minsip": "6",
                       "date": "1,7,10,14,20,21,25,28",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": []
                   },
                   {
                       "Rank": "3",
@@ -567,7 +927,8 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "Gold",
                       "Minsip": "6",
                       "date": "1,7,10,14,20,21,25,28",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": []
                   },
                   {
                       "Rank": "4",
@@ -578,11 +939,14 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                       "MFtype": "Gold",
                       "Minsip": "6",
                       "date": "1,5,10,15,20,25",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      "Discription": []
                   }
        ]
 
     $scope.groups = _.groupBy($scope.SIPGoalStructureDate, "MFtype");
+    console.log($scope.groups);
+
     $scope.ElssList = [{
         "Rank": "1",
         "SchemeName": "Franklin India Taxshield - Growth",

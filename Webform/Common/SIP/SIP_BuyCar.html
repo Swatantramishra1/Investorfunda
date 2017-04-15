@@ -47,13 +47,14 @@
                     </md-input-container>
                     <md-input-container class="md-block mdSelectContainerCss">
                         <label>Rate Of Inflation (%)</label>
-                        <md-select ng-model="Portfolio_Parameter.Portfolio_ROInflation">
+                        <input ng-model="Portfolio_Parameter.Portfolio_ROInflation">
+                        <!--<md-select ng-model="Portfolio_Parameter.Portfolio_ROInflation">
                             <md-option value="0"><em>None</em></md-option>
                             <md-option ng-value="{{Inflation.Inflation_Percentage}}" ng-repeat="Inflation in PortFolio_InflationRate.Inflation">
                                 {{Inflation.Inflation_Percentage}} %
                             </md-option>
 
-                        </md-select>
+                        </md-select>-->
                     </md-input-container>
 
                 </div>

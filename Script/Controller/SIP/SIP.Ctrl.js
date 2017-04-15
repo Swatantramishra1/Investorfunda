@@ -2896,6 +2896,8 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                             $scope.Investment.firstStepSip = false;
                             $scope.SIP_GOAL_Final_SHOW = true;
                             break;
+                        default :
+                            $scope.Portfolio_Final();
                     }
 
                    
@@ -2943,6 +2945,11 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                         $scope.Investment.firstStepSip = false;
                         $scope.SIP_GOAL_Final_SHOW = true;
                         break;
+
+                    
+                    default:
+                        $scope.Portfolio_Final();
+
                 }
 
 
@@ -3036,7 +3043,12 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         let tempFirstAmount = $scope.Portfolio_Parameter.HouseLoanEMIAmount % 1000;
         let tempSecondAmount = 1000 - tempFirstAmount;
         $scope.Portfolio_Parameter.HouseLoanEMIAmount = $scope.Portfolio_Parameter.HouseLoanEMIAmount + parseInt(tempSecondAmount);
-        $scope.Portfolio_Parameter.TotalMonthlyInvestment = GetSIPAmount($scope.Portfolio_Parameter.HouseDownPayment, loanPeriodYear, 12)
+        $scope.Portfolio_Parameter.TotalMonthlyInvestment = GetSIPAmount($scope.Portfolio_Parameter.HouseDownPayment, loanPeriodYear, 12);
+        $scope.Portfolio_Parameter.TotalMonthlyInvestment = parseInt($scope.Portfolio_Parameter.TotalMonthlyInvestment);
+        let tempFirstAmount1 = $scope.Portfolio_Parameter.TotalMonthlyInvestment % 1000;
+        let tempSecondAmount1 = 1000 - tempFirstAmount1;
+        $scope.Portfolio_Parameter.TotalMonthlyInvestment = $scope.Portfolio_Parameter.TotalMonthlyInvestment + parseInt(tempSecondAmount1);
+       
         //G('spnLoanAmt').innerHTML = '<span class="Rs mR2">`</span>' + CommaRound(HouseLoanAmount);
         //G('spnMonthlyEMI').innerHTML = '<span class="Rs mR2">`</span>' + CommaRound(HouseLoanEMIAmount);
         //G('dvHouseRequiredInflatedAmount').innerHTML = '<span class="Rs45">`</span>' + CommaRound(HouseDownPayment);
@@ -3224,8 +3236,18 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         var rog = 9;
         var future_cost = graphTwo.toFixed(0);
         var mInvst = future_cost * Number(rog / 100) / ((Math.pow((1 + Number(rog) / 100), (Number(TimePeriod))) - 1) * (1 + Number(rog) / 100));
+        mInvst = parseInt(mInvst);
         $scope.Portfolio_Parameter.TotalMonthlyInvestment = parseInt(mInvst / 12);
-        $scope.Portfolio_Parameter.CalculatedTotalMoney = parseInt(mInvst);
+        var Temp11 = parseInt($scope.Portfolio_Parameter.TotalMonthlyInvestment) % 1000;
+        var Temp21 = 1000 - Temp11;
+        $scope.Portfolio_Parameter.TotalMonthlyInvestment = parseInt($scope.Portfolio_Parameter.TotalMonthlyInvestment) + Temp21;
+        if ($scope.Portfolio_Parameter.TotalMonthlyInvestment >= 4000) {
+            $scope.Portfolio_Parameter.TotalMonthlyInvestment = $scope.Portfolio_Parameter.TotalMonthlyInvestment;
+        }
+        else {
+            $scope.Portfolio_Parameter.TotalMonthlyInvestment = 4000;
+        }
+        $scope.Portfolio_Parameter.CalculatedTotalMoney = parseInt($scope.Portfolio_Parameter.TotalMonthlyInvestment);
     }
     $scope.PortFolio_InflationRate = {
         "Inflation": [{
@@ -3396,7 +3418,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         $scope.BuyCar_Step2 = true;
         $scope.Portfolio_Parameter.EstematedYear = $scope.Portfolio_Parameter.Portfolio_Year;
         $scope.Portfolio_Parameter.EstematedMonth = $scope.Portfolio_Parameter.Portfolio_Month;
-        var Year = ((Number($scope.Portfolio_Parameter.Portfolio_Year) * 12) + (Number($scope.Portfolio_Parameter.Portfolio_Month))) / 12;
+        var Year = $scope.Portfolio_Parameter.Portfolio_Year;
         CalculateCarAmount($scope.Portfolio_Parameter.Portfolio_GoalAmount, $scope.Portfolio_Parameter.Portfolio_ROInflation, parseInt(Year));
     };
 
@@ -3416,11 +3438,11 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         //var MarriageInflatedAmount = GetFutureValue(weddingCost * 100000, marriageyeargap, inflationRate);
         if ($scope.Portfolio_Parameter.Portfolio_InflationRate == "") { alert("Please enter Inflation Rate"); return false; }
         if (!isFinite($scope.Portfolio_Parameter.Portfolio_InflationRate)) { alert("Please enter valid rate"); return false; }
-        var MarriageInflatedAmount = GetFutureValue(parseInt($scope.Portfolio_Parameter.weddingBudget) * 100000, marriageyeargap, $scope.Portfolio_Parameter.Portfolio_InflationRate);
+        var MarriageInflatedAmount = GetFutureValue(parseInt($scope.Portfolio_Parameter.weddingBudget) , marriageyeargap, $scope.Portfolio_Parameter.Portfolio_InflationRate);
         $scope.Portfolio_Parameter.CalculatedTotalMoney = MarriageInflatedAmount;
         var mInvst = MarriageInflatedAmount * parseInt(rog / 100) / ((Math.pow((1 + parseInt(rog) / 100), (parseInt(marriageyeargap))) - 1) * (1 + parseInt(rog) / 100));
 
-        $scope.weddingBudget = GetRoundingFigure(parseInt($scope.Portfolio_Parameter.weddingBudget) * 100000)[0] + " " + GetRoundingFigure(parseInt($scope.Portfolio_Parameter.weddingBudget) * 100000)[2];
+        $scope.weddingBudget = GetRoundingFigure(parseInt($scope.Portfolio_Parameter.weddingBudget) )[0] + " " + GetRoundingFigure(parseInt($scope.Portfolio_Parameter.weddingBudget))[2];
         mInvst = Math.round(mInvst / 12);
         var Temp11 = parseInt(mInvst) % 1000;
         var Temp21 = 1000 - Temp11;
@@ -3460,13 +3482,17 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         }
         var WorldTourTenure = parseInt($scope.Portfolio_Parameter.Portfolio_Year) - presentyear;
         $scope.Portfolio_Parameter.EstematedYear = WorldTourTenure;
-        $scope.PlanBudget = $scope.Portfolio_Parameter.Portfolio_GoalAmount * 100000;
+        $scope.PlanBudget = $scope.Portfolio_Parameter.Portfolio_GoalAmount;
         $scope.planForTour = $scope.Portfolio_Parameter.Portfolio_Year;
         //var WorldTourInflatedAmount = GetFutureValue(worldTourBudgetAmt * 100000, WorldTourTenure, inflationRate);
 
-        var WorldTourInflatedAmount = GetFutureValue($scope.Portfolio_Parameter.Portfolio_GoalAmount * 100000, WorldTourTenure, $scope.Portfolio_Parameter.Portfolio_InflationRate);
-        WTInfAmt = WorldTourInflatedAmount;
-        var mInvst = WorldTourInflatedAmount * parseInt(rog / 100) / ((Math.pow((1 + parseInt(rog) / 100), (parseInt(WorldTourTenure))) - 1) * (1 + parseInt(rog) / 100));
+        var WorldTourInflatedAmount = GetFutureValue($scope.Portfolio_Parameter.Portfolio_GoalAmount, WorldTourTenure, $scope.Portfolio_Parameter.Portfolio_InflationRate);
+        WTInfAmt =parseInt( WorldTourInflatedAmount);
+        $scope.Portfolio_Parameter.CalculatedTotalMoney = WTInfAmt;
+
+        var mInvst = GetSIPAmount(WTInfAmt, WorldTourTenure, rog);
+        //WorldTourInflatedAmount * parseInt(rog / 100) / ((Math.pow((1 + parseInt(rog) / 100), (parseInt(WorldTourTenure))) - 1) * (1 + parseInt(rog) / 100));
+        mInvst = parseInt(mInvst);
         mInvst = Math.round(mInvst / 12);
         var Temp11 = parseInt(mInvst) % 1000;
         var Temp21 = 1000 - Temp11;
@@ -3477,6 +3503,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         else {
             $scope.Portfolio_Parameter.TotalMonthlyInvestment = 4000;
         }
+        
     }
 
     $scope.PortfolioBuyTour_Calculate = function () {
