@@ -2,20 +2,34 @@
 function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsService, GetCommonData, fileUploadService) {
     $scope.val = "";
     var BseSchemeIDs = "";
-    $scope.uploadfile=function(){
-       
-        var file = $scope.myFile;
-        var uploadUrl = "../server/service.php", //Url of webservice/api/server
-            promise = fileUploadService.uploadFileToUrl(file, API_GetUploadFile);
+    $scope.uploadfile = function () {
+        fileData = document.getElementById("di").files[0];
+        $.ajax({
+            url: API_GetUploadFile, // Dynamically uploads the files which is chosen.
+      type: 'POST',
+      data: fileData, // This would pass the file object with data
+      cache: false,
+      processData: false, // Don't process the files
+      contentType: "application/octet-stream", // Setting content type to "application/octet-stream" as jQuery will tell the server its not query string. 
+     success: function (data) {
+       alert('Successful..');
+     },
+     error: function (data) {
+       alert('Error Occurred');
+     }
+   });
+        //var file = $scope.myFile;
+        //var uploadUrl = "../server/service.php", //Url of webservice/api/server
+        //    promise = fileUploadService.uploadFileToUrl(file, API_GetUploadFile);
 
-        promise.then(function (response) {
-            $scope.serverResponse = response;
-        }, function () {
-            $scope.serverResponse = 'An error has occurred';
-        })
+        //promise.then(function (response) {
+        //    $scope.serverResponse = response;
+        //}, function () {
+        //    $scope.serverResponse = 'An error has occurred';
+        //})
 
 
-        console.log(file);
+        console.log($("#di").file[0]);
     }
     //Show Hide ***************
     $scope.SIP_Portfolio_Year = {
