@@ -104,10 +104,21 @@ input[type=radio]:not(old):checked +  label > span > span{
 </style>
 
 <script>
+    var date = new Date();
+    var year = date.getFullYear();
+    y = date.getFullYear(),
+    m = date.getMonth()+1;
+    if (m <= 9)
+    {
+        m = "0" + m;
+    }
+    var firstDay = new Date(y, m, 1);
+    var lastDay = new Date(y, m + 1, 0);
+
+    lastDay = String(parseInt(String(lastDay).split(' ')[2]) - 1);
+    console.log("sw",y + "-" + m + "-" + lastDay);
     var configDate = {
         inline: true,
-        minDate: "2017-04",
-        maxDate: "2017-04-30",
         theme:'material_red'
     };
     $("#DatePlugin").flatpickr(configDate);
@@ -159,10 +170,10 @@ input[type=radio]:not(old):checked +  label > span > span{
 
 </div>
 <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="margin-top:3%;padding-left: 32px;padding-top: 15px;">
+    <div ng-class="{'col-xs-12 col-sm-12 col-md-4 col-lg-4':InvestmentModeStatus}" ng-show="InvestmentModeStatus"  style="margin-top:3%;padding-left: 32px;padding-top: 15px;">
 
         
-            <input type="text" id="DatePlugin" ng-model="CheckDate" class="form-control" style="display:none" />
+            <input type="text" id="DatePlugin" ng-model="CheckDate"  style="display:none" />
             <!--<div ng-class="WeekClass" style="height:auto">
             <div class="shape">
                 <div class="shape-text">
@@ -189,7 +200,7 @@ input[type=radio]:not(old):checked +  label > span > span{
 
 
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" >
+    <div  ng-class="{'col-xs-12 col-sm-12 col-md-8 col-lg-8':InvestmentModeStatus,'col-xs-12 col-sm-12 col-md-12 col-lg-12':!InvestmentModeStatus}">
         <div class="col-xs-12 col-sm-12 col-md-12" style="margin-top:5%">
             <div class="offer offer-radius offer-primary">
                 <div class="shape">
@@ -222,7 +233,7 @@ input[type=radio]:not(old):checked +  label > span > span{
     </div>
 </div>
 
-<div class="row">
+<div class="row" style="margin-bottom:70px">
     <div class="col-lg-12 text-center">
 
         <div class="col-lg-12">
@@ -239,10 +250,18 @@ input[type=radio]:not(old):checked +  label > span > span{
     </div>
 
 
-    <div class="col-lg-12 text-right">
+    <div class="col-lg-12 text-right" ng-if="InvestmentModeStatus" style="margin-top: 35px;">
 
-        <input id="checkbox1" type="checkbox" name="checkbox" ng-disabled="!CheckDate" value="1" ng-model="checkTickBox"><label for="checkbox1"><span></span><label for="checkbox-1-1">  I / We have read the Offer Document / Scheme Information Document / Statement of Additional Information  T&C.     <md-button class="md-raised" ng-disabled="!checkTickBox" ng-click="InvestNow('Page')">INVEST NOW</md-button></label></label>
+        <input id="checkbox1" type="checkbox" name="checkbox"  ng-disabled="!CheckDate" value="1" ng-model="checkTickBox"><label for="checkbox1"><span></span><label for="checkbox-1-1">  I / We have read the Offer Document / Scheme Information Document / Statement of Additional Information  T&C.     <md-button class="md-raised" ng-disabled="!checkTickBox" ng-click="InvestNow('Page')">INVEST NOW</md-button></label></label>
+        
        
  
+    </div>
+    <div class="col-lg-12 text-right" ng-if="!InvestmentModeStatus" style="margin-top: 35px;">
+
+        <input id="checkbox1" type="checkbox" name="checkbox"  value="1" ng-model="checkTickBox"><label for="checkbox1"><span></span><label for="checkbox-1-1">  I / We have read the Offer Document / Scheme Information Document / Statement of Additional Information  T&C.     <md-button class="md-raised" ng-disabled="!checkTickBox" ng-click="InvestNow('Page')">INVEST NOW</md-button></label></label>
+
+
+
     </div>
 </div>

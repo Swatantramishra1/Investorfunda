@@ -1974,6 +1974,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
     };
     $scope.Portfolio_Final = function () {
+        $rootScope.InvestmentModeStatus = true;
         switch (currentState) {
             case "ChildGoal":
                 $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation($scope.Portfolio_Parameter.EstematedYear, $scope.Portfolio_Parameter.TotalMonthlyInvestment, undefined, "ChildGoal");
@@ -3942,6 +3943,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
     $scope.StartPopup = function () {
         switch (currentState) {
             case "EasySIP":
+                $rootScope.InvestmentModeStatus = false;
                 $scope.Portfolio_Parameter.TotalMonthlyInvestment = $scope.Investment.amount;
                 $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation($scope.Investment.horizone, $scope.Portfolio_Parameter.TotalMonthlyInvestment, $scope.Investment.risk, "EasySIP", "EasySIP");
                 $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $scope.Portfolio_Parameter.TotalMonthlyInvestment);
@@ -3951,6 +3953,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                 $scope.SIP_GOAL_Final_SHOW = true;
                 break;
             case "StartSIP":
+                $rootScope.InvestmentModeStatus = true;
                 $scope.Portfolio_Parameter.TotalMonthlyInvestment = $scope.Investment.amount;
                 $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation($scope.Investment.horizone, $scope.Portfolio_Parameter.TotalMonthlyInvestment, $scope.Investment.risk, "EasySIP", "EasySIP");
                 $scope.CalculateMoneyAssignToExDebt($scope.CalculatedPercentage, $scope.Portfolio_Parameter.TotalMonthlyInvestment);
@@ -4184,6 +4187,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         var amountInvestment = $scope.InvestmentKnow.amount;
         if ($scope.InvestmentKnow.InvestMentType == "SIP")
         {
+            $rootScope.InvestmentModeStatus = true;
             if ($scope.checkIKnowDontKnow)
             {
                 $scope.checkIKnowDontKnow = false;
@@ -4193,6 +4197,9 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                 amountInvestment = $scope.InvestmentKnow.amount;
             }
            
+        }
+        else {
+            $rootScope.InvestmentModeStatus = false;
         }
         $scope.Portfolio_Parameter.TotalMonthlyInvestment = amountInvestment;
         divideElss($scope.Portfolio_Parameter.TotalMonthlyInvestment, $scope.ElssList);
