@@ -1443,6 +1443,7 @@
 
 
                         $scope.UserDetailInfo = answer.data.GetUserProfileDetailsInfoResult.Result;
+                        $scope.UserDetailInfo.AddressDetailsData[0].CountryID = "101";
                         // $scope.UserDetailInfo.UserProfileData.DateOfBirth = new Date($scope.UserDetailInfo.UserProfileData.DateOfBirth);
                         document.getElementById("CartNotificationTotal").innerText = parseInt($scope.UserDetailInfo.UserProfileData.AddedCartCount) + parseInt($scope.UserDetailInfo.UserProfileData.AddedFavCount);
 
@@ -1471,11 +1472,13 @@
             }
             $scope.OnLoadProfileData();
             HideLoader();
-            $scope.SelectedCountry = function (Country_ID) {
-                $scope.CityListDetails = [];
-                $scope.StateListDetails = [];
-                $scope.StateListDetails = $filter('filter')($scope.StateList, { Country_ID: Country_ID });
-            }
+            
+            $scope.StateListDetails = $filter('filter')($scope.StateList, { Country_ID: '101' });
+            //$scope.SelectedCountry = function (Country_ID) {
+            //    $scope.CityListDetails = [];
+            //    $scope.StateListDetails = [];
+            //    $scope.StateListDetails = $filter('filter')($scope.StateList, { Country_ID: Country_ID });
+            //}
             $scope.SelectedState = function (State_ID) {
                 $scope.CityListDetails = [];
                 $scope.CityListDetails = $filter('filter')($scope.CityList, { State_ID: State_ID });

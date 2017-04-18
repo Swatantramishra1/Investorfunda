@@ -1,9 +1,28 @@
-﻿app.controller("SIP.Ctrl", ['$scope', '$rootScope', '$mdDialog', '$mdMedia', '$localStorage', '$state', 'FundsService', 'GetCommonData', 'fileUploadService',
-function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsService, GetCommonData, fileUploadService) {
+﻿app.controller("SIP.Ctrl", ['$scope', '$rootScope', '$mdDialog', '$mdMedia', '$localStorage', '$state', 'FundsService', 'GetCommonData', 'fileUploadService','$http',
+function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsService, GetCommonData, fileUploadService, $http) {
     $scope.val = "";
     var BseSchemeIDs = "";
     $scope.uploadfile = function () {
         fileData = document.getElementById("di").files[0];
+
+
+        //var request = {
+        //    method: 'POST',
+        //    url: API_GetUploadFile,
+        //    data: fileData,
+        //    headers: {
+        //        'Content-Type': "application/octet-stream"
+        //    }
+        //};
+
+        //// SEND THE FILES.
+        //$http(request)
+        //    .success(function (d) {
+        //        alert(d);
+        //    })
+        //    .error(function () {
+        //    });
+
         $.ajax({
             url: API_GetUploadFile, // Dynamically uploads the files which is chosen.
       type: 'POST',
@@ -18,15 +37,15 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
        alert('Error Occurred');
      }
    });
-        //var file = $scope.myFile;
-        //var uploadUrl = "../server/service.php", //Url of webservice/api/server
-        //    promise = fileUploadService.uploadFileToUrl(file, API_GetUploadFile);
+        var file = $scope.myFile;
+        var uploadUrl = "../server/service.php", //Url of webservice/api/server
+            promise = fileUploadService.uploadFileToUrl(file, API_GetUploadFile);
 
-        //promise.then(function (response) {
-        //    $scope.serverResponse = response;
-        //}, function () {
-        //    $scope.serverResponse = 'An error has occurred';
-        //})
+        promise.then(function (response) {
+            $scope.serverResponse = response;
+        }, function () {
+            $scope.serverResponse = 'An error has occurred';
+        })
 
 
         console.log($("#di").file[0]);

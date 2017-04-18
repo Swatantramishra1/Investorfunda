@@ -205,7 +205,7 @@
                                                                             </div>
 
                                                                         </div>
-                                                                        <div class="form-group">
+                                                                        <div class="form-group" ng-show="false">
                                                                             <label class="col-md-3 control-label ">Divident Pay Mode <i style="color:red">*</i></label>
                                                                             <div class="col-md-9">
                                                                                 <md-select placeholder="Divident Pay Mode" ng-model="UserDetailInfo.UserProfileData.DividentPayMode_ID" class="md-block" style="margin-top: -10px;width:100%">
@@ -216,7 +216,7 @@
                                                                             </div>
 
                                                                         </div>
-                                                                        <div class="form-group">
+                                                                        <div class="form-group" ng-show="false">
                                                                             <label class="col-md-3 control-label ">Communication Mode <i style="color:red">*</i></label>
                                                                             <div class="col-md-9">
                                                                                 <md-select placeholder="Communication Mode" ng-model="UserDetailInfo.UserProfileData.CommunicationModeID" class="md-block" style="margin-top: -10px;width:100%">
@@ -296,10 +296,10 @@
                                                                                                 <div class="panel-body">
 
                                                                                                     <div class="row">
-                                                                                                        <div class="form-group">
+                                                                                                        <div class="form-group" ng-show="false">
                                                                                                             <label class="col-md-3 control-label ">Country <i style="color:red">*</i></label>
                                                                                                             <div class="col-md-9">
-                                                                                                                <md-select placeholder="Country" ng-model="Address.CountryID" class="md-block" style="margin-top: -10px;width:100%">
+                                                                                                                <md-select placeholder="Country" ng-model="Address.CountryID" class="md-block" style="margin-top: -10px;width:100%" >
                                                                                                                     <md-option ng-value="0" ng-disabled="true">Select Country</md-option>
                                                                                                                     <md-option ng-value="countryName.Country_ID" ng-repeat="countryName in CountryListDetails" ng-click="SelectedCountry(countryName.Country_ID)">{{countryName.Country_Name}}</md-option>
                                                                                                                 </md-select>
@@ -339,6 +339,7 @@
                                                                                                             </div>
 
                                                                                                         </div>
+
                                                                                                         <div class="form-group">
                                                                                                             <label class="col-md-3 control-label ">City <i style="color:red">*</i></label>
                                                                                                             <div class="col-md-9">
@@ -361,6 +362,7 @@
                                                                                                             </div>
 
                                                                                                         </div>
+
                                                                                                         <div class="form-group">
                                                                                                             <label class="col-md-3 control-label">Pin Code <i style="color:red">*</i></label>
                                                                                                             <div class="col-md-9">
