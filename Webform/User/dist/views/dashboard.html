@@ -22,65 +22,49 @@
         <div class="row">
 
             <!-- Analytics -->
-            <div class="col-md-6">
-                <div class="panel panel-default mb20 panel-hovered project-stats table-responsive">
+            <div class="col-md-12">
+                <div class="panel panel-default mb20 panel-hovered project-stats table-responsive" style="max-height:400px">
                     <div class="panel-heading" style="color:#1852A2;font-size:16px">Investment Summary</div>
                     <div class="investment_body">
                         <table class="table-bordered" style="width:100%">
                             <thead>
                                 <tr style="background-color:#F5F5F5">
-                                    <th style="width:100%"></th>
-                                    <th class="col-sm-5">SIP</th>
-                                    <th class="col-sm-1">LumpSum</th>
-                                    <th>All</th>
+                                    <th class="col-sm-3 text-left">Scheme Name</th>
+                                    <th class="col-sm-2 text-left">Invest Amount</th>
+                                    <th class="col-sm-2 text-left">Total</th>
+                                    <th class="col-sm-1 text-left">NAV</th>
+                                    <th class="col-sm-1 text-left">Units</th>
+                                    <th class="col-sm-2 text-left">Current Value</th>
+                                    <th class="col-sm-1 text-left">Profit/Loss</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr style="background-color:#EDF8FE">
-                                    <td class="tdStyle">Cost of Investment</td>
-                                    <td>500</td>
-                                    <td>
-                                        0
-                                    </td>
-                                    <td>500</td>
-                                </tr>
+                          
 
-                                <tr style="background-color:#FCF8E3">
-                                    <td class="tdStyle">Total Dividend Reinvest</td>
-                                    <td>0</td>
-                                    <td>
-                                        0
-                                    </td>
-                                    <td>0</td>
-                                </tr>
+                                <tbody ng-repeat="investment in investMentDetails track by $index">
 
-                                <tr style="background-color:#E7F7E0">
-                                    <td class="tdStyle">Current Values of investment</td>
-                                    <td>458.36</td>
-                                    <td>
-                                        0.00
-                                    </td>
-                                    <td>458.36</td>
-                                </tr>
+                                    <tr>
+                                       
+                                        <td class="col-sm-12 text-left" colspan="7" ><strong>#{{$index+1}}  {{investment.MasterPlanName}}</strong> </td>
+                                    </tr>
+                                    <tr ng-repeat="innerVal in investment.details">
+                                        <td class="col-sm-3 text-left">{{innerVal.SchemeName}}</td>
+                                        <td class="col-sm-2 text-left">{{innerVal.InvstAmount}}</td>
+                                        <td class="col-sm-2 text-left">{{innerVal.Total}}</td>
+                                        <td class="col-sm-1 text-left">
+                                            {{innerVal.CurrentNav}}
+                                        </td>
+                                        <td class="col-sm-1 text-left">{{innerVal.Units}}</td>
+                                        <td class="col-sm-2 text-left">{{innerVal.currentValue}}</td>
+                                        <td class="col-sm-1 text-left">
+                                            {{innerVal.ProfitLoss}}
+                                        </td>
+                                    </tr>
 
-                                <tr style="background-color:#FFF6FE">
-                                    <td  class="tdStyle">Total Profit/Loss</td>
-                                    <td>32.7</td>
-                                    <td>
-                                        0.00
-                                    </td>
-                                    <td>-32.07</td>
-                                </tr>
 
-                                <tr style="background-color:#4874A2;color:white">
-                                    <td class="tdStyle">Absolute Return</td>
-                                    <td>-6.7%</td>
-                                    <td>
-                                        0.00%
-                                    </td>
-                                    <td>-6.57%</td>
-                                </tr>
-                            </tbody>
+
+
+                                </tbody>
+                            
                         </table>
                     </div>
                 </div>
@@ -91,7 +75,7 @@
 
 
 
-            <div class="col-md-6">
+            <!--<div class="col-md-3">
                 <div class="panel panel-default mb20 panel-hovered" style="height:288px">
                     <div class="panel-heading"style="color:#1852A2;font-size:16px">Investment Graph</div>
                     <div class="investment_body">
@@ -123,7 +107,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div> <!-- #end row -->
         <!-- row -->
         <!-- row -->

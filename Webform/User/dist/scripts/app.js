@@ -5,7 +5,7 @@
 /// <reference path="../../../../DesignContent/assets/plugins/bootstrap/js/bootstrap.min.js" />
 ! function () {
     "use strict";
-    angular.module("app", ["ngRoute", "ngAnimate", "ngSanitize", "ngAria", "ngMaterial", "oc.lazyLoad", "ui.bootstrap", "angular-loading-bar", "FBAngular", "app.ctrls", "app.directives", "app.ui.ctrls", "app.ui.directives", "app.form.ctrls", "app.table.ctrls", "app.email.ctrls", "app.todo", "ngStorage", 'moment-picker']).config(["cfpLoadingBarProvider", function (cfpLoadingBarProvider) {
+    angular.module("app", ["ngRoute", "ngAnimate", "ngSanitize", "ngAria", "ngMaterial", "oc.lazyLoad", "ui.bootstrap", "angular-loading-bar", "FBAngular", "app.ctrls", "app.directives", "app.ui.ctrls", "app.ui.directives", "app.form.ctrls", "app.table.ctrls", "app.email.ctrls", "app.todo", "ngStorage"]).config(["cfpLoadingBarProvider", function (cfpLoadingBarProvider) {
         cfpLoadingBarProvider.includeSpinner = !1, cfpLoadingBarProvider.latencyThreshold = 500
     }]).config(["$ocLazyLoadProvider", function ($oc) {
         $oc.config({
@@ -610,6 +610,28 @@
                     return deferObject.promise;
                 }
             }
+
+            var GetUserDashInvestment = {
+
+                getPromise: function (UserId) {
+                    var promise = $http.get(API_GetDashInvestmentDetails + UserId),
+                          deferObject = deferObject || $q.defer();
+
+                    promise.then(
+                      // OnSuccess function
+                      function (answer) {
+                          // This code will only run if we have a successful promise.
+                          deferObject.resolve(answer);
+                      },
+                      // OnFailure function
+                      function (reason) {
+                          // This code will only run if we have a failed promise.
+                          deferObject.reject(reason);
+                      });
+
+                    return deferObject.promise;
+                }
+            }
             return {
                 GetCountryDetails: GetCountryDetails,
                 GetStateDetails: GetStateDetails,
@@ -622,7 +644,8 @@
                 GetCartListDetails: GetCartListDetails,
                 GetUserPaymentStatus: GetUserPaymentStatus,
                 GetUserPaymentString: GetUserPaymentString,
-                validateIfscCode: validateIfscCode
+                validateIfscCode: validateIfscCode,
+                GetUserDashInvestment: GetUserDashInvestment
 
             };
 
@@ -747,16 +770,16 @@
                       _returnData.validationMessage = 'Please select Client Type';
                       break;
                   }
-                  else if (_updateDetails.userprofile.DividentPayMode_ID == '0' || _updateDetails.userprofile.DividentPayMode_ID == null) {
-                      _returnData.isValid = true;
-                      _returnData.validationMessage = 'Please select Divident Pay Mode';
-                      break;
-                  }
-                  else if (_updateDetails.userprofile.CommunicationModeID == '0' || _updateDetails.userprofile.CommunicationModeID == '' || _updateDetails.userprofile.CommunicationModeID == null) {
-                      _returnData.isValid = true;
-                      _returnData.validationMessage = 'Please select Communication Mode';
-                      break;
-                  }
+                  //else if (_updateDetails.userprofile.DividentPayMode_ID == '0' || _updateDetails.userprofile.DividentPayMode_ID == null) {
+                  //    _returnData.isValid = true;
+                  //    _returnData.validationMessage = 'Please select Divident Pay Mode';
+                  //    break;
+                  //}
+                  //else if (_updateDetails.userprofile.CommunicationModeID == '0' || _updateDetails.userprofile.CommunicationModeID == '' || _updateDetails.userprofile.CommunicationModeID == null) {
+                  //    _returnData.isValid = true;
+                  //    _returnData.validationMessage = 'Please select Communication Mode';
+                  //    break;
+                  //}
                   else if (_updateDetails.userprofile.TaxStatus_ID != 2 && (_updateDetails.userprofile.PANNumber == '' || _updateDetails.userprofile.PANNumber == null)) {
                      
                           _returnData.isValid = true;
@@ -1088,7 +1111,7 @@
 
 
         }])
-        .controller("DashboardCtrl", ["$scope", "CommonSrvc", function ($scope, CommonSrvc) {
+        .controller("DashboardCtrl", ["$scope", "CommonSrvc","$localStorage", function ($scope, CommonSrvc,$localStorage) {
             $scope.analyticsconfig = {
                 data: {
                     columns: [
@@ -1144,6 +1167,129 @@
                     pattern: ["#3F51B5", "#4CAF50"]
                 }
             }
+            
+            var investDetailsPl = [];
+            var GetUserDashInvestment = CommonSrvc.GetUserDashInvestment.getPromise($localStorage.TempUserDetails.LoginID);
+            GetUserDashInvestment.then(
+            // OnSuccess function
+            function (answer) {
+              
+                if (answer.data.GetDashInvestmentDetailsResult.ResponseCode == 0)
+                {
+                    
+                    $scope.investMentDetails = [];
+                    var currentUnit = 0;
+                    var currentTotal = 0;
+                    var currentProfitLoss = 0;
+                    var lastNav = 0;
+                    var lastAmount = 0;
+                    var InvestmentDetailsList = answer.data.GetDashInvestmentDetailsResult.Result.UserInvestmentSchemeDetailsData;
+
+                    var UniquePlan_ID = InvestmentDetailsList.map(item => item.Plan_ID).filter((value, index, self) => self.indexOf(value) === index);
+                    $scope.UniqueDifPlanID = UniquePlan_ID;
+                    for (var a = 0; a < UniquePlan_ID.length; a++) {
+                        
+                        var listOfUniquePlanID = InvestmentDetailsList.map(function (cur, index)
+                        {
+                                if (cur.Plan_ID == UniquePlan_ID[a])
+                                return index
+                        });
+                        listOfUniquePlanID = listOfUniquePlanID.filter(function (n) { return n != undefined });
+                        var inveInfo = {
+                            MasterPlanName: "",
+
+                            details: []
+                        }
+                        for (var b = 0; b < listOfUniquePlanID.length; b++)
+                        {
+                            
+                            var investItem = {
+                                "SchemeName": "",
+                                "CurrentNav": "",
+                                ProfitLoss: "",
+                                Units: "",
+                                Date: "",
+                                Total: "",
+                                InvstAmount: "",
+                                currentValue: "",
+                                Investment: "",
+                                MasterPlanName: "",
+                                PlanID: ""
+                            }
+                     
+                            investItem.SchemeName = InvestmentDetailsList[listOfUniquePlanID[b]].SchemeName;
+                            var tempTotal=(InvestmentDetailsList[listOfUniquePlanID[b]].Amount / InvestmentDetailsList[listOfUniquePlanID[b]].CurrentNav).toFixed(3);
+                            currentUnit = parseFloat( currentUnit) +parseFloat(  tempTotal);
+                            currentTotal = currentTotal +parseFloat( InvestmentDetailsList[listOfUniquePlanID[b]].Amount);
+                            lastNav = parseFloat(InvestmentDetailsList[listOfUniquePlanID[b]].CurrentNav);
+                            lastAmount = parseFloat(InvestmentDetailsList[listOfUniquePlanID[b]].Amount);
+                            inveInfo.MasterPlanName = InvestmentDetailsList[listOfUniquePlanID[b]].MasterPlanName;
+                            if (InvestmentDetailsList[listOfUniquePlanID[b]].MasterPlanID == "8" ) {
+                                if (b == (listOfUniquePlanID.length - 1))
+                                {
+                                    currentProfitLoss = (parseFloat((currentUnit * lastNav)) - parseFloat(currentTotal)).toFixed(3);
+                                    investItem.Units = currentUnit.toFixed(3);
+                                    investItem.ProfitLoss = currentProfitLoss;
+                                    investItem.Total = currentTotal;
+                                    investItem.CurrentNav = lastNav;
+                                    investItem.InvstAmount = lastAmount;
+                                    investItem.currentValue = (currentUnit * lastNav).toFixed(3);
+                                    investItem.PlanID = InvestmentDetailsList[listOfUniquePlanID[b]].Plan_ID;
+                                    // var tempArr=[inveInfo.details.push(investItem)];
+                                    inveInfo.details.push(investItem);
+                                   
+                                }
+                                
+                            }
+                            else {
+                                currentProfitLoss = (parseFloat((currentUnit * lastNav)) - parseFloat(currentTotal)).toFixed(3);
+                                investItem.Units = currentUnit.toFixed(3);
+                                investItem.ProfitLoss = currentProfitLoss;
+                                investItem.Total = currentTotal;
+                                investItem.CurrentNav = lastNav;
+                                investItem.InvstAmount = lastAmount;
+                                investItem.currentValue = (currentUnit * lastNav).toFixed(3);
+                                investItem.PlanID = InvestmentDetailsList[listOfUniquePlanID[b]].Plan_ID;
+                                inveInfo.details.push(investItem)
+                               
+                            }
+                        }
+                        $scope.investMentDetails.push(inveInfo);
+                        console.log($scope.investMentDetails)
+                      
+                    }
+                    
+
+                    //var inveInfo = {
+                    //    "SchemeName":"",
+                    //    "Nav":"",
+                    //    "CurrentNav":"",
+                    //    ProfitLoss:"",
+                    //    Units: "",
+                    //    Date: "",
+                    //    Total
+                    //}
+                    //for (var a = 0; a < answer.data.GetDashInvestmentDetailsResult.Result.UserInvestmentSchemeDetailsData.length; a++)
+                    //{
+                    //    inveInfo.SchemeName = answer.data.GetDashInvestmentDetailsResult.Result.UserInvestmentSchemeDetailsData[a].SchemeName; 
+
+                    //}
+                   
+                }
+                else {
+                    $scope.ErrorMessage = answer.data.GetCountryDetailsResult.ResponseMessage;
+                }
+
+            },
+            // OnFailure function
+            function (reason) {
+                HideLoader();
+                $scope.ErrorMessage = answer.data.GetCountryDetailsResult.ResponseMessage;
+                //$scope.somethingWrong = reason;
+                //$scope.error = true;
+            }
+          )
+            
         }])
         .directive('dateInput', function () {
             return {
@@ -1275,6 +1421,8 @@
                     for (var a = 0; a < $localStorage.CityDpwn.length; a++) {
                         $scope.CityList.push({ State_ID: $localStorage.CityDpwn[a].State_ID, City_Name: $localStorage.CityDpwn[a].City_Name, City_ID: $localStorage.CityDpwn[a].City_ID })
                     }
+
+                    $scope.CityListDetails = $scope.CityList;
                 }
                 else {
                     $scope.ErrorMessage = answer.data.GetCityDetailsResult.ResponseMessage;
@@ -1479,6 +1627,7 @@
             //    $scope.StateListDetails = [];
             //    $scope.StateListDetails = $filter('filter')($scope.StateList, { Country_ID: Country_ID });
             //}
+           
             $scope.SelectedState = function (State_ID) {
                 $scope.CityListDetails = [];
                 $scope.CityListDetails = $filter('filter')($scope.CityList, { State_ID: State_ID });

@@ -1,10 +1,10 @@
 ﻿// Host Name & Urls
 
 //For Locals
-//var ServerName = "http://localhost:51176/Service/";
+var ServerName = "http://localhost:51176/Service/";
 
 //For Hosting
-var ServerName = "http://ifserviceapi.azurewebsites.net/Service/";
+//var ServerName = "http://ifserviceapi.azurewebsites.net/Service/";
 
 
 
@@ -53,3 +53,4 @@ var API_FundCategoryDebt = 'http://cmapis.cmots.com/CrazyAchievers/MutualFund.sv
 var API_validateIfsc = "https://ifsc.razorpay.com/";
 var API_UserDataUpdate = ServerName + Service_Common + 'UpdateUserDetails';
 var API_UserRegistrationType = ServerName + Service_Common + 'UpdateUserRegistrationType';
+var API_GetDashInvestmentDetails = ServerName + Service_Common + 'GetDashInvestmentDetails/';
