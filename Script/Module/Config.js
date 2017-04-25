@@ -39,7 +39,7 @@ var API_GetUserPlanList = ServerName + Service_Common + 'GetUserPlanlist/';
 var API_GetUserInvestmentDetails = ServerName + Service_Common + 'GetUserInvestmentDetails/';
 
 //Other API Service
-
+//test
 var API_ListingFunds = 'http://cmapis.cmots.com/CrazyAchievers/MutualFund.svc/ListingFunds/';
 var API_SchemeDetails = 'http://cmapis.cmots.com/CrazyAchievers/MutualFund.svc/SchemeDetails/';
 var API_AssetAllocation = 'http://cmapis.cmots.com/CrazyAchievers/MutualFund.svc/AssetAllocation/';
