@@ -2987,11 +2987,11 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         var Temp11 = parseInt(mInvst) % 1000;
         var Temp21 = 1000 - Temp11;
         mInvst = parseInt(mInvst) + Temp21;
-        if (mInvst >= 4000) {
+        if (mInvst >= 1000) {
             $scope.Portfolio_Parameter.TotalMonthlyInvestment = mInvst;
         }
         else {
-            $scope.Portfolio_Parameter.TotalMonthlyInvestment = 4000;
+            $scope.Portfolio_Parameter.TotalMonthlyInvestment = 1000;
         }
 
         oInvst = oInvst.toFixed(0);
@@ -4802,7 +4802,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
             if (From == 'M') {
                 TempMonthlyInvestment = parseInt($scope.Portfolio_Parameter.TotalMonthlyInvestment) - 1000;
-                if (parseInt(TempMonthlyInvestment) >= 4000) {
+                if (parseInt(TempMonthlyInvestment) >= 1000) {
                     $scope.Portfolio_Parameter.TotalMonthlyInvestment = TempMonthlyInvestment;
                     //$scope.Portfolio_Calculate("ChnageAmount");
                     $scope.CalculatedPercentage = Chield_CalculatePortfolioAllocation($scope.Portfolio_Parameter.EstematedYear, $scope.Portfolio_Parameter.TotalMonthlyInvestment, $scope.Portfolio_Parameter.Risk, "ChildGoal");
@@ -4812,7 +4812,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                     $scope.ShowDiv("1");
                 }
                 else {
-                    alert("You can not have less than 4000 Rupees");
+                    alert("You can not have less than 1000 Rupees");
                 }
             }
 
@@ -4830,12 +4830,12 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
             if (From == 'M') {
                 TempMonthlyInvestment = parseInt($scope.Portfolio_Parameter.TotalMonthlyInvestment) - parseInt(1000);
-                if (parseInt(TempMonthlyInvestment) >= 4000) {
+                if (parseInt(TempMonthlyInvestment) >= 1000) {
                     $scope.Portfolio_Parameter.TotalMonthlyInvestment = TempMonthlyInvestment;
                     $scope.SIPClick();
                 }
                 else {
-                    alert("You can not have less than 4000 Rupees");
+                    alert("You can not have less than 1000 Rupees");
                 }
 
             }
@@ -4849,7 +4849,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         else {
             if (From == 'M') {
                 TempMonthlyInvestment = parseInt($scope.Portfolio_Parameter.TotalMonthlyInvestment) - parseInt(1000);
-                if (parseInt(TempMonthlyInvestment) >= 4000) {
+                if (parseInt(TempMonthlyInvestment) >= 1000) {
                     $scope.Portfolio_Parameter.TotalMonthlyInvestment = TempMonthlyInvestment;
                     switch (currentState) {
                         case "EasySIP":
@@ -4893,7 +4893,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                 
                 }
                 else {
-                    alert("You can not have less than 4000 Rupees");
+                    alert("You can not have less than 1000 Rupees");
                 }
 
             }
@@ -5230,11 +5230,11 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         var Temp11 = parseInt($scope.Portfolio_Parameter.TotalMonthlyInvestment) % 1000;
         var Temp21 = 1000 - Temp11;
         $scope.Portfolio_Parameter.TotalMonthlyInvestment = parseInt($scope.Portfolio_Parameter.TotalMonthlyInvestment) + Temp21;
-        if ($scope.Portfolio_Parameter.TotalMonthlyInvestment >= 4000) {
+        if ($scope.Portfolio_Parameter.TotalMonthlyInvestment >= 1000) {
             $scope.Portfolio_Parameter.TotalMonthlyInvestment = $scope.Portfolio_Parameter.TotalMonthlyInvestment;
         }
         else {
-            $scope.Portfolio_Parameter.TotalMonthlyInvestment = 4000;
+            $scope.Portfolio_Parameter.TotalMonthlyInvestment = 1000;
         }
         $scope.Portfolio_Parameter.CalculatedTotalMoney = parseInt($scope.Portfolio_Parameter.TotalMonthlyInvestment);
     }
@@ -5436,11 +5436,11 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         var Temp11 = parseInt(mInvst) % 1000;
         var Temp21 = 1000 - Temp11;
         mInvst = parseInt(mInvst) + Temp21;
-        if (mInvst >= 4000) {
+        if (mInvst >= 1000) {
             $scope.Portfolio_Parameter.TotalMonthlyInvestment = mInvst;
         }
         else {
-            $scope.Portfolio_Parameter.TotalMonthlyInvestment = 4000;
+            $scope.Portfolio_Parameter.TotalMonthlyInvestment = 1000;
         }
 
         //G('spnWeddingEstimatedAmt').innerHTML = '<span class="Rs45">`</span>' + CommaRound(MarriageInflatedAmount);
@@ -5486,11 +5486,11 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         var Temp11 = parseInt(mInvst) % 1000;
         var Temp21 = 1000 - Temp11;
         mInvst = parseInt(mInvst) + Temp21;
-        if (mInvst >= 4000) {
+        if (mInvst >= 1000) {
             $scope.Portfolio_Parameter.TotalMonthlyInvestment = mInvst;
         }
         else {
-            $scope.Portfolio_Parameter.TotalMonthlyInvestment = 4000;
+            $scope.Portfolio_Parameter.TotalMonthlyInvestment = 1000;
         }
         
     }

@@ -1220,13 +1220,14 @@
                             investItem.SchemeName = InvestmentDetailsList[listOfUniquePlanID[b]].SchemeName;
                             var tempTotal=(InvestmentDetailsList[listOfUniquePlanID[b]].Amount / InvestmentDetailsList[listOfUniquePlanID[b]].CurrentNav).toFixed(3);
                             currentUnit = parseFloat( currentUnit) +parseFloat(  tempTotal);
-                            currentTotal = currentTotal +parseFloat( InvestmentDetailsList[listOfUniquePlanID[b]].Amount);
+                            currentTotal = currentTotal + parseFloat(InvestmentDetailsList[listOfUniquePlanID[b]].Amount);
                             lastNav = parseFloat(InvestmentDetailsList[listOfUniquePlanID[b]].CurrentNav);
                             lastAmount = parseFloat(InvestmentDetailsList[listOfUniquePlanID[b]].Amount);
                             inveInfo.MasterPlanName = InvestmentDetailsList[listOfUniquePlanID[b]].MasterPlanName;
                             if (InvestmentDetailsList[listOfUniquePlanID[b]].MasterPlanID == "8" ) {
                                 if (b == (listOfUniquePlanID.length - 1))
                                 {
+                                    
                                     currentProfitLoss = (parseFloat((currentUnit * lastNav)) - parseFloat(currentTotal)).toFixed(3);
                                     investItem.Units = currentUnit.toFixed(3);
                                     investItem.ProfitLoss = currentProfitLoss;
@@ -1242,6 +1243,7 @@
                                 
                             }
                             else {
+                                currentTotal =  parseFloat(InvestmentDetailsList[listOfUniquePlanID[b]].Amount);
                                 currentProfitLoss = (parseFloat((currentUnit * lastNav)) - parseFloat(currentTotal)).toFixed(3);
                                 investItem.Units = currentUnit.toFixed(3);
                                 investItem.ProfitLoss = currentProfitLoss;
@@ -1581,6 +1583,13 @@
                     
                    
                 }
+                else
+                {
+                    $rootScope.HideNavBarIsCompleteProfile = true;
+                    $rootScope.HideNavBarIsCompleteKYC = false;
+                    $rootScope.HideNavBarIsCompleteAdharCard = false;
+                }
+                
                 
                 var UserDetailsPromis = CommonSrvc.GetUserDetailsInfo.getPromise($localStorage.TempUserDetails.LoginID);
                 UserDetailsPromis.then(
@@ -1611,13 +1620,7 @@
                 }
               )
             }
-            if ($localStorage.TempUserDetails.IsComplete == "1") {
-                if( $localStorage.UserDetails.kYCRegistartion)
-                {
-
-                }
-            
-            }
+          
             $scope.OnLoadProfileData();
             HideLoader();
             

@@ -1,4 +1,5 @@
-﻿/// <reference path="../../Webform/Common/Home.html" />
+﻿/// <reference path="../../Webform/Common/Blog/home.html" />
+/// <reference path="../../Webform/Common/Home.html" />
 
 
 var app = angular.module('app', ['ngMaterial', 'ui.router', 'ngStorage', 'rzModule', 'ng-fusioncharts', 'angular.filter']);
@@ -120,6 +121,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     }).state('terms', {
         url: "/terms",
         templateUrl: "../../Webform/Common/terms.html",
+        controller: "MainCtrl"
+    }).state('blog', {
+        url: "/blog",
+        templateUrl: "../../Webform/Common/Blog/home.html",
         controller: "MainCtrl"
     });
 
