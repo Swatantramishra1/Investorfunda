@@ -10,6 +10,11 @@
     <!-- start plugins -->
     <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,300">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="http://textangular.com/dist/textAngular.css" type="text/css">
 </head>
 <body>
     <script src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
@@ -24,8 +29,9 @@
                             <li> <span class="simptip-position-bottom simptip-movable" data-tooltip="Home"><a href="#"> </a></span></li>
                         </ul>
                     </div>
-                    <div class="col-sm-2 right">
+                    <div class="col-sm-3 right">
                         <a ng-click="LogOut()" ng-show="userList.length>0">LogOut</a>
+                        <a ui-sref="AddBlog" ng-show="userList.length>0">Add Blog</a>
                         </div>
                         <div class="clearfix"> </div>
                     </div>
@@ -79,6 +85,9 @@
         </div>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="js/angular.min.js"></script>
+        <script src="js/textAngular-rangy.min.js"></script>
+        <script src="js/textAngular-sanitize.min.js"></script>
+        <script src="js/textAngular.min.js"></script>
         <script src="js/angular-ui-router.js"></script>
         <script src="js/ngStorage.js"></script>
         <script src="../../Script/Module/Config.js"></script>

@@ -1,5 +1,5 @@
 ﻿
-var app = angular.module("app", ['ui.router', 'ngStorage']);
+var app = angular.module("app", ['ui.router', 'ngStorage', 'textAngular']);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
 
@@ -25,5 +25,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('UserSingleView', {
             url: '/UserSingleView',
          templateUrl: '../Admin/view/singleView.html'
-     })
+        })
+    .state('AddBlog', {
+        url: '/AddBlog',
+        templateUrl: '../Admin/view/AddBlog.html'
+    })
 })

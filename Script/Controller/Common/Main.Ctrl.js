@@ -1,6 +1,7 @@
-﻿app.controller("MainCtrl", ['$scope', '$rootScope', '$http', 'fileUpload', '$window', 'FundsService', function ($scope, $rootScope, $http, fileUpload, $window, FundsService) {
+﻿app.controller("MainCtrl", ['$scope', '$rootScope', '$http', 'fileUpload', '$window', 'FundsService', '$state', function ($scope, $rootScope, $http, fileUpload, $window, FundsService, $state) {
 
     //********Defined Area*****************
+   
     $rootScope.showFooterView = true;
     $scope.total_amount_invested = 11110;
     $scope.BankList = [];

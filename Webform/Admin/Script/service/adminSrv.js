@@ -84,6 +84,7 @@
             return deferObject.promise;
         }
     };
+
     return {
         GetUserList: GetUserList,
         GetUserPlanList: GetUserPlanList,

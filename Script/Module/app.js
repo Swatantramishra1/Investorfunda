@@ -126,6 +126,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url: "/blog",
         templateUrl: "../../Webform/Common/Blog/home.html",
         controller: "MainCtrl"
+        
+    }).state('blog.blogDetails', {
+        url: "/blogDetails",
+        templateUrl: "../../Webform/Common/Blog/blogDetailPage.html",
+        controller: "MainCtrl"
     });
 
     //.state('state1.list', {
@@ -150,6 +155,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 app.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    $httpProvider.defaults.headers.post['Accept'] = 'application/json, text/javascript';
+    $httpProvider.defaults.headers.post['Content-Type'] = 'multipart/form-data; charset=utf-8';
 }
 ]);
 

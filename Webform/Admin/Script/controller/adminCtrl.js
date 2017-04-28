@@ -1,7 +1,19 @@
-﻿app.controller("adminCtrl", ['$scope', 'adminSrv', '$state', '$localStorage', function ($scope, adminSrv, $state, $localStorage) {
+﻿app.controller("adminCtrl", ['$scope', 'adminSrv', '$state', '$localStorage', 'textAngularManager', function ($scope, adminSrv, $state, $localStorage, textAngularManager) {
     $scope.user = {
         Name: ""
     }
+    $scope.version = textAngularManager.getVersion();
+    $scope.versionNumber = $scope.version.substring(1);
+    $scope.blog = {
+        header: "",
+        Image: "",
+        category: "",
+        htmlContent:""
+    }
+    $scope.blog.htmlContent = '<h2>Try me!</h2><p>textAngular is a super cool WYSIWYG Text Editor directive for AngularJS</p><p><b>Features:</b></p><ol><li>Automatic Seamless Two-Way-Binding</li><li style="color: blue;">Super Easy <b>Theming</b> Options</li><li>Simple Editor Instance Creation</li><li>Safely Parses Html for Custom Toolbar Icons</li><li>Doesn&apos;t Use an iFrame</li><li>Works with Firefox, Chrome, and IE9+</li></ol><p><b>Code at GitHub:</b> <a href="https://github.com/fraywing/textAngular">Here</a> </p>';
+
+
+
     $scope.getUserList = function () {
         if ($localStorage.status) {
             var GetUserList = adminSrv.GetUserList.getPromise();
@@ -126,5 +138,8 @@
     $scope.GetAllDetails = function () {
         $scope.userCompleteDetails = $localStorage.userAdminDetail;
     };
+
+
+
 
 }]);

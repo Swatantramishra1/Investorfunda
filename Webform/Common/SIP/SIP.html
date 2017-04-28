@@ -6,7 +6,17 @@
 
         <hr class="devider devider-dotted">
         <div class="row">
-           
+            <input type="file" name="file" onchange="angular.element(this).scope().uploadFile1(this.files)" />
+            <input accept="image/*" ng-files="getTheFiles($files)" name="file" ng-value="fileToUpload" value="{{fileToUpload}}" file-model="fileToUpload" set-file-data="fileToUpload = value;" type="file" id="my_file" />
+
+            <input type="file" id="file1" ng-model="takefile" name="file" multiple
+                   ng-files="getTheFiles($files)" />
+
+            <input type="button" ng-click="uploadFiles()" value="Upload" />
+
+           <input type="file" id="di" />
+            <input type="button" ng-click="uploadfile()" value="Submit" />
+
             <div class="row content-boxes-v1 margin-bottom-40">
                 <div class="col-md-2 md-margin-bottom-30 AnchorCursorPointer" ui-sref="ChildGoal">
                     <h2 class="heading-md">
