@@ -1,12 +1,13 @@
-﻿app.controller("SIP.Ctrl", ['$scope', '$rootScope', '$mdDialog', '$mdMedia', '$localStorage', '$state', 'FundsService', 'GetCommonData', 'fileUploadService', '$http', 'fileUpload',
-function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsService, GetCommonData, fileUploadService, $http, fileUpload) {
+﻿app.controller("SIP.Ctrl", ['$scope', '$rootScope', '$mdDialog', '$mdMedia', '$localStorage', '$state', 'FundsService', 'GetCommonData', 'fileUploadService', '$http',
+function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsService, GetCommonData, fileUploadService, $http) {
     $scope.val = "";
     var BseSchemeIDs = "";
     
-    $scope.uploadFile1 = function(files) {
+    $scope.uploadFile1 = function () {
+      var  Datafiles = document.getElementById("datafile");
         var fd = new FormData();
         //Take the first selected file
-        fd.append("file", files[0]);
+        fd.append("file", Datafiles.files[0]);
 
         $http.post(API_GetUploadFile, fd, {
             withCredentials: true,
@@ -15,48 +16,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         }).success( alert("success") ).error( alert("failes") );
 
     };
-     var formdata1 = "";
-            $scope.getTheFiles = function ($files) {
-                angular.forEach($files, function (value, key) {
-                    formdata1 = value;
-                   
-                });
-            };
-
-            // NOW UPLOAD THE FILES.
-            $scope.uploadFiles = function () {
-                fileUpload.uploadFileToUrl(formdata1);
-                //var request = {
-                //    method: 'POST',
-                //    url: API_GetUploadFile,
-                 
-                //    transformRequest: function(data) {
-                //        var formData = new FormData();
-                //        //formData.append("user", angular.toJson(data.user));
-                //        for (var i = 0; i < data.length; i++) {
-                //            formData.append("files[" + i + "]", data[i]);
-                //        }
-                //        return formData;
-                //    },
-                //    data: formdata1,
-                //    headers: {
-                //        'Content-Type': undefined
-                //    }
-                //};
-
-                //// SEND THE FILES.
-                //$http(request)
-                //    .success(function (d) {
-                //        alert(d);
-                //    })
-                //    .error(function () {
-                //    });
-            }
-
-
-
-
-
+   
 
     function Chield_CalculatePortfolioAllocation(Year, Amount, Risk, From, Type)
     {
@@ -2296,55 +2256,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
     };
 
 
-    $scope.uploadfile = function () {
-        fileData = document.getElementById("di").files[0];
-
-
-
-        //var request = {
-        //    method: 'POST',
-        //    url: API_GetUploadFile,
-        //    data: fileData,
-        //    headers: {
-        //        'Content-Type': "application/octet-stream"
-        //    }
-        //};
-
-        //// SEND THE FILES.
-        //$http(request)
-        //    .success(function (d) {
-        //        alert(d);
-        //    })
-        //    .error(function () {
-        //    });
-
-        $.ajax({
-            url: API_GetUploadFile, // Dynamically uploads the files which is chosen.
-      type: 'POST',
-      data: fileData, // This would pass the file object with data
-      cache: false,
-      processData: false, // Don't process the files
-      contentType: "application/octet-stream", // Setting content type to "application/octet-stream" as jQuery will tell the server its not query string. 
-     success: function (data) {
-       alert('Successful..');
-     },
-     error: function (data) {
-       alert('Error Occurred');
-     }
-   });
-        //var file = $scope.myFile;
-        //var uploadUrl = "../server/service.php", //Url of webservice/api/server
-        //    promise = fileUploadService.uploadFileToUrl(file, API_GetUploadFile);
-
-        //promise.then(function (response) {
-        //    $scope.serverResponse = response;
-        //}, function () {
-        //    $scope.serverResponse = 'An error has occurred';
-        //})
-
-
-        //console.log($("#di").file[0]);
-    }
+   
     //Show Hide ***************
     $scope.SIP_Portfolio_Year = {
         value: 1,
@@ -6228,36 +6140,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
 }]);
 
-app.directive('ngFiles', ['$parse', function ($parse) {
 
-    function fn_link(scope, element, attrs) {
-        var onChange = $parse(attrs.ngFiles);
-        element.on('change', function (event) {
-            onChange(scope, { $files: event.target.files });
-        });
-    };
-
-    return {
-        link: fn_link
-    }
-}]);
-
-app.directive("fileModel", function () {
-    return {
-        restrict: 'EA',
-        scope: {
-            setFileData: "&"
-        },
-        link: function (scope, ele, attrs) {
-            ele.on('change', function () {
-                scope.$apply(function () {
-                    var val = ele[0].files[0];
-                    scope.setFileData({ value: val });
-                });
-            });
-        }
-    }
-});
 app.service('fileUpload', ['$http',
     function ($http) {
 
