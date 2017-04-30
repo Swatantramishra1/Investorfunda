@@ -2,7 +2,7 @@
 /// <reference path="../../Webform/Common/Home.html" />
 
 
-var app = angular.module('app', ['ngMaterial', 'ui.router', 'ngStorage', 'rzModule', 'ng-fusioncharts', 'angular.filter']);
+var app = angular.module('app', ['ngMaterial', 'ngAnimate', 'ui.router', 'ngStorage', 'rzModule', 'ng-fusioncharts', 'angular.filter']);
 //, 'ui.router']
 app.config(function ($stateProvider, $urlRouterProvider) {
     //

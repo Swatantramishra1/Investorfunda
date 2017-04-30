@@ -16,6 +16,7 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
     };
     
     $scope.Login_All = function () {
+    
         ShowLoader();
         var askForPromise = ULoginService.LoginUser.getPromise($scope.user.username, $scope.user.password);
         askForPromise.then(
@@ -107,7 +108,8 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
        
     }
 
-    $scope.RegistrationFun = function () {
+    $scope.RegistrationFun = function ()
+    {
         var PostDataReq =
             {
                 "request": 

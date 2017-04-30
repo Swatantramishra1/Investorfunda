@@ -34,8 +34,9 @@
                                     <th class="col-sm-2 text-left">Total</th>
                                     <th class="col-sm-1 text-left">NAV</th>
                                     <th class="col-sm-1 text-left">Units</th>
-                                    <th class="col-sm-2 text-left">Current Value</th>
+                                    <th class="col-sm-1 text-left">Current Value</th>
                                     <th class="col-sm-1 text-left">Profit/Loss</th>
+                                    <th class="col-sm-1 text-left">Action</th>
                                 </tr>
                             </thead>
                           
@@ -54,9 +55,26 @@
                                             {{innerVal.CurrentNav}}
                                         </td>
                                         <td class="col-sm-1 text-left">{{innerVal.Units}}</td>
-                                        <td class="col-sm-2 text-left">{{innerVal.currentValue}}</td>
+                                        <td class="col-sm-1 text-left">{{innerVal.currentValue}}</td>
                                         <td class="col-sm-1 text-left">
                                             {{innerVal.ProfitLoss}}
+                                        </td>
+                                        <td class="col-sm-1 text-left">
+                                            <div class="input-group-btn">
+                                                <div class="dropdown" dropdown>
+                                                    <button class="btn btn-primary dropdown-toggle" dropdown-toggle
+                                                            type="button">
+                                                        Action<span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="javascript:;">Switch</a></li>
+                                                        <li><a href="javascript:;">Redeem</a></li>
+                                                        <li><a href="javascript:;">Cancel</a></li>
+                                                        <!--<li class="divider"></li>
+                                                        <li><a href="javascript:;">Separated link</a></li>-->
+                                                    </ul>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
 

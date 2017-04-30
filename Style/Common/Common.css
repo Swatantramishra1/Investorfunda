@@ -1,4 +1,6 @@
-﻿
+﻿.errorColor{
+    color:red !important;
+}
 
    .rzslider .rz-pointer {
     top: -14px;
