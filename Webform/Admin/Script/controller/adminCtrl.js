@@ -139,7 +139,38 @@
         $scope.userCompleteDetails = $localStorage.userAdminDetail;
     };
 
+    $scope.getuserActionList=function(index)
+    {
 
+        $state.go('ActionList');
+
+        var AdminGetActionList = adminSrv.AdminGetActionList.getPromise($scope.userList[index].LoginID);
+        AdminGetActionList.then(
+        // OnSuccess function
+        function (answer) {
+            if (answer.data.getAllUserActionResult.ResponseCode == "0") {
+                if (answer.data.getAllUserActionResult.Result.Admin_getAllActionListData.length > 0) {
+                    
+                    $scope.getuserActionListData = answer.data.getAllUserActionResult.Result.Admin_getAllActionListData;
+                  
+
+                }
+                else {
+                    alert("Do not have any plan associated with it.")
+                }
+
+            }
+
+        },
+        // OnFailure function
+        function (reason) {
+
+            $scope.ErrorMessage = answer.getAllUserActionResult.ResponseMessage;
+            //$scope.somethingWrong = reason;
+            //$scope.error = true;
+        }
+      )
+    }
 
 
 }]);

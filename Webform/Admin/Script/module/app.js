@@ -30,4 +30,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url: '/AddBlog',
         templateUrl: '../Admin/view/AddBlog.html'
     })
+    .state('ActionList', {
+        url: '/ActionList',
+        templateUrl: '../Admin/view/userAction.html'
+    })
 })

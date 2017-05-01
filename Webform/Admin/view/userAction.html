@@ -1,0 +1,26 @@
+﻿<header>Hi {{userAction.name}}</header>
+<div class="row">
+    <table class="table table-responsive table-bordered">
+        <thead>
+            <tr>
+                <th>Sr No</th>
+                <th>Scheme Name</th>
+                <th>Action Type</th>
+                <th>Action Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="userlist in getuserActionListData">
+                <td>{{$index+1}}</td>
+                <td>{{userlist.SchemeName}}</td>
+                <td>{{userlist.ActyionType}}</td>
+                <td>{{userlist.Date}}</td>
+                <td>
+                    <input type="checkbox" />
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>

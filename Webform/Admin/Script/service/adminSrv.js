@@ -84,11 +84,32 @@
             return deferObject.promise;
         }
     };
+    AdminGetActionList = {
 
+        getPromise: function (UserID) {
+            var promise = $http.get(API_getAllUserAction + UserID),
+                  deferObject = deferObject || $q.defer();
+
+            promise.then(
+              // OnSuccess function
+              function (answer) {
+                  // This code will only run if we have a successful promise.
+                  deferObject.resolve(answer);
+              },
+              // OnFailure function
+              function (reason) {
+                  // This code will only run if we have a failed promise.
+                  deferObject.reject(reason);
+              });
+
+            return deferObject.promise;
+        }
+    };
     return {
         GetUserList: GetUserList,
         GetUserPlanList: GetUserPlanList,
         GetUserInvestmentDetailsList: GetUserInvestmentDetailsList,
-        GetUserInfoList: GetUserInfoList
+        GetUserInfoList: GetUserInfoList,
+        AdminGetActionList: AdminGetActionList
     }
 }])
