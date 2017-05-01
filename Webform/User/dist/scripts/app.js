@@ -463,7 +463,27 @@
                     return deferObject.promise;
                 }
             };
-            
+            var UpdateInvestActStats = {
+
+                getPromise: function (InvestActSts_ID, InvestmentSchemePlan_ID) {
+                    var promise = $http.get(API_UpdateInvestmentActionStatus + InvestActSts_ID + "/" + InvestmentSchemePlan_ID),
+                          deferObject = deferObject || $q.defer();
+
+                    promise.then(
+                      // OnSuccess function
+                      function (answer) {
+                          // This code will only run if we have a successful promise.
+                          deferObject.resolve(answer);
+                      },
+                      // OnFailure function
+                      function (reason) {
+                          // This code will only run if we have a failed promise.
+                          deferObject.reject(reason);
+                      });
+
+                    return deferObject.promise;
+                }
+            };
             var GetSourceOfWealth = {
 
                 getPromise: function () {
@@ -645,7 +665,8 @@
                 GetUserPaymentStatus: GetUserPaymentStatus,
                 GetUserPaymentString: GetUserPaymentString,
                 validateIfscCode: validateIfscCode,
-                GetUserDashInvestment: GetUserDashInvestment
+                GetUserDashInvestment: GetUserDashInvestment,
+                UpdateInvestActStats: UpdateInvestActStats
 
             };
 
@@ -1111,7 +1132,7 @@
 
 
         }])
-        .controller("DashboardCtrl", ["$scope", "CommonSrvc","$localStorage", function ($scope, CommonSrvc,$localStorage) {
+        .controller("DashboardCtrl", ["$scope", "CommonSrvc", "$localStorage", "$rootScope", "$mdToast", function ($scope, CommonSrvc, $localStorage, $rootScope, $mdToast) {
             $scope.analyticsconfig = {
                 data: {
                     columns: [
@@ -1167,7 +1188,17 @@
                     pattern: ["#3F51B5", "#4CAF50"]
                 }
             }
-            
+            $scope.showCustomToast = function () {
+                $mdToast.show({
+                    hideDelay: 30000,
+                    position: 'bottom center',
+                    controller: ToastCtrl,
+                    templateUrl: '../dist/views/toast-template.html'
+                });
+            };
+            function ToastCtrl($scope, $rootScope, $mdDialog, $mdToast, $filter) {
+                $scope.Data = $rootScope.UploadMessage;
+            }
             var investDetailsPl = [];
             var GetUserDashInvestment = CommonSrvc.GetUserDashInvestment.getPromise($localStorage.TempUserDetails.LoginID);
             GetUserDashInvestment.then(
@@ -1214,7 +1245,8 @@
                                 currentValue: "",
                                 Investment: "",
                                 MasterPlanName: "",
-                                PlanID: ""
+                                PlanID: "",
+                                InvestmentSchemePlan_ID:""
                             }
                      
                             investItem.SchemeName = InvestmentDetailsList[listOfUniquePlanID[b]].SchemeName;
@@ -1224,6 +1256,8 @@
                             lastNav = parseFloat(InvestmentDetailsList[listOfUniquePlanID[b]].CurrentNav);
                             lastAmount = parseFloat(InvestmentDetailsList[listOfUniquePlanID[b]].Amount);
                             inveInfo.MasterPlanName = InvestmentDetailsList[listOfUniquePlanID[b]].MasterPlanName;
+                            
+
                             if (InvestmentDetailsList[listOfUniquePlanID[b]].MasterPlanID == "8" ) {
                                 if (b == (listOfUniquePlanID.length - 1))
                                 {
@@ -1236,6 +1270,7 @@
                                     investItem.InvstAmount = lastAmount;
                                     investItem.currentValue = (currentUnit * lastNav).toFixed(3);
                                     investItem.PlanID = InvestmentDetailsList[listOfUniquePlanID[b]].Plan_ID;
+                                    investItem.InvestmentSchemePlan_ID = InvestmentDetailsList[listOfUniquePlanID[b]].InvestmentSchemePlan_ID;
                                     // var tempArr=[inveInfo.details.push(investItem)];
                                     inveInfo.details.push(investItem);
                                    
@@ -1252,6 +1287,7 @@
                                 investItem.InvstAmount = lastAmount;
                                 investItem.currentValue = (currentUnit * lastNav).toFixed(3);
                                 investItem.PlanID = InvestmentDetailsList[listOfUniquePlanID[b]].Plan_ID;
+                                investItem.InvestmentSchemePlan_ID = InvestmentDetailsList[listOfUniquePlanID[b]].InvestmentSchemePlan_ID;
                                 inveInfo.details.push(investItem)
                                
                             }
@@ -1291,6 +1327,32 @@
                 //$scope.error = true;
             }
           )
+
+
+            $scope.UpdateInvestAction = function (InvestActSts_ID, InvestmentSchemePlan_ID) {
+                var UpdateInvestActStats = CommonSrvc.UpdateInvestActStats.getPromise(InvestActSts_ID, InvestmentSchemePlan_ID);
+                UpdateInvestActStats.then(
+                // OnSuccess function
+                function (answer) {
+                    if (answer.data.UpdateInvestmentActnStsResult.ResponseCode == "0")
+                    {
+
+                        $rootScope.UploadMessage = answer.data.UpdateInvestmentActnStsResult.Result;
+                        $scope.showCustomToast();
+                    }
+                   
+                  
+
+                },
+                // OnFailure function
+                function (reason) {
+                    HideLoader();
+                    $scope.ErrorMessage = answer.data.GetCountryDetailsResult.ResponseMessage;
+                    //$scope.somethingWrong = reason;
+                    //$scope.error = true;
+                }
+              )
+            }
             
         }])
         .directive('dateInput', function () {

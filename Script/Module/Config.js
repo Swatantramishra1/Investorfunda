@@ -31,7 +31,8 @@ var API_Post_CreateUsersPlan = ServerName + Service_Common + 'CreateUsersPlan';
 var API_GetAllCartListDetails = ServerName + Service_Common + 'GetInvestmentPlanCart/';
 var API_GetUserPaymentStatus = ServerName + Service_Common + 'GetUserPaymentStatus/';
 var API_GetUserPaymentString = ServerName + Service_Common + 'GetUserPaymentString/';
-var API_GetUploadFile = ServerName + Service_Common + 'UploadFIle'
+var API_GetUploadFile = ServerName + Service_Common + 'UploadFIle'; 
+var API_UpdateInvestmentActionStatus = ServerName + Service_Common + 'UpdateInvestmentActionStatus/';
 
 //Admin Part
 var API_GetUserListAdmin = ServerName + Service_Common + 'GetUserListAdmin'; 
