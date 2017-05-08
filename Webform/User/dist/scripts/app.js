@@ -950,7 +950,9 @@
 
 
 
-
+            $scope.homePage = function () {
+                window.location = "../../../../Index.html"
+            }
 
             //Logout Function
             $scope.LogOut = function () {

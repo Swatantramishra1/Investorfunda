@@ -305,11 +305,11 @@ function Chield_CalculatePortfolioAllocation(Year,Amount,Risk,From,Type) {
                         Return_EquityPer: 60,
                         Returm_DebtPer: 40,
                         Fund: [{
-                            Fund_Balanced: 40,
+                            Fund_Balanced: 20,
                             Fund_MIP: 20,
-                            Fund_CreditOpportunity: 20,
-                            Fund_LiquidCap: 10,
-                            Fund_Gold: 10
+                            Fund_MidCap:20,
+                            Fund_UltraSortFund: 20,
+                            Fund_Income: 20
 
                         }]
                     }]
@@ -337,7 +337,7 @@ function Chield_CalculatePortfolioAllocation(Year,Amount,Risk,From,Type) {
                             Fund_Balanced: 20,
                             Fund_MIP: 20,
                             Fund_UltraSortFund: 20,
-                            Fund_Income: 10
+                            Fund_Income: 20
 
                         }]
                     }]
@@ -375,8 +375,8 @@ function Chield_CalculatePortfolioAllocation(Year,Amount,Risk,From,Type) {
                         Returm_DebtPer: 30,
                         Returm_GoldPer: 20,
                         Fund: [{
-                            Fund_LargeCap: 30,
-                            Fund_MultiCap: 20,
+                            Fund_LargeCap: 25,
+                            Fund_MultiCap: 25,
                             Fund_CreditOpportunity: 20,
                             Fund_LiquidCap: 10
 

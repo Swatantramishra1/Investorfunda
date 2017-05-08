@@ -2359,19 +2359,9 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                     "MFtype": "EQ large cap",
                     "Minsip": "12",
                     "date": "1,5,10,15,20,25,30",
-                    "multiplier": "100"
+                    "multiplier": "100",
+                    Category: "EQ"
                 },
-                  {
-                      "Rank": "2",
-                      "SchemeName": "Quantum Long-Term Equity Fund - Growth",
-                      "ISIN": "INF082J01036",
-                      "BSESchmecode": "QMFEF-GP",
-                      "MinInvst": "500",
-                      "MFtype": "EQ large cap",
-                      "Minsip": "12",
-                      "date": "5,7,15,21,25,28",
-                      "multiplier": "500"
-                  },
                   {
                       "Rank": "3",
                       "SchemeName": "Tata Equity P/E Fund - Reg - Growth",
@@ -2381,7 +2371,8 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                       "MFtype": "EQ large cap",
                       "Minsip": "12",
                       "date": "1-30 all days",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      Category: "EQ"
                   },
                   {
                       "Rank": "4",
@@ -2392,7 +2383,8 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                       "MFtype": "EQ large cap",
                       "Minsip": "12",
                       "date": "1,7,10,20,25",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      Category: "EQ"
                   },
                   {
                       "Rank": "5",
@@ -2403,7 +2395,8 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                       "MFtype": "EQ large cap",
                       "Minsip": "6",
                       "date": "1,7,10,14,20,21, 25, 28",
-                      "multiplier": "1"
+                      "multiplier": "1",
+                      Category: "EQ"
                   },
                   {
                       "Rank": "6",
@@ -2479,17 +2472,6 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                       "MinInvst": "1000",
                       "MFtype": "EQ Multicap",
                       "Minsip": "6",
-                      "date": "1,7,10,14,20,21, 25, 28",
-                      "multiplier": "1"
-                  },
-                  {
-                      "Rank": "1",
-                      "SchemeName": "DSP BlackRock Micro Cap Fund - Reg - Growth",
-                      "ISIN": "INF740K01797",
-                      "BSESchmecode": "DSP157-GR",
-                      "MinInvst": "500",
-                      "MFtype": "EQ Mid/small",
-                      "Minsip": "12",
                       "date": "1,7,10,14,20,21, 25, 28",
                       "multiplier": "1"
                   },
@@ -2645,17 +2627,6 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                       "MFtype": "Debt/Income",
                       "Minsip": "6",
                       "date": "1,7,10,14,20,21, 25, 28",
-                      "multiplier": "1"
-                  },
-                  {
-                      "Rank": "3",
-                      "SchemeName": "Quantum Dynamic Bond Fund - Growth",
-                      "ISIN": "INF082J01176",
-                      "BSESchmecode": "QDBGP-GR",
-                      "MinInvst": "500",
-                      "MFtype": "Debt/Income",
-                      "Minsip": "6",
-                      "date": "5,7",
                       "multiplier": "1"
                   },
                   {
@@ -3215,7 +3186,8 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
             //Fund_LargeCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment);
 
             for (var a = 0; a < EquityLargeCpIndex.length; a++) {
-                if (Fund_LargeCap_result > $scope.SIPGoalStructureDate[EquityLargeCpIndex[a]].MinInvst) {
+                if (Fund_LargeCap_result > $scope.SIPGoalStructureDate[EquityLargeCpIndex[a]].MinInvst)
+                {
 
                     if ((Fund_LargeCap_result % $scope.SIPGoalStructureDate[EquityLargeCpIndex[a]].multiplier) == 0) {
                         tempCount++;
@@ -3243,9 +3215,11 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                 }
             }
 
-            if (tempCount > 0) {
+            if (tempCount == 0) {
                 tempMinTotalInvst.push({
-                    Fund_LargeCap: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap
+                    Amount: Fund_LargeCap_result,
+                    Category: "EQ large cap",
+                    Percentage: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap
                 })
             }
 
@@ -3283,9 +3257,11 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
                 }
             }
-            if (tempCount > 0) {
+            if (tempCount == 0) {
                 tempMinTotalInvst.push({
-                    Fund_MultiCap: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_MultiCap
+                    Amount: Fund_MultiCap_result,
+                    Category: "EQ Multicap",
+                    Percentage: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap
                 })
             }
         }
@@ -3321,9 +3297,11 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
                 }
             }
-            if (tempCount > 0) {
+            if (tempCount == 0) {
                 tempMinTotalInvst.push({
-                    Fund_BondFunds: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_BondFunds
+                    Amount: Fund_BondCap_result,
+                    Category: "Debt/ GILT",
+                    Percentage: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap
                 })
             }
         }
@@ -3358,9 +3336,11 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
                 }
             }
-            if (tempCount > 0) {
+            if (tempCount == 0) {
                 tempMinTotalInvst.push({
-                    Fund_UltraSortFund: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_UltraSortFund
+                    Amount: Fund_UltraCap_result,
+                    Category: "Debt/ ultra short",
+                    Percentage: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap
                 })
             }
         }
@@ -3396,9 +3376,11 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
                 }
             }
-            if (tempCount > 0) {
+            if (tempCount == 0) {
                 tempMinTotalInvst.push({
-                    Fund_MidCap: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_MidCap
+                    Amount: Fund_MidCap_result,
+                    Category: "EQ Mid/small",
+                    Percentage: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap
                 })
             }
         }
@@ -3435,9 +3417,11 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
                 }
             }
-            if (tempCount > 0) {
+            if (tempCount == 0) {
                 tempMinTotalInvst.push({
-                    Fund_CreditOpportunity: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_CreditOpportunity
+                    Amount: Fund_CreditOpportunity_result,
+                    Category: "Credit Opportunities",
+                    Percentage: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap
                 })
             }
         }
@@ -3478,9 +3462,11 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
                 }
             }
-            if (tempCount > 0) {
+            if (tempCount == 0) {
                 tempMinTotalInvst.push({
-                    Fund_LiquidCap: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_LiquidCap
+                    Amount: Fund_DebtLiquid_result,
+                    Category: "Debt liquid",
+                    Percentage: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap
                 })
             }
         }
@@ -3522,9 +3508,11 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
                 }
             }
-            if (tempCount > 0) {
+            if (tempCount == 0) {
                 tempMinTotalInvst.push({
-                    Fund_Gold: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_Gold
+                    Amount: Fund_Gold_result,
+                    Category: "Gold",
+                    Percentage: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap
                 })
             }
         }
@@ -3566,9 +3554,11 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
                 }
             }
-            if (tempCount > 0) {
+            if (tempCount == 0) {
                 tempMinTotalInvst.push({
-                    Fund_Balanced: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_Balanced
+                    Amount: Fund_Balanced_result,
+                    Category: "Balanced",
+                    Percentage: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap
                 })
             }
         }
@@ -3612,9 +3602,11 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
                 }
             }
-            if (tempCount > 0) {
+            if (tempCount == 0) {
                 tempMinTotalInvst.push({
-                    Fund_MIP: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_MIP
+                    Amount: Fund_MIP_result,
+                    Category: "MIP",
+                    Percentage: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap
                 })
             }
         }
@@ -3657,9 +3649,11 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
                 }
             }
-            if (tempCount > 0) {
+            if (tempCount == 0) {
                 tempMinTotalInvst.push({
-                    Fund_GILT: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_GILT
+                    Amount: Fund_GILT_result,
+                    Category: "Debt/ GILT",
+                    Percentage: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap
                 })
             }
         }
@@ -3678,12 +3672,6 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                         let tempDate = ('0' + $scope.SIPGoalStructureDate[IncomeIndex[a]].date.split(',')[parseInt(Number) - 1] == '1-30 all days' ? $scope.SIPGoalStructureDate[IncomeIndex[a]].date.split(',')[parseInt(Number) - 1] : $scope.SIPGoalStructureDate[IncomeIndex[a]].date.split(',')[parseInt(Number) - 1]).slice(-2);
                         let tempCompletedate = tempDate + "/" + tempmonth + "/" + tempYear;
                         $scope.sampleStructure.push({
-                            //"SchemeName": $scope.SIPGoalStructureDate[GoldIndex[a]].SchemeName,
-                            //"SchemeCode": $scope.SIPGoalStructureDate[GoldIndex[a]].BSESchmecode,
-                            //"ISIN": $scope.SIPGoalStructureDate[GoldIndex[a]].ISIN,
-                            //"Date": $scope.SIPGoalStructureDate[GoldIndex[a]].date.split(',')[parseInt(Number) - 1] == '1-30 all days' ? $scope.SIPGoalStructureDate[GoldIndex[a]].date.split(',')[parseInt(Number) - 1] : $scope.SIPGoalStructureDate[GoldIndex[a]].date.split(',')[parseInt(Number) - 1],
-                            //"Amount": Fund_Gold_result
-
                             "SchemeName": $scope.SIPGoalStructureDate[IncomeIndex[a]].SchemeName,
                             "BSESchemeCode": $scope.SIPGoalStructureDate[IncomeIndex[a]].BSESchmecode,
                             "ISIN": $scope.SIPGoalStructureDate[IncomeIndex[a]].ISIN,
@@ -3702,9 +3690,11 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
                 }
             }
-            if (tempCount > 0) {
+            if (tempCount == 0) {
                 tempMinTotalInvst.push({
-                    Fund_Income: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_Income
+                    Amount: Fund_Income_result,
+                    Category: "Debt/Income",
+                    Percentage: $scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap
                 })
             }
         }
@@ -3713,6 +3703,15 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         //{
         //    TempTotal = TempTotal + $scope.sampleStructure[]
         //}
+
+        console.log("Input",tempMinTotalInvst);
+
+        
+        for (var b = 0; b < tempMinTotalInvst.length; b++)
+        {
+            $scope.sampleStructure[b].Amount = (parseInt($scope.sampleStructure[b].Amount) + parseInt(tempMinTotalInvst[a].Amount));
+        }
+
 
         if ($scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap != undefined) {
 
@@ -4302,7 +4301,70 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                         $state.go('Authentication', { From: 'Retirement' });
                     }
                     break;
+                case "CarPlan":
+                    if ($localStorage.CurrentStatusOfPage != currentState) {
+                        $localStorage.POstJson = {
 
+                            "User_ID": "",
+                            "userPlan":
+                            {
+                                "Plan_ID": "",
+                                "MasterPlan_ID": "11",
+                                "User_ID": "",
+                                "GoalName": $scope.Portfolio_Parameter.Portfolio_Name,
+                                "PresentAge": "",
+                                "GoalTimeToStart": "",
+                                "GoalDuration": $scope.SIP_Portfolio_Year.value,
+                                "GoalPerYearCost": parseInt($scope.Portfolio_Parameter.SIP_AmountInvestment),
+                                "GoalPerYearLivingCost": "",
+                                "GoalLumpsum": "",
+                                "GoalInflationRate": $scope.Portfolio_Parameter.Portfolio_InflationRate,
+                                "GoalTotalCost": "",
+                                "GoalLivingTotalCost": "",
+                                "GoalTotalAmount": $scope.Portfolio_Parameter.CalculatedTotalMoney,
+                                "GoalTotalLumpsumAmount": "",
+                                "EstimatedInflationRate": "",
+                                "GoalDateOfSip": "",
+                                "GoalRetirementYear": "",
+                                "GoalRetirementExpense": "",
+                                "GoalRetirementMonthlyExpenditure": "",
+                                "GoalHousePlanYear": "",
+                                "GoalHouseCurrentCost": "",
+                                "GoalHouseDownPayment": "",
+                                "GoalHouseLoanYear": "",
+                                "GoalChildMerrageBudgetAmount": "",
+                                "Risk": ""
+                            },
+                            "userPortfolio":
+                            {
+                                "Portfolio_ID": "",
+                                "Plan_ID": "",
+                                "User_ID": "",
+                                "Equity": $scope.Portfolio_Parameter.Equity,
+                                "Debt": $scope.Portfolio_Parameter.Debt,
+                                "Gold": $scope.Portfolio_Parameter.Gold,
+                                "EstimatedTotalSIPAmt": $scope.Portfolio_Parameter.TotalMonthlyInvestment,
+                                "Scheme_IDs": ""
+                            },
+                            "InvestmentList": $scope.sampleStructure
+                        }
+                    }
+                    if ($localStorage.LoginStatus) {
+                        $scope.SIP_GOAL_SHOW = false;
+                        $scope.SIP_GOAL_Setting_SHOW = false;
+                        $scope.SIP_GOAL_Final_SHOW = true;
+
+                        $localStorage.POstJson.User_ID = $localStorage.TempUserDetails.LoginID;
+
+                        $scope.CreatePlanFunction();
+
+                    }
+                    else {
+
+                        $localStorage.CurrentStatusOfPage = "CarPlan";
+                        $state.go('Authentication', { From: 'CarPlan' });
+                    }
+                    break;
                 case "HousePlan":
                     if ($localStorage.CurrentStatusOfPage != currentState) {
                         $localStorage.POstJson = {
