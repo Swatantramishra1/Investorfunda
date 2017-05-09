@@ -3186,7 +3186,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
             //Fund_LargeCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_LargeCap / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment);
 
             for (var a = 0; a < EquityLargeCpIndex.length; a++) {
-                if (Fund_LargeCap_result > $scope.SIPGoalStructureDate[EquityLargeCpIndex[a]].MinInvst)
+                if (Fund_LargeCap_result >= $scope.SIPGoalStructureDate[EquityLargeCpIndex[a]].MinInvst)
                 {
 
                     if ((Fund_LargeCap_result % $scope.SIPGoalStructureDate[EquityLargeCpIndex[a]].multiplier) == 0) {
@@ -3232,7 +3232,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
             //Fund_MultiCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MultiCap / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment);
 
             for (var a = 0; a < EquityMulticapIndex.length; a++) {
-                if (Fund_MultiCap_result > $scope.SIPGoalStructureDate[EquityMulticapIndex[a]].MinInvst) {
+                if (Fund_MultiCap_result >= $scope.SIPGoalStructureDate[EquityMulticapIndex[a]].MinInvst) {
 
                     if ((Fund_MultiCap_result % $scope.SIPGoalStructureDate[EquityMulticapIndex[a]].multiplier) == 0) {
                         tempCount++;
@@ -3272,7 +3272,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
             //Fund_BondCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_BondFunds / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment);
 
             for (var a = 0; a < EquityBondIndex.length; a++) {
-                if (Fund_BondCap_result > $scope.SIPGoalStructureDate[EquityBondIndex[a]].MinInvst) {
+                if (Fund_BondCap_result >= $scope.SIPGoalStructureDate[EquityBondIndex[a]].MinInvst) {
 
                     if ((Fund_BondCap_result % $scope.SIPGoalStructureDate[EquityBondIndex[a]].multiplier) == 0) {
                         tempCount++;
@@ -3311,7 +3311,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
             //Fund_UltraCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_UltraSortFund / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment);
 
             for (var a = 0; a < EquityUltraSortIndex.length; a++) {
-                if (Fund_UltraCap_result > $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].MinInvst) {
+                if (Fund_UltraCap_result >= $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].MinInvst) {
 
                     if ((Fund_UltraCap_result % $scope.SIPGoalStructureDate[EquityUltraSortIndex[a]].multiplier) == 0) {
                         tempCount++;
@@ -3351,7 +3351,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
             //Fund_MidCap_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_MidCap / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment);
 
             for (var a = 0; a < EquityMidSmallIndex.length; a++) {
-                if (Fund_MidCap_result > $scope.SIPGoalStructureDate[EquityMidSmallIndex[a]].MinInvst) {
+                if (Fund_MidCap_result >= $scope.SIPGoalStructureDate[EquityMidSmallIndex[a]].MinInvst) {
 
                     if ((Fund_MidCap_result % $scope.SIPGoalStructureDate[EquityMidSmallIndex[a]].multiplier) == 0) {
                         tempCount++;
@@ -3392,7 +3392,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
             //Fund_CreditOpportunity_result = parseInt(($scope.CalculatedPercentage.Data[0].Fund[0].Fund_CreditOpportunity / 100) * $scope.Portfolio_Parameter.TotalMonthlyInvestment);
 
             for (var a = 0; a < CreditOpportunitiesIndex.length; a++) {
-                if (Fund_CreditOpportunity_result > $scope.SIPGoalStructureDate[CreditOpportunitiesIndex[a]].MinInvst) {
+                if (Fund_CreditOpportunity_result >= $scope.SIPGoalStructureDate[CreditOpportunitiesIndex[a]].MinInvst) {
 
                     if ((Fund_CreditOpportunity_result % $scope.SIPGoalStructureDate[CreditOpportunitiesIndex[a]].multiplier) == 0) {
                         tempCount++;
@@ -3432,7 +3432,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
 
             for (var a = 0; a < EquityLiquidIndex.length; a++) {
-                if (Fund_DebtLiquid_result > $scope.SIPGoalStructureDate[EquityLiquidIndex[a]].MinInvst) {
+                if (Fund_DebtLiquid_result >= $scope.SIPGoalStructureDate[EquityLiquidIndex[a]].MinInvst) {
 
                     if ((Fund_DebtLiquid_result % $scope.SIPGoalStructureDate[EquityLiquidIndex[a]].multiplier) == 0) {
                         tempCount++;
@@ -3477,7 +3477,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
 
             for (var a = 0; a < GoldIndex.length; a++) {
-                if (Fund_Gold_result > $scope.SIPGoalStructureDate[GoldIndex[a]].MinInvst) {
+                if (Fund_Gold_result >= $scope.SIPGoalStructureDate[GoldIndex[a]].MinInvst) {
 
                     if ((Fund_Gold_result % $scope.SIPGoalStructureDate[GoldIndex[a]].multiplier) == 0) {
                         tempCount++;
@@ -3523,7 +3523,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
 
             for (var a = 0; a < BalancedIndex.length; a++) {
-                if (Fund_Balanced_result > $scope.SIPGoalStructureDate[BalancedIndex[a]].MinInvst) {
+                if (Fund_Balanced_result >= $scope.SIPGoalStructureDate[BalancedIndex[a]].MinInvst) {
 
                     if ((Fund_Balanced_result % $scope.SIPGoalStructureDate[BalancedIndex[a]].multiplier) == 0) {
                         tempCount++;
@@ -3571,7 +3571,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
 
             for (var a = 0; a < MIPIndex.length; a++) {
-                if (Fund_MIP_result > $scope.SIPGoalStructureDate[MIPIndex[a]].MinInvst) {
+                if (Fund_MIP_result >= $scope.SIPGoalStructureDate[MIPIndex[a]].MinInvst) {
 
                     if ((Fund_MIP_result % $scope.SIPGoalStructureDate[MIPIndex[a]].multiplier) == 0) {
                         tempCount++;
@@ -3618,7 +3618,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
 
             for (var a = 0; a < GILTIndex.length; a++) {
-                if (Fund_GILT_result > $scope.SIPGoalStructureDate[GILTIndex[a]].MinInvst) {
+                if (Fund_GILT_result >= $scope.SIPGoalStructureDate[GILTIndex[a]].MinInvst) {
 
                     if ((Fund_GILT_result % $scope.SIPGoalStructureDate[GILTIndex[a]].multiplier) == 0) {
                         tempCount++;
@@ -3665,7 +3665,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
 
             for (var a = 0; a < IncomeIndex.length; a++) {
-                if (Fund_Income_result > $scope.SIPGoalStructureDate[IncomeIndex[a]].MinInvst) {
+                if (Fund_Income_result >= $scope.SIPGoalStructureDate[IncomeIndex[a]].MinInvst) {
 
                     if ((Fund_GILT_result % $scope.SIPGoalStructureDate[IncomeIndex[a]].multiplier) == 0) {
                         tempCount++;
