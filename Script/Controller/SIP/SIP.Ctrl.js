@@ -3709,7 +3709,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         
         for (var b = 0; b < tempMinTotalInvst.length; b++)
         {
-            $scope.sampleStructure[b].Amount = (parseInt($scope.sampleStructure[b].Amount) + parseInt(tempMinTotalInvst[a].Amount));
+            $scope.sampleStructure[b].Amount = (parseInt($scope.sampleStructure[b].Amount) + parseInt(tempMinTotalInvst[b].Amount));
         }
 
 
