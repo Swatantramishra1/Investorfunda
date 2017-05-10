@@ -18,7 +18,7 @@
             <ul class="list-group list-inline row">
                 <li class="col-sm-12 list-group-item" ng-repeat="user in userList">
                     <div class="col-sm-4" style="cursor:pointer" ng-click="getuserPlanList($index)">{{user.Name}} </div>
-                    <div class="col-sm-4" style="cursor:pointer">View Profile</div>
+                    <div class="col-sm-4" style="cursor:pointer" ng-click="getUserDetails(user.LoginID)">View Profile</div>
                     <div class="col-sm-4" style="cursor:pointer" ng-click="getuserActionList($index)">Action</div>
                 </li>
             </ul>

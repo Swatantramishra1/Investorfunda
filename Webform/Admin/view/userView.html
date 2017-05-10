@@ -1,0 +1,134 @@
+﻿<div class="col-lg-12" style="height:45px;background-color:#cccedb;padding-left:16px;padding-top: 14px;margin-top:35px">
+  <strong>Pernal Details</strong>  
+</div>
+
+<div class="col-lg-12">
+    <div class="col-lg-6">
+       <strong>First Name -</strong>  {{UserInfoDetails.UserProfileData.FirstName}}
+    </div>
+    <div class="col-lg-6">
+     <strong>Last Name - </strong>  {{UserInfoDetails.UserProfileData.LastName}}
+    </div>
+</div>
+
+<div class="col-lg-12">
+    <div class="col-lg-6">
+        <strong> Gender -</strong>  {{UserInfoDetails.UserProfileData.Gender}}
+    </div>
+    <div class="col-lg-6">
+        <strong>Tax Status -</strong>  {{UserInfoDetails.UserProfileData.TaxStatus_Name}}
+    </div>
+</div>
+
+<div class="col-lg-12">
+    <div class="col-lg-6">
+        <strong> Holding Nature -</strong>   {{UserInfoDetails.UserProfileData.HoldingNature_Name}}
+    </div>
+    <div class="col-lg-6">
+        <strong>Date Of Birth -</strong>   {{UserInfoDetails.UserProfileData.DateOfBirth}}
+    </div>
+</div>
+
+<div class="col-lg-12">
+    <div class="col-lg-6">
+        <strong>Pan Card -</strong>  {{UserInfoDetails.UserProfileData.PANNumber}}
+    </div>
+    <div class="col-lg-6">
+        <strong>Source Of Income -</strong>   {{UserInfoDetails.UserProfileData.SOW_Name}}
+    </div>
+</div>
+
+<div class="col-lg-12">
+    <div class="col-lg-6">
+        <strong> Email ID -</strong>  {{UserInfoDetails.UserProfileData.EmailID}}
+    </div>
+   
+</div>
+
+
+<div class="col-lg-12" style="height:45px;background-color:#cccedb;padding-left:16px;padding-top:14px">
+    <strong>Address Details</strong>  
+</div>
+
+<div class="col-lg-12">
+    <div class="col-lg-6">
+        <strong>Country -</strong>  India
+    </div>
+    <div class="col-lg-6">
+        <strong> State -</strong>  {{UserInfoDetails.AddressDetailsData[0].StateName}}
+    </div>
+</div>
+<div class="col-lg-12">
+    <div class="col-lg-6">
+        <strong>City -</strong>  {{UserInfoDetails.AddressDetailsData[0].CityName}}
+    </div>
+    <div class="col-lg-6">
+        <strong>Pin Code -</strong>  {{UserInfoDetails.AddressDetailsData[0].PinCode}}
+    </div>
+</div>
+<div class="col-lg-12" >
+    <div class="col-lg-12">
+        <strong>Address -</strong>  {{UserInfoDetails.AddressDetailsData[0].Address}}
+        </div>
+        
+    </div>
+<div class="col-lg-12" style="height:45px;background-color:#cccedb;padding-left:16px;padding-top:14px">
+    <strong>Bank Details</strong>
+</div>
+<div class="col-lg-12">
+    <div class="col-lg-6">
+        <strong>Bank Name -</strong>  {{UserInfoDetails.BankDetailsData.BankName}}
+    </div>
+    <div class="col-lg-6">
+        <strong>IFSC -</strong>  {{UserInfoDetails.BankDetailsData.Bank_IFSC}}
+    </div>
+</div>
+<div class="col-lg-12">
+    <div class="col-lg-6">
+        <strong>Account Type -</strong>  {{UserInfoDetails.BankDetailsData.Bank_AccountTypeName}}
+    </div>
+    <div class="col-lg-6">
+        <strong>Account No -</strong>  {{UserInfoDetails.BankDetailsData.Bank_AccountNo}}
+    </div>
+</div>
+<div class="col-lg-12">
+    <div class="col-lg-6">
+        <strong>Name As Per Bank -</strong>  {{UserInfoDetails.BankDetailsData.NameAsPerBank}}
+    </div>
+    
+</div>
+<div class="col-lg-12" style="height:45px;background-color:#cccedb;padding-left:16px;padding-top:14px">
+    <strong>Nominee Details</strong>
+</div>
+
+<div class="col-lg-12" ng-repeat="nominee in UserInfoDetails.NomineeDetailsData">
+    <div class="col-lg-12">
+        <div class="col-lg-6">
+          Sr. {{$index+1}}
+        </div>
+
+    </div>
+    <div class="col-lg-12">
+        <div class="col-lg-6">
+            <strong> Name -</strong>  {{nominee.Nominee_Name}}
+        </div>
+        <div class="col-lg-6">
+            <strong>Date Of Birth -</strong>  {{nominee.Nominee_DOB}}
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="col-lg-6">
+            <strong>Relationship -</strong>  {{nominee.Nominee_DOB}}
+        </div>
+        <div class="col-lg-6">
+            <strong>Selection Type -</strong>  {{nominee.Nominee_Relationship_Name}}
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="col-lg-6">
+            <strong>% Allocation -</strong>  {{nominee.Nominee_AllocationPercentage}}
+        </div>
+
+    </div>
+
+</div>

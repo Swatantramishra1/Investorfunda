@@ -34,4 +34,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url: '/ActionList',
         templateUrl: '../Admin/view/userAction.html'
     })
+    .state('UserView', {
+        url: '/UserView',
+        templateUrl: '../Admin/view/userView.html'
+    })
 })

@@ -173,4 +173,29 @@
     }
 
 
+    $scope.getUserDetails = function (UserID)
+
+    {
+        $state.go("UserView");
+        var GetUserInfoList = adminSrv.GetUserInfoList.getPromise(UserID);
+        GetUserInfoList.then(
+        // OnSuccess function
+        function (answer) {
+            if (answer.data.GetUserProfileDetailsInfoResult.ResponseCode == "0") {
+               
+                $scope.UserInfoDetails = answer.data.GetUserProfileDetailsInfoResult.Result;
+
+            }
+
+        },
+        // OnFailure function
+        function (reason) {
+
+            $scope.ErrorMessage = answer.GetUserPlanlistsResult.ResponseMessage;
+            //$scope.somethingWrong = reason;
+            //$scope.error = true;
+        }
+      )
+    }
+
 }]);

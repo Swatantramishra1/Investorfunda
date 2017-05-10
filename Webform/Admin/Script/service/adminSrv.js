@@ -24,6 +24,7 @@
     GetUserInfoList = {
 
         getPromise: function (UserID) {
+            
             var promise = $http.get(API_GetUserDetailsInfo + UserID),
                   deferObject = deferObject || $q.defer();
 
@@ -42,6 +43,7 @@
             return deferObject.promise;
         }
     };
+   
     GetUserPlanList = {
 
         getPromise: function (ClientCode) {
