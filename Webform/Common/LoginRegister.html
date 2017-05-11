@@ -117,66 +117,103 @@
                                         <md-toolbar>
                                             <h2 class="md-toolbar-tools md-background-custom"><span style="color:white">OPEN A FREE ACCOUNT</span></h2>
                                         </md-toolbar>
-                                        <form name="RegistrationForm" ng-submit="RegistrationFun()" novalidate>
+
+                                        <form name="MobileSMS"  novalidate ng-show="!showRegistationForm">
+
                                             <md-content layout="column" class="md-padding">
                                                 <md-input-container>
-                                                    <label>First Name</label>
-                                                    <input type="text" ng-model="Register.FirstName" name="firstName" required />
-                                                    <div ng-show="RegistrationForm.$submitted || RegistrationForm.firstName.$touched">
-                                                        <div ng-show="RegistrationForm.firstName.$error.required" class="errorColor">Enter your first name </div>
-                                                    </div>
-                                                </md-input-container>
-                                                <md-input-container>
-                                                    <label>Last Name</label>
-                                                    <input type="text" ng-model="Register.LastName" />
-                                                </md-input-container>
-                                                <md-input-container>
-                                                    <label>Gender</label>
-                                                    <md-select ng-model="Register.Gender" name="gender" required>
-                                                        <md-option value="Male">Male</md-option>
-                                                        <md-option value="Female">Female</md-option>
-                                                        <md-option value="Other">Other</md-option>
-                                                    </md-select>
-                                                    <div ng-show="RegistrationForm.$submitted || RegistrationForm.gender.$touched">
-                                                        <div ng-show="RegistrationForm.gender.$error.required" class="errorColor">Select your gender </div>
-                                                    </div>
-                                                </md-input-container>
-                                                <md-input-container ng-if="false">
-                                                    <label>Pan Card No</label>
-                                                    <input type="text" ng-model="Register.PanCard=''" required />
-                                                </md-input-container>
-                                                <md-input-container>
-                                                    <label>Email</label>
-                                                    <input type="email" ng-model="Register.Email" name="email" required />
-                                                    <div ng-show="RegistrationForm.$submitted || RegistrationForm.email.$touched">
-                                                        <div ng-show="RegistrationForm.email.$error.required" class="errorColor">Enter your email </div>
-                                                    </div>
-                                                </md-input-container>
-                                                <md-input-container>
-                                                    <label>Password</label>
-                                                    <input type="password" ng-model="Register.Password" name="password" required />
-                                                    <div ng-show="RegistrationForm.$submitted || RegistrationForm.password.$touched">
-                                                        <div ng-show="RegistrationForm.password.$error.required" class="errorColor">Enter your password </div>
-                                                    </div>
-                                                </md-input-container>
-                                                <md-input-container>
                                                     <label>Mobile No</label>
-                                                    <input type="text" ng-model="Register.mobileno" name="mobile" required />
-                                                    <div ng-show="RegistrationForm.$submitted || RegistrationForm.mobile.$touched">
-                                                        <div ng-show="RegistrationForm.mobile.$error.required" class="errorColor">Enter your mobile no </div>
-                                                    </div>
+                                                    <input type="text" ng-model="Register.mobileno" name="Mobile" required />
+                                                    <!--<div ng-show="MobileSMS.$submitted || MobileSMS.Mobile.$touched">
+                                                        <div ng-show="MobileSMS.Mobile.$error.required" class="errorColor">Enter Mobile No </div>
+                                                    </div>-->
                                                 </md-input-container>
-                                                <div layout="row" layout-align="center center" style="padding-top:20px;">
-                                                    <md-button class="md-raised md-button-custom" ng-click="RegistrationFun()" type="submit" ng-disabled="RegistrationForm.$invalid">Open Account</md-button>
+
+                                                <div layout="row" layout-align="center center" style="padding-top:20px;" ng-show="!getOtpBtn">
+                                                    <md-button class="md-raised md-button-custom" ng-click="SendMObileSMS()"  type="submit" >Get OTP</md-button>
                                                     <div flex="flex"></div>
 
                                                 </div>
+                                                <md-input-container ng-show="getOtpBtn">
+                                                    <label>OTP</label>
+                                                    <input type="text" ng-model="matchOTP" name="Mobile" required />
+                                                    <div ng-show="matchOTP.$submitted || MobileSMS.matchOTP.$touched">
+                                                        <div ng-show="MobileSMS.matchOTP.$error.required" class="errorColor">Enter OTP </div>
+                                                    </div>
+                                                </md-input-container>
+                                                <div layout="row" layout-align="center center" style="padding-top:20px;" ng-show="getOtpBtn">
+                                                    <md-button class="md-raised md-button-custom" ng-click="MatchOTP()" type="submit">Submit</md-button>
+                                                    <div flex="flex"></div>
+
+                                                </div>
+                                               
                                                 <div layout="row" style="padding-top:20px;color:red" ng-show="ErrorMessage !=''">
                                                     {{ErrorMessage}}
                                                 </div>
                                             </md-content>
                                         </form>
-                            </div>
+
+                                            <form name="RegistrationForm" ng-submit="RegistrationFun()" novalidate ng-show="showRegistationForm">
+                                                <md-content layout="column" class="md-padding">
+                                                    <md-input-container>
+                                                        <label>First Name</label>
+                                                        <input type="text" ng-model="Register.FirstName" name="firstName" required />
+                                                        <div ng-show="RegistrationForm.$submitted || RegistrationForm.firstName.$touched">
+                                                            <div ng-show="RegistrationForm.firstName.$error.required" class="errorColor">Enter your first name </div>
+                                                        </div>
+                                                    </md-input-container>
+                                                    <md-input-container>
+                                                        <label>Last Name</label>
+                                                        <input type="text" ng-model="Register.LastName" />
+                                                    </md-input-container>
+                                                    <md-input-container>
+                                                        <label>Gender</label>
+                                                        <md-select ng-model="Register.Gender" name="gender" required>
+                                                            <md-option value="Male">Male</md-option>
+                                                            <md-option value="Female">Female</md-option>
+                                                            <md-option value="Other">Other</md-option>
+                                                        </md-select>
+                                                        <div ng-show="RegistrationForm.$submitted || RegistrationForm.gender.$touched">
+                                                            <div ng-show="RegistrationForm.gender.$error.required" class="errorColor">Select your gender </div>
+                                                        </div>
+                                                    </md-input-container>
+                                                    <md-input-container ng-if="false">
+                                                        <label>Pan Card No</label>
+                                                        <input type="text" ng-model="Register.PanCard=''" required />
+                                                    </md-input-container>
+                                                    <md-input-container>
+                                                        <label>Email</label>
+                                                        <input type="email" ng-model="Register.Email" name="email" required />
+                                                        <div ng-show="RegistrationForm.$submitted || RegistrationForm.email.$touched">
+                                                            <div ng-show="RegistrationForm.email.$error.required" class="errorColor">Enter your email </div>
+                                                        </div>
+                                                    </md-input-container>
+                                                    <md-input-container>
+                                                        <label>Password</label>
+                                                        <input type="password" ng-model="Register.Password" name="password" required />
+                                                        <div ng-show="RegistrationForm.$submitted || RegistrationForm.password.$touched">
+                                                            <div ng-show="RegistrationForm.password.$error.required" class="errorColor">Enter your password </div>
+                                                        </div>
+                                                    </md-input-container>
+                                                    <md-input-container>
+                                                        <label>Mobile No</label>
+                                                        <input ng-disabled="true" type="text" ng-model="Register.mobileno" name="mobile" required />
+                                                        <div ng-show="RegistrationForm.$submitted || RegistrationForm.mobile.$touched">
+                                                            <div ng-show="RegistrationForm.mobile.$error.required" class="errorColor">Enter your mobile no </div>
+                                                        </div>
+
+                                                    </md-input-container>
+                                                    <div layout="row" layout-align="center center" style="padding-top:20px;">
+                                                        <md-button class="md-raised md-button-custom" ng-click="RegistrationFun()" type="submit" ng-disabled="RegistrationForm.$invalid">Open Account</md-button>
+                                                        <div flex="flex"></div>
+
+                                                    </div>
+                                                    <div layout="row" style="padding-top:20px;color:red" ng-show="ErrorMessage !=''">
+                                                        {{ErrorMessage}}
+                                                    </div>
+                                                </md-content>
+                                            </form>
+</div>
                             </div>
 
                         </md-content>

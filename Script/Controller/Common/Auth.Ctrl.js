@@ -1,6 +1,6 @@
 ﻿/// <reference path="../../../Webform/User/dist/index.html" />
 /// <reference path="../../User/Form/dist/index.html" />
-app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStorage', '$stateParams', '$state', function ($scope, $rootScope, ULoginService, $localStorage, $stateParams, $state) {
+app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStorage', '$stateParams', '$state', '$http', function ($scope, $rootScope, ULoginService, $localStorage, $stateParams, $state, $http) {
     $scope.user = {
         username: '',
         password: ''
@@ -183,4 +183,41 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
         $scope.ForgotPasswordDiv2 = false;
         $scope.ForgotPasswordDivPassEnter = false;
     };
+
+    $scope.SendMObileSMS = function () {
+        $scope.RandomNumber = Math.floor(100000 + Math.random() * 900000);
+        var message = "Hi Your OTP for Investorfunda is " + $scope.RandomNumber;
+
+        var URl = "http://174.143.34.193/MtSendSMS/SingleSMS.aspx?usr=crazyachievers&pass=Q8gyw3&msisdn=" + $scope.Register.mobileno + "&msg=" + message + "&sid=IFLGIN&mt=0";
+
+        $http.post(URl, {
+            withCredentials: true,
+            headers: { 'Content-Type': undefined },
+            transformRequest: angular.identity
+        })
+         .success(function (data, status) {
+             alert("Pass")
+             var get = data;
+
+
+         })
+         .catch(function (response) {
+          
+             $scope.sendedOTP = true;
+             $scope.getOtpBtn = true;
+         });
+    }
+
+
+    $scope.MatchOTP = function () {
+        if($scope.RandomNumber==$scope.matchOTP)
+        {
+            $scope.showRegistationForm = true;
+            $scope.ErrorMessage = "";
+        }
+        else
+        {
+            $scope.ErrorMessage = "Enter Correct OTP";
+        }
+    }
 }]);

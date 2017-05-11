@@ -672,20 +672,22 @@
                                                                                     <th>Sr No.</th>
                                                                                     <th>Document Type</th>
                                                                                     <th>Upload</th>
+                                                                                    <th>Image</th>
                                                                                     <th>Action</th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
-                                                                                <input type="file" class="form-control" />
+                                                                                
                                                                                 <tr ng-repeat="UploadDocument in  UserDetailInfo.UploadDocumentDetailsData">
                                                                                     <td>{{$index+1}}</td>
-                                                                                    <td>{{UploadDocument.DocumentName}}</td>
+                                                                                    <td>{{UploadDocument.DocumentType}}</td>
 
                                                                                     <td>
-                                                                                        <input type="file" class="form-control" />
+                                                                                        <input type="file" id="file{{UploadDocument.DocumentUpload_ID}}" class="form-control" />
 
                                                                                     </td>
-                                                                                    <td>{{UploadDocument.DocumentType}}  </td>
+                                                                                    <td style="width:180px"><a href="{{UploadDocument.DocumentPath}}" target="_blank"><img style="height:45px;width:100%" src="{{UploadDocument.DocumentPath}}" alt="{{UploadDocument.DocumentType}}" /> </a>  </td>
+                                                                                    <td><input type="button" class="btn btn-success" value="Save" ng-click="SaveUploadDetails(UploadDocument.DocumentUpload_ID)" /> </td>
                                                                                 </tr>
 
 

@@ -1377,6 +1377,36 @@
         .controller("ProfileCtrl", ["$scope", "CommonSrvc", "$localStorage", "$filter", "$http", "$mdToast", '$rootScope', 'validateSrvc', function ($scope, CommonSrvc, $localStorage, $filter, $http, $mdToast, $rootScope, validateSrvc) {
 
             $('div').removeClass('modal-backdrop');
+            var UserDetailsPromis = CommonSrvc.GetUserDetailsInfo.getPromise($localStorage.TempUserDetails.LoginID);
+            $scope.loadUserProfile = function () {
+                UserDetailsPromis.then(
+              // OnSuccess function
+              function (answer) {
+
+                  if (answer.data.GetUserProfileDetailsInfoResult.ResponseCode == 0) {
+
+
+                      $scope.UserDetailInfo = answer.data.GetUserProfileDetailsInfoResult.Result;
+                      $scope.UserDetailInfo.AddressDetailsData[0].CountryID = "101";
+                      // $scope.UserDetailInfo.UserProfileData.DateOfBirth = new Date($scope.UserDetailInfo.UserProfileData.DateOfBirth);
+                      document.getElementById("CartNotificationTotal").innerText = parseInt($scope.UserDetailInfo.UserProfileData.AddedCartCount) + parseInt($scope.UserDetailInfo.UserProfileData.AddedFavCount);
+
+                     
+                  }
+                  else {
+                      $scope.ErrorMessage = answer.data.GetUserProfileDetailsInfoResult.ResponseMessage;
+                  }
+
+              },
+              // OnFailure function
+              function (reason) {
+                  HideLoader();
+                  $scope.ErrorMessage = answer.data.GetLoginResult.ResponseMessage;
+                  //$scope.somethingWrong = reason;
+                  //$scope.error = true;
+              }
+            )
+            }
             $scope.showCustomToast = function () {
                 $mdToast.show({
                     hideDelay: 30000,
@@ -1392,7 +1422,7 @@
             $scope.userAdharCard = "";
             $scope.userAdharCardCheckBOx = false;
             function ProfileDataView() {
-                var UserDetailsPromis = CommonSrvc.GetUserDetailsInfo.getPromise($localStorage.TempUserDetails.LoginID);
+              
                 UserDetailsPromis.then(
                 // OnSuccess function
                 function (answer) {
@@ -1630,6 +1660,8 @@
                 //$scope.error = true;
             }
           )
+
+            
             $scope.OnLoadProfileData=function()
             {
                 if ($localStorage.TempUserDetails.IsComplete == "1") {
@@ -1655,34 +1687,8 @@
                 }
                 
                 
-                var UserDetailsPromis = CommonSrvc.GetUserDetailsInfo.getPromise($localStorage.TempUserDetails.LoginID);
-                UserDetailsPromis.then(
-                // OnSuccess function
-                function (answer) {
-
-                    if (answer.data.GetUserProfileDetailsInfoResult.ResponseCode == 0) {
-
-
-                        $scope.UserDetailInfo = answer.data.GetUserProfileDetailsInfoResult.Result;
-                        $scope.UserDetailInfo.AddressDetailsData[0].CountryID = "101";
-                        // $scope.UserDetailInfo.UserProfileData.DateOfBirth = new Date($scope.UserDetailInfo.UserProfileData.DateOfBirth);
-                        document.getElementById("CartNotificationTotal").innerText = parseInt($scope.UserDetailInfo.UserProfileData.AddedCartCount) + parseInt($scope.UserDetailInfo.UserProfileData.AddedFavCount);
-
-
-                    }
-                    else {
-                        $scope.ErrorMessage = answer.data.GetUserProfileDetailsInfoResult.ResponseMessage;
-                    }
-
-                },
-                // OnFailure function
-                function (reason) {
-                    HideLoader();
-                    $scope.ErrorMessage = answer.data.GetLoginResult.ResponseMessage;
-                    //$scope.somethingWrong = reason;
-                    //$scope.error = true;
-                }
-              )
+                $scope.loadUserProfile();
+              
             }
           
             $scope.OnLoadProfileData();
@@ -1943,62 +1949,29 @@
                     
             }
 
-            $scope.SaveUploadDetails = function () {
-                var UploadDetailsUpdate = {};
-                var listDocumentDetails = [];
-                 UploadDetailsUpdate = {
-                     "User_ID": $localStorage.TempUserDetails.LoginID,
-                    "userprofile": {
+            $scope.SaveUploadDetails = function (DocumentUpload_ID)
+            {
 
-                    },
-                    "depositorydetails": {
-                        "DepositoryDetails_ID": $scope.UserDetailInfo.DepositoryDetailsData.DepositoryDetails_ID,
-                        "ClientType": $scope.UserDetailInfo.DepositoryDetailsData.ClientType,
-                        "DepositoryName": $scope.UserDetailInfo.DepositoryDetailsData.DepositoryName,
-                        "NSDLDP_ID": $scope.UserDetailInfo.DepositoryDetailsData.NSDLDP_ID,
-                        "CDSLBenAcNo": $scope.UserDetailInfo.DepositoryDetailsData.CDSLBenAcNo,
-                        "NSDLBenAcNo": $scope.UserDetailInfo.DepositoryDetailsData.NSDLBenAcNo
-                    },
-                    "bankdetails": {
+                var Datafiles = document.getElementById("file"+DocumentUpload_ID);
+        var fd = new FormData();
+        //Take the first selected file
+        fd.append("file", Datafiles.files[0]);
 
-                    },
-                    "listNomineeDetails": [
+                $http.post(API_UserUploadDocuments + "/" + DocumentUpload_ID, fd, {
+            withCredentials: true,
+            headers: {'Content-Type': undefined },
+            transformRequest: angular.identity
+        })
+              .success(function (data, status) {
 
-                    ],
-                    
-                    
+              
 
-                }
-                for (var a = 0; a < $scope.UserDetailInfo.UploadDocumentDetailsData.length; a++) {
-                    listDocumentDetails.push({
-                       
-                
-                        "DocumentUpload_ID": $scope.UserDetailInfo.UploadDocumentDetailsData[a].DocumentUpload_ID,
-                        "User_ID": $localStorage.TempUserDetails.LoginID,
-                        "DocumentType": $scope.UserDetailInfo.UploadDocumentDetailsData[a].DocumentType,
-                        "DocumentName": $scope.UserDetailInfo.UploadDocumentDetailsData[a].DocumentName,
-                        "DocumentPath": $scope.UserDetailInfo.UploadDocumentDetailsData[a].DocumentPath,
-                        "IsMandatory": $scope.UserDetailInfo.UploadDocumentDetailsData[a].IsMandatory,
-                    })
-                    UploadDetailsUpdate.listDocumentDetails = listDocumentDetails;
-                }
-                $http.post(API_UserDataUpdate, JSON.stringify(UploadDetailsUpdate))
-           .success(function (data, status) {
-
-              // $rootScope.UploadMessage = data.UpdateUserDetailsResult.ResponseMessage;
-               if (data.UpdateUserDetailsResult.ResponseCode == 0) {
-                   $rootScope.UploadMessage = data.UpdateUserDetailsResult.ResponseMessage;
-                   $scope.showCustomToast();
-                   //$scope.OnLoadProfileData();
-                   //alert(data.UpdateUserDetailsResult.ResponseMessage);
-               }
-
-           })
-       .catch(function (response) {
-           var d = response.data;
-           $rootScope.UploadMessage = data.UpdateUserDetailsResult.ResponseMessage;
-           $scope.showCustomToast();
-       });
+              })
+              .catch(function (response) {
+                  $rootScope.UploadMessage = "File Uploaded Successfully";
+                  $scope.showCustomToast();
+                  $scope.loadUserProfile();
+              });
             }
 
             $scope.SaveDepositoryDetails = function () {
