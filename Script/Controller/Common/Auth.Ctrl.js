@@ -188,7 +188,7 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
         $scope.RandomNumber = Math.floor(100000 + Math.random() * 900000);
         var message = "Hi Your OTP for Investorfunda is " + $scope.RandomNumber;
 
-        var URl = "http://174.143.34.193/MtSendSMS/SingleSMS.aspx?usr=crazyachievers&pass=Q8gyw3&msisdn=" + $scope.Register.mobileno + "&msg=" + message + "&sid=IFLGIN&mt=0";
+        var URl = "http://174.143.34.193/MtSendSMS/SingleSMS.aspx?usr=crazyachievers&pass=Q8gyw3&msisdn=" + $scope.Register.mobileno + "&msg=" + message + "&sid=IFUNDA&mt=0";
 
         $http.post(URl, {
             withCredentials: true,

@@ -134,3 +134,20 @@
     </div>
 
 </div>
+
+<div class="col-lg-12" style="height:45px;background-color:#cccedb;padding-left:16px;padding-top:14px">
+    <strong>Uploaded Documents Details</strong>
+</div>
+<div class="col-lg-12" ng-repeat="document in UserInfoDetails.UploadDocumentDetailsData" ng-if="document.DocumentPath !=''">
+    <div class="col-lg-12">
+        <div class="col-lg-6">
+            Sr. {{$index+1}} (<strong>{{document.DocumentType}} </strong> )
+        </div>
+
+    </div>
+    <div class="col-lg-12">
+   <a href="{{document.DocumentPath}}" target="_blank" ><img style="height:200px" src="{{document.DocumentPath}}" /></a>  
+    </div>
+  
+
+</div>
