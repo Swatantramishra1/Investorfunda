@@ -187,6 +187,27 @@ app.service('FundsService', ['$http', '$q', function ($http, $q) {
         }
 
     }
+    getBlockDetails = {
+
+        getPromise: function () {
+            var promise = $http.get(API_GetBlockDetails),
+                  deferObject = deferObject || $q.defer();
+
+            promise.then(
+              // OnSuccess function
+              function (answer) {
+                  // This code will only run if we have a successful promise.
+                  deferObject.resolve(answer);
+              },
+              // OnFailure function
+              function (reason) {
+                  // This code will only run if we have a failed promise.
+                  deferObject.reject(reason);
+              });
+
+            return deferObject.promise;
+        }
+    };
     return {
         FundsList: FundsList,
         FundsDetails: FundsDetails,
@@ -196,7 +217,8 @@ app.service('FundsService', ['$http', '$q', function ($http, $q) {
         FundCategoryDebt: FundCategoryDebt,
         FundAssetAllocation: FundAssetAllocation,
         FundTopHolding: FundTopHolding,
-        CreatePlan: CreatePlan
+        CreatePlan: CreatePlan,
+        getBlockDetails: getBlockDetails
     };
 
 }]);

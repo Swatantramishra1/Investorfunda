@@ -127,14 +127,35 @@ angular.module("app.ctrls", []).service('CommonSrvc', ['$http', '$q', function (
             return deferObject.promise;
         }
     };
+    getBlockDetails = {
 
+        getPromise: function () {
+            var promise = $http.get(API_GetBlockDetails),
+                  deferObject = deferObject || $q.defer();
+
+            promise.then(
+              // OnSuccess function
+              function (answer) {
+                  // This code will only run if we have a successful promise.
+                  deferObject.resolve(answer);
+              },
+              // OnFailure function
+              function (reason) {
+                  // This code will only run if we have a failed promise.
+                  deferObject.reject(reason);
+              });
+
+            return deferObject.promise;
+        }
+    };
     return {
         GetCountryDetails: GetCountryDetails,
         GetStateDetails: GetStateDetails,
         GetCityDetails: GetCityDetails,
         GetTaxStatus: GetTaxStatus,
         GetSourceOfWealth: GetSourceOfWealth,
-        HoldingNature: HoldingNature
+        HoldingNature: HoldingNature,
+        getBlockDetails: getBlockDetails
 
     };
 

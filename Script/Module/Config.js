@@ -54,6 +54,9 @@ var API_FundCategoryDebt = 'http://cmapis.cmots.com/CrazyAchievers/MutualFund.sv
 
 var API_validateIfsc = "https://ifsc.razorpay.com/";
 var API_UserDataUpdate = ServerName + Service_Common + 'UpdateUserDetails'; 
-var API_UserUploadDocuments = ServerName + Service_Common + 'UserUploadDocuments';
+var API_UserUploadDocuments = ServerName + Service_Common + 'UserUploadDocuments'; 
+var API_InsertBlog = ServerName + Service_Common + 'InsertBlog'; 
+var API_UpdateBlogDetails = ServerName + Service_Common + 'UpdateBlogDetails'; 
+var API_GetBlockDetails = ServerName + Service_Common + 'GetBlockDetails';
 var API_UserRegistrationType = ServerName + Service_Common + 'UpdateUserRegistrationType';
 var API_GetDashInvestmentDetails = ServerName + Service_Common + 'GetDashInvestmentDetails/';

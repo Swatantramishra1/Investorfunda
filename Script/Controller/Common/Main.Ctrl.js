@@ -377,5 +377,38 @@
         }
        
     }
+
+    if($state.current.name=="blog")
+    {
+        var getBlockDetails = FundsService.getBlockDetails.getPromise();
+        getBlockDetails.then(
+        // OnSuccess function
+        function (answer) {
+
+
+            $rootScope.DetailsBlogList = answer.data.GetBlockDetailsResult.Result;
+
+
+        },
+        // OnFailure function
+        function (reason) {
+            HideLoader();
+            $scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
+            //$scope.somethingWrong = reason;
+            //$scope.error = true;
+        }
+      )
+
+    }
+
+    $scope.showBlogDetail=function(Index)
+    {
+        $scope.showblogDetails = true;
+        $scope.blogDetails = $rootScope.DetailsBlogList[Index];
+        var htmltext = $scope.blogDetails.Blog_Content;
+        $('#blogContent').html(htmltext);
+    }
+
+    
 }]);
 

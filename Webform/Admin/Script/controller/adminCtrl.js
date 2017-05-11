@@ -1,4 +1,4 @@
-﻿app.controller("adminCtrl", ['$scope', 'adminSrv', '$state', '$localStorage', 'textAngularManager', function ($scope, adminSrv, $state, $localStorage, textAngularManager) {
+﻿app.controller("adminCtrl", ['$scope', 'adminSrv', '$state', '$localStorage', 'textAngularManager', '$http', function ($scope, adminSrv, $state, $localStorage, textAngularManager, $http) {
     $scope.user = {
         Name: ""
     }
@@ -11,8 +11,6 @@
         htmlContent:""
     }
     $scope.blog.htmlContent = '<h2>Try me!</h2><p>textAngular is a super cool WYSIWYG Text Editor directive for AngularJS</p><p><b>Features:</b></p><ol><li>Automatic Seamless Two-Way-Binding</li><li style="color: blue;">Super Easy <b>Theming</b> Options</li><li>Simple Editor Instance Creation</li><li>Safely Parses Html for Custom Toolbar Icons</li><li>Doesn&apos;t Use an iFrame</li><li>Works with Firefox, Chrome, and IE9+</li></ol><p><b>Code at GitHub:</b> <a href="https://github.com/fraywing/textAngular">Here</a> </p>';
-
-
 
     $scope.getUserList = function () {
         if ($localStorage.status) {
@@ -196,6 +194,57 @@
             //$scope.error = true;
         }
       )
+    }
+
+    $scope.InsertBlog = function () {
+
+
+
+
+        var Datafiles = document.getElementById("blogImage");
+        var fd = new FormData();
+        //Take the first selected file
+        fd.append("file", Datafiles.files[0]);
+
+        $http.post(API_InsertBlog + "/0/0/0", fd, {
+            headers: { 'Content-Type': undefined },
+            transformRequest: angular.identity
+        })
+      .success(function (data, status) {
+          var postData = {
+              "request":{
+                  Header: $scope.blog.header,
+                  Content: $scope.blog.htmlContent,
+                  BlogID: data.InsertBlogDetailsResult.Result,
+                  CategoryID: $scope.blog.category
+              }
+          }
+
+          var UpdteUploadImage = adminSrv.UpdteUploadImage.PostPromise(postData);
+          UpdteUploadImage.then(
+          // OnSuccess function
+          function (answer) {
+              if (answer.UpdateBlogDetailsResult.ResponseCode == "0") {
+
+                 alert("Blog Inserted Succesfully")
+
+              }
+
+          },
+          // OnFailure function
+          function (reason) {
+
+              
+              //$scope.somethingWrong = reason;
+              //$scope.error = true;
+          }
+        )
+
+      })
+      .catch(function (response) {
+          alert("Blog Inserted Failed")
+         // $rootScope.UploadMessage = "File Uploaded Successfully";
+      });
     }
 
 }]);

@@ -107,11 +107,55 @@
             return deferObject.promise;
         }
     };
+
+    UploadImage = {
+
+        PostPromise: function (fd) {
+            deferObject = deferObject || $q.defer();
+            $http.post(API_InsertBlog + "/0/0/0", fd, {
+                withCredentials: true,
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity
+            }).success(function (data, textStatus, jQxhr) {
+                deferObject.resolve(data);
+            })
+      .catch(function (jqXhr, textStatus, errorThrown) {
+          deferObject.reject(errorThrown);
+      })
+            return deferObject.promise;
+        }
+    };
+
+    UpdteUploadImage = {
+
+        PostPromise: function (PostData) {
+            deferObject = deferObject || $q.defer();
+            $.ajax({
+                url: API_UpdateBlogDetails,
+                dataType: 'json',
+                type: 'post',
+                contentType: 'application/json',
+                data: JSON.stringify(PostData),
+                processData: false,
+                async: false,
+                success: function (data, textStatus, jQxhr) {
+                    deferObject.resolve(data);
+                },
+                error: function (jqXhr, textStatus, errorThrown) {
+                    deferObject.reject(errorThrown);
+                }
+            });
+            return deferObject.promise;
+        }
+
+    };
     return {
         GetUserList: GetUserList,
         GetUserPlanList: GetUserPlanList,
         GetUserInvestmentDetailsList: GetUserInvestmentDetailsList,
         GetUserInfoList: GetUserInfoList,
-        AdminGetActionList: AdminGetActionList
+        AdminGetActionList: AdminGetActionList,
+        UploadImage: UploadImage,
+        UpdteUploadImage: UpdteUploadImage
     }
 }])
