@@ -191,7 +191,6 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
         var URl = "http://174.143.34.193/MtSendSMS/SingleSMS.aspx?usr=crazyachievers&pass=Q8gyw3&msisdn=" + $scope.Register.mobileno + "&msg=" + message + "&sid=IFUNDA&mt=0";
 
         $http.post(URl, {
-            withCredentials: true,
             headers: { 'Content-Type': undefined },
             transformRequest: angular.identity
         })

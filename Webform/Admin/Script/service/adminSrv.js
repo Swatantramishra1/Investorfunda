@@ -149,6 +149,48 @@
         }
 
     };
+    getBlogDetails = {
+
+        getPromise: function () {
+            var promise = $http.get(API_GetBlogDetails),
+                  deferObject = deferObject || $q.defer();
+
+            promise.then(
+              // OnSuccess function
+              function (answer) {
+                  // This code will only run if we have a successful promise.
+                  deferObject.resolve(answer);
+              },
+              // OnFailure function
+              function (reason) {
+                  // This code will only run if we have a failed promise.
+                  deferObject.reject(reason);
+              });
+
+            return deferObject.promise;
+        }
+    };
+    deleteBlockDetails = {
+
+        getPromise: function (BlogID) {
+            var promise = $http.get(API_DeleteBlog + BlogID),
+                  deferObject = deferObject || $q.defer();
+
+            promise.then(
+              // OnSuccess function
+              function (answer) {
+                  // This code will only run if we have a successful promise.
+                  deferObject.resolve(answer);
+              },
+              // OnFailure function
+              function (reason) {
+                  // This code will only run if we have a failed promise.
+                  deferObject.reject(reason);
+              });
+
+            return deferObject.promise;
+        }
+    };
     return {
         GetUserList: GetUserList,
         GetUserPlanList: GetUserPlanList,
@@ -156,6 +198,8 @@
         GetUserInfoList: GetUserInfoList,
         AdminGetActionList: AdminGetActionList,
         UploadImage: UploadImage,
-        UpdteUploadImage: UpdteUploadImage
+        UpdteUploadImage: UpdteUploadImage,
+        getBlogDetails: getBlogDetails,
+        deleteBlockDetails: deleteBlockDetails
     }
 }])

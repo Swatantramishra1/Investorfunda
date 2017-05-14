@@ -1407,6 +1407,28 @@
               }
             )
             }
+
+            $scope.ListMaritalStatus = [
+            {
+                ID: "1",
+                Name:"Single"
+            },
+            {
+                ID: "2",
+                Name: "Married"
+            }
+            ,
+            {
+                ID: "3",
+                Name: "Widowed"
+            }
+            ,
+            {
+                ID: "4",
+                Name: "Divorced"
+            }
+
+            ]
             $scope.showCustomToast = function () {
                 $mdToast.show({
                     hideDelay: 30000,
@@ -1741,7 +1763,13 @@
             }, $scope.dt = Date.now()
 
             $scope.Update = function () {
+
+                
+
                 let UserDetailsUpdate = {
+
+
+
                     "User_ID": $localStorage.TempUserDetails.LoginID,
                     "userprofile": $scope.UserDetailInfo.UserProfileData,
 

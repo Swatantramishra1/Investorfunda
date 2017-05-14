@@ -11,10 +11,47 @@
          border:1px solid gray;
      }
 </style>
-<form>
+<div class="col-lg-12" style="margin-bottom: 20px;padding-left: 0;margin-top: -15px;">
+    <input class="btn btn-primary" type="button" value="Add Blog" ng-show="!adDeditBlog" ng-click="AddBlog()" />
+    <input class="btn btn-success" type="button" value="Back" ng-show="adDeditBlog" ng-click="BlogBack()" />
+</div>
+
+<div class="col-lg-12" style="margin-bottom: 20px;padding-left: 0;" ng-show="!adDeditBlog">
+    <table class="table table-bordered" ng-show="DetailsBlogList.length>0">
+        <thead>
+            <tr>
+                <th>Sr</th>
+                <th>Title</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="list in DetailsBlogList">
+                <td>{{$index+1}}</td>
+                <td>{{list.Blog_Header}}</td>
+                <td style="text-align: right;"> <input class="btn btn-primary" type="button" value="Edit" style="margin-right:10px" ng-click="EditBlog($index)" /><input class="btn btn-danger" ng-click="deleteBlog($index)" type="button" value="Delete" /> </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <span ng-show="DetailsBlogList.length == 0">There is no record found</span>
+</div>
+<form ng-show="adDeditBlog">
     <div class="form-group">
         <label for="email">Header</label>
         <input type="text" class="form-control" ng-model="blog.header" >
+    </div>
+    <div class="form-group">
+        <label for="email">Tags</label>
+        <input type="text" class="form-control" ng-model="blog.Tags">
+    </div>
+    <div class="form-group">
+        <label for="email">Summary</label>
+        <input type="text" class="form-control" ng-model="blog.Summary">
+    </div>
+    <div class="form-group">
+        <label for="email">Author</label>
+        <input type="text" class="form-control" ng-model="blog.Author">
     </div>
     <div class="form-group">
         <label for="pwd">Image</label>

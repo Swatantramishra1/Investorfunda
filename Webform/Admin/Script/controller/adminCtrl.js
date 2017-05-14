@@ -1,7 +1,8 @@
-﻿app.controller("adminCtrl", ['$scope', 'adminSrv', '$state', '$localStorage', 'textAngularManager', '$http', function ($scope, adminSrv, $state, $localStorage, textAngularManager, $http) {
+﻿app.controller("adminCtrl", ['$scope', 'adminSrv', '$state', '$localStorage', 'textAngularManager', '$rootScope', '$http', function ($scope, adminSrv, $state, $localStorage, textAngularManager,$rootScope, $http) {
     $scope.user = {
         Name: ""
     }
+    $scope.EditBlogStatus = false;
     $scope.version = textAngularManager.getVersion();
     $scope.versionNumber = $scope.version.substring(1);
     $scope.blog = {
@@ -199,52 +200,181 @@
     $scope.InsertBlog = function () {
 
 
+        if (!$scope.EditBlogStatus)
+        {
+            var Datafiles = document.getElementById("blogImage");
+            var fd = new FormData();
+            //Take the first selected file
+            fd.append("file", Datafiles.files[0]);
 
-
-        var Datafiles = document.getElementById("blogImage");
-        var fd = new FormData();
-        //Take the first selected file
-        fd.append("file", Datafiles.files[0]);
-
-        $http.post(API_InsertBlog + "/0/0/0", fd, {
-            headers: { 'Content-Type': undefined },
-            transformRequest: angular.identity
-        })
-      .success(function (data, status) {
-          var postData = {
-              "request":{
-                  Header: $scope.blog.header,
-                  Content: $scope.blog.htmlContent,
-                  BlogID: data.InsertBlogDetailsResult.Result,
-                  CategoryID: $scope.blog.category
-              }
-          }
-
-          var UpdteUploadImage = adminSrv.UpdteUploadImage.PostPromise(postData);
-          UpdteUploadImage.then(
-          // OnSuccess function
-          function (answer) {
-              if (answer.UpdateBlogDetailsResult.ResponseCode == "0") {
-
-                 alert("Blog Inserted Succesfully")
-
+            $http.post(API_InsertBlog + "/0/0/0", fd, {
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity
+            })
+          .success(function (data, status) {
+              var postData = {
+                  "request": {
+                      Header: $scope.blog.header,
+                      Content: $scope.blog.htmlContent,
+                      BlogID: data.InsertBlogDetailsResult.Result,
+                      CategoryID: $scope.blog.category,
+                      Tags: $scope.blog.Tags,
+                      Summary: $scope.blog.Summary,
+                      Author: $scope.blog.Author
+                  }
               }
 
-          },
-          // OnFailure function
-          function (reason) {
+              var UpdteUploadImage = adminSrv.UpdteUploadImage.PostPromise(postData);
+              UpdteUploadImage.then(
+              // OnSuccess function
+              function (answer) {
+                  alert("Blog Inserted Succesfully")
 
-              
-              //$scope.somethingWrong = reason;
-              //$scope.error = true;
-          }
-        )
+              },
+              // OnFailure function
+              function (reason) {
 
-      })
-      .catch(function (response) {
-          alert("Blog Inserted Failed")
-         // $rootScope.UploadMessage = "File Uploaded Successfully";
-      });
+
+                  //$scope.somethingWrong = reason;
+                  //$scope.error = true;
+              }
+            )
+
+          })
+          .catch(function (response) {
+              alert("Blog Inserted Failed")
+              // $rootScope.UploadMessage = "File Uploaded Successfully";
+          });
+        }
+        else {
+            var UpdateBlog = function () {
+                var postData = {
+                    "request": {
+                        Header: $scope.blog.header,
+                        Content: $scope.blog.htmlContent,
+                        BlogID: $scope.blog.Blog_ID,
+                        CategoryID: $scope.blog.category,
+                        Tags: $scope.blog.Tags,
+                        Summary: $scope.blog.Summary,
+                        Author: $scope.blog.Author
+                    }
+                }
+
+                var UpdteUploadImage = adminSrv.UpdteUploadImage.PostPromise(postData);
+                UpdteUploadImage.then(
+                // OnSuccess function
+                function (answer) {
+                    alert("Blog Inserted Succesfully")
+
+                },
+                // OnFailure function
+                function (reason) {
+
+                }
+              )
+            }
+
+            if (document.getElementById("blogImage").value != "") {
+                var Datafiles = document.getElementById("blogImage");
+
+                var fd = new FormData();
+                //Take the first selected file
+                fd.append("file", Datafiles.files[0]);
+                var URL = API_UpdateBlogImage + $scope.blog.Blog_ID;
+                $http.post(URL, fd, {
+                    headers: { 'Content-Type': undefined },
+                    transformRequest: angular.identity
+                })
+              .success(function (data, status) {
+                  UpdateBlog();
+
+              })
+              .catch(function (response) {
+                  alert("Blog Inserted Failed")
+                  // $rootScope.UploadMessage = "File Uploaded Successfully";
+              });
+            }
+        }
+
+        
     }
 
+  
+    var getBlogDetails = adminSrv.getBlogDetails.getPromise();
+    getBlogDetails.then(
+        // OnSuccess function
+        function (answer) {
+
+
+            $scope.DetailsBlogList = answer.data.GetBlogDetailsResult.Result;
+
+
+        },
+        // OnFailure function
+        function (reason) {
+            
+            $scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
+            //$scope.somethingWrong = reason;
+            //$scope.error = true;
+        }
+      )
+
+    $scope.AddBlog = function () {
+        $scope.blog = {
+            header: "",
+            Image: "",
+            category: "",
+            htmlContent: "Write your Blog Here",
+            Author: "",
+            Tags: "",
+            Summary:""
+        }
+        $scope.adDeditBlog = true;
+    }
+
+    $scope.BlogBack = function () {
+        $scope.adDeditBlog = false;
+    }
+
+
+    $scope.deleteBlog = function (Index) {
+        var deleteBlockDetails = adminSrv.deleteBlockDetails.getPromise($scope.DetailsBlogList[Index].Blog_ID);
+        deleteBlockDetails.then(
+        // OnSuccess function
+        function (answer) {
+            alert("Deleted Succesfully");
+            $scope.DetailsBlogList.splice(Index, 1);
+            if (answer.data.GetUserProfileDetailsInfoResult.ResponseCode == "0") {
+
+                $scope.UserInfoDetails = answer.data.GetUserProfileDetailsInfoResult.Result;
+
+            }
+
+        },
+        // OnFailure function
+        function (reason) {
+
+            $scope.ErrorMessage = answer.GetUserPlanlistsResult.ResponseMessage;
+            //$scope.somethingWrong = reason;
+            //$scope.error = true;
+        }
+      )
+    }
+
+    $scope.EditBlog=function(Index)
+    {
+        $scope.blog = {
+            header: $scope.DetailsBlogList[Index].Blog_Header,
+            Image: "",
+            category: $scope.DetailsBlogList[Index].Blog_CategoryID,
+            htmlContent: $scope.DetailsBlogList[Index].Blog_Content,
+            Author: $scope.DetailsBlogList[Index].Author,
+            Tags: $scope.DetailsBlogList[Index].Tags,
+            Summary: $scope.DetailsBlogList[Index].Summary,
+            Blog_ID: $scope.DetailsBlogList[Index].Blog_ID
+        }
+        $scope.adDeditBlog = true;
+        $scope.EditBlogStatus = true;
+
+    }
 }]);
