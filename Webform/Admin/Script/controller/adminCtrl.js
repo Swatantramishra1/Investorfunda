@@ -264,6 +264,7 @@
                 UpdteUploadImage.then(
                 // OnSuccess function
                 function (answer) {
+                    $scope.EditBlogStatus = false;
                     alert("Blog Inserted Succesfully")
 
                 },
