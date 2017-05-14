@@ -380,13 +380,13 @@
 
     if($state.current.name=="blog")
     {
-        var getBlockDetails = FundsService.getBlockDetails.getPromise();
-        getBlockDetails.then(
+        var getBlogDetails = FundsService.getBlogDetails.getPromise();
+        getBlogDetails.then(
         // OnSuccess function
         function (answer) {
 
 
-            $rootScope.DetailsBlogList = answer.data.GetBlockDetailsResult.Result;
+            $rootScope.DetailsBlogList = answer.data.GetBlogDetailsResult.Result;
 
 
         },

@@ -187,10 +187,10 @@ app.service('FundsService', ['$http', '$q', function ($http, $q) {
         }
 
     }
-    getBlockDetails = {
+    getBlogDetails = {
 
         getPromise: function () {
-            var promise = $http.get(API_GetBlockDetails),
+            var promise = $http.get(API_GetBlogDetails),
                   deferObject = deferObject || $q.defer();
 
             promise.then(
@@ -218,7 +218,7 @@ app.service('FundsService', ['$http', '$q', function ($http, $q) {
         FundAssetAllocation: FundAssetAllocation,
         FundTopHolding: FundTopHolding,
         CreatePlan: CreatePlan,
-        getBlockDetails: getBlockDetails
+        getBlogDetails: getBlogDetails
     };
 
 }]);
