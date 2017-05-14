@@ -295,6 +295,9 @@
                   // $rootScope.UploadMessage = "File Uploaded Successfully";
               });
             }
+            else {
+                UpdateBlog();
+            }
         }
 
         
