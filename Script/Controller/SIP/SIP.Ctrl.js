@@ -19,7 +19,8 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
             EstematedYear: "",
             CalculatedTotalMoney: "",
             Portfolio_MonthlyExpenditure: "",
-            Portfolio_CurrentAge: ""
+            Portfolio_CurrentAge: "",
+            Portfolio_ROInflation:"6"
 
         };
     $scope.addCommas= function(nStr) {
