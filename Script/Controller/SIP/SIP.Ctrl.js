@@ -2,7 +2,77 @@
 function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsService, GetCommonData, fileUploadService, $http) {
     $scope.val = "";
     var BseSchemeIDs = "";
-    
+    $scope.Portfolio_Parameter =
+        {
+            Portfolio_ID: "1",
+            Portfolio_Name: "",
+            Portfolio_Year: "",
+            Portfolio_Duration: "",
+            Portfolio_FeesPerYear: "",
+            Portfolio_LivingPerYear: "0",
+            Portfolio_LumpSumAmount: "",
+            Portfolio_InflationRate: "6",
+            Portfolio_ChildCurrentAge: "",
+            TotalCourseFee: "",
+            TotalLivingExpensesFee: "",
+            TotalMonthlyInvestment: "",
+            EstematedYear: "",
+            CalculatedTotalMoney: "",
+            Portfolio_MonthlyExpenditure: "",
+            Portfolio_CurrentAge: ""
+
+        };
+    $scope.addCommas= function(nStr) {
+
+        nStr += '';
+
+        x = nStr.split('.');
+
+        x1 = x[0];
+
+        x2 = x.length > 1 ? '.' + x[1] : '';
+
+        var rgx = /(\d+)(\d{3})/;
+
+        var z = 0;
+
+        var len = String(x1).length;
+
+        var num = parseInt((len / 2) - 1);
+
+
+
+        while (rgx.test(x1)) {
+
+            if (z > 0) {
+
+                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+
+            }
+
+            else {
+
+                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+
+                rgx = /(\d+)(\d{2})/;
+
+            }
+
+            z++;
+
+            num--;
+
+            if (num == 0) {
+
+                break;
+
+            }
+
+        }
+
+        return x1 + x2;
+
+    };
     $scope.uploadFile1 = function () {
       var  Datafiles = document.getElementById("datafile");
         var fd = new FormData();
@@ -2311,6 +2381,98 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
             }
     };
+    $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge = {
+        value: 15,
+        options:
+            {
+                showSelectionBar: true,
+                getSelectionBarColor: function () {
+                    return '#2AE02A';
+                },
+                ceil: 90,
+                floor: 0,
+                onChange: function () { checkSliderVal() }
+
+            }
+    };
+
+    $scope.Portfolio_Parameter.Portfolio_Year = {
+        value: 15,
+        options:
+            {
+                showSelectionBar: true,
+                getSelectionBarColor: function () {
+                    return '#2AE02A';
+                },
+                ceil: 90,
+                floor: 0,
+                onChange: function () { checkSliderVal() }
+
+            }
+    };
+
+
+    if ($state.current.name == "Tour")
+    {
+        $scope.Portfolio_Parameter.Portfolio_Year = {
+            value: 2018,
+            options:
+                {
+                    showSelectionBar: true,
+                    getSelectionBarColor: function () {
+                        return '#2AE02A';
+                    },
+                    ceil: 2090,
+                    floor: 2018,
+                    onChange: function () { checkSliderVal() }
+
+                }
+        };
+    }
+
+    $scope.Portfolio_Parameter.Portfolio_Duration = {
+        value: 2,
+        options:
+            {
+                showSelectionBar: true,
+                getSelectionBarColor: function () {
+                    return '#2AE02A';
+                },
+                ceil: 25,
+                floor: 0,
+                onChange: function () { checkSliderVal() }
+
+            }
+    };
+
+    $scope.Portfolio_Parameter.Portfolio_CurrentAge = {
+        value: 2,
+        options:
+            {
+                showSelectionBar: true,
+                getSelectionBarColor: function () {
+                    return '#2AE02A';
+                },
+                ceil: 70,
+                floor: 0,
+                onChange: function () { checkSliderVal() }
+
+            }
+    };
+    $scope.Portfolio_Parameter.childCurrentAge = {
+        value: 2,
+        options:
+            {
+                showSelectionBar: true,
+                getSelectionBarColor: function () {
+                    return '#2AE02A';
+                },
+                ceil: 70,
+                floor: 0,
+                onChange: function () { checkSliderVal() }
+
+            }
+    };
     $rootScope.showFooterView = false;
     $scope.SIP_GOAL_SHOW = true;
     var currentState = "";
@@ -2975,26 +3137,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         $scope.Portfolio_Parameter.Gold = CalculatedEquityDebtMoney[0].Gold;
         $scope.ChartFunctionForPortFolio();
     }
-    $scope.Portfolio_Parameter =
-        {
-            Portfolio_ID: "1",
-            Portfolio_Name: "",
-            Portfolio_Year: "",
-            Portfolio_Duration: "",
-            Portfolio_FeesPerYear: "",
-            Portfolio_LivingPerYear: "0",
-            Portfolio_LumpSumAmount: "",
-            Portfolio_InflationRate: "6",
-            Portfolio_ChildCurrentAge: "",
-            TotalCourseFee: "",
-            TotalLivingExpensesFee: "",
-            TotalMonthlyInvestment: "",
-            EstematedYear: "",
-            CalculatedTotalMoney: "",
-            Portfolio_MonthlyExpenditure: "",
-            Portfolio_CurrentAge: ""
-
-        };
+    
 
 
     $scope.ShowDiv = function (Number) {
@@ -3881,21 +4024,21 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         $scope.Global_Message = "";
         if (currentState == "CarPlan")
         {
-            $scope.Portfolio_Parameter.Portfolio_Year = $scope.SIP_Portfolio_Year.value;
+            $scope.Portfolio_Parameter.Portfolio_Year.value = $scope.SIP_Portfolio_Year.value;
         }
         
         if (Type == undefined) {
-            $scope.Portfolio_Parameter.TotalCourseFee = (parseInt($scope.Portfolio_Parameter.Portfolio_LivingPerYear) + parseInt($scope.Portfolio_Parameter.Portfolio_FeesPerYear)) * ($scope.Portfolio_Parameter.Portfolio_Duration);
+            $scope.Portfolio_Parameter.TotalCourseFee = (parseInt($scope.Portfolio_Parameter.Portfolio_LivingPerYear) + parseInt($scope.Portfolio_Parameter.Portfolio_FeesPerYear)) * ($scope.Portfolio_Parameter.Portfolio_Duration.value);
 
-            calculator($scope.Portfolio_Parameter.Portfolio_LumpSumAmount, $scope.Portfolio_Parameter.Portfolio_Year, $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge);
+            calculator($scope.Portfolio_Parameter.Portfolio_LumpSumAmount, $scope.Portfolio_Parameter.Portfolio_Year.value, $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge.value);
 
-            $scope.Portfolio_Parameter.TotalLivingExpensesFee = parseInt($scope.Portfolio_Parameter.Portfolio_LivingPerYear) * ($scope.Portfolio_Parameter.Portfolio_Duration);
+            $scope.Portfolio_Parameter.TotalLivingExpensesFee = parseInt($scope.Portfolio_Parameter.Portfolio_LivingPerYear) * ($scope.Portfolio_Parameter.Portfolio_Duration.value);
 
             $scope.SIP_GOAL_SHOW = false;
             $scope.SIP_GOAL_Setting_SHOW = true;
         }
         else {
-            calculator($scope.Portfolio_Parameter.Portfolio_LumpSumAmount, $scope.Portfolio_Parameter.Portfolio_Year, $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge);
+            calculator($scope.Portfolio_Parameter.Portfolio_LumpSumAmount, $scope.Portfolio_Parameter.Portfolio_Year, $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge.value);
         }
 
     };
@@ -3985,7 +4128,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
     };
     $scope.InvestAndGo = function (From) {
         if (currentState == "CarPlan") {
-            $scope.Portfolio_Parameter.Portfolio_Year = $scope.SIP_Portfolio_Year.value;
+            $scope.Portfolio_Parameter.Portfolio_Year.value = $scope.SIP_Portfolio_Year.value;
         }
         if ($localStorage.ChildState) {
 
@@ -3998,9 +4141,9 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                     "MasterPlan_ID": $scope.Portfolio_Parameter.Portfolio_ID,
                     "User_ID": "",
                     "GoalName": $scope.Portfolio_Parameter.Portfolio_Name,
-                    "PresentAge": $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge,
-                    "GoalTimeToStart": $scope.Portfolio_Parameter.Portfolio_Year,
-                    "GoalDuration": $scope.Portfolio_Parameter.Portfolio_Duration,
+                    "PresentAge": $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge.value,
+                    "GoalTimeToStart": $scope.Portfolio_Parameter.Portfolio_Year.value,
+                    "GoalDuration": $scope.Portfolio_Parameter.Portfolio_Duration.value,
                     "GoalPerYearCost": $scope.Portfolio_Parameter.Portfolio_FeesPerYear,
                     "GoalPerYearLivingCost": $scope.Portfolio_Parameter.Portfolio_LivingPerYear,
                     "GoalLumpsum": $scope.Portfolio_Parameter.Portfolio_LumpSumAmount,
@@ -4083,9 +4226,9 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                     "MasterPlan_ID": $scope.Portfolio_Parameter.Portfolio_ID,
                     "User_ID": "",
                     "GoalName": $scope.Portfolio_Parameter.Portfolio_Name,
-                    "PresentAge": $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge,
-                    "GoalTimeToStart": $scope.Portfolio_Parameter.Portfolio_Year,
-                    "GoalDuration": $scope.Portfolio_Parameter.Portfolio_Duration,
+                    "PresentAge": $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge.value,
+                    "GoalTimeToStart": $scope.Portfolio_Parameter.Portfolio_Year.value,
+                    "GoalDuration": $scope.Portfolio_Parameter.Portfolio_Duration.value,
                     "GoalPerYearCost": $scope.Portfolio_Parameter.Portfolio_FeesPerYear,
                     "GoalPerYearLivingCost": $scope.Portfolio_Parameter.Portfolio_LivingPerYear,
                     "GoalLumpsum": $scope.Portfolio_Parameter.Portfolio_LumpSumAmount,
@@ -4162,7 +4305,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
   
     $rootScope.InvestNow = function (Page) {
         if (currentState == "CarPlan") {
-            $scope.Portfolio_Parameter.Portfolio_Year = $scope.SIP_Portfolio_Year.value;
+            $scope.Portfolio_Parameter.Portfolio_Year.value = $scope.SIP_Portfolio_Year.value;
         }
         if ($localStorage.setCounterStatus || Page !=undefined)
         {
@@ -4180,9 +4323,9 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                                 "MasterPlan_ID": "1",
                                 "User_ID": "",
                                 "GoalName": $scope.Portfolio_Parameter.Portfolio_Name,
-                                "PresentAge": $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge,
-                                "GoalTimeToStart": $scope.Portfolio_Parameter.Portfolio_Year,
-                                "GoalDuration": $scope.Portfolio_Parameter.Portfolio_Duration,
+                                "PresentAge": $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge.value,
+                                "GoalTimeToStart": $scope.Portfolio_Parameter.Portfolio_Year.value,
+                                "GoalDuration": $scope.Portfolio_Parameter.Portfolio_Duration.value,
                                 "GoalPerYearCost": $scope.Portfolio_Parameter.Portfolio_FeesPerYear,
                                 "GoalPerYearLivingCost": $scope.Portfolio_Parameter.Portfolio_LivingPerYear,
                                 "GoalLumpsum": $scope.Portfolio_Parameter.Portfolio_LumpSumAmount,
@@ -4248,9 +4391,9 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                                 "MasterPlan_ID": "2",
                                 "User_ID": "",
                                 "GoalName": $scope.Portfolio_Parameter.Portfolio_Name,
-                                "PresentAge": $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge,
+                                "PresentAge": $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge.value,
                                 "GoalTimeToStart": "",
-                                "GoalDuration": $scope.Portfolio_Parameter.Portfolio_Duration,
+                                "GoalDuration": $scope.Portfolio_Parameter.Portfolio_Duration.value,
                                 "GoalPerYearCost": parseInt($scope.Portfolio_Parameter.SIP_AmountInvestment),
                                 "GoalPerYearLivingCost": "",
                                 "GoalLumpsum": $scope.Portfolio_Parameter.Portfolio_LumpSumAmount,
@@ -4376,7 +4519,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                                 "MasterPlan_ID": "3",
                                 "User_ID": "",
                                 "GoalName": $scope.Portfolio_Parameter.Portfolio_Name,
-                                "PresentAge": $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge,
+                                "PresentAge": $scope.Portfolio_Parameter.Portfolio_ChildCurrentAge.value,
                                 "GoalTimeToStart": "",
                                 "GoalDuration": "",
                                 "GoalPerYearCost": "",
@@ -4507,7 +4650,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                                 "User_ID": "",
                                 "GoalName": $scope.Portfolio_Parameter.Portfolio_Name,
                                 "PresentAge": $scope.Portfolio_Parameter.yourCurrentAge,
-                                "GoalTimeToStart": $scope.Portfolio_Parameter.Portfolio_Year,
+                                "GoalTimeToStart": $scope.Portfolio_Parameter.Portfolio_Year.value,
                                 "GoalDuration": "",
                                 "GoalPerYearCost": "",
                                 "GoalPerYearLivingCost": "",
@@ -4574,7 +4717,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                                 "GoalName": "START SIP",
                                 "PresentAge": "",
                                 "GoalTimeToStart": "",
-                                "GoalDuration": $scope.Portfolio_Parameter.Portfolio_Year,
+                                "GoalDuration": $scope.Portfolio_Parameter.Portfolio_Year.value,
                                 "GoalPerYearCost": "",
                                 "GoalPerYearLivingCost": "",
                                 "GoalLumpsum": $scope.Portfolio_Parameter.TotalMonthlyInvestment,
@@ -4641,7 +4784,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                                 "GoalName": "Easy SIP",
                                 "PresentAge": "",
                                 "GoalTimeToStart": "",
-                                "GoalDuration": $scope.Portfolio_Parameter.Portfolio_Year,
+                                "GoalDuration": $scope.Portfolio_Parameter.Portfolio_Year.value,
                                 "GoalPerYearCost": "",
                                 "GoalPerYearLivingCost": "",
                                 "GoalLumpsum": $scope.Portfolio_Parameter.TotalMonthlyInvestment,
@@ -5431,13 +5574,13 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
 
     $scope.PortfolioCar_Calculate = function () {
         if (currentState == "CarPlan") {
-            $scope.Portfolio_Parameter.Portfolio_Year = $scope.SIP_Portfolio_Year.value;
+            $scope.Portfolio_Parameter.Portfolio_Year.value = $scope.SIP_Portfolio_Year.value;
         }
         $scope.BuyCar_Step1 = false;
         $scope.BuyCar_Step2 = true;
-        $scope.Portfolio_Parameter.EstematedYear = $scope.Portfolio_Parameter.Portfolio_Year;
+        $scope.Portfolio_Parameter.EstematedYear = $scope.Portfolio_Parameter.Portfolio_Year.value;
         $scope.Portfolio_Parameter.EstematedMonth = $scope.Portfolio_Parameter.Portfolio_Month;
-        var Year = $scope.Portfolio_Parameter.Portfolio_Year;
+        var Year = $scope.Portfolio_Parameter.Portfolio_Year.value;
         CalculateCarAmount($scope.Portfolio_Parameter.Portfolio_GoalAmount, $scope.Portfolio_Parameter.Portfolio_ROInflation, parseInt(Year));
     };
 
@@ -5450,7 +5593,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         //document.getElementById("WeddingAmtVal").innerHTML =
         //GetRoundingFigure(weddingCost * 100000)[0] +
         //" <span class='fwNormal'>" + GetRoundingFigure(weddingCost * 100000)[2] + "</span>";
-        var marriageyeargap = $scope.Portfolio_Parameter.PlanWeddingAge - $scope.Portfolio_Parameter.childCurrentAge;
+        var marriageyeargap = $scope.Portfolio_Parameter.PlanWeddingAge - $scope.Portfolio_Parameter.childCurrentAge.value;
         $scope.Portfolio_Parameter.EstematedYear = marriageyeargap;
         let marrigeYearWillbe = parseInt(presentyear) + parseInt(marriageyeargap);
         $scope.weddingYear = marrigeYearWillbe;
@@ -5497,12 +5640,12 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
     $scope.BuyTour_Step1 = true;
     function CalculateWorldTourAmount() {
         if (currentState == "CarPlan") {
-            $scope.Portfolio_Parameter.Portfolio_Year = $scope.SIP_Portfolio_Year.value;
+            $scope.Portfolio_Parameter.Portfolio_Year.value = $scope.SIP_Portfolio_Year.value;
         }
-        var WorldTourTenure = parseInt($scope.Portfolio_Parameter.Portfolio_Year) - presentyear;
+        var WorldTourTenure = parseInt($scope.Portfolio_Parameter.Portfolio_Year.value) - presentyear;
         $scope.Portfolio_Parameter.EstematedYear = WorldTourTenure;
         $scope.PlanBudget = $scope.Portfolio_Parameter.Portfolio_GoalAmount;
-        $scope.planForTour = $scope.Portfolio_Parameter.Portfolio_Year;
+        $scope.planForTour = $scope.Portfolio_Parameter.Portfolio_Year.value;
         //var WorldTourInflatedAmount = GetFutureValue(worldTourBudgetAmt * 100000, WorldTourTenure, inflationRate);
 
         var WorldTourInflatedAmount = GetFutureValue($scope.Portfolio_Parameter.Portfolio_GoalAmount, WorldTourTenure, $scope.Portfolio_Parameter.Portfolio_InflationRate);
@@ -5770,7 +5913,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
         $scope.Retirement_Step1 = false;
         $scope.Retirement_Step2 = true;
 
-        $scope.Portfolio_Parameter.CalculatedTotalMoney = CalculateRetirementAmount($scope.Portfolio_Parameter.Portfolio_MonthlyExpenditure, $scope.Portfolio_Parameter.Portfolio_InflationRate, $scope.SIP_RetireAge.value, $scope.Portfolio_Parameter.Portfolio_CurrentAge);
+        $scope.Portfolio_Parameter.CalculatedTotalMoney = CalculateRetirementAmount($scope.Portfolio_Parameter.Portfolio_MonthlyExpenditure, $scope.Portfolio_Parameter.Portfolio_InflationRate, $scope.SIP_RetireAge.value, $scope.Portfolio_Parameter.Portfolio_CurrentAge.value);
         $scope.Portfolio_Parameter.TotalInvestedMoneyByUser = (parseInt($scope.Portfolio_Parameter.SIP_AmountInvestment) * parseInt($scope.Portfolio_Parameter.InvestedTillYear));
 
         $scope.Portfolio_Parameter.TotalMonthlyInvestment = parseInt($scope.Portfolio_Parameter.SIP_AmountInvestment) / 12;

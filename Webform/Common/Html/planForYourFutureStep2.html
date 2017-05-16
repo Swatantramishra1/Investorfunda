@@ -243,7 +243,7 @@ a:hover {
                 <div class="spacer"></div>
                 <div class="circle text-center" style="border-radius:50% !important"><h1><a href="#" style="color:white">
                     
-                                            <i class="fa fa-rupee"></i>  {{Portfolio_Parameter.CalculatedTotalMoney}}
+                                            <i class="fa fa-rupee"></i>  {{addCommas(Portfolio_Parameter.CalculatedTotalMoney)}}
                     </a></h1> </div>
             </article>
             
@@ -274,7 +274,7 @@ a:hover {
             <!-- Retirement -->
             <md-input-container class="md-block" ng-show="showDataStep2.isShowDataRetirement">
                 <label>{{showDataStep2.Name1}} :</label>
-                <input value="{{Portfolio_Parameter.Portfolio_CurrentAge}}" class="textColor" disabled>
+                <input value="{{Portfolio_Parameter.Portfolio_CurrentAge.value}}" class="textColor" disabled>
             </md-input-container>
 
             <md-input-container class="md-block" ng-show="showDataStep2.isShowDataRetirement">

@@ -1,8 +1,57 @@
-﻿<section class="insurance-headline" style="background-color:white">
+﻿
+<style>
+    .rzslider .rz-pointer:after {
+        position: absolute;
+        top: 3px !important;
+        left: 3px !important;
+        width: 27px !important;
+        height: 27px !important;
+        background: #ffffff !important;
+        border-radius: 50% !important;
+        content: '';
+    }
+
+    .rzslider .rz-pointer {
+        top: -16px;
+        z-index: 3;
+        width: 33px !important;
+        height: 33px !important;
+        cursor: pointer;
+        background-color: rgba(102,0,51,1) !important;
+        border-radius: 16px;
+    }
+
+    span.rz-bar.rz-selection {
+        background-color: rgba(102,0,51,1) !important;
+    }
+
+    .rzslider .rz-bar {
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        height: 8px;
+        background: #d8e0f3 !important;
+        border-radius: 2px;
+    }
+
+    #circle {
+        padding-top: 11px;
+        border: 3px solid rgba(102,0,51,1);
+        width: 50px;
+        height: 50px;
+        border-radius: 50% !important;
+        /* background: red; */
+        color: black;
+        text-align: center;
+        float: right;
+        margin-right: 20px;
+    }
+</style>
+<section class="insurance-headline" style="background-color:white">
     <div class="row">
         <div class="shadow-wrapper margin-bottom-10">
             <div class="tag-box tag-box-v1 box-shadow shadow-effect-2">
-                <h2><strong>CHILD MARRIAGE PLAN</strong>   </h2>
+                <h2><strong>CHILD'S MARRIAGE PLAN</strong>   </h2>
                 <p ><h3 style="font-size: 15px;font-weight: 500">Make sure you have everything prepared for her big day</h3> </p>
             </div>
         </div>
@@ -17,10 +66,23 @@
             </div>
             <div ng-class="BuyChild_Step2 ? 'col-md-12' : 'col-md-7'" style="text-align:left;padding-top:20px" md-theme="default">
                 <div class="col-md-12" style="padding:0px" ng-show="BuyChild_Step1">
-                    <md-input-container class="md-block">
+                    <!--<md-input-container class="md-block">
                         <label>Your child's current age? </label>
                         <input ng-model="Portfolio_Parameter.childCurrentAge">
-                    </md-input-container>
+                    </md-input-container>-->
+                    <div class="row margin-bottom-20">
+                        <div class="col-md-9">
+                            Your child's current age?(<span class="red-text">in Years</span> )
+
+                            <rzslider rz-slider-model="Portfolio_Parameter.childCurrentAge.value"
+                                      rz-slider-options="Portfolio_Parameter.childCurrentAge.options"></rzslider>
+                        </div>
+                        <div class="col-md-3" style="margin-top: 32px;">
+                            <div id="circle">
+                                {{Portfolio_Parameter.childCurrentAge.value}}
+                            </div>
+                        </div>
+                    </div>
                     <md-input-container class="md-block" style="margin-top:30px">
                         <label> At what age are you planning to get her married?</label>
                         <input ng-model="Portfolio_Parameter.PlanWeddingAge">
