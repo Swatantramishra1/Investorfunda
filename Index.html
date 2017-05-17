@@ -57,7 +57,26 @@
 	<link href="DesignContent/Plugins/Style/Others/rzslider.css" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
 
+    <style>
+        @media only screen and (max-width:500px)
+        {
+            .hide-sm {
+       display:none;
+    }
+            body{
+             width: 107%;
+            }
+            .navbar-brand{
+                margin-top:0px !important;
+            }
+        }
+        @media (max-width: 500px) {
 
+            .header-fixed .navbar-toggle {
+                margin-top: 24px;
+            }
+        }
+    </style>
 </head>
 <div id="loading"></div>
 <body class="header-fixed" style="font-family:MuseoSans,Lato,Helvetica,Arial,sans-serif !important;padding:0px">
@@ -71,7 +90,7 @@
 				<div class="topbar">
 					<div class="container">
 						<!-- Topbar Navigation -->
-						<ul class="loginbar pull-right hidden-sm hidden-md" ng-show="!LoginStatus">
+						<ul class="loginbar pull-right hide-sm hide-md" ng-show="!LoginStatus">
                             <li><a ui-sref="blog">Blog</a></li>
 							<li class="topbar-devider"></li>
 							<li><a ui-sref="contact">Contact</a></li>
