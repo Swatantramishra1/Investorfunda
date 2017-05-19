@@ -38,7 +38,8 @@ var API_getAllUserAction = ServerName + Service_Common + 'getAllUserAction/';
 //Admin Part
 var API_GetUserListAdmin = ServerName + Service_Common + 'GetUserListAdmin'; 
 var API_GetUserPlanList = ServerName + Service_Common + 'GetUserPlanlist/';
-var API_GetUserInvestmentDetails = ServerName + Service_Common + 'GetUserInvestmentDetails/';
+var API_GetUserInvestmentDetails = ServerName + Service_Common + 'GetUserInvestmentDetails/'; 
+var API_UpdateMFInvestDetails = ServerName + Service_Common + 'UpdateMFInvestDetails';
 
 //Other API Service
 //test
@@ -59,6 +60,7 @@ var API_InsertBlog = ServerName + Service_Common + 'InsertBlog';
 var API_UpdateBlogDetails = ServerName + Service_Common + 'UpdateBlogDetails'; 
 var API_GetBlogDetails = ServerName + Service_Common + 'GetBlogDetails';
 var API_DeleteBlog = ServerName + Service_Common + 'DeleteBlog/'; 
-var API_UpdateBlogImage = ServerName + Service_Common + 'UpdateBlogImage/';
+var API_UpdateBlogImage = ServerName + Service_Common + 'UpdateBlogImage/'; 
+var API_UpdateClientCode = ServerName + Service_Common + 'UpdateClientCode/';
 var API_UserRegistrationType = ServerName + Service_Common + 'UpdateUserRegistrationType';
 var API_GetDashInvestmentDetails = ServerName + Service_Common + 'GetDashInvestmentDetails/';

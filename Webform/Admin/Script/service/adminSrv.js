@@ -191,6 +191,50 @@
             return deferObject.promise;
         }
     };
+    UpdateClintCode = {
+
+        getPromise: function (URID,ClientCode) {
+            var promise = $http.get(API_UpdateClientCode + URID + "/" + ClientCode),
+                  deferObject = deferObject || $q.defer();
+
+            promise.then(
+              // OnSuccess function
+              function (answer) {
+                  // This code will only run if we have a successful promise.
+                  deferObject.resolve(answer);
+              },
+              // OnFailure function
+              function (reason) {
+                  // This code will only run if we have a failed promise.
+                  deferObject.reject(reason);
+              });
+
+            return deferObject.promise;
+        }
+    };
+    UpdateMFInvestment = {
+
+        PostPromise: function (PostData) {
+            deferObject = deferObject || $q.defer();
+            $.ajax({
+                url: API_UpdateMFInvestDetails,
+                dataType: 'json',
+                type: 'post',
+                contentType: 'application/json',
+                data: JSON.stringify(PostData),
+                processData: false,
+                async: false,
+                success: function (data, textStatus, jQxhr) {
+                    deferObject.resolve(data);
+                },
+                error: function (jqXhr, textStatus, errorThrown) {
+                    deferObject.reject(errorThrown);
+                }
+            });
+            return deferObject.promise;
+        }
+
+    };
     return {
         GetUserList: GetUserList,
         GetUserPlanList: GetUserPlanList,
@@ -200,6 +244,8 @@
         UploadImage: UploadImage,
         UpdteUploadImage: UpdteUploadImage,
         getBlogDetails: getBlogDetails,
-        deleteBlockDetails: deleteBlockDetails
+        deleteBlockDetails: deleteBlockDetails,
+        UpdateClintCode: UpdateClintCode,
+        UpdateMFInvestment: UpdateMFInvestment
     }
 }])

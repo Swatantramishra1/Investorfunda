@@ -2,6 +2,8 @@
     $scope.user = {
         Name: ""
     }
+    $scope.SortMFInvetList = [];
+    $scope.GlobalPlanID = "";
     $scope.EditBlogStatus = false;
     $scope.version = textAngularManager.getVersion();
     $scope.versionNumber = $scope.version.substring(1);
@@ -111,9 +113,20 @@
             if (answer.data.GetUserInvestmentDetailsResult.ResponseCode == "0") {
                 if (answer.data.GetUserInvestmentDetailsResult.Result.UserInvestmentSchemeDetailsData.length > 0) {
                     $state.go('UserSingleView');
-
+                    $scope.SortMFInvetList = [];
+                    $scope.GlobalPlanID = $scope.userPlanList[index].PlanID;
                     $scope.usernvestmentdetails = answer.data.GetUserInvestmentDetailsResult.Result.UserInvestmentDetailsData;
                     $scope.UserInvestmentSchemeDetailsData = answer.data.GetUserInvestmentDetailsResult.Result.UserInvestmentSchemeDetailsData;
+
+                    for(var a=0;a<$scope.UserInvestmentSchemeDetailsData.length;a++)
+                    {
+                        $scope.SortMFInvetList.push({
+                            MF_CurrentNavValue: "",
+                            DueDate: "",
+                            InvestmentSchemePlan_ID: $scope.UserInvestmentSchemeDetailsData[a].InvestmentSchemePlan_ID,
+                            SchemeName: $scope.UserInvestmentSchemeDetailsData[a].SchemeName
+                        })
+                    }
 
                 }
                 else {
@@ -380,5 +393,66 @@
         $scope.adDeditBlog = true;
         $scope.EditBlogStatus = true;
 
+    }
+
+    $scope.UpdateClientCode = function () {
+        var a = $scope.clientCode;
+        var ClintCode = document.getElementById("clientCode").value;
+        var UpdateClintCode = adminSrv.UpdateClintCode.getPromise($scope.UserInfoDetails.User_ID, ClintCode);
+        UpdateClintCode.then(
+        // OnSuccess function
+        function (answer) {
+
+            if (answer.data.UpdateClientCodeResult.ResponseCode == "0") {
+
+                alert("Client Code Updated Succesfully");
+
+            }
+
+        },
+        // OnFailure function
+        function (reason) {
+
+            $scope.ErrorMessage = answer.GetUserPlanlistsResult.ResponseMessage;
+            //$scope.somethingWrong = reason;
+            //$scope.error = true;
+        }
+      )
+    }
+
+
+    $scope.UpdateMFInvestment = function () {
+        var PostJson = {
+            Plan_ID: $scope.GlobalPlanID,
+            listMFInvestmentDetails: $scope.SortMFInvetList
+        }
+
+        console.log("Data to be posted", PostJson);
+
+        var askForPromise = adminSrv.UpdateMFInvestment.PostPromise(PostJson);
+        askForPromise.then(
+        // OnSuccess function
+        function (answer) {
+            alert("done")
+            if (answer.UserRegistrationResult.ResponseCode == "0") {
+                $localStorage.IsComplete = "1";
+                $scope.ErrorMessage = "Your registration has been successfully done . Thanks for registering with us.";
+            }
+            else {
+                $scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
+            }
+
+
+
+
+        },
+        // OnFailure function
+        function (reason) {
+            HideLoader();
+            $scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
+            //$scope.somethingWrong = reason;
+            //$scope.error = true;
+        }
+      )
     }
 }]);
