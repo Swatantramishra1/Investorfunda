@@ -137,24 +137,50 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
             };
 
         ShowLoader();
-
+        $.ajax({
+            url: API_UserRegistration,
+            dataType: 'json',
+            type: 'post',
+            contentType: 'application/json',
+            data: JSON.stringify(PostDataReq),
+            processData: false,
+            async: false,
+            success: function (data, textStatus, jQxhr)
+            {
+                HideLoader();
+                          if (data.UserRegistrationResult.ResponseCode == "0")
+                          {
+                              $localStorage.IsComplete = "1";
+                              $scope.ErrorMessage = data.UserRegistrationResult.ResponseMessage;
+                              $scope.user.username = $scope.Register.Email;
+                              $scope.selectedTab = 0;
+                          }
+                          else
+                          {
+                              $scope.ErrorMessage = data.UserRegistrationResult.ResponseMessage;
+                          }
+            },
+            error: function (jqXhr, textStatus, errorThrown) {
+                HideLoader();
+                alert("Some thing went wrong")
+                console.log(errorThrown);
+            }
+        });
 
         var askForPromise = ULoginService.Register.PostPromise(PostDataReq);
         askForPromise.then(
         // OnSuccess function
         function (answer) {
             HideLoader();
-            if (answer.UserRegistrationResult.ResponseCode == "0") {
+            if (answer.UserRegistrationResult.ResponseCode == "0")
+            {
                 $localStorage.IsComplete = "1";
-                $scope.ErrorMessage = "Your registration has been successfully done . Thanks for registering with us.";
-            }
-            else {
                 $scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
             }
-           
-                
-            
-
+            else
+            {
+                $scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
+            }
         },
         // OnFailure function
         function (reason) {
@@ -182,9 +208,59 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
         $scope.ForgotPasswordDiv = false;
         $scope.ForgotPasswordDiv2 = false;
         $scope.ForgotPasswordDivPassEnter = false;
+        ShowLoader();
+        var askForPromise = ULoginService.updatePassword.getPromise($scope.ForgotPassword.MobileNO, $scope.ForgotPassword.ConfPassword);
+          askForPromise.then(
+          // OnSuccess function
+          function (answer) {
+              HideLoader();
+              if (answer.data.UpdatePasswordResult.ResponseCode == "0")
+              {
+                 
+                  $scope.ErrorMessage = answer.data.UpdatePasswordResult.ResponseMessage;
+              }
+              else
+              {
+                  $scope.ErrorMessage = answer.data.UpdatePasswordResult.ResponseMessage;
+              }
+          },
+          // OnFailure function
+          function (reason) {
+              HideLoader();
+              $scope.ErrorMessage = answer.data.UpdatePasswordResult.ResponseMessage;
+              //$scope.somethingWrong = reason;
+              //$scope.error = true;
+          }
+        )
+
+
     };
 
+
+    $scope.forgotSendMObileSMS = function () {
+        $scope.RandomNumber = Math.floor(100000 + Math.random() * 900000);
+        var message = "Your OTP to Reset the password process for Investor Funda is" + $scope.RandomNumber;
+
+        var URl = "http://174.143.34.193/MtSendSMS/SingleSMS.aspx?usr=crazyachievers&pass=Q8gyw3&msisdn=" + $scope.ForgotPassword.MobileNO + "&msg=" + message + "&sid=IFUNDA&mt=0";
+
+        $http.post(URl, {
+            headers: { 'Content-Type': undefined },
+            transformRequest: angular.identity
+        })
+         .success(function (data, status) {
+             alert("Pass")
+             var get = data;
+
+
+         })
+         .catch(function (response) {
+
+             $scope.sendedOTP = true;
+             $scope.ForgotgetOtpBtn = true;
+         });
+    }
     $scope.SendMObileSMS = function () {
+        
         $scope.RandomNumber = Math.floor(100000 + Math.random() * 900000);
         var message = "Your OTP to complete the registration process for Investor Funda is" + $scope.RandomNumber;
 
@@ -218,5 +294,18 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
         {
             $scope.ErrorMessage = "Enter Correct OTP";
         }
+    }
+
+    $scope.forgotMatchOTP = function () {
+        if ($scope.RandomNumber == $scope.forgotMatchOTPVal) {
+            $scope.ForgotPasswordDiv = true;
+            $scope.ForgotPasswordDiv2 = false;
+            $scope.ForgotPasswordDivPassEnter = true;
+            $scope.ErrorMessage = "";
+        }
+        else {
+            $scope.ErrorMessage = "Enter Correct OTP";
+        }
+
     }
 }]);

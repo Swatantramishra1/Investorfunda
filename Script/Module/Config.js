@@ -33,7 +33,8 @@ var API_GetUserPaymentStatus = ServerName + Service_Common + 'GetUserPaymentStat
 var API_GetUserPaymentString = ServerName + Service_Common + 'GetUserPaymentString/';
 var API_GetUploadFile = ServerName + Service_Common + 'UploadFIle'; 
 var API_UpdateInvestmentActionStatus = ServerName + Service_Common + 'UpdateInvestmentActionStatus/';
-var API_getAllUserAction = ServerName + Service_Common + 'getAllUserAction/';
+var API_getAllUserAction = ServerName + Service_Common + 'getAllUserAction/'; 
+var API_UpdatePassword = ServerName + Service_Common + 'UpdatePassword/'
 
 //Admin Part
 var API_GetUserListAdmin = ServerName + Service_Common + 'GetUserListAdmin'; 

@@ -33,7 +33,7 @@
         </div>
         <div class="col-lg-10">
             <md-content>
-                <md-tabs md-dynamic-height md-border-bottom>
+                <md-tabs md-dynamic-height md-border-bottom md-selected="selectedTab">
                     <md-tab label="Login">
                         <md-content class="md-padding">
                             <div layout="column" layout-align="center center" layout-fill="layout-fill">
@@ -68,31 +68,48 @@
                                             </div>
                                         </form>
                                         <form name="ForgotPassword" ng-show="ForgotPasswordDiv2">
-                                            <md-input-container>
+                                            <!--<md-input-container>
                                                 <label>Email</label>
                                                 <input type="email" ng-model="ForgotPassword.EmailID" required />
-                                            </md-input-container>
+                                            </md-input-container>-->
                                             <md-input-container>
                                                 <label>Mobile No</label>
                                                 <input type="text" ng-model="ForgotPassword.MobileNO" required />
                                             </md-input-container>
-                                            <div layout="row" layout-align="center center" style="padding-top:20px;">
-                                                <md-button class="md-raised md-button-custom"  ng-click="ChangePassword()">Back To Login</md-button>
+                                            <div layout="row" layout-align="center center" style="padding-top:20px;" ng-show="!ForgotgetOtpBtn">
+                                                <md-button class="md-raised md-button-custom" ng-click="forgotSendMObileSMS()" >Get OTP</md-button>
                                                 <div flex="flex"></div>
-                                                <md-button href="" md-no-ink="md-no-ink" ng-click="ForgotPassWordStep2()">Submit</md-button>
+
                                             </div>
+                                            <md-input-container ng-show="ForgotgetOtpBtn">
+                                                <label>OTP</label>
+                                                <input type="text" ng-model="forgotMatchOTPVal" name="Mobile" required />
+                                                
+                                            </md-input-container>
+                                            <div layout="row" layout-align="center center" style="padding-top:20px;" ng-show="ForgotgetOtpBtn">
+                                                <md-button class="md-raised md-button-custom" ng-click="forgotMatchOTP()" type="submit">Submit</md-button>
+                                                <div flex="flex"></div>
+                                                <md-button class="md-raised md-button-custom" ng-click="ChangePassword()">Back To Login</md-button>
+                                            </div>
+                                            <!--<div layout="row" layout-align="center center" style="padding-top:20px;">
+                                                <md-button href="" md-no-ink="md-no-ink" ng-click="ForgotPassWordStep2()">Submit</md-button>
+                                                <div flex="flex"></div>
+                                                <md-button class="md-raised md-button-custom"  ng-click="ChangePassword()">Back To Login</md-button>
+                                                
+                                                
+                                            </div>-->
                                             <div layout="row" style="padding-top:20px;color:red" ng-show="ErrorMessage !=''">
                                                 {{ErrorMessage}}
                                             </div>
                                         </form>
                                         <form name="ForgotPassword" ng-show="ForgotPasswordDivPassEnter">
-                                            <md-input-container>
+                                            <!--<md-input-container>
                                                 <label>Password</label>
                                                 <input type="text" ng-model="ForgotPassword.Password" required />
-                                            </md-input-container>
+                                            </md-input-container>-->
                                             <md-input-container>
-                                                <label>Confirm Password</label>
-                                                <input type="text" ng-model="ForgotPassword.ConfPassword" required />
+                                                <label>New Password</label>
+                                                <input type="password" ng-model="ForgotPassword.ConfPassword" required />
                                             </md-input-container>
                                             <div layout="row" layout-align="center center" style="padding-top:20px;">
                                                

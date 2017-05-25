@@ -1453,12 +1453,13 @@
 
 
                         $scope.UserDetailInfo = answer.data.GetUserProfileDetailsInfoResult.Result;
+                        $scope.UserDetailInfo.UserProfileData.PANNumber = $scope.profilePanCard;
                         $scope.UserDetailInfo.UserProfileData.DividentPayMode_ID = "2";
                         $scope.UserDetailInfo.UserProfileData.CommunicationMode_ID = "3";
                         // $scope.UserDetailInfo.UserProfileData.DateOfBirth = new Date($scope.UserDetailInfo.UserProfileData.DateOfBirth);
                         document.getElementById("CartNotificationTotal").innerText = parseInt($scope.UserDetailInfo.UserProfileData.AddedCartCount) + parseInt($scope.UserDetailInfo.UserProfileData.AddedFavCount);
                         $rootScope.HideNavBarIsCompleteProfile = true;
-
+                        
                     }
                     else {
                         $scope.ErrorMessage = answer.data.GetUserProfileDetailsInfoResult.ResponseMessage;
