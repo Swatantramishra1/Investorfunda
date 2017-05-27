@@ -2,7 +2,7 @@
 /// <reference path="../../../../Script/Service/Common.srvc.js" />
 /// <reference path="../../../../Index.html" />
 /// <reference path="../../../../DesignContent/Plugins/Script/Angular/ngStorage.js" />
-/// <reference path="../../../../DesignContent/assets/plugins/bootstrap/js/bootstrap.min.js" />
+/// <reference path="../../../../DesignContent/assets/plugins/bootstrap/js/bootstrap.min.js" /> 
 ! function () {
     "use strict";
     angular.module("app", ["ngRoute", "ngAnimate", "ngSanitize", "ngAria", "ngMaterial", "oc.lazyLoad", "ui.bootstrap", "angular-loading-bar", "FBAngular", "app.ctrls", "app.directives", "app.ui.ctrls", "app.ui.directives", "app.form.ctrls", "app.table.ctrls", "app.email.ctrls", "app.todo", "ngStorage"]).config(["cfpLoadingBarProvider", function (cfpLoadingBarProvider) {
@@ -1233,6 +1233,7 @@
 
                             details: []
                         }
+                        currentTotal = 0;
                         for (var b = 0; b < listOfUniquePlanID.length; b++)
                         {
                             
