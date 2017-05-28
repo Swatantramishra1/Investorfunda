@@ -1249,10 +1249,12 @@
                                 Investment: "",
                                 MasterPlanName: "",
                                 PlanID: "",
-                                InvestmentSchemePlan_ID:""
+                                InvestmentSchemePlan_ID:"",
+                                MF_CurrentDdate:""
                             }
                      
                             investItem.SchemeName = InvestmentDetailsList[listOfUniquePlanID[b]].SchemeName;
+                            investItem.MF_CurrentDdate = InvestmentDetailsList[listOfUniquePlanID[b]].MF_CurrentDate;
                             var tempTotal=(InvestmentDetailsList[listOfUniquePlanID[b]].Amount / InvestmentDetailsList[listOfUniquePlanID[b]].CurrentNav).toFixed(3);
                             currentUnit = parseFloat( currentUnit) +parseFloat(  tempTotal);
                             currentTotal = currentTotal + parseFloat(InvestmentDetailsList[listOfUniquePlanID[b]].Amount);
