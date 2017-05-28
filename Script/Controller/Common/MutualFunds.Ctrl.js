@@ -1376,7 +1376,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         });
     };
 
-    function InvestorfundaMessageDetails($scope, $mdDialog) {
+    function InvestorfundaMessageDetails($scope, $mdDialog, $localStorage) {
         $scope.InvestorFundaMsg = {
             MessageContent: "",
             Header: ""
@@ -1721,11 +1721,15 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         return -1;
     }
     $scope.InvestLumpsum = function (index, Page, Type, Amount, From, BseCode) {
-        $localStorage.CurrentScheme = {
-            ISIN: "",
-            SchemeName: "",
-            mf_cocode: ""
-        };
+        if (index != undefined)
+        {
+            $localStorage.CurrentScheme = {
+                ISIN: "",
+                SchemeName: "",
+                mf_cocode: ""
+            };
+        }
+      
         var tesmp = "";
         if (Page != undefined) {
             if (From == "Compare")
@@ -1761,7 +1765,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                    
                 }
                 else {
-                    $localStorage.CurrentScheme.mf_cocode=$scope.FundsList[index].BSESchmecode;
+                    $localStorage.CurrentScheme.mf_cocode = $scope.FundsList[index].mf_cocode;
                     $localStorage.CurrentScheme.ISIN = $scope.FundsList[index].ISIN;
                     $localStorage.CurrentScheme.SchemeName = $scope.FundsList[index].SchemeName;
                  
@@ -1820,7 +1824,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                         }
                     }
                     else {
-                        $localStorage.CurrentScheme.mf_cocode = $scope.FundsList[index].BSESchmecode;
+                        $localStorage.CurrentScheme.mf_cocode = $scope.FundsList[index].mf_cocode;
                         $localStorage.CurrentScheme.ISIN = $scope.FundsList[index].ISIN;
                         $localStorage.CurrentScheme.SchemeName = $scope.FundsList[index].SchemeName;
                     }
