@@ -1215,6 +1215,7 @@
                     var currentTotal = 0;
                     var currentProfitLoss = 0;
                     var lastNav = 0;
+                    var schemeNav = 0;
                     var lastAmount = 0;
                     var InvestmentDetailsList = answer.data.GetDashInvestmentDetailsResult.Result.UserInvestmentSchemeDetailsData;
 
@@ -1234,6 +1235,7 @@
                             details: []
                         }
                         currentTotal = 0;
+                        currentUnit = 0;
                         for (var b = 0; b < listOfUniquePlanID.length; b++)
                         {
                             
@@ -1255,25 +1257,27 @@
                      
                             investItem.SchemeName = InvestmentDetailsList[listOfUniquePlanID[b]].SchemeName;
                             investItem.MF_CurrentDdate = InvestmentDetailsList[listOfUniquePlanID[b]].MF_CurrentDate;
-                            var tempTotal=(InvestmentDetailsList[listOfUniquePlanID[b]].Amount / InvestmentDetailsList[listOfUniquePlanID[b]].CurrentNav).toFixed(3);
+                            var tempTotal = (InvestmentDetailsList[listOfUniquePlanID[b]].Amount / InvestmentDetailsList[listOfUniquePlanID[b]].SchemeNav).toFixed(3);
                             currentUnit = parseFloat( currentUnit) +parseFloat(  tempTotal);
                             currentTotal = currentTotal + parseFloat(InvestmentDetailsList[listOfUniquePlanID[b]].Amount);
                             lastNav = parseFloat(InvestmentDetailsList[listOfUniquePlanID[b]].CurrentNav);
                             lastAmount = parseFloat(InvestmentDetailsList[listOfUniquePlanID[b]].Amount);
                             inveInfo.MasterPlanName = InvestmentDetailsList[listOfUniquePlanID[b]].MasterPlanName;
-                            
+                            schemeNav = InvestmentDetailsList[listOfUniquePlanID[b]].SchemeNav;
 
                             if (InvestmentDetailsList[listOfUniquePlanID[b]].MasterPlanID == "8" ) {
                                 if (b == (listOfUniquePlanID.length - 1))
                                 {
                                     
-                                    currentProfitLoss = (parseFloat((currentUnit * lastNav)) - parseFloat(currentTotal)).toFixed(3);
+                                 
                                     investItem.Units = currentUnit.toFixed(3);
-                                    investItem.ProfitLoss = currentProfitLoss;
+                                   
                                     investItem.Total = currentTotal;
                                     investItem.CurrentNav = lastNav;
                                     investItem.InvstAmount = lastAmount;
                                     investItem.currentValue = (currentUnit * lastNav).toFixed(3);
+                                    currentProfitLoss = (parseFloat((investItem.currentValue)) - parseFloat(currentTotal)).toFixed(3);
+                                    investItem.ProfitLoss = currentProfitLoss;
                                     investItem.PlanID = InvestmentDetailsList[listOfUniquePlanID[b]].Plan_ID;
                                     investItem.InvestmentSchemePlan_ID = InvestmentDetailsList[listOfUniquePlanID[b]].InvestmentSchemePlan_ID;
                                     // var tempArr=[inveInfo.details.push(investItem)];
@@ -1284,13 +1288,15 @@
                             }
                             else {
                                 currentTotal =  parseFloat(InvestmentDetailsList[listOfUniquePlanID[b]].Amount);
-                                currentProfitLoss = (parseFloat((currentUnit * lastNav)) - parseFloat(currentTotal)).toFixed(3);
+                                //currentProfitLoss = (parseFloat((currentUnit * lastNav)) - parseFloat(currentTotal)).toFixed(3);
                                 investItem.Units = currentUnit.toFixed(3);
-                                investItem.ProfitLoss = currentProfitLoss;
+                                //investItem.ProfitLoss = currentProfitLoss;
                                 investItem.Total = currentTotal;
                                 investItem.CurrentNav = lastNav;
                                 investItem.InvstAmount = lastAmount;
-                                investItem.currentValue = (currentUnit * lastNav).toFixed(3);
+                                investItem.currentValue = (currentUnit * schemeNav).toFixed(3);
+                                currentProfitLoss = (parseFloat((investItem.currentValue)) - parseFloat(currentTotal)).toFixed(3);
+                                investItem.ProfitLoss = currentProfitLoss;
                                 investItem.PlanID = InvestmentDetailsList[listOfUniquePlanID[b]].Plan_ID;
                                 investItem.InvestmentSchemePlan_ID = InvestmentDetailsList[listOfUniquePlanID[b]].InvestmentSchemePlan_ID;
                                 inveInfo.details.push(investItem)
