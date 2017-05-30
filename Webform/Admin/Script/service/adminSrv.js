@@ -149,6 +149,29 @@
         }
 
     };
+    userinvesment = {
+
+        PostPromise: function (PostData) {
+            deferObject = deferObject || $q.defer();
+            $.ajax({
+                url: API_InsertUserInvestment,
+                dataType: 'json',
+                type: 'post',
+                contentType: 'application/json',
+                data: JSON.stringify(PostData),
+                processData: false,
+                async: false,
+                success: function (data, textStatus, jQxhr) {
+                    deferObject.resolve(data);
+                },
+                error: function (jqXhr, textStatus, errorThrown) {
+                    deferObject.reject(errorThrown);
+                }
+            });
+            return deferObject.promise;
+        }
+
+    };
     getBlogDetails = {
 
         getPromise: function () {
@@ -246,6 +269,7 @@
         getBlogDetails: getBlogDetails,
         deleteBlockDetails: deleteBlockDetails,
         UpdateClintCode: UpdateClintCode,
-        UpdateMFInvestment: UpdateMFInvestment
+        UpdateMFInvestment: UpdateMFInvestment,
+        userinvesment: userinvesment
     }
 }])

@@ -243,6 +243,7 @@
                             <tr>
                                 <th>Sr</th>
                                 <th>Scheme Name</th>
+                                <th>Amount</th>
                                 <th>Nav Details</th>
                                 <th>Date</th>
                                 <th>Action</th>
@@ -253,9 +254,10 @@
                             <tr ng-repeat="List in SortMFInvetList">
                                 <td>{{$index+1}}</td>
                                 <td>{{List.SchemeName}}</td>
-                                <td><input type="text" class="form-control" ng-model="List.MF_CurrentNavValue" /></td>
+                                <td><input type="text" placeholder="Amount" class="form-control" ng-model="List.Amount" /></td>
+                                <td><input type="text" placeholder="Current MF" class="form-control" ng-model="List.MF_CurrentNavValue" /></td>
                                 <td><input type="date" class="form-control" ng-model="List.DueDate" /></td>
-                                <td><input type="button" class="form-control btn btn-success" value="Invest" /></td>
+                                <td><input type="button" class="form-control btn btn-success" value="Invest" ng-click="userInvestmentList(List)" /></td>
                             </tr>
                         </tbody>
 

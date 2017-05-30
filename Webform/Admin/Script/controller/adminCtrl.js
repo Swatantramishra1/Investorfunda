@@ -124,7 +124,12 @@
                             MF_CurrentNavValue: "",
                             DueDate: "",
                             InvestmentSchemePlan_ID: $scope.UserInvestmentSchemeDetailsData[a].InvestmentSchemePlan_ID,
-                            SchemeName: $scope.UserInvestmentSchemeDetailsData[a].SchemeName
+                            SchemeName: $scope.UserInvestmentSchemeDetailsData[a].SchemeName,
+                            InvestmentType: $scope.UserInvestmentSchemeDetailsData[a].InvestmentType,
+                            Amount: $scope.UserInvestmentSchemeDetailsData[a].Amount,
+                            BSESchemeCode: $scope.UserInvestmentSchemeDetailsData[a].BSESchemeCode,
+                            ISIN: $scope.UserInvestmentSchemeDetailsData[a].ISIN,
+                            UR_ID: $scope.usernvestmentdetails[0].UR_ID
                         })
                     }
 
@@ -233,7 +238,8 @@
                       CategoryID: $scope.blog.category,
                       Tags: $scope.blog.Tags,
                       Summary: $scope.blog.Summary,
-                      Author: $scope.blog.Author
+                      Author: $scope.blog.Author,
+                     
                   }
               }
 
@@ -450,6 +456,38 @@
         function (reason) {
             HideLoader();
             $scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
+            //$scope.somethingWrong = reason;
+            //$scope.error = true;
+        }
+      )
+    }
+
+
+    $scope.userInvestmentList = function (item) {
+        var postData = {
+            "request": {
+                InvestmentType: item.InvestmentType,
+                ISIN: item.ISIN,
+                BSESchemeCode: item.BSESchemeCode,
+                SchemeName: item.SchemeName,
+                Amount: item.Amount,
+                Plan_ID: $scope.GlobalPlanID,
+                Portfolio_ID: $scope.GlobalPlanID,
+                User_ID:item.UR_ID
+            }
+        }
+
+        var userinvesment = adminSrv.userinvesment.PostPromise(postData);
+        userinvesment.then(
+        // OnSuccess function
+        function (answer) {
+            alert("Inserted Succesfully")
+
+        },
+        // OnFailure function
+        function (reason) {
+
+
             //$scope.somethingWrong = reason;
             //$scope.error = true;
         }
