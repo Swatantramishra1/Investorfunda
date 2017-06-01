@@ -1221,6 +1221,9 @@
 
                     var UniquePlan_ID = InvestmentDetailsList.map(item => item.Plan_ID).filter((value, index, self) => self.indexOf(value) === index);
                     $scope.UniqueDifPlanID = UniquePlan_ID;
+                    var TotalInvestedAmount = 0;
+                    var TotalCurrentValue = 0;
+                    var TotalProfitLoass = 0;
                     for (var a = 0; a < UniquePlan_ID.length; a++) {
                         
                         var listOfUniquePlanID = InvestmentDetailsList.map(function (cur, index)
@@ -1260,6 +1263,7 @@
                             var tempTotal = (InvestmentDetailsList[listOfUniquePlanID[b]].Amount / InvestmentDetailsList[listOfUniquePlanID[b]].SchemeNav).toFixed(3);
                             currentUnit = parseFloat( currentUnit) +parseFloat(  tempTotal);
                             currentTotal = currentTotal + parseFloat(InvestmentDetailsList[listOfUniquePlanID[b]].Amount);
+                            TotalInvestedAmount = parseFloat(TotalInvestedAmount) + parseFloat(InvestmentDetailsList[listOfUniquePlanID[b]].Amount);
                             lastNav = parseFloat(InvestmentDetailsList[listOfUniquePlanID[b]].CurrentNav);
                             lastAmount = parseFloat(InvestmentDetailsList[listOfUniquePlanID[b]].Amount);
                             inveInfo.MasterPlanName = InvestmentDetailsList[listOfUniquePlanID[b]].MasterPlanName;
@@ -1276,8 +1280,10 @@
                                     investItem.CurrentNav = lastNav;
                                     investItem.InvstAmount = lastAmount;
                                     investItem.currentValue = (currentUnit * lastNav).toFixed(3);
+                                    TotalCurrentValue =parseFloat( TotalCurrentValue) +parseFloat( (currentUnit * lastNav).toFixed(3));
                                     currentProfitLoss = (parseFloat((investItem.currentValue)) - parseFloat(currentTotal)).toFixed(3);
                                     investItem.ProfitLoss = currentProfitLoss;
+                                    TotalProfitLoass =parseFloat( TotalProfitLoass) + parseFloat(currentProfitLoss);
                                     investItem.PlanID = InvestmentDetailsList[listOfUniquePlanID[b]].Plan_ID;
                                     investItem.InvestmentSchemePlan_ID = InvestmentDetailsList[listOfUniquePlanID[b]].InvestmentSchemePlan_ID;
                                     // var tempArr=[inveInfo.details.push(investItem)];
@@ -1295,8 +1301,10 @@
                                 investItem.CurrentNav = lastNav;
                                 investItem.InvstAmount = lastAmount;
                                 investItem.currentValue = (currentUnit * schemeNav).toFixed(3);
+                                TotalCurrentValue =parseFloat( TotalCurrentValue) +parseFloat( (currentUnit * lastNav).toFixed(3));
                                 currentProfitLoss = (parseFloat((investItem.currentValue)) - parseFloat(currentTotal)).toFixed(3);
                                 investItem.ProfitLoss = currentProfitLoss;
+                                TotalProfitLoass = parseFloat(TotalProfitLoass) + parseFloat(currentProfitLoss);
                                 investItem.PlanID = InvestmentDetailsList[listOfUniquePlanID[b]].Plan_ID;
                                 investItem.InvestmentSchemePlan_ID = InvestmentDetailsList[listOfUniquePlanID[b]].InvestmentSchemePlan_ID;
                                 inveInfo.details.push(investItem)
@@ -1307,7 +1315,10 @@
                         console.log($scope.investMentDetails)
                       
                     }
-                    
+                    $scope.TotalCurrentValue = TotalCurrentValue;
+                    $scope.TotalProfitLoass = TotalProfitLoass;
+                    $scope.TotalInvestedAmount = TotalInvestedAmount;
+
 
                     //var inveInfo = {
                     //    "SchemeName":"",
