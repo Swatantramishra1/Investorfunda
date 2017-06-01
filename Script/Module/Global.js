@@ -444,7 +444,7 @@ function Chield_CalculatePortfolioAllocation(Year,Amount,Risk,From,Type) {
                             Fund_LargeCap: 30,
                             Fund_MultiCap: 20,
                             Fund_Balanced: 30,
-                            Fund_UltraSortFund: 10
+                            Fund_UltraSortFund: 20
 
                         }]
 
@@ -541,36 +541,8 @@ function Chield_CalculatePortfolioAllocation(Year,Amount,Risk,From,Type) {
 
         else if (From == "CarPlan") {
 
-            if (Year <= 5) {
+            if (Year <= 3) {
 
-                if (Amount <= 1000) {
-                    ReturnPer.Data = [{
-                        Return_EquityPer: 100,
-                        Returm_DebtPer: 0,
-                        Fund: [{
-                            Fund_MultiCap: 100
-                        }]
-
-                    }]
-                }
-                else if (Amount > 1000) {
-                    ReturnPer.Data = [{
-                        Return_EquityPer: 70,
-                        Returm_DebtPer: 30,
-                        Fund: [{
-                            Fund_LargeCap: 25,
-                            Fund_MultiCap: 25,
-                            Fund_Balanced: 20,
-                            Fund_CreditOpportunity: 30
-
-                        }]
-
-                    }]
-                }
-
-
-            }
-            else if (Year > 5 && Year <= 20) {
                 if (Amount <= 1000) {
                     ReturnPer.Data = [{
                         Return_EquityPer: 100,
@@ -598,13 +570,7 @@ function Chield_CalculatePortfolioAllocation(Year,Amount,Risk,From,Type) {
 
 
             }
-
-        }
-
-        else if (From == "HousePlan") {
-
-            if (Year <= 5) {
-
+            else if (Year > 3 && Year <= 5) {
                 if (Amount <= 1000) {
                     ReturnPer.Data = [{
                         Return_EquityPer: 100,
@@ -615,14 +581,28 @@ function Chield_CalculatePortfolioAllocation(Year,Amount,Risk,From,Type) {
 
                     }]
                 }
-                else if (Amount > 1000) {
+                else if (Amount > 1000 && Amount <= 5000) {
                     ReturnPer.Data = [{
-                        Return_EquityPer: 60,
-                        Returm_DebtPer: 40,
+                        Return_EquityPer: 65,
+                        Returm_DebtPer: 35,
                         Fund: [{
-                            Fund_LargeCap: 40,
-                            Fund_MultiCap: 20,
-                            Fund_UltraSortFund: 20,
+                            Fund_LargeCap: 25,
+                            Fund_MultiCap: 25,
+                            Fund_Balanced: 25,
+                            Fund_CreditOpportunity: 25
+
+                        }]
+
+                    }]
+                }
+                else {
+                    ReturnPer.Data = [{
+                        Return_EquityPer: 70,
+                        Returm_DebtPer: 30,
+                        Fund: [{
+                            Fund_LargeCap: 25,
+                            Fund_MultiCap: 30,
+                            Fund_Balanced: 25,
                             Fund_CreditOpportunity: 20
 
                         }]
@@ -631,8 +611,9 @@ function Chield_CalculatePortfolioAllocation(Year,Amount,Risk,From,Type) {
                 }
 
 
-
             }
+
+
             else if (Year > 5 && Year <= 10) {
                 if (Amount <= 1000) {
                     ReturnPer.Data = [{
@@ -644,15 +625,28 @@ function Chield_CalculatePortfolioAllocation(Year,Amount,Risk,From,Type) {
 
                     }]
                 }
-                else if (Amount > 1000) {
+                else if (Amount > 1000 && Amount <= 5000) {
+                    ReturnPer.Data = [{
+                        Return_EquityPer: 90,
+                        Returm_DebtPer: 10,
+                        Fund: [{
+                            Fund_LargeCap: 40,
+                            Fund_MultiCap: 35,
+                            Fund_Balanced: 25
+
+                        }]
+
+                    }]
+                }
+                else {
                     ReturnPer.Data = [{
                         Return_EquityPer: 70,
                         Returm_DebtPer: 30,
                         Fund: [{
                             Fund_LargeCap: 30,
-                            Fund_MultiCap: 40,
+                            Fund_MultiCap: 30,
                             Fund_Balanced: 20,
-                            Fund_CreditOpportunity: 30
+                            Fund_CreditOpportunity: 20
 
                         }]
 
@@ -661,7 +655,101 @@ function Chield_CalculatePortfolioAllocation(Year,Amount,Risk,From,Type) {
 
 
             }
+
+
             else if (Year > 10 && Year <= 15) {
+                if (Amount <= 1000) {
+                    ReturnPer.Data = [{
+                        Return_EquityPer: 100,
+                        Returm_DebtPer: 0,
+                        Fund: [{
+                            Fund_MidCap: 100
+                        }]
+
+                    }]
+                }
+                else if (Amount > 1000 && Amount <= 5000) {
+                    ReturnPer.Data = [{
+                        Return_EquityPer: 90,
+                        Returm_DebtPer: 10,
+                        Fund: [{
+                            Fund_LargeCap: 25,
+                            Fund_MultiCap: 25,
+                            Fund_MidCap: 25,
+                            Fund_Balanced: 25
+
+                        }]
+
+                    }]
+                }
+                else {
+                    ReturnPer.Data = [{
+                        Return_EquityPer: 90,
+                        Returm_DebtPer: 10,
+                        Fund: [{
+                            Fund_LargeCap: 20,
+                            Fund_MultiCap: 25,
+                            Fund_Balanced: 25,
+                            Fund_MidCap: 30
+
+                        }]
+
+                    }]
+                }
+
+
+            }
+
+
+            else if (Year > 15) {
+                if (Amount <= 1000) {
+                    ReturnPer.Data = [{
+                        Return_EquityPer: 100,
+                        Returm_DebtPer: 0,
+                        Fund: [{
+                            Fund_MidCap: 100
+                        }]
+
+                    }]
+                }
+                else if (Amount > 1000 && Amount <= 5000) {
+                    ReturnPer.Data = [{
+                        Return_EquityPer: 90,
+                        Returm_DebtPer: 10,
+                        Fund: [{
+                            
+                            Fund_MultiCap: 25,
+                            Fund_MidCap: 50,
+                            Fund_Balanced: 25
+
+                        }]
+
+                    }]
+                }
+                else {
+                    ReturnPer.Data = [{
+                        Return_EquityPer: 90,
+                        Returm_DebtPer: 10,
+                        Fund: [{
+                            Fund_MultiCap: 25,
+                            Fund_MidCap: 55,
+                            Fund_Balanced: 20
+
+                        }]
+
+                    }]
+                }
+
+
+            }
+
+
+        }
+
+        else if (From == "HousePlan") {
+
+            if (Year <= 3) {
+
                 if (Amount <= 1000) {
                     ReturnPer.Data = [{
                         Return_EquityPer: 100,
@@ -674,12 +762,54 @@ function Chield_CalculatePortfolioAllocation(Year,Amount,Risk,From,Type) {
                 }
                 else if (Amount > 1000) {
                     ReturnPer.Data = [{
-                        Return_EquityPer: 75,
-                        Returm_DebtPer: 25,
+                        Return_EquityPer: 55,
+                        Returm_DebtPer: 45,
                         Fund: [{
-                            Fund_LargeCap: 35,
-                            Fund_MidCap: 40,
-                            Fund_GILT: 10,
+                            Fund_LargeCap: 25,
+                            Fund_UltraSortFund: 25,
+                            Fund_Balanced: 50
+
+                        }]
+
+                    }]
+                }
+
+
+
+            }
+            else if (Year > 3 && Year <= 5) {
+                if (Amount <= 1000) {
+                    ReturnPer.Data = [{
+                        Return_EquityPer: 100,
+                        Returm_DebtPer: 0,
+                        Fund: [{
+                            Fund_MultiCap: 100
+                        }]
+
+                    }]
+                }
+                else if (Amount > 1000 && Amount <=3000) {
+                    ReturnPer.Data = [{
+                        Return_EquityPer: 65,
+                        Returm_DebtPer: 35,
+                        Fund: [{
+                            Fund_LargeCap: 25,
+                            Fund_MultiCap: 25,
+                            Fund_Balanced: 25,
+                            Fund_CreditOpportunity: 25
+
+                        }]
+
+                    }]
+                }
+                else if (Amount > 3000) {
+                    ReturnPer.Data = [{
+                        Return_EquityPer: 70,
+                        Returm_DebtPer: 30,
+                        Fund: [{
+                            Fund_LargeCap: 30,
+                            Fund_MultiCap: 20,
+                            Fund_Balanced: 30,
                             Fund_CreditOpportunity: 20
 
                         }]
@@ -687,33 +817,121 @@ function Chield_CalculatePortfolioAllocation(Year,Amount,Risk,From,Type) {
                     }]
                 }
 
-                else if (Year > 15 && Year <= 20) {
-                    if (Amount <= 1000) {
-                        ReturnPer.Data = [{
-                            Return_EquityPer: 100,
-                            Returm_DebtPer: 0,
-                            Fund: [{
-                                Fund_MultiCap: 100
-                            }]
 
-                        }]
-                    }
-                    else if (Amount > 1000) {
-                        ReturnPer.Data = [{
-                            Return_EquityPer: 80,
-                            Returm_DebtPer: 20,
-                            Fund: [{
-                                Fund_LargeCap: 30,
-                                Fund_MidCap: 50,
-                                Fund_GILT: 10,
-                                Fund_CreditOpportunity: 10
-
-                            }]
-
-                        }]
-                    }
-                }
             }
+
+           else if (Year <= 5 && Year <= 10) {
+
+                if (Amount <= 1000) {
+                    ReturnPer.Data = [{
+                        Return_EquityPer: 100,
+                        Returm_DebtPer: 0,
+                        Fund: [{
+                            Fund_MultiCap: 100
+                        }]
+
+                    }]
+                }
+                else if (Amount > 1000) {
+                    ReturnPer.Data = [{
+                        Return_EquityPer: 90,
+                        Returm_DebtPer: 10,
+                        Fund: [{
+                            Fund_LargeCap: 30,
+                            Fund_MidCap: 40,
+                            Fund_Balanced: 30
+
+                        }]
+
+                    }]
+                }
+
+
+
+           }
+
+           else if (Year > 10 && Year <= 15) {
+               if (Amount <= 1000) {
+                   ReturnPer.Data = [{
+                       Return_EquityPer: 100,
+                       Returm_DebtPer: 0,
+                       Fund: [{
+                           Fund_MidCap: 100
+                       }]
+
+                   }]
+               }
+               else if (Amount > 1000 && Amount <= 3000) {
+                   ReturnPer.Data = [{
+                       Return_EquityPer: 90,
+                       Returm_DebtPer: 10,
+                       Fund: [{
+                           Fund_LargeCap: 25,
+                           Fund_MidCap: 50,
+                           Fund_Balanced: 25,
+                           Fund_CreditOpportunity: 25
+
+                       }]
+
+                   }]
+               }
+               else if (Amount > 3000) {
+                   ReturnPer.Data = [{
+                       Return_EquityPer: 95,
+                       Returm_DebtPer: 5,
+                       Fund: [{
+                           Fund_LargeCap: 35,
+                           Fund_MidCap: 50,
+                           Fund_Balanced: 15
+
+                       }]
+
+                   }]
+               }
+
+
+           }
+           else if (Year > 15) {
+               if (Amount <= 1000) {
+                   ReturnPer.Data = [{
+                       Return_EquityPer: 100,
+                       Returm_DebtPer: 0,
+                       Fund: [{
+                           Fund_MidCap: 100
+                       }]
+
+                   }]
+               }
+               else if (Amount > 1000 && Amount <= 3000) {
+                   ReturnPer.Data = [{
+                       Return_EquityPer: 100,
+                       Returm_DebtPer: 0,
+                       Fund: [{
+                           Fund_LargeCap: 40,
+                           Fund_MidCap: 60
+
+                       }]
+
+                   }]
+               }
+               else if (Amount > 3000) {
+                   ReturnPer.Data = [{
+                       Return_EquityPer: 95,
+                       Returm_DebtPer: 5,
+                       Fund: [{
+                           Fund_LargeCap: 25,
+                           Fund_MidCap: 60,
+                           Fund_Balanced: 15
+
+                       }]
+
+                   }]
+               }
+
+
+           }
+
+            
         }
     }
     else if (Type == undefined) {
