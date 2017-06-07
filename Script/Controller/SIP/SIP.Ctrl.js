@@ -368,7 +368,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                             Returm_DebtPer: 0,
                             Fund: [{
 
-                                Fund_MultiCap: 100
+                                Fund_MidCap: 100
                             }]
                         }]
                     }
@@ -377,7 +377,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                             Return_EquityPer: 100,
                             Returm_DebtPer: 0,
                             Fund: [{
-                                Fund_MultiCap: 100
+                                Fund_MidCap: 100
 
 
                             }]
@@ -558,12 +558,12 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                     }
                     else if (Amount > 1000 && Amount <= 3000) {
                         ReturnPer.Data = [{
-                            Return_EquityPer: 7085,
+                            Return_EquityPer: 70,
                             Returm_DebtPer: 30,
                             Fund: [{
-                                Fund_MidCap: 30,
-                                Fund_MultiCap: 30,
-                                Fund_Balanced: 40
+                                Fund_LargeCap:35,
+                                Fund_MidCap: 40,
+                                Fund_Balanced: 25
 
                             }]
 
@@ -575,8 +575,8 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                             Returm_DebtPer: 30,
                             Fund: [{
                                 Fund_MidCap: 40,
-                                Fund_LargeCap: 20,
-                                Fund_Balanced: 40,
+                                Fund_LargeCap: 40,
+                                Fund_Balanced: 20,
 
                             }]
 
