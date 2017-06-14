@@ -1721,13 +1721,23 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         return -1;
     }
     $scope.InvestLumpsum = function (index, Page, Type, Amount, From, BseCode) {
+       
+
         if (index != undefined)
         {
-            $localStorage.CurrentScheme = {
-                ISIN: "",
-                SchemeName: "",
-                mf_cocode: ""
-            };
+            if (!$localStorage.FromLogin)
+            {
+                $localStorage.CurrentScheme = {
+                    ISIN: "",
+                    SchemeName: "",
+                    mf_cocode: ""
+                };
+            }
+
+            $localStorage.FromLogin = false;
+
+            
+            
         }
       
         var tesmp = "";
@@ -1745,7 +1755,16 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
             tesmp = "";
         }
         if (tesmp != "" || ($localStorage.SchemeAmount != undefined && $localStorage.SchemeAmount != "")) {
+            var indexOfIsin = $scope.FundsList.map(function (obj, indx) {
+                if (obj.ISIN == index) {
+                    return indx;
+                }
+            });
+            indexOfIsin = indexOfIsin.filter(function (element) {
+                return element !== undefined;
+            });
             if (Page != undefined) {
+              
                 if (BseCode != undefined) 
                 {
                     if ($state.current.name == "recommonded")
@@ -1765,9 +1784,10 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                    
                 }
                 else {
-                    $localStorage.CurrentScheme.mf_cocode = $scope.FundsList[index].mf_cocode;
-                    $localStorage.CurrentScheme.ISIN = $scope.FundsList[index].ISIN;
-                    $localStorage.CurrentScheme.SchemeName = $scope.FundsList[index].SchemeName;
+                    
+                    $localStorage.CurrentScheme.mf_cocode = $scope.FundsList[indexOfIsin[0]].mf_cocode;
+                    $localStorage.CurrentScheme.ISIN = $scope.FundsList[indexOfIsin[0]].ISIN;
+                    $localStorage.CurrentScheme.SchemeName = $scope.FundsList[indexOfIsin[0]].SchemeName;
                  
                 }
                
@@ -1802,21 +1822,15 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                     $scope.InvestorFundaConfMessage("Confirmation of Proceed", "Do you realy want to proceed for Scheme");
                 }
           
-            else {
+                else {
+                    
                 if (index !== undefined) {
                     if (BseCode != undefined) {
                         if ($state.current.name == "recommonded") {
-                            var indexVal = $scope.SIPGoalStructureDate.map(function (obj, index) {
-                                if (obj.BSESchmecode == BseCode) {
-                                    return index;
-                                }
-                            });
-                            indexVal = indexVal.filter(function (element) {
-                                return element !== undefined;
-                            });
-                            $localStorage.CurrentScheme.mf_cocode = $scope.SIPGoalStructureDate[indexVal[0]].BSESchmecode;
-                            $localStorage.CurrentScheme.ISIN = $scope.SIPGoalStructureDate[indexVal[0]].ISIN;
-                            $localStorage.CurrentScheme.SchemeName = $scope.SIPGoalStructureDate[indexVal[0]].SchemeName;
+                           
+                            $localStorage.CurrentScheme.mf_cocode = $scope.SIPGoalStructureDate[indexOfIsin[0]].BSESchmecode;
+                            $localStorage.CurrentScheme.ISIN = $scope.SIPGoalStructureDate[indexOfIsin[0]].ISIN;
+                            $localStorage.CurrentScheme.SchemeName = $scope.SIPGoalStructureDate[indexOfIsin[0]].SchemeName;
 
                         }
                         else {
@@ -1824,9 +1838,9 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                         }
                     }
                     else {
-                        $localStorage.CurrentScheme.mf_cocode = $scope.FundsList[index].mf_cocode;
-                        $localStorage.CurrentScheme.ISIN = $scope.FundsList[index].ISIN;
-                        $localStorage.CurrentScheme.SchemeName = $scope.FundsList[index].SchemeName;
+                        $localStorage.CurrentScheme.mf_cocode = $scope.FundsList[indexOfIsin[0]].mf_cocode;
+                        $localStorage.CurrentScheme.ISIN = $scope.FundsList[indexOfIsin[0]].ISIN;
+                        $localStorage.CurrentScheme.SchemeName = $scope.FundsList[indexOfIsin].SchemeName;
                     }
                     $localStorage.IndexCurrentCode = index;
                     $localStorage.CurrentStatusOfPage = Type;
@@ -1858,7 +1872,8 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
     if ($localStorage.CurrentStatusOfPage === "SIP" || $localStorage.CurrentStatusOfPage === "LUMPSUM") {
         if ($localStorage.CurrentScheme !== undefined) {
             if ($localStorage.CurrentScheme.mf_cocode != "") {
-                $scope.InvestLumpsum($localStorage.CurrentScheme.mf_cocode);
+                $localStorage.FromLogin = true;
+                $scope.InvestLumpsum($localStorage.CurrentScheme.ISIN);
             }
         }
 

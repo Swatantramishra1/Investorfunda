@@ -1315,9 +1315,9 @@
                         console.log($scope.investMentDetails)
                       
                     }
-                    $scope.TotalCurrentValue = TotalCurrentValue;
-                    $scope.TotalProfitLoass = TotalProfitLoass;
-                    $scope.TotalInvestedAmount = TotalInvestedAmount;
+                    $scope.TotalCurrentValue = TotalCurrentValue.toFixed(3);
+                    $scope.TotalProfitLoass = TotalProfitLoass.toFixed(3);
+                    $scope.TotalInvestedAmount = TotalInvestedAmount.toFixed(3);
 
 
                     //var inveInfo = {
