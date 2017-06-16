@@ -66,3 +66,4 @@ var API_UpdateBlogImage = ServerName + Service_Common + 'UpdateBlogImage/';
 var API_UpdateClientCode = ServerName + Service_Common + 'UpdateClientCode/';
 var API_UserRegistrationType = ServerName + Service_Common + 'UpdateUserRegistrationType';
 var API_GetDashInvestmentDetails = ServerName + Service_Common + 'GetDashInvestmentDetails/';
+var API_DeleteUserPlan = ServerName + Service_Common + 'DeleteUserPlan/';

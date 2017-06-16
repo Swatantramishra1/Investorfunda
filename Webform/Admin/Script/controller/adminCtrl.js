@@ -390,6 +390,25 @@
       )
     }
 
+    $scope.deleteUserPlan = function () {
+        var deleteBlockDetails = adminSrv.deleteUserPlan.getPromise($scope.GlobalPlanID);
+        deleteBlockDetails.then(
+        // OnSuccess function
+        function (answer) {
+            alert("Deleted Succesfully");
+          
+            $state.go("UserPlanDetails");
+        },
+        // OnFailure function
+        function (reason) {
+
+            $scope.ErrorMessage = answer.GetUserPlanlistsResult.ResponseMessage;
+            //$scope.somethingWrong = reason;
+            //$scope.error = true;
+        }
+      )
+    }
+
     $scope.EditBlog=function(Index)
     {
         $scope.blog = {

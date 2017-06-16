@@ -214,6 +214,28 @@
             return deferObject.promise;
         }
     };
+
+    deleteUserPlan = {
+
+        getPromise: function (Plan_ID) {
+            var promise = $http.get(API_DeleteUserPlan + Plan_ID),
+                  deferObject = deferObject || $q.defer();
+
+            promise.then(
+              // OnSuccess function
+              function (answer) {
+                  // This code will only run if we have a successful promise.
+                  deferObject.resolve(answer);
+              },
+              // OnFailure function
+              function (reason) {
+                  // This code will only run if we have a failed promise.
+                  deferObject.reject(reason);
+              });
+
+            return deferObject.promise;
+        }
+    };
     UpdateClintCode = {
 
         getPromise: function (URID,ClientCode) {
@@ -270,6 +292,7 @@
         deleteBlockDetails: deleteBlockDetails,
         UpdateClintCode: UpdateClintCode,
         UpdateMFInvestment: UpdateMFInvestment,
-        userinvesment: userinvesment
+        userinvesment: userinvesment,
+        deleteUserPlan: deleteUserPlan
     }
 }])
