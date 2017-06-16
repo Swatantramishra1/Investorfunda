@@ -473,7 +473,8 @@
                 Amount: item.Amount,
                 Plan_ID: $scope.GlobalPlanID,
                 Portfolio_ID: $scope.GlobalPlanID,
-                User_ID:item.UR_ID
+                User_ID: item.UR_ID,
+                Nav:item.MF_CurrentNavValue
             }
         }
 
