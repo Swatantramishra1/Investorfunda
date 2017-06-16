@@ -1227,6 +1227,7 @@
                     var TotalInvestedAmount = 0;
                     var TempTotalCurrentValue = 0;
                     var TotalCurrentValue = 0;
+                    var TotalUnit = 0;
                     var TempTotalProfitLoass = 0;
                     var TotalProfitLoass = 0;
                     for (var a = 0; a < UniqueISIN.length; a++) {
@@ -1246,6 +1247,7 @@
                         currentUnit = 0;
                         TempTotalCurrentValue = 0;
                         TempTotalProfitLoass = 0;
+                        TotalUnit = 0;
                         for (var b = 0; b < listOfUniquePlanID.length; b++)
                         {
                             
@@ -1268,7 +1270,9 @@
                             investItem.SchemeName = InvestmentDetailsList[listOfUniquePlanID[b]].SchemeName;
                             $scope.MF_CurrentDdate = InvestmentDetailsList[listOfUniquePlanID[b]].MF_CurrentDate;
                             var tempTotal = (InvestmentDetailsList[listOfUniquePlanID[b]].Amount / InvestmentDetailsList[listOfUniquePlanID[b]].SchemeNav).toFixed(3);
-                            currentUnit =parseFloat( currentUnit) +parseFloat(  tempTotal);
+                            currentUnit = parseFloat(currentUnit) + parseFloat(tempTotal);
+                            TotalUnit = parseFloat(TotalUnit) + parseFloat(tempTotal);
+                            
                             currentTotal = currentTotal + parseFloat(InvestmentDetailsList[listOfUniquePlanID[b]].Amount);
                             TotalInvestedAmount = parseFloat(TotalInvestedAmount) + parseFloat(InvestmentDetailsList[listOfUniquePlanID[b]].Amount);
                             lastNav = parseFloat(InvestmentDetailsList[listOfUniquePlanID[b]].CurrentNav);
@@ -1293,7 +1297,7 @@
                                 investItem.InvestmentSchemePlan_ID = InvestmentDetailsList[listOfUniquePlanID[b]].InvestmentSchemePlan_ID;
                                 if (b == (listOfUniquePlanID.length - 1))
                                 {
-                                    investItem.Units = (parseFloat(investItem.Total) / schemeNav).toFixed(3);
+                                    investItem.Units = TotalUnit.toFixed(3);
                                     investItem.currentValue = (investItem.Units * lastNav).toFixed(3);
                                     investItem.ProfitLoss = (parseFloat(investItem.currentValue) - parseFloat(investItem.Total)).toFixed(3);
                                     TotalCurrentValue = TotalCurrentValue + parseFloat(investItem.currentValue);
