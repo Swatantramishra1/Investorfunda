@@ -39,17 +39,23 @@
         }
     }
 
-    $scope.getuserPlanList = function (index) {
-        var GetUserInfoList = adminSrv.GetUserInfoList.getPromise($scope.userList[index].LoginID);
-        var GetUserPlanList = adminSrv.GetUserPlanList.getPromise($scope.userList[index].LoginID);
+    $scope.getuserPlanList = function (ID) {
+
+        var UserIDIndex = $scope.userList.map(function (cur, index) {
+            if (cur.LoginID == ID)
+                return index
+        });
+        UserIDIndex = UserIDIndex.filter(function (n) { return n != undefined });
+        var GetUserInfoList = adminSrv.GetUserInfoList.getPromise(ID);
+        var GetUserPlanList = adminSrv.GetUserPlanList.getPromise(ID);
         GetUserPlanList.then(
         // OnSuccess function
         function (answer) {
             if (answer.data.GetUserPlanlistsResult.ResponseCode == "0") {
                 if (answer.data.GetUserPlanlistsResult.Result.length > 0) {
                     $state.go('UserPlanDetails');
-                    $scope.user.Name = $scope.userList[index].Name;
-                    $scope.user.LoginID = $scope.userList[index].LoginID;
+                    $scope.user.Name = $scope.userList[UserIDIndex[0]].Name;
+                    $scope.user.LoginID = $scope.userList[UserIDIndex[0]].LoginID;
                     $scope.userPlanList = answer.data.GetUserPlanlistsResult.Result;
 
                                                 GetUserInfoList.then(
@@ -156,12 +162,12 @@
         $scope.userCompleteDetails = $localStorage.userAdminDetail;
     };
 
-    $scope.getuserActionList=function(index)
+    $scope.getuserActionList=function(ID)
     {
 
         $state.go('ActionList');
 
-        var AdminGetActionList = adminSrv.AdminGetActionList.getPromise($scope.userList[index].LoginID);
+        var AdminGetActionList = adminSrv.AdminGetActionList.getPromise(ID);
         AdminGetActionList.then(
         // OnSuccess function
         function (answer) {

@@ -30,9 +30,8 @@
 							<thead>
 								<tr style="background-color:#F5F5F5">
 									<th class="col-sm-3 text-left">Scheme Name</th>
-									<th class="col-sm-2 text-left">Invest Amount</th>
 									<th class="col-sm-2 text-left">Total</th>
-									<th class="col-sm-1 text-left">NAV</th>
+									<th class="col-sm-1 text-left">NAV<br /> <small>(As on {{MF_CurrentDdate}})</small></th>
 									<th class="col-sm-1 text-left">Units</th>
 									<th class="col-sm-1 text-left">Current Value</th>
 									<th class="col-sm-1 text-left">Profit/Loss</th>
@@ -43,16 +42,15 @@
 
 								<tbody ng-repeat="investment in investMentDetails track by $index">
 
-									<tr>
+									<!--<tr>
 									   
 										<td class="col-sm-12 text-left" colspan="7" ><strong>#{{$index+1}}  {{investment.MasterPlanName}}</strong> </td>
-									</tr>
+									</tr>-->
 									<tr ng-repeat="innerVal in investment.details">
 										<td class="col-sm-3 text-left">{{innerVal.SchemeName}}</td>
-										<td class="col-sm-2 text-left">{{innerVal.InvstAmount}}</td>
-										<td class="col-sm-2 text-left">{{innerVal.Total}}</td>
+										<td class="col-sm-4 text-left">{{innerVal.Total}}</td>
 										<td class="col-sm-1 text-left">
-											{{innerVal.CurrentNav}}<small>(As on {{innerVal.MF_CurrentDdate}})</small>
+											{{innerVal.CurrentNav}}
 										</td>
 										<td class="col-sm-1 text-left">{{innerVal.Units}}</td>
 										<td class="col-sm-1 text-left">{{innerVal.currentValue}}</td>
@@ -84,7 +82,6 @@
                             <tbody>
                                 <tr style="background-color: lightgoldenrodyellow;font:bold;">
                                     <td class="col-sm-3 text-left"></td>
-                                    <td class="col-sm-2 text-left"></td>
                                     <td class="col-sm-2 text-left">{{TotalInvestedAmount}}</td>
                                     <td class="col-sm-1 text-left"></td>
                                     <td class="col-sm-1 text-left"></td>

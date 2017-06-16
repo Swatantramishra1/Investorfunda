@@ -2,8 +2,8 @@
     <h1 class="m_2">List Of User</h1>
     <div class="search">
         <form>
-            <input type="text" value="Search..." onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
-            <input type="submit" value="">
+            <input type="text" placeholder="Search..." ng-model="filterName" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
+            
         </form>
     </div>
     <div class="clearfix"> </div>
@@ -16,10 +16,10 @@
         </ul>-->
         <div class="row">
             <ul class="list-group list-inline row">
-                <li class="col-sm-12 list-group-item" ng-repeat="user in userList">
-                    <div class="col-sm-4" style="cursor:pointer" ng-click="getuserPlanList($index)">{{user.Name}} </div>
+                <li class="col-sm-12 list-group-item" ng-repeat="user in userList | filter : filterName">
+                    <div class="col-sm-4" style="cursor:pointer" ng-click="getuserPlanList(user.LoginID)">{{user.Name}} ({{user.RegistrationDate}}) </div>
                     <div class="col-sm-4" style="cursor:pointer" ng-click="getUserDetails(user.LoginID)">View Profile</div>
-                    <div class="col-sm-4" style="cursor:pointer" ng-click="getuserActionList($index)">Action</div>
+                    <div class="col-sm-4" style="cursor:pointer" ng-click="getuserActionList(user.LoginID)">Action</div>
                 </li>
             </ul>
         </div>
