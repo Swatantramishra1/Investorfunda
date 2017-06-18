@@ -348,6 +348,26 @@
         }
       )
 
+    $scope.getFolioList = function () {
+        var GetFolioList = adminSrv.GetFolioList.getPromise($scope.GlobalPlanID);
+        GetFolioList.then(
+        // OnSuccess function
+        function (answer) {
+            $scope.FolioList = answer.data.GetFolioDetailsResult.Result;
+        },
+        // OnFailure function
+        function (reason) {
+
+            $scope.ErrorMessage = answer.GetUserPlanlistsResult.ResponseMessage;
+            //$scope.somethingWrong = reason;
+            //$scope.error = true;
+        }
+      )
+    }
+
+   
+
+
     $scope.AddBlog = function () {
         $scope.blog = {
             header: "",
@@ -508,6 +528,25 @@
         // OnSuccess function
         function (answer) {
             alert("Inserted Succesfully")
+
+        },
+        // OnFailure function
+        function (reason) {
+
+
+            //$scope.somethingWrong = reason;
+            //$scope.error = true;
+        }
+      )
+    }
+
+    $scope.userInvestmentList = function (item) {
+      
+        var UpdateFolio = adminSrv.UpdateFolio.PostPromise(item.Folio_ID, item.Folio);
+        UpdateFolio.then(
+        // OnSuccess function
+        function (answer) {
+            alert("Updated Succesfully")
 
         },
         // OnFailure function

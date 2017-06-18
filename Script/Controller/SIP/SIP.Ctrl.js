@@ -1825,7 +1825,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
                             Returm_GoldPer: 0,
                             Fund: [{
 
-                                Fund_Balanced: 50
+                                Fund_Balanced: 100
                             }]
                         }]
                     }

@@ -43,7 +43,29 @@
             return deferObject.promise;
         }
     };
-   
+    GetFolioList = {
+
+        getPromise: function (Plan_ID) {
+
+            var promise = $http.get(API_GetFolioDetails + Plan_ID),
+                  deferObject = deferObject || $q.defer();
+
+            promise.then(
+              // OnSuccess function
+              function (answer) {
+                  // This code will only run if we have a successful promise.
+                  deferObject.resolve(answer);
+              },
+              // OnFailure function
+              function (reason) {
+                  // This code will only run if we have a failed promise.
+                  deferObject.reject(reason);
+              });
+
+            return deferObject.promise;
+        }
+    };
+
     GetUserPlanList = {
 
         getPromise: function (ClientCode) {
@@ -280,6 +302,28 @@
         }
 
     };
+    UpdateFolio = {
+
+        PostPromise: function (InvestmentSchemeID,Folio) {
+            deferObject = deferObject || $q.defer();
+            $.ajax({
+                url: API_UpdateFolio + InvestmentSchemeID+"/"+Folio,
+                dataType: 'json',
+                type: 'post',
+                contentType: 'application/json',
+                processData: false,
+                async: false,
+                success: function (data, textStatus, jQxhr) {
+                    deferObject.resolve(data);
+                },
+                error: function (jqXhr, textStatus, errorThrown) {
+                    deferObject.reject(errorThrown);
+                }
+            });
+            return deferObject.promise;
+        }
+
+    };
     return {
         GetUserList: GetUserList,
         GetUserPlanList: GetUserPlanList,
@@ -293,6 +337,8 @@
         UpdateClintCode: UpdateClintCode,
         UpdateMFInvestment: UpdateMFInvestment,
         userinvesment: userinvesment,
-        deleteUserPlan: deleteUserPlan
+        deleteUserPlan: deleteUserPlan,
+        UpdateFolio: UpdateFolio,
+        GetFolioList: GetFolioList
     }
 }])

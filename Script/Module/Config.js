@@ -34,7 +34,9 @@ var API_GetUserPaymentString = ServerName + Service_Common + 'GetUserPaymentStri
 var API_GetUploadFile = ServerName + Service_Common + 'UploadFIle'; 
 var API_UpdateInvestmentActionStatus = ServerName + Service_Common + 'UpdateInvestmentActionStatus/';
 var API_getAllUserAction = ServerName + Service_Common + 'getAllUserAction/'; 
-var API_UpdatePassword = ServerName + Service_Common + 'UpdatePassword/'
+var API_UpdatePassword = ServerName + Service_Common + 'UpdatePassword/';
+var API_GetFolioDetails = ServerName + Service_Common + 'GetFolioDetails/';
+var API_UpdateFolio = ServerName + Service_Common + 'UpdateFolio/'
 
 //Admin Part
 var API_GetUserListAdmin = ServerName + Service_Common + 'GetUserListAdmin'; 

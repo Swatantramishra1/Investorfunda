@@ -29,7 +29,8 @@
 						<table class="table-bordered" style="width:100%">
 							<thead>
 								<tr style="background-color:#F5F5F5">
-									<th class="col-sm-3 text-left">Scheme Name</th>
+									<th class="col-sm-2 text-left">Scheme Name</th>
+                                    <th class="col-sm-1 text-left">Folio No</th>
 									<th class="col-sm-2 text-left">Total</th>
 									<th class="col-sm-1 text-left">NAV<br /> <small>(As on {{MF_CurrentDdate}})</small></th>
 									<th class="col-sm-1 text-left">Units</th>
@@ -47,7 +48,8 @@
 										<td class="col-sm-12 text-left" colspan="7" ><strong>#{{$index+1}}  {{investment.MasterPlanName}}</strong> </td>
 									</tr>-->
 									<tr ng-repeat="innerVal in investment.details">
-										<td class="col-sm-3 text-left">{{innerVal.SchemeName}}</td>
+										<td class="col-sm-2 text-left">{{innerVal.SchemeName}}</td>
+                                        <td class="col-sm-1 text-left">{{innerVal.Folio}}</td>
 										<td class="col-sm-4 text-left">{{innerVal.Total}}</td>
 										<td class="col-sm-1 text-left">
 											{{innerVal.CurrentNav}}
@@ -81,7 +83,8 @@
 								</tbody>
                             <tbody>
                                 <tr style="background-color: lightgoldenrodyellow;font:bold;">
-                                    <td class="col-sm-3 text-left"></td>
+                                    <td class="col-sm-2 text-left"></td>
+                                    <td class="col-sm-1 text-left"></td>
                                     <td class="col-sm-2 text-left">{{TotalInvestedAmount}}</td>
                                     <td class="col-sm-1 text-left"></td>
                                     <td class="col-sm-1 text-left"></td>
