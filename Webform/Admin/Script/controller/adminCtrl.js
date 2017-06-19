@@ -540,7 +540,7 @@
       )
     }
 
-    $scope.userInvestmentList = function (item) {
+    $scope.UpdateFolioDetails = function (item) {
       
         var UpdateFolio = adminSrv.UpdateFolio.PostPromise(item.Folio_ID, item.Folio);
         UpdateFolio.then(

@@ -1248,10 +1248,25 @@
                         TempTotalCurrentValue = 0;
                         TempTotalProfitLoass = 0;
                         TotalUnit = 0;
+                        var investItem = {
+                            "SchemeName": "",
+                            "CurrentNav": "",
+                            ProfitLoss: "",
+                            Units: "",
+                            Date: "",
+                            Total: "",
+                            InvstAmount: "",
+                            currentValue: "",
+                            Investment: "",
+                            MasterPlanName: "",
+                            PlanID: "",
+                            InvestmentSchemePlan_ID:"",
+                            MF_CurrentDdate:"",
+                            Folio: ""
+                        }
                         for (var b = 0; b < listOfUniquePlanID.length; b++)
                         {
-                            
-                            var investItem = {
+                            investItem = {
                                 "SchemeName": "",
                                 "CurrentNav": "",
                                 ProfitLoss: "",
@@ -1263,11 +1278,15 @@
                                 Investment: "",
                                 MasterPlanName: "",
                                 PlanID: "",
-                                InvestmentSchemePlan_ID:"",
-                                MF_CurrentDdate:"",
-                                Folio:""
+                                InvestmentSchemePlan_ID: "",
+                                MF_CurrentDdate: ""
                             }
-                            investItem.Folio = InvestmentDetailsList[listOfUniquePlanID[b]].Folio;
+                             
+                            if(b==0)
+                            {
+                                investItem.Folio = InvestmentDetailsList[listOfUniquePlanID[b]].Folio;
+                            }
+                            
                             investItem.SchemeName = InvestmentDetailsList[listOfUniquePlanID[b]].SchemeName;
                             $scope.MF_CurrentDdate = InvestmentDetailsList[listOfUniquePlanID[b]].MF_CurrentDate;
                             var tempTotal = (InvestmentDetailsList[listOfUniquePlanID[b]].Amount / InvestmentDetailsList[listOfUniquePlanID[b]].SchemeNav);
