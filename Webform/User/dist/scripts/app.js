@@ -1282,7 +1282,7 @@
                                 MF_CurrentDdate: ""
                             }
                              
-                            if(b==0)
+                            if (InvestmentDetailsList[listOfUniquePlanID[b]].Folio != "")
                             {
                                 investItem.Folio = InvestmentDetailsList[listOfUniquePlanID[b]].Folio;
                             }
