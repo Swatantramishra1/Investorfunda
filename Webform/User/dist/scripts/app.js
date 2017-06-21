@@ -1264,6 +1264,7 @@
                             MF_CurrentDdate:"",
                             Folio: ""
                         }
+                        var Folio = "";
                         for (var b = 0; b < listOfUniquePlanID.length; b++)
                         {
                             investItem = {
@@ -1279,12 +1280,13 @@
                                 MasterPlanName: "",
                                 PlanID: "",
                                 InvestmentSchemePlan_ID: "",
-                                MF_CurrentDdate: ""
+                                MF_CurrentDdate: "",
+                                Folio:""
                             }
                              
                             if (InvestmentDetailsList[listOfUniquePlanID[b]].Folio != "")
                             {
-                                investItem.Folio = InvestmentDetailsList[listOfUniquePlanID[b]].Folio;
+                                Folio = InvestmentDetailsList[listOfUniquePlanID[b]].Folio;
                             }
                             
                             investItem.SchemeName = InvestmentDetailsList[listOfUniquePlanID[b]].SchemeName;
@@ -1321,8 +1323,9 @@
                                     investItem.currentValue = (investItem.Units * lastNav).toFixed(3);
                                     investItem.ProfitLoss = (parseFloat(investItem.currentValue) - parseFloat(investItem.Total)).toFixed(3);
                                     TotalCurrentValue = TotalCurrentValue + parseFloat(investItem.currentValue);
-                                    TotalProfitLoass =(parseFloat( TotalProfitLoass) + parseFloat( investItem.ProfitLoss)).toFixed(3);
-inveInfo.details.push(investItem)
+                                    TotalProfitLoass = (parseFloat(TotalProfitLoass) + parseFloat(investItem.ProfitLoss)).toFixed(3);
+                                    investItem.Folio = Folio;
+                                    inveInfo.details.push(investItem)
                                 }
                                 
                                
