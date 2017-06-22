@@ -89,6 +89,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
        [
                 {
                     "Rank": "1",
+                    Scheme_ID: "2852",
                     "SchemeName": "SBI Bluechip Fund - Growth",
                     "ISIN": "INF200K01180",
                     "BSESchmecode": "103G",
@@ -113,6 +114,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                 },
                   {
                       "Rank": "2",
+                      Scheme_ID: "34489",
                       "SchemeName": "Quantum Long-Term Equity Fund - Growth",
                       "ISIN": "INF082J01036",
                       "BSESchmecode": "QMFEF-GP",
@@ -137,6 +139,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "3",
+                      Scheme_ID: "1961",
                       "SchemeName": "Tata Equity P/E Fund - Reg - Growth",
                       "ISIN": "INF277K01451",
                       "BSESchmecode": "EPEG",
@@ -161,6 +164,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "4",
+                      Scheme_ID: "1509",
                       "SchemeName": "Templeton India Growth Fund - Growth",
                       "ISIN": "INF090I01296",
                       "BSESchmecode": "FTIGF-GR",
@@ -185,6 +189,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "5",
+                      Scheme_ID: "2559",
                       "SchemeName": "Birla Sun Life India GenNext Fund - Growth",
                       "ISIN": "INF209K01447",
                       "BSESchmecode": "B291G",
@@ -209,6 +214,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "6",
+                      Scheme_ID: "0",
                       "SchemeName": "DSP BlackRock Focus 25 Fund - Growth",
                       "ISIN": "INF740K01532",
                       "BSESchmecode": "DSP349-GR",
@@ -233,6 +239,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "1",
+                      Scheme_ID: "2045",
                       "SchemeName": "ICICI Prudential Value Discovery Fund - Growth",
                       "ISIN": "INF109K01AF8",
                       "BSESchmecode": "DFG",
@@ -248,6 +255,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "2",
+                      Scheme_ID: "5120",
                       "SchemeName": "Franklin India High Growth Companies Fund  - Growth",
                       "ISIN": "INF090I01981",
                       "BSESchmecode": "F273-GR",
@@ -263,6 +271,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "3",
+                      Scheme_ID: "0",
                       "SchemeName": "L&T India Value Fund - Reg - Growth",
                       "ISIN": "INF677K01023",
                       "BSESchmecode": "FIVFG",
@@ -278,6 +287,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "4",
+                      Scheme_ID: "2655",
                       "SchemeName": "SBI Magnum Multi Cap Fund - Growth",
                       "ISIN": "INF200K01222",
                       "BSESchmecode": "099G",
@@ -293,6 +303,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "5",
+                      Scheme_ID: "10659",
                       "SchemeName": "Kotak Select Focus Fund - Reg - Growth",
                       "ISIN": "INF174K01336",
                       "BSESchmecode": "K168SF-GR",
@@ -308,6 +319,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "6",
+                      Scheme_ID: "9",
                       "SchemeName": "Birla Sun Life Equity Fund - Growth",
                       "ISIN": "INF209K01AJ8",
                       "BSESchmecode": "51",
@@ -323,6 +335,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "1",
+                      Scheme_ID: "4929",
                       "SchemeName": "DSP BlackRock Micro Cap Fund - Reg - Growth",
                       "ISIN": "INF740K01797",
                       "BSESchmecode": "DSP157-GR",
@@ -339,6 +352,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "2",
+                      Scheme_ID: "2772",
                       "SchemeName": "Franklin India Smaller Companies Fund - Growth",
                       "ISIN": "INF090I01569",
                       "BSESchmecode": "F219-GR",
@@ -355,6 +369,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "3",
+                      Scheme_ID: "4160",
                       "SchemeName": "Kotak Emerging Equity Scheme - Reg - Growth",
                       "ISIN": "INF174K01DS9",
                       "BSESchmecode": "K123-GR",
@@ -371,6 +386,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "4",
+                      Scheme_ID: "2019",
                       "SchemeName": "L&T Midcap Fund - Reg - Growth",
                       "ISIN": "INF917K01254",
                       "BSESchmecode": "LT17-GR",
@@ -387,6 +403,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "5",
+                      Scheme_ID: "11293",
                       "SchemeName": "Mirae Asset Emerging Bluechip Fund - Growth",
                       "ISIN": "INF769K01101",
                       "BSESchmecode": "MAFEBRG-GR",
@@ -403,6 +420,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "6",
+                      Scheme_ID: "9490",
                       "SchemeName": "Principal Emerging Bluechip Fund - Growth",
                       "ISIN": "INF173K01155",
                       "BSESchmecode": "PCEBRGG-GR",
@@ -419,6 +437,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "1",
+                      Scheme_ID: "0",
                       "SchemeName": "Baroda Pioneer Liquid Fund - Plan B - Growth",
                       "ISIN": "INF955L01AL0",
                       "BSESchmecode": "BO114-GR",
@@ -435,6 +454,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "2",
+                      Scheme_ID: "0",
                       "SchemeName": "DSP BlackRock Treasury Bill Fund - Direct Plan - Growth",
                       "ISIN": "INF740K01NU2",
                       "BSESchmecode": "DS723-GR",
@@ -451,6 +471,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "3",
+                      Scheme_ID: "5863",
                       "SchemeName": "DHFL Pramerica Insta Cash Plus Fund - Growth",
                       "ISIN": "INF223J01BP6",
                       "BSESchmecode": "DWSCFSG-GR",
@@ -467,6 +488,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "4",
+                      Scheme_ID: "2161",
                       "SchemeName": "Principal Cash Mgmt Fund - Growth",
                       "ISIN": "INF173K01DA9",
                       "BSESchmecode": "PCLFPGG-GR",
@@ -483,6 +505,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "3",
+                      Scheme_ID: "11563",
                       "SchemeName": "IDBI ULTRA SHORT TERM FUND REGULAR PLAN - GROWTH",
                       "ISIN": "INF397L01745",
                       "BSESchmecode": "IDBI-USGP-GR",
@@ -501,6 +524,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "1",
+                      Scheme_ID: "1388",
                       "SchemeName": "L&T ULTRA SHORT TERM FUND - GROWTH",
                       "ISIN": "INF917K01AS7",
                       "BSESchmecode": "LT122-GR",
@@ -519,6 +543,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "2",
+                      Scheme_ID: "10586",
                       "SchemeName": "ICICI Prudential Ultra Short Term - Growth",
                       "ISIN": "INF109K01CQ1",
                       "BSESchmecode": "ICICI1477-GR",
@@ -537,6 +562,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "1",
+                      Scheme_ID: "1149",
                       "SchemeName": "ICICI Prudential Flexible Income - Growth",
                       "ISIN": "INF109K01746",
                       "BSESchmecode": "FLEXI",
@@ -553,6 +579,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "2",
+                      Scheme_ID: "2180",
                       "SchemeName": "Birla Sun Life Dynamic Bond Fund - Ret - DAP",
                       "ISIN": "INF209K01793",
                       "BSESchmecode": "B321G",
@@ -569,6 +596,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "3",
+                      Scheme_ID: "0",
                       "SchemeName": "Quantum Dynamic Bond Fund - Growth",
                       "ISIN": "INF082J01176",
                       "BSESchmecode": "QDBGP-GR",
@@ -585,6 +613,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "1",
+                      Scheme_ID: "9667",
                       "SchemeName": "DHFL Pramerica Gilt Fund - Growth",
                       "ISIN": "INF223J01AQ6",
                       "BSESchmecode": "DWGFGP-GR",
@@ -601,6 +630,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "2",
+                      Scheme_ID: "19146",
                       "SchemeName": "BNP Paribas G Sec Fund - Growth",
                       "ISIN": "INF251K01JF9",
                       "BSESchmecode": "BNP614G-GR",
@@ -617,6 +647,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "3",
+                      Scheme_ID: "788",
                       "SchemeName": "HDFC GILT FUND  - LONG TERM PLAN - GROWTH OPTION",
                       "ISIN": "INF179K01756",
                       "BSESchmecode": "GLG",
@@ -633,6 +664,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "1",
+                      Scheme_ID: "599",
                       "SchemeName": "HDFC Balanced Fund - Growth",
                       "ISIN": "INF179K01392",
                       "BSESchmecode": "BFG",
@@ -649,6 +681,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "2",
+                      Scheme_ID: "76",
                       "SchemeName": "Franklin India Balanced Fund - Growth",
                       "ISIN": "INF090I01817",
                       "BSESchmecode": "F045-GR",
@@ -665,6 +698,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "1",
+                      Scheme_ID: "1599",
                       "SchemeName": "HDFC MF MONTHLY INCOME PLAN - LONG TERM PLAN - GROWTH  OPTION",
                       "ISIN": "INF179K01AE4",
                       "BSESchmecode": "MILTG",
@@ -682,6 +716,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "2",
+                      Scheme_ID: "0",
                       "SchemeName": "Birla Sun Life MIP II - Savings 5 - Reg - Growth",
                       "ISIN": "INF209K01XE1",
                       "BSESchmecode": "BS312GZ-GR",
@@ -699,6 +734,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "3",
+                      Scheme_ID: "2030",
                       "SchemeName": "SBI Regular Savings Fund - Growth",
                       "ISIN": "INF200K01636",
                       "BSESchmecode": "079B",
@@ -716,6 +752,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "1",
+                      Scheme_ID: "25439",
                       "SchemeName": "HDFC Corporate Debt Opportunities Fund",
                       "ISIN": "INF179KA1GC0",
                       "BSESchmecode": "CDOGR-GR",
@@ -733,6 +770,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "2",
+                      Scheme_ID: "11238",
                       "SchemeName": "Kotak Income Opportunities Fund",
                       "ISIN": "INF174K01DY7",
                       "BSESchmecode": "K190-GR",
@@ -750,6 +788,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "3",
+                      Scheme_ID: "2032",
                       "SchemeName": "SBI Corporate Bond Fund",
                       "ISIN": "INF200K01685",
                       "BSESchmecode": "080B",
@@ -767,6 +806,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "4",
+                      Scheme_ID: "30193",
                       "SchemeName": "Birla Sun Life Corporate Bond Fund",
                       "ISIN": "INF209KA1K47",
                       "BSESchmecode": "BL380B-GR",
@@ -784,6 +824,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "1",
+                      Scheme_ID: "561",
                       "SchemeName": "Franklin India Taxshield - Growth",
                       "ISIN": "INF090I01775",
                       "BSESchmecode": "034-GR",
@@ -800,6 +841,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "2",
+                      Scheme_ID: "10915",
                       "SchemeName": "Axis Long Term Equity Fund - Growth",
                       "ISIN": "INF846K01131",
                       "BSESchmecode": "AXFTSGP-GR",
@@ -816,6 +858,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "3",
+                      Scheme_ID: "7324",
                       "SchemeName": "Birla Sun Life Tax Relief 96 - Growth",
                       "ISIN": "INF209K01108",
                       "BSESchmecode": "02G",
@@ -832,6 +875,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "4",
+                      Scheme_ID: "119",
                       "SchemeName": "ICICI Prudential Long Term Equity Fund (Tax Saving) - Reg - Growth",
                       "ISIN": "INF109K01464",
                       "BSESchmecode": "1",
@@ -848,6 +892,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "5",
+                      Scheme_ID: "639",
                       "SchemeName": "HDFC TAXSAVER - GROWTH OPTION",
                       "ISIN": "INF179K01BB8",
                       "BSESchmecode": "32",
@@ -864,6 +909,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "6",
+                      Scheme_ID: "449",
                       "SchemeName": "LIC MF Tax Plan - Growth",
                       "ISIN": "INF767K01956",
                       "BSESchmecode": "LCTPGP-GR",
@@ -880,6 +926,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "7",
+                      Scheme_ID: "2707",
                       "SchemeName": "KOTAK TAX SAVER-GROWTH",
                       "ISIN": "INF174K01369",
                       "BSESchmecode": "K144TS-GR",
@@ -896,8 +943,9 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "1",
+                      Scheme_ID: "14964",
                       "SchemeName": "Canara Robeco Gold Savings FundDirect GrowthGrowth",
-                      "ISIN": "INF174K01369",
+                      "ISIN": "INF760K01BW1",
                       "BSESchmecode": "CAGSDG-GR",
                       "MinInvst": "500",
                       "MFtype": "Gold",
@@ -908,6 +956,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "2",
+                      Scheme_ID: "5467",
                       "SchemeName": "DSP BLACKROCK WORLD GOLD FUND - REGULAR PLAN - GROWTH",
                       "ISIN": "INF740K01250",
                       "BSESchmecode": "DSP179-GR",
@@ -920,6 +969,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "3",
+                      Scheme_ID: "14246",
                       "SchemeName": "Birla Sun Life Gold Fund Growth",
                       "ISIN": "INF209K01PF4",
                       "BSESchmecode": "BSL916G-GR",
@@ -932,6 +982,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "4",
+                      Scheme_ID: "13300",
                       "SchemeName": "ICICI Prudential Regular Gold Savings Fund Growth",
                       "ISIN": "INF109K01TK8",
                       "BSESchmecode": "ICICI1815-GR",
@@ -949,6 +1000,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
 
     $scope.ElssList = [{
         "Rank": "1",
+        Scheme_ID: "561",
         "SchemeName": "Franklin India Taxshield - Growth",
         "ISIN": "INF090I01775",
         "BSESchmecode": "034-GR",
@@ -960,6 +1012,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
     },
                   {
                       "Rank": "2",
+                      Scheme_ID: "10915",
                       "SchemeName": "Axis Long Term Equity Fund - Growth",
                       "ISIN": "INF846K01131",
                       "BSESchmecode": "AXFTSGP-GR",
@@ -971,6 +1024,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "3",
+                      Scheme_ID: "7324",
                       "SchemeName": "Birla Sun Life Tax Relief 96 - Growth",
                       "ISIN": "INF209K01108",
                       "BSESchmecode": "02G",
@@ -982,6 +1036,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "4",
+                      Scheme_ID: "119",
                       "SchemeName": "ICICI Prudential Long Term Equity Fund (Tax Saving) - Reg - Growth",
                       "ISIN": "INF109K01464",
                       "BSESchmecode": "1",
@@ -993,6 +1048,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "5",
+                      Scheme_ID: "639",
                       "SchemeName": "HDFC TAXSAVER - GROWTH OPTION",
                       "ISIN": "INF179K01BB8",
                       "BSESchmecode": "32",
@@ -1004,6 +1060,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "6",
+                      Scheme_ID: "449",
                       "SchemeName": "LIC MF Tax Plan - Growth",
                       "ISIN": "INF767K01956",
                       "BSESchmecode": "LCTPGP-GR",
@@ -1015,6 +1072,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "7",
+                      Scheme_ID: "2707",
                       "SchemeName": "KOTAK TAX SAVER-GROWTH",
                       "ISIN": "INF174K01369",
                       "BSESchmecode": "K144TS-GR",
