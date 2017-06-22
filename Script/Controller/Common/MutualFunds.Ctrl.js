@@ -1648,8 +1648,16 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
     }
 
     $scope.GoForMFDetails = function (Scheme_ID) {
-        $localStorage.Scheme_ID = Scheme_ID;
-        $state.go('MutualFunds');
+        if (Scheme_ID != "0")
+        {
+            $localStorage.Scheme_ID = Scheme_ID;
+            $state.go('MutualFunds');
+        }
+        else
+        {
+            alert("! Do not have details for this scheme");
+        }
+        
     }
 
     $scope.myDataSourceStart = {
