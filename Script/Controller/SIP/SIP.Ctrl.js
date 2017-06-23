@@ -26,7 +26,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
     $scope.GoForMFDetails = function (Scheme_ID) {
         if (Scheme_ID != "0") {
             $localStorage.Scheme_ID = Scheme_ID;
-            $state.go('MutualFunds');
+            window.open(mutualPageDetails)
         }
         else {
             alert("! Do not have details for this scheme");
