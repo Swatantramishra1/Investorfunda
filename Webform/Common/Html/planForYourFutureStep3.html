@@ -218,7 +218,7 @@ input[type=radio]:not(old):checked +  label > span > span{
                         </thead>
                         <tbody>
                             <tr ng-repeat="List in sampleStructure">
-                                <td>{{List.SchemeName}}</td>
+                                <td ng-click="GoForMFDetails(List.Scheme_ID)">{{List.SchemeName}}</td>
                                 <td><i class="fa fa-rupee"></i> {{List.Amount}}</td>
                             </tr>
                         </tbody>

@@ -214,7 +214,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "6",
-                      Scheme_ID: "0",
+                      Scheme_ID: "11260",
                       "SchemeName": "DSP BlackRock Focus 25 Fund - Growth",
                       "ISIN": "INF740K01532",
                       "BSESchmecode": "DSP349-GR",
@@ -271,7 +271,7 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "3",
-                      Scheme_ID: "0",
+                      Scheme_ID: "10876",
                       "SchemeName": "L&T India Value Fund - Reg - Growth",
                       "ISIN": "INF677K01023",
                       "BSESchmecode": "FIVFG",
@@ -437,9 +437,9 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "1",
-                      Scheme_ID: "0",
+                      Scheme_ID: "956",
                       "SchemeName": "Baroda Pioneer Liquid Fund - Plan B - Growth",
-                      "ISIN": "INF955L01AL0",
+                      "ISIN": "INF955L01575",
                       "BSESchmecode": "BO114-GR",
                       "MinInvst": "500",
                       "MFtype": "Debt Liquid Funds",
@@ -454,9 +454,9 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                   },
                   {
                       "Rank": "2",
-                      Scheme_ID: "0",
+                      Scheme_ID: "238",
                       "SchemeName": "DSP BlackRock Treasury Bill Fund - Direct Plan - Growth",
-                      "ISIN": "INF740K01NU2",
+                      "ISIN": "INF740K01714",
                       "BSESchmecode": "DS723-GR",
                       "MinInvst": "500",
                       "MFtype": "Debt Liquid Funds",
