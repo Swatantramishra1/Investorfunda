@@ -1291,7 +1291,7 @@
                             
                             investItem.SchemeName = InvestmentDetailsList[listOfUniquePlanID[b]].SchemeName;
                             $scope.MF_CurrentDdate = InvestmentDetailsList[listOfUniquePlanID[b]].MF_CurrentDate;
-                            var tempTotal = (InvestmentDetailsList[listOfUniquePlanID[b]].Amount / InvestmentDetailsList[listOfUniquePlanID[b]].SchemeNav);
+                            var tempTotal = (InvestmentDetailsList[listOfUniquePlanID[b]].Amount / InvestmentDetailsList[listOfUniquePlanID[b]].SchemeNav).toFixed(3);
                             currentUnit = parseFloat(currentUnit) + parseFloat(tempTotal);
                             TotalUnit = parseFloat(TotalUnit) + parseFloat(tempTotal);
                             
