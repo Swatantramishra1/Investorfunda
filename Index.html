@@ -76,6 +76,9 @@
                 margin-top: 24px;
             }
         }
+        .headerColor{
+            color:white !important;
+        }
     </style>
 </head>
 <div id="loading"></div>
@@ -90,20 +93,31 @@
 				<div class="topbar">
 					<div class="container">
 						<!-- Topbar Navigation -->
-						<ul class="loginbar pull-right hide-sm hide-md" ng-show="!LoginStatus">
-                            <li><a ui-sref="blog">Blog</a></li>
+						<ul class="loginbar pull-right hide-sm hide-md" ng-show="!LoginStatus" style="color:white">
+                            <li><a href="https://www.facebook.com/investorfunda/" target="_blank"> <i class="fa fa-2x fa-facebook-square" style="color:#bbb;"></i></a></li>
+                            <li class="topbar-devider"></li>
+                            <li><a href="https://twitter.com/INVESTORFUNDA" target="_blank"><i class="fa fa-2x fa-twitter" style="color:#bbb;"></i></a></li>
+                            <li class="topbar-devider"></li>
+                            <li><a href="https://www.youtube.com/channel/UC1sh0mhOYK-9pYaoGhUBHpg" target="_blank"> <i class="fa fa-2x fa-youtube" style="color:#bbb;"></i></a></li>
+                            <li class="topbar-devider"></li>
+                            <li><a ui-sref="blog" class="headerColor">Blog</a></li>
 							<li class="topbar-devider"></li>
-							<li><a ui-sref="contact">Contact</a></li>
+							<li><a ui-sref="contact" class="headerColor">Contact</a></li>
 							<li class="topbar-devider"></li>
-							<li><a href="#">Help</a></li>
+							<li><a href="#" class="headerColor">Help</a></li>
 							<li class="topbar-devider"></li>
-							<li><a ui-sref="Authentication">Log in/Free SignUp</a></li>
+							<li><a ui-sref="Authentication" class="headerColor">Log in/Free SignUp</a></li>
 						</ul>
 						<ul class="loginbar pull-right" ng-show="LoginStatus">
+                            <li><a href="https://www.facebook.com/investorfunda/" target="_blank"> <i class="fa fa-2x fa-facebook-square" style="color:#bbb;"></i></a></li>
+                            <li class="topbar-devider"></li>
+                            <li><a href="https://twitter.com/INVESTORFUNDA" target="_blank"><i class="fa fa-2x fa-twitter" style="color:#bbb;"></i></a></li>
+                            <li class="topbar-devider"></li>
+                            <li><a href="https://www.youtube.com/channel/UC1sh0mhOYK-9pYaoGhUBHpg" target="_blank"> <i class="fa fa-2x fa-youtube" style="color:#bbb;"></i></a></li>
 							<li class="topbar-devider"></li>
 							<li><a href="Webform/User/dist/index.html" style="color:white">{{UserDetails.Name}}</a></li>
 							<li class="topbar-devider"></li>
-							<li><a ng-click="Logout()">Logout</a></li>
+							<li><a ng-click="Logout()" class="headerColor">Logout</a></li>
 
 						</ul>
 						<!-- End Topbar Navigation -->
@@ -428,6 +442,7 @@ function scrollToTop() {
 	<script src="Script/Service/Common.Dir.js"></script>
 	<script src="Script/Service/Common.srvc.js"></script>
 	<script src="Script/Controller/Common/Main.Ctrl.js"></script>
+    <script src="Script/Controller/Common/blog.Ctrl.js"></script>
 	<script src="Script/Controller/Common/MutualFunds.Ctrl.js"></script>
 	<script src="Script/Controller/Common/Calculator_Ctrl.js"></script>
 	<script src="Script/Controller/Common/Auth.Ctrl.js"></script>

@@ -101,6 +101,10 @@ input[type=radio]:not(old):checked +  label > span > span{
     justify-content: center;
     text-align: center;
 }
+.flatpickr-calendar.animate.inline.arrowTop {
+    text-align: center !important;
+    margin-left: 24%;
+}
 </style>
 
 <script>
@@ -170,36 +174,7 @@ input[type=radio]:not(old):checked +  label > span > span{
 
 </div>
 <div class="row">
-    <div ng-class="{'col-xs-12 col-sm-12 col-md-4 col-lg-4':InvestmentModeStatus}" ng-show="InvestmentModeStatus"  style="margin-top:3%;padding-left: 32px;padding-top: 15px;">
-
-        
-            <input type="text" id="DatePlugin" ng-model="CheckDate"  style="display:none" />
-            <!--<div ng-class="WeekClass" style="height:auto">
-            <div class="shape">
-                <div class="shape-text">
-                    {{weekNo}}
-                </div>
-            </div>
-            <div class="offer-content">
-                <table class="table table-striped " style="text-align:center;font-size:16px">
-                    <tr ng-repeat="List in sampleStructure">
-                        <td>
-                            {{List.DueDate}}
-                        </td>
-
-                        <td>{{List.SchemeName}}</td>
-
-                    </tr>
-
-                </table>
-
-
-            </div>
-        </div>-->
-     
-
-
-    </div>
+    <!-- ng-show="InvestmentModeStatus" -->
     <div  ng-class="{'col-xs-12 col-sm-12 col-md-8 col-lg-8':InvestmentModeStatus,'col-xs-12 col-sm-12 col-md-12 col-lg-12':!InvestmentModeStatus}">
         <div class="col-xs-12 col-sm-12 col-md-12" style="margin-top:5%">
             <div class="offer offer-radius offer-primary">
@@ -249,19 +224,42 @@ input[type=radio]:not(old):checked +  label > span > span{
 
     </div>
 
+    <!-- ng-if="InvestmentModeStatus" -->
+    <div class="col-lg-12 text-right"  style="margin-top: 35px;" ng-if="InvestmentModeStatus">
 
-    <div class="col-lg-12 text-right" ng-if="InvestmentModeStatus" style="margin-top: 35px;">
-
-        <input id="checkbox1" type="checkbox" name="checkbox" title="Please select Date first"  ng-disabled="!CheckDate" value="1" ng-model="checkTickBox"><label for="checkbox1"><span></span><label for="checkbox-1-1">  I / We have read the Offer Document / Scheme Information Document / Statement of Additional Information  T&C.     <md-button class="md-raised" ng-disabled="!checkTickBox" ng-click="InvestNow('Page')">INVEST NOW</md-button></label></label>
+        <input id="checkbox1" type="checkbox" ng-click="openCalendar()"  name="checkbox" title="Please select Date first"   value="1" ng-model="checkTickBox" ng-true-value=""><label for="checkbox1"><span></span><label for="checkbox-1-1">  I / We have read the Offer Document / Scheme Information Document / Statement of Additional Information  T&C.     <md-button class="md-raised" ng-disabled="CheckDate.length==0" ng-click="InvestNow('Page')">INVEST NOW</md-button></label></label>
         
        
  
     </div>
-    <div class="col-lg-12 text-right" ng-if="!InvestmentModeStatus" style="margin-top: 35px;">
+  <!--  <div class="col-lg-12 text-right" ng-if="!InvestmentModeStatus" style="margin-top: 35px;">
 
         <input id="checkbox1" type="checkbox" name="checkbox"  value="1" ng-model="checkTickBox"><label for="checkbox1"><span></span><label for="checkbox-1-1">  I / We have read the Offer Document / Scheme Information Document / Statement of Additional Information  T&C.     <md-button class="md-raised" ng-disabled="!checkTickBox" ng-click="InvestNow('Page')">INVEST NOW</md-button></label></label>
 
 
+
+    </div>-->
+</div>
+
+
+<!-- Modal -->
+<!-- ng-show="InvestmentModeStatus" -->
+<div id="myModal" class="modal fade"  role="dialog" ng-show="InvestmentModeStatus">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title text-center"><b>Select your sip date</b></h4>
+            </div>
+            <div class="modal-body text-center">
+                <input type="text" id="DatePlugin" ng-model="CheckDate" style="display:none" />
+            </div>
+            <!--<div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>-->
+        </div>
 
     </div>
 </div>

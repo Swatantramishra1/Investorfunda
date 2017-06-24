@@ -62,6 +62,7 @@ var API_UserUploadDocuments = ServerName + Service_Common + 'UserUploadDocuments
 var API_InsertBlog = ServerName + Service_Common + 'InsertBlog';
 var API_InsertUserInvestment = ServerName + Service_Common + 'InsertUserInvestment';
 var API_UpdateBlogDetails = ServerName + Service_Common + 'UpdateBlogDetails'; 
+var API_GetBlogDetailsInfo = ServerName + Service_Common + 'GetBlogDetailsInfo/';
 var API_GetBlogDetails = ServerName + Service_Common + 'GetBlogDetails';
 var API_DeleteBlog = ServerName + Service_Common + 'DeleteBlog/'; 
 var API_UpdateBlogImage = ServerName + Service_Common + 'UpdateBlogImage/'; 

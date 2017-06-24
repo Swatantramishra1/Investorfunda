@@ -128,9 +128,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         controller: "MainCtrl"
         
     }).state('blogDetails', {
-        url: "/blogDetails",
+        url: "/blogDetails/:id",
         templateUrl: "../../Webform/Common/Blog/blogDetailPage.html",
-        controller: "MainCtrl"
+        controller: "BlogCtrl"
     });
 
     //.state('state1.list', {

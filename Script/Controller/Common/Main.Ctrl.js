@@ -404,10 +404,11 @@
     $scope.showBlogDetail=function(Index)
     {
         $scope.showblogDetails = true;
-        $scope.blogDetails = $rootScope.DetailsBlogList[Index];
-        var htmltext = $scope.blogDetails.Blog_Content;
-        $('#blogContent').html(htmltext);
+        //$stateParams.id = $rootScope.DetailsBlogList[Index].Blog_ID;
+        $state.go('blogDetails', { id: $rootScope.DetailsBlogList[Index].Blog_ID });
     }
+
+    
 
     
 }]);

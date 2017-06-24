@@ -208,6 +208,27 @@ app.service('FundsService', ['$http', '$q', function ($http, $q) {
             return deferObject.promise;
         }
     };
+    getBlogDetailsInfo = {
+
+        getPromise: function (BlogID) {
+            var promise = $http.get(API_GetBlogDetailsInfo + BlogID),
+                  deferObject = deferObject || $q.defer();
+
+            promise.then(
+              // OnSuccess function
+              function (answer) {
+                  // This code will only run if we have a successful promise.
+                  deferObject.resolve(answer);
+              },
+              // OnFailure function
+              function (reason) {
+                  // This code will only run if we have a failed promise.
+                  deferObject.reject(reason);
+              });
+
+            return deferObject.promise;
+        }
+    };
     return {
         FundsList: FundsList,
         FundsDetails: FundsDetails,
@@ -218,7 +239,8 @@ app.service('FundsService', ['$http', '$q', function ($http, $q) {
         FundAssetAllocation: FundAssetAllocation,
         FundTopHolding: FundTopHolding,
         CreatePlan: CreatePlan,
-        getBlogDetails: getBlogDetails
+        getBlogDetails: getBlogDetails,
+        getBlogDetailsInfo: getBlogDetailsInfo
     };
 
 }]);

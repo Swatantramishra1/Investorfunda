@@ -2,6 +2,26 @@
 function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsService, GetCommonData, fileUploadService, $http) {
     $scope.val = "";
     var BseSchemeIDs = "";
+    $scope.CheckDate = "";
+    $scope.checkTickBox = false;
+    $(".flatpickr-day").click(function () {
+        alert("Hi")
+    });
+    $scope.openCalendar = function (param) {
+        if (!$scope.checkTickBox)
+        {
+            $('#myModal').modal('show');
+            $scope.checkTickBox = true;
+        }
+        else
+        {
+            $('#myModal').modal('hide');
+            $scope.CheckDate = "";
+            $scope.checkTickBox = false;
+        }
+            
+
+    }
     $scope.Portfolio_Parameter =
         {
             Portfolio_ID: "1",

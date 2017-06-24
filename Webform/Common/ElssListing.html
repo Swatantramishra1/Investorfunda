@@ -29,9 +29,9 @@
                     </thead>
                     <tbody>
                         <!-- Repeat List of All mutual funds -->
-                        <tr ng-repeat="Elss in ElssList" id="{{MF.SchemeID}}">
+                        <tr ng-repeat="Elss in ElssList" id="{{MF.Scheme_ID}}">
                             <td>{{$index+1}}</td>
-                            <td class="OnHoverSchemename"> {{Elss.SchemeName}}</td>
+                            <td class="OnHoverSchemename" ng-click="GoForMFDetails(Elss.Scheme_ID)"> {{Elss.SchemeName}}</td>
                             <td><input type="text" style="width:60px" id="{{$index}}Amount" /></td>
                             <td>
                                 <div class="btn-group">
