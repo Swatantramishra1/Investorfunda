@@ -2128,6 +2128,8 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
                         $scope.CompareJson[13].Data2 = $scope.FundsDetailsData.Schemelist.Scheme.DividendPercentage_Latest;
                         $scope.CompareJson[14].Data2 = $scope.FundsDetailsData.Schemelist.Scheme.Bonus_Latest;
                         $scope.CompareJson[15].Data2 = $scope.FundsDetailsData.Schemelist.Scheme.ExitLoad;
+                        $scope.compreListView = false;
+                        $scope.compreTableView = true;
                         countTemp++;
                         break;
                     case 2:
