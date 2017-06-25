@@ -404,8 +404,9 @@
     $scope.showBlogDetail=function(Index)
     {
         $scope.showblogDetails = true;
+        var header=  $rootScope.DetailsBlogList[Index].Blog_Header.split(" ").join("-");;
         //$stateParams.id = $rootScope.DetailsBlogList[Index].Blog_ID;
-        $state.go('blogDetails', { id: $rootScope.DetailsBlogList[Index].Blog_ID });
+      $state.go('blogDetails', { title: header, id: $rootScope.DetailsBlogList[Index].Blog_ID });
     }
 
     

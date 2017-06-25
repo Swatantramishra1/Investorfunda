@@ -4,9 +4,10 @@
 
 var app = angular.module('app', ['ngMaterial', 'ngAnimate', 'ui.router', 'ngStorage', 'rzModule', 'ng-fusioncharts', 'angular.filter']);
 //, 'ui.router']
-app.config(function ($stateProvider, $urlRouterProvider) {
+app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     //
     // For any unmatched url, redirect to /state1
+    
     $urlRouterProvider.otherwise("/Index");
 
     // Now set up the states
@@ -128,7 +129,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         controller: "MainCtrl"
         
     }).state('blogDetails', {
-        url: "/blogDetails/:id",
+        url: "/blogDetails/:title/:id",
         templateUrl: "../../Webform/Common/Blog/blogDetailPage.html",
         controller: "BlogCtrl"
     });
@@ -407,3 +408,4 @@ app.service('fileUploadService', function ($http, $q) {
         return deffered.promise;
     }
 });
+
