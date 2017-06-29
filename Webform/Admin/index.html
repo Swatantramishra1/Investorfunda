@@ -26,7 +26,7 @@
                     <div class="col-sm-4 logo"><a href="index.html">INVESTORFUNDA</a></div>
                     <div class="col-sm-6 nav">
                         <ul>
-                            <li> <span class="simptip-position-bottom simptip-movable" data-tooltip="Home"><a href="#"> </a></span></li>
+                            <li ng-show="userNotificationList.length>0">   <a data-toggle="modal" style="cursor:pointer" data-target="#myModal"> Notification</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-2 right">
@@ -82,6 +82,64 @@
                     </div>
                 </div>
             </footer>
+        </div>
+
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Notification Header</h4>
+                    </div>
+                    <div class="modal-body">
+
+
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#1acollapseOne">
+                                        <span class="glyphicon glyphicon-file">
+                                        </span>Notification details
+                                    </a>
+                                </h4>
+                            </div>
+                            <div data-target="1acollapseOne" class="panel-collapse collapse in">
+                                 <div class="panel-body">
+                                     <table class="table table-responsive">
+                                         <thead>
+                                             <tr>
+                                                 <th>Sr</th>
+                                                 <th>Name</th>
+                                                 <th>No</th>
+                                                 <th>Date</th>
+                                                 <th>Action</th>
+                                             </tr>
+                                         </thead>
+                                         <tbody>
+                                             <tr ng-repeat="notification in userNotificationList">
+                                                 <td>{{$index}}</td>
+                                                 <td>{{notification.Name}}</td>
+                                                 <td>{{notification.Count}}</td>
+                                                 <td>{{notification.LatestTime}}</td>
+                                                 <td><input type="button" value="Delete" /> </td>
+                                             </tr>
+                                         </tbody>
+                                     </table>
+                                 </div>
+                            </div>
+                        </div>
+                   
+
+
+
+                    </div>
+                   
+                </div>
+
+            </div>
         </div>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="js/angular.min.js"></script>

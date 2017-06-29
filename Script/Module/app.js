@@ -416,6 +416,13 @@ app.run(function ($rootScope, $location, $window) {
     // track pageview on state change
     $rootScope.$on('$stateChangeSuccess', function (event) {
         $window.ga('send', 'pageview', $location.path());
+
+        dataLayer.push({
+            event: 'ngRouteChange',
+            attributes: {
+                route: $location.path()
+            }
+        });
     });
 })
 

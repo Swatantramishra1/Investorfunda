@@ -39,6 +39,30 @@
         }
     }
 
+    $scope.getNotificationList = function () {
+        if ($localStorage.status) {
+            var getNotificationList = adminSrv.GetUserNotificationList.getPromise();
+            getNotificationList.then(
+            // OnSuccess function
+            function (answer) {
+                if (answer.data.GetNotificationResult.ResponseCode == "0") {
+
+
+                    $scope.userNotificationList = answer.data.GetNotificationResult.Result;
+                }
+
+            },
+            // OnFailure function
+            function (reason) {
+                HideLoader();
+                $scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
+                //$scope.somethingWrong = reason;
+                //$scope.error = true;
+            }
+          )
+        }
+    }
+
     $scope.getuserPlanList = function (ID) {
 
         var UserIDIndex = $scope.userList.map(function (cur, index) {
@@ -102,11 +126,13 @@
             $localStorage.status = true;
             $state.go('ListOfUser');
             $scope.getUserList();
+            $scope.getNotificationList();
         }
     }
     $scope.LogOut = function () {
         $localStorage.status = false;
         $scope.userList = [];
+        $scope.userNotificationList = [];
         $state.go('AdminLogin');
     }
 

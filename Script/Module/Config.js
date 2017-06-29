@@ -36,7 +36,8 @@ var API_UpdateInvestmentActionStatus = ServerName + Service_Common + 'UpdateInve
 var API_getAllUserAction = ServerName + Service_Common + 'getAllUserAction/'; 
 var API_UpdatePassword = ServerName + Service_Common + 'UpdatePassword/';
 var API_GetFolioDetails = ServerName + Service_Common + 'GetFolioDetails/';
-var API_UpdateFolio = ServerName + Service_Common + 'UpdateFolio/'
+var API_UpdateFolio = ServerName + Service_Common + 'UpdateFolio/';
+var API_GetNotification = ServerName + Service_Common + 'GetNotification'
 
 //Admin Part
 var API_GetUserListAdmin = ServerName + Service_Common + 'GetUserListAdmin'; 
