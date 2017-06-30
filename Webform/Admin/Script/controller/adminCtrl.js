@@ -122,7 +122,7 @@
         Password: ""
     }
     $scope.Login = function () {
-        if ($scope.admin.UserID == "admin" && $scope.admin.Password == "admin") {
+        if ($scope.admin.UserID == "investorfunda@gmail.com" && $scope.admin.Password == "vikas@1") {
             $localStorage.status = true;
             $state.go('ListOfUser');
             $scope.getUserList();
