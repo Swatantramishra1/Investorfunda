@@ -111,7 +111,7 @@ input[type=radio]:not(old):checked +  label > span > span{
     var date = new Date();
     var year = date.getFullYear();
     y = date.getFullYear(),
-    m = date.getMonth()+1;
+    m =  date.getMonth()+1;
     if (m <= 9)
     {
         m = "0" + m;
@@ -119,11 +119,22 @@ input[type=radio]:not(old):checked +  label > span > span{
     var firstDay = new Date(y, m, 1);
     var lastDay = new Date(y, m + 1, 0);
 
+    var tempMonth = parseInt(date.getMonth() + 1);
+    var getDaysInMonth = function (tempMonth, y) {
+        // Here January is 1 based
+        //Day 0 is the last day in the previous month
+        return new Date(y, tempMonth, 0).getDate();
+        // Here January is 0 based
+        // return new Date(year, month+1, 0).getDate();
+    };
+
     lastDay = String(parseInt(String(lastDay).split(' ')[2]) - 1);
     console.log("sw",y + "-" + m + "-" + lastDay);
     var configDate = {
         inline: true,
-        theme:'material_red'
+        theme: 'material_red',
+        minDate: y+'-'+m,
+        maxDate: y + '-' + m + '-' + getDaysInMonth(tempMonth,y)
     };
     $("#DatePlugin").flatpickr(configDate);
 </script>

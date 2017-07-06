@@ -5,7 +5,7 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
         username: '',
         password: ''
     };
-   $rootScope.showFooterView = false;
+    $rootScope.showFooterView = false;
     $scope.Register = {
         FirstName: '',
         LastName: '',
@@ -14,29 +14,26 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
         Password: '',
         mobileno: '',
     };
-    
+
     $scope.Login_All = function () {
-    
+
         ShowLoader();
         var askForPromise = ULoginService.LoginUser.getPromise($scope.user.username, $scope.user.password);
         askForPromise.then(
         // OnSuccess function
         function (answer) {
             HideLoader();
-            if (answer.data.GetLoginResult.ResponseCode == 0)
-            {
+            if (answer.data.GetLoginResult.ResponseCode == 0) {
                 $localStorage.setCounterStatus = true;
                 $localStorage.LoginStatus = true;
                 $rootScope.LoginStatus = true;
                 $localStorage.TempUserDetails = answer.data.GetLoginResult.Result;
                 $rootScope.UserDetails = answer.data.GetLoginResult.Result;
-                if ($localStorage.CurrentStatusOfPage == "ChildGoal")
-                {
+                if ($localStorage.CurrentStatusOfPage == "ChildGoal") {
                     $localStorage.ChildState = true;
                     $state.go('ChildGoal');
                 }
-                else if ($localStorage.CurrentStatusOfPage == "MutualfundsLumpSum")
-                {
+                else if ($localStorage.CurrentStatusOfPage == "MutualfundsLumpSum") {
                     $localStorage.MutualFundsState = true;
                     $state.go('MutualFundsList');
                 }
@@ -54,14 +51,13 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
                 }
                 else if ($localStorage.CurrentStatusOfPage == "StartSIP") {
                     //$localStorage.MutualFundsState = true;
-                    
+
                     $state.go('StartSIP');
                 }
                 else if ($localStorage.CurrentStatusOfPage == "LUMPSUM" || $localStorage.CurrentStatusOfPage == "SIP") {
                     //$localStorage.MutualFundsState = true;
 
-                    switch($localStorage.CurrentStateOfPage)
-                    {
+                    switch ($localStorage.CurrentStateOfPage) {
                         case 'MutualFundsList':
                             $localStorage.MutualFundsState = true;
                             $state.go('MutualFundsList');
@@ -81,21 +77,21 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
                             $state.go('ELSS');
                             break;
                     }
-                    
+
                 }
-                
-                else  {
-                    
+
+                else {
+
                     window.location = "../../../Webform/User/dist/index.html"
                 }
-          
+
             }
             else {
                 $scope.ErrorMessage = answer.data.GetLoginResult.ResponseMessage;
                 $localStorage.LoginStatus = false;
                 $rootScope.LoginStatus = false;
             }
-            
+
         },
         // OnFailure function
         function (reason) {
@@ -105,35 +101,34 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
             //$scope.error = true;
         }
       )
-       
+
     }
 
-    $scope.RegistrationFun = function ()
-    {
+    $scope.RegistrationFun = function () {
         var PostDataReq =
             {
-                "request": 
+                "request":
                    {
-                      
-                "UR_First_Name":$scope.Register.FirstName,
-                "UR_Middle_Name":"",
-                "UR_Surname":$scope.Register.LastName,
-                "UR_PanCardNo":$scope.Register.PanCard,
-                "UR_Password":$scope.Register.Password,
-                "UR_Gender":$scope.Register.Gender,
-                "UR_Email":$scope.Register.Email,
-                "UR_Mobile":$scope.Register.mobileno,
-                "UR_Phone":"",
-                "UR_Howdidyou":"",
-                "UR_Comments":"",
-                "UR_TaxStatus_ID":"",
-                "UR_DOB":"",
-                "UR_SourceOfWealth_ID":"",
-                "UR_Ocucupation_ID":"",
-                "UR_Income":"",
-                "UR_HoldingNature_ID":""
+
+                       "UR_First_Name": $scope.Register.FirstName,
+                       "UR_Middle_Name": "",
+                       "UR_Surname": $scope.Register.LastName,
+                       "UR_PanCardNo": $scope.Register.PanCard,
+                       "UR_Password": $scope.Register.Password,
+                       "UR_Gender": $scope.Register.Gender,
+                       "UR_Email": $scope.Register.Email,
+                       "UR_Mobile": $scope.Register.mobileno,
+                       "UR_Phone": "",
+                       "UR_Howdidyou": "",
+                       "UR_Comments": "",
+                       "UR_TaxStatus_ID": "",
+                       "UR_DOB": "",
+                       "UR_SourceOfWealth_ID": "",
+                       "UR_Ocucupation_ID": "",
+                       "UR_Income": "",
+                       "UR_HoldingNature_ID": ""
                    }
-                
+
             };
 
         ShowLoader();
@@ -145,20 +140,17 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
             data: JSON.stringify(PostDataReq),
             processData: false,
             async: false,
-            success: function (data, textStatus, jQxhr)
-            {
+            success: function (data, textStatus, jQxhr) {
                 HideLoader();
-                          if (data.UserRegistrationResult.ResponseCode == "0")
-                          {
-                              $localStorage.IsComplete = "1";
-                              $scope.ErrorMessage = data.UserRegistrationResult.ResponseMessage;
-                              $scope.user.username = $scope.Register.Email;
-                              $scope.selectedTab = 0;
-                          }
-                          else
-                          {
-                              $scope.ErrorMessage = data.UserRegistrationResult.ResponseMessage;
-                          }
+                if (data.UserRegistrationResult.ResponseCode == "0") {
+                    $localStorage.IsComplete = "1";
+                    $scope.ErrorMessage = data.UserRegistrationResult.ResponseMessage;
+                    $scope.user.username = $scope.Register.Email;
+                    $scope.selectedTab = 0;
+                }
+                else {
+                    $scope.ErrorMessage = data.UserRegistrationResult.ResponseMessage;
+                }
             },
             error: function (jqXhr, textStatus, errorThrown) {
                 HideLoader();
@@ -172,13 +164,11 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
         // OnSuccess function
         function (answer) {
             HideLoader();
-            if (answer.UserRegistrationResult.ResponseCode == "0")
-            {
+            if (answer.UserRegistrationResult.ResponseCode == "0") {
                 $localStorage.IsComplete = "1";
                 $scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
             }
-            else
-            {
+            else {
                 $scope.ErrorMessage = answer.UserRegistrationResult.ResponseMessage;
             }
         },
@@ -210,28 +200,26 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
         $scope.ForgotPasswordDivPassEnter = false;
         ShowLoader();
         var askForPromise = ULoginService.updatePassword.getPromise($scope.ForgotPassword.MobileNO, $scope.ForgotPassword.ConfPassword);
-          askForPromise.then(
-          // OnSuccess function
-          function (answer) {
-              HideLoader();
-              if (answer.data.UpdatePasswordResult.ResponseCode == "0")
-              {
-                 
-                  $scope.ErrorMessage = answer.data.UpdatePasswordResult.ResponseMessage;
-              }
-              else
-              {
-                  $scope.ErrorMessage = answer.data.UpdatePasswordResult.ResponseMessage;
-              }
-          },
-          // OnFailure function
-          function (reason) {
-              HideLoader();
-              $scope.ErrorMessage = answer.data.UpdatePasswordResult.ResponseMessage;
-              //$scope.somethingWrong = reason;
-              //$scope.error = true;
-          }
-        )
+        askForPromise.then(
+        // OnSuccess function
+        function (answer) {
+            HideLoader();
+            if (answer.data.UpdatePasswordResult.ResponseCode == "0") {
+
+                $scope.ErrorMessage = answer.data.UpdatePasswordResult.ResponseMessage;
+            }
+            else {
+                $scope.ErrorMessage = answer.data.UpdatePasswordResult.ResponseMessage;
+            }
+        },
+        // OnFailure function
+        function (reason) {
+            HideLoader();
+            $scope.ErrorMessage = answer.data.UpdatePasswordResult.ResponseMessage;
+            //$scope.somethingWrong = reason;
+            //$scope.error = true;
+        }
+      )
 
 
     };
@@ -260,7 +248,7 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
          });
     }
     $scope.SendMObileSMS = function () {
-        
+
         $scope.RandomNumber = Math.floor(100000 + Math.random() * 900000);
         var message = "Your OTP to complete the registration process for Investor Funda is" + $scope.RandomNumber;
 
@@ -277,7 +265,7 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
 
          })
          .catch(function (response) {
-          
+
              $scope.sendedOTP = true;
              $scope.getOtpBtn = true;
          });
@@ -285,13 +273,11 @@ app.controller("AuthCtrl", ['$scope', '$rootScope', 'ULoginService', '$localStor
 
 
     $scope.MatchOTP = function () {
-        if($scope.RandomNumber==$scope.matchOTP)
-        {
+        if ($scope.RandomNumber == $scope.matchOTP) {
             $scope.showRegistationForm = true;
             $scope.ErrorMessage = "";
         }
-        else
-        {
+        else {
             $scope.ErrorMessage = "Enter Correct OTP";
         }
     }
