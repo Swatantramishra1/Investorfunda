@@ -2,8 +2,11 @@
 function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsService, GetCommonData, fileUploadService, $http) {
     $scope.val = "";
     var BseSchemeIDs = "";
-    $scope.CheckDate = "";
+    $rootScope.CheckDate = "";
     $scope.checkTickBox = false;
+    $scope.insertDate = function (index) {
+        $rootScope.CheckDate = index + 1;
+    }
      $scope.date_calander = new Date();
      $scope.current_time = new Date();
     console.log("date", $scope.current_time);

@@ -1434,11 +1434,18 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         });
     };
 
-    function InvestorfundaMessageDetails($scope, $mdDialog, $localStorage) {
+    function InvestorfundaMessageDetails($scope, $mdDialog, $localStorage,$rootScope) {
         $scope.InvestorFundaMsg = {
             MessageContent: "",
             Header: ""
         };
+        $scope.showSchemeListStatus = true;
+        $scope.FinalSchemelists = [
+            {
+                "SchemeName": $localStorage.CurrentScheme.SchemeName,
+                "Amount": $localStorage.SchemeAmount
+            }
+        ]
         $scope.InvestorFundaMsg.MessageContent = $rootScope.MessageContent;
         $scope.InvestorFundaMsg.Header = $rootScope.MessageHeader;
 
@@ -1452,7 +1459,14 @@ function ($scope, $rootScope, $http, fileUpload, $mdDialog, FundsService, $state
         };
 
         $scope.ClickToProcedNextStep = function () {
-            $rootScope.InsertPlanForMutuals();
+            if ($scope.showSchemeListStatus)
+            {
+                $scope.showSchemeListStatus = false;
+            }
+            else {
+                $rootScope.InsertPlanForMutuals();
+            }
+            
         }
         $scope.answer = function (answer) {
             $mdDialog.hide(answer);

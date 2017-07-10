@@ -18,10 +18,29 @@
 
         <md-dialog-content>
             <div class="md-dialog-content">
-                <div class="col-xs-12">
-                  {{InvestorFundaMsg.MessageContent}}
+                <div class="col-xs-12" ng-show="showSchemeListStatus">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Sr</th>
+                                <th>Scheme Name</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="list in FinalSchemelists">
+                                <td> {{$index+1}} </td>
+                                <td> {{list.SchemeName}}</td>
+                                <td> {{list.Amount}} </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                  
                 </div>
-            </div>
+                <div class="col-xs-12" ng-show="!showSchemeListStatus">
+                    {{InvestorFundaMsg.MessageContent}}
+                    </div>
+                </div>
         </md-dialog-content>
 
         <md-dialog-actions layout="row">
