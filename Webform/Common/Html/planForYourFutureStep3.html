@@ -105,6 +105,29 @@ input[type=radio]:not(old):checked +  label > span > span{
     text-align: center !important;
     margin-left: 24%;
 }
+.circleDiv {
+    margin-right: 18px;
+    border-radius: 50% !important;
+    margin-bottom: 10px;
+    position: relative;
+    float: left;
+    fla: le;
+    width: 50px;
+    height: 50px;
+    /* border-radius: 50%; */
+    font-size: 15px;
+    color: #fff;
+    line-height: 55px;
+    text-align: center;
+    background: #5b616a;
+    cursor:pointer;
+}
+.circleDiv:hover {
+background: #f15a24 !important;
+}
+.circleDiv:visited {
+    background:rgba(241, 90, 36, 0.49);
+}
 </style>
 
 <script>
@@ -265,7 +288,11 @@ input[type=radio]:not(old):checked +  label > span > span{
                 <h4 class="modal-title text-center"><b>Select your SIP date</b></h4>
             </div>
             <div class="modal-body text-center">
-                <input type="text" id="DatePlugin" ng-model="CheckDate" style="display:none" />
+                <div class="row" style="margin: 0;margin-left: 6px;">
+                    <div class="circleDiv" ng-click="InvestNow('Page')" data-dismiss="modal" ng-repeat="i in getNumber(number_calandar) track by $index"> {{$index+1}} </div>
+                </div>
+                
+                <!--<input type="text" id="DatePlugin" ng-model="CheckDate" style="display:none" />-->
             </div>
             <!--<div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

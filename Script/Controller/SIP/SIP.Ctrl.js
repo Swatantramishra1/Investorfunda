@@ -4,6 +4,16 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
     var BseSchemeIDs = "";
     $scope.CheckDate = "";
     $scope.checkTickBox = false;
+     $scope.date_calander = new Date();
+     $scope.current_time = new Date();
+    console.log("date", $scope.current_time);
+    $scope.current_year = $scope.current_time.getFullYear();
+    $scope.noOfMonth = parseInt($scope.current_time.getMonth() + 1);
+    //console.log(new Date($scope.current_year, $scope.noOfMonth, 0).getDate());
+    $scope.number_calandar = (new Date($scope.current_year, $scope.noOfMonth, 0).getDate());
+    $scope.getNumber = function (num) {
+        return new Array(num);
+    }
     $(".flatpickr-day").click(function () {
         alert("Hi")
     });
@@ -4220,6 +4230,7 @@ function ($scope, $rootScope, $mdDialog, $mdMedia, $localStorage, $state, FundsS
     }
   
     $rootScope.InvestNow = function (Page) {
+        $('.modal-backdrop').remove();
         if (currentState == "CarPlan") {
             $scope.Portfolio_Parameter.Portfolio_Year.value = $scope.SIP_Portfolio_Year.value;
         }
