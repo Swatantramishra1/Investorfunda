@@ -1,76 +1,84 @@
-﻿
-<div class="md-padding" layout="row" >
-    <div class="row" >
-        <md-card>
-            <md-card-title>
-                <md-card-title-text>
-                    <span class="md-headline" style="color:white">My monthly investment need</span>
-                    <span class="md-subhead text-justify" style="color:white">Suppose you’ll be needing Rs.10 lakhs in next 5 years. How much you
-Should invest through SIP on the monthly basis from now to achieve this goal? With the help of this calculator, you may know as to how much you should invest in SIP to achieve a certain amount of money in a specific time duration.
-</span>
+﻿<style>
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        width: 100%;
+        cursor:pointer;
+       border-top:1px solid #808080;
+    }
 
-                </md-card-title-text>
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
 
-            </md-card-title>
-            <md-card-actions layout="row">
-                <md-button class="md-raised">Calculate</md-button>
-                <input type="button" class="btn btn-primary" value="Click" />
-                <md-button class="md-raised" data-toggle="modal" ng-click="OpenPopup('SIP CALCULATE')" data-target="#myModal" >Calculate SIP amount</md-button>
-            </md-card-actions>
-        </md-card>
-        <md-card md-theme="dark-blue">
-            <md-card-title>
-                <md-card-title-text>
-                    <span class="md-headline" style="color:white;">Investment Needed For My Child’s Education</span>
-                    <span class="md-subhead text-justify" style="">Use this calculator to determine the monthly SIP investment amount or bulk investment amount you require to meet the goal of your child’s education in future. All you need is to fill in your child’s current age; the current estimate cost of the course and the calculator will do the rest.</span>
-                </md-card-title-text>
-                <md-card-title-media>
-                    <div class="md-media-lg card-media">
+    .container {
+        width:100% !important;
+    }
+</style>
+<div class="md-padding"  style="margin-top:30px;margin-bottom:30px">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card" ui-sref="ChildGoal">
+               
+                <img src="../../Img/SIP/CE.png" alt="Avatar" style="width:100%">
+                <div class="container">
+                    <h4><b>CHILD’S EDUCATION PLAN</b></h4>
+                    <p>Your child needs best education and best education needs the best planning</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card" ui-sref="Retirement">
 
-                    </div>
-                </md-card-title-media>
-            </md-card-title>
-            <md-card-actions layout="row">
-                <md-button class="md-raised">Calculate SIP for Child's education</md-button>
-            </md-card-actions>
-        </md-card>
+                <img src="../../Img/SIP/retire.png" alt="Avatar" style="width:100%">
+                <div class="container">
+                    <h4><b>RETIREMENT PLAN</b></h4>
+                    <p>Gift yourself the best retirement</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card" ui-sref="HousePlan">
 
-
+                <img src="../../Img/SIP/buyahouse.png" alt="Avatar" style="width:100%">
+                <div class="container">
+                    <h4><b>BUY A HOUSE</b></h4>
+                    <p>Lets plan for your home together</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="row" >
-        <md-card md-theme="dark-blue">
-            <md-card-title>
-                <md-card-title-text>
-                    <span class="md-headline" style="color:white">Tax Savings Calculator</span>
-                    <span class="md-subhead text-justify" style="color:white">Use this calculator to know how much tax can be saved by investing in ELSS, NPS & other 80C instruments. </span>
+    <div class="row" style="margin-top:15px">
+        <div class="col-sm-4">
+            <div class="card" ui-sref="CarPlan">
 
-                </md-card-title-text>
+                <img src="../../Img/SIP/buyacar.png" alt="Avatar" style="width:100%">
+                <div class="container">
+                    <h4><b>BUY A CAR</b></h4>
+                    <p>Buy your own car</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card" ui-sref="ChildMerrage">
 
-            </md-card-title>
-            <md-card-actions layout="row" style="margin-top:20px">
-                <md-button class="md-raised" data-toggle="modal" ng-click="OpenPopup('SIP CALCULATE')" data-target="#myModal">Calculate Tax Savings</md-button>
-            </md-card-actions>
-        </md-card>
-        <md-card md-theme="dark-blue">
-            <md-card-title>
-                <md-card-title-text>
-                    <span class="md-headline" style="color:white;">Investment Needed For My Child’s Marriage</span>
-                    <span class="md-subhead text-justify" style="">This calculator helps you to determine the monthly SIP investment amount required today to meet the goal of your child’s marriage in future. You need to know for how many years you have to invest and what is the current cost to arrange a marriage? The calculator will be of great help to you. </span>
-                </md-card-title-text>
-                <md-card-title-media>
-                    <div class="md-media-lg card-media">
+                <img src="../../Img/SIP/CM.png" alt="Avatar" style="width:100%">
+                <div class="container">
+                    <h4><b>PLAN A MARRIAGE</b></h4>
+                    <p>Make sure you have everything prepared for her big day</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card" ui-sref="Tour">
 
-                    </div>
-                </md-card-title-media>
-            </md-card-title>
-            <md-card-actions layout="row">
-                <md-button class="md-raised">Calculate SIP for Child's marriage</md-button>
-            </md-card-actions>
-        </md-card>
-
-
+                <img src="../../Img/SIP/travel.png" alt="Avatar" style="width:100%">
+                <div class="container">
+                    <h4><b>PLAN A HOLIDAY</b></h4>
+                    <p>Plan your dream tour</p>
+                </div>
+            </div>
+        </div>
     </div>
-    
-    <div ng-include="'#/Popup/Calculator_Popup.html'"></div>
 
 </div>

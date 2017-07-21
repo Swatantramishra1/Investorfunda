@@ -20,7 +20,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
         .state('CAL', {
             url: "/CAL",
             templateUrl: "../../Webform/Common/Calculator.html",
-            controller: "Calculator_Ctrl"
+            controller: "MainCtrl"
         })
         .state('Authentication', {
             url: "/Authentication/:From",
