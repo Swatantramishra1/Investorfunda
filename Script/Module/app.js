@@ -98,10 +98,15 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
         url: "/AdminUpload",
         templateUrl: "../../WebForm/HtmlPages/Admin/ExportExcel.html",
         controller: "MainCtrl"
-    }).state('contact', {
-        url: "/contact",
-        templateUrl: "../../Webform/Common/contact.html",
-        controller: "MainCtrl"
+        })
+        .state('contact', {
+            url: "/contact",
+            templateUrl: "../../Webform/Common/contact.html",
+            controller: "MainCtrl"})
+            .state('about', {
+                url: "/about",
+                templateUrl: "../../Webform/Common/Aboutus.html",
+                controller: "MainCtrl"
     }).state('compare', {
         url: "/compare",
         templateUrl: "../../Webform/Common/compare.html",

@@ -2,7 +2,7 @@
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="en" ng-app="app" >
+<html lang="en" ng-app="app"  ng-cloak>
 <style>
 	html {
 		overflow-x:hidden;
@@ -130,7 +130,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							<li class="topbar-devider"></li>
 							<li><a href="#" class="headerColor">Help</a></li>
 							<li class="topbar-devider"></li>
-							<li><a ui-sref="Authentication" class="headerColor">Log in/Free SignUp</a></li>
+							<li><a ui-sref="Authentication" class="headerColor">Log In / SignUp</a></li>
 						</ul>
 						<ul class="loginbar pull-right" ng-show="LoginStatus">
                             <li><a href="https://www.facebook.com/investorfunda/" target="_blank"> <i class="fa fa-2x fa-facebook-square" style="color:#bbb;"></i></a></li>
@@ -370,7 +370,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		<!--=== End Header ===-->
 	<!--</div>-->
 
-		<div class="col-lg-12" style="background-color:#f5f5f5;margin-bottom:40px" ui-view="">
+		<div class="col-lg-12" style="background-color:#f5f5f5;margin-bottom:40px" ui-view="" autoscroll="true">
 
 			
 		</div>
