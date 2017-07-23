@@ -564,6 +564,7 @@ text-align:center;
 	color:white !important;
 }
    #footerval{
+       width:100%;
 	background-color:#293542 !important;
 	margin-bottom:58px;
 	height:auto;
